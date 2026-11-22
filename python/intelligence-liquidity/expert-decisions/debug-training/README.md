@@ -39,3 +39,6 @@ In H6, the slow board averaged 0.49730 on vacant readings and 0.49750 on occupie
 - [Slow run receipt](evidence/slow/debug-results.json)
 - [Matched rate-control receipt](evidence/control/debug-results.json)
 - [Original replay receipt](../evidence/results.json)
+
+[Mixed-batch follow-up](mixed-batches/README.md) keeps the same examples and
+tests a new batch plan at both learning rates.

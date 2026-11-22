@@ -1,0 +1,412 @@
+{
+  "curve": [
+    {
+      "epoch": 1,
+      "error": 4.16884708404541,
+      "coverage": 1.0,
+      "score_auc": null
+    },
+    {
+      "epoch": 2,
+      "error": 4.014527797698975,
+      "coverage": 1.0,
+      "score_auc": null
+    },
+    {
+      "epoch": 3,
+      "error": 4.026628494262695,
+      "coverage": 1.0,
+      "score_auc": null
+    },
+    {
+      "epoch": 4,
+      "error": 4.035034656524658,
+      "coverage": 1.0,
+      "score_auc": null
+    },
+    {
+      "epoch": 5,
+      "error": 4.006176948547363,
+      "coverage": 1.0,
+      "score_auc": null
+    },
+    {
+      "epoch": 6,
+      "error": 3.999739170074463,
+      "coverage": 1.0,
+      "score_auc": null
+    },
+    {
+      "epoch": 7,
+      "error": 4.009589195251465,
+      "coverage": 1.0,
+      "score_auc": null
+    },
+    {
+      "epoch": 8,
+      "error": 4.013700485229492,
+      "coverage": 1.0,
+      "score_auc": null
+    },
+    {
+      "epoch": 9,
+      "error": 4.019861698150635,
+      "coverage": 1.0,
+      "score_auc": null
+    },
+    {
+      "epoch": 10,
+      "error": 4.028120040893555,
+      "coverage": 1.0,
+      "score_auc": null
+    },
+    {
+      "epoch": 11,
+      "error": 4.0350494384765625,
+      "coverage": 1.0,
+      "score_auc": null
+    }
+  ],
+  "best_epoch": 6,
+  "training_windows": 71,
+  "weights_sha256": "79c6b2a137b00b0209accfae414c8864329382c3c55518112a2df4703779d8fb",
+  "validation_rows": 221,
+  "data": {
+    "six-buildings.zip": "393c5c5d106d1597e0a059ea43b799d7d2e58baf74a6388beb256c46f2400fe8"
+  },
+  "torch_version": "2.7.1+cpu",
+  "code": {
+    "blackboard.py": "0c2e491f3b68229aa8ee4973526be483b81d30d9e8ac870c5c6d301ed883c8dc",
+    "data.py": "f44609f6e1b414e26fa0a7e0f6815b6337ede5b329c1582c8a2badab0c8e3797",
+    "online.py": "17c680f5aad520992226e84bda388884b5fe76ade5dfe58cdf62305b857883da",
+    "serve.py": "f4b82f3cc885c4b9f01dc0088fdd9f73defc4cc24d8508e30c6702558edf1f66",
+    "test_blackboard.py": "370f0d76e8123d94746cfb883d73f3bc639d12b94c2ebbeda7422c75abce265b",
+    "train.py": "082b18a8a592c021043acad7c89bb76f1ab9ccadcfc476e72a4e5bf06d42fb9b"
+  },
+  "prior_workflow_sha256": "7e47117899e8e4da8808aa11ee043a7536e5d1b5dc551c74f577a30092ca9aa3",
+  "comparisons": {
+    "heat-holdout": {
+      "frozen": {
+        "challenged_proposals": 0,
+        "changed_votes": 0,
+        "committed": 533,
+        "online_sensor_updates": 0,
+        "online_reward_updates": 0,
+        "forecast_mae": 0.0219717962862318,
+        "persistence_mae": 0.019359756170249567,
+        "trace": [
+          {
+            "row": 0,
+            "evidence": {
+              "indoor": -0.10000000149011612,
+              "outdoor": -1.0199999809265137,
+              "previous_action": null,
+              "previous_energy": null,
+              "previous_discomfort": null
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.03699842095375061,
+                    -0.8892760276794434
+                  ],
+                  "available": true,
+                  "review_support": 0.9631041288375854,
+                  "counter_values": [
+                    -0.025257304310798645,
+                    -0.8878837823867798
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    -0.2048826366662979,
+                    -0.7828760743141174
+                  ],
+                  "available": true,
+                  "review_support": 0.9775357842445374,
+                  "counter_values": [
+                    -0.0016880184412002563,
+                    -0.8864386081695557
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 0,
+                  "values": [
+                    -0.06850944459438324,
+                    -0.7192662358283997
+                  ],
+                  "available": true,
+                  "review_support": 0.9753289222717285,
+                  "counter_values": [
+                    -0.008932456374168396,
+                    -0.9233596920967102
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.10381890833377838,
+                -0.7967423796653748
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "revised_experts": [],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.03699842095375061,
+                    -0.8892760276794434
+                  ],
+                  "available": true,
+                  "review_support": 0.9631041288375854,
+                  "counter_values": [
+                    -0.025257304310798645,
+                    -0.8878837823867798
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    -0.2048826366662979,
+                    -0.7828760743141174
+                  ],
+                  "available": true,
+                  "review_support": 0.9775357842445374,
+                  "counter_values": [
+                    -0.0016880184412002563,
+                    -0.8864386081695557
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 0,
+                  "values": [
+                    -0.06850944459438324,
+                    -0.7192662358283997
+                  ],
+                  "available": true,
+                  "review_support": 0.9753289222717285,
+                  "counter_values": [
+                    -0.008932456374168396,
+                    -0.9233596920967102
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.10381890833377838,
+                -0.7967423796653748
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "accepted": true,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              0
+            ],
+            "committed_decisions": 1
+          }
+        ],
+        "rows": 533,
+        "on": 0,
+        "off": 533,
+        "coverage": 1.0,
+        "logged_return_mae": 3.283073902130127,
+        "logged_return_mae_committed": 3.283073902130127,
+        "recorded_on": 289,
+        "recorded_off": 244
+      },
+      "live": {
+        "challenged_proposals": 0,
+        "changed_votes": 0,
+        "committed": 533,
+        "online_sensor_updates": 492,
+        "online_reward_updates": 492,
+        "forecast_mae": 0.02166477849184558,
+        "persistence_mae": 0.019359756170249567,
+        "trace": [
+          {
+            "row": 0,
+            "evidence": {
+              "indoor": -0.10000000149011612,
+              "outdoor": -1.0199999809265137,
+              "previous_action": null,
+              "previous_energy": null,
+              "previous_discomfort": null
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.03699842095375061,
+                    -0.8892760276794434
+                  ],
+                  "available": true,
+                  "review_support": 0.9631041288375854,
+                  "counter_values": [
+                    -0.025257304310798645,
+                    -0.8878837823867798
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    -0.2048826366662979,
+                    -0.7828760743141174
+                  ],
+                  "available": true,
+                  "review_support": 0.9775357842445374,
+                  "counter_values": [
+                    -0.0016880184412002563,
+                    -0.8864386081695557
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 0,
+                  "values": [
+                    -0.06850944459438324,
+                    -0.7192662358283997
+                  ],
+                  "available": true,
+                  "review_support": 0.9753289222717285,
+                  "counter_values": [
+                    -0.008932456374168396,
+                    -0.9233596920967102
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.10381890833377838,
+                -0.7967423796653748
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "revised_experts": [],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.03699842095375061,
+                    -0.8892760276794434
+                  ],
+                  "available": true,
+                  "review_support": 0.9631041288375854,
+                  "counter_values": [
+                    -0.025257304310798645,
+                    -0.8878837823867798
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    -0.2048826366662979,
+                    -0.7828760743141174
+                  ],
+                  "available": true,
+                  "review_support": 0.9775357842445374,
+                  "counter_values": [
+                    -0.0016880184412002563,
+                    -0.8864386081695557
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 0,
+                  "values": [
+                    -0.06850944459438324,
+                    -0.7192662358283997
+                  ],
+                  "available": true,
+                  "review_support": 0.9753289222717285,
+                  "counter_values": [
+                    -0.008932456374168396,
+                    -0.9233596920967102
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.10381890833377838,
+                -0.7967423796653748
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "accepted": true,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              0
+            ],
+            "committed_decisions": 1
+          }
+        ],
+        "online_parameter_change_l1": 0.3777982283500023,
+        "online_liquid_parameter_change_l1": 0.04951817635446787,
+        "online_falsifier_parameter_change_l1": 0.005493159347679466,
+        "rows": 533,
+        "on": 0,
+        "off": 533,
+        "coverage": 1.0,
+        "logged_return_mae": 3.2972922325134277,
+        "logged_return_mae_committed": 3.2972922325134277,
+        "recorded_on": 289,
+        "recorded_off": 244
+      },
+      "forced_commit": {
+        "challenged_proposals": 0,
+        "changed_votes": 0,
+        "committed": 533,
+        "online_sensor_updates": 0,
+        "online_reward_updates": 0,
+        "forecast_mae": 0.0219717962862318,
+        "persistence_mae": 0.019359756170249567,
+        "trace": [],
+        "rows": 533,
+        "on": 0,
+        "off": 533,
+        "coverage": 1.0,
+        "logged_return_mae": 3.283073902130127,
+        "logged_return_mae_committed": 3.283073902130127,
+        "recorded_on": 289,
+        "recorded_off": 244
+      }
+    }
+  }
+}

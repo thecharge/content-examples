@@ -1,0 +1,3528 @@
+{
+  "curve": [
+    {
+      "epoch": 1,
+      "error": 0.5,
+      "coverage": 1.0,
+      "score_auc": 0.6695444583892822
+    },
+    {
+      "epoch": 2,
+      "error": 0.5,
+      "coverage": 1.0,
+      "score_auc": 0.6056829690933228
+    },
+    {
+      "epoch": 3,
+      "error": 0.500332236289978,
+      "coverage": 0.9995039701461792,
+      "score_auc": 0.46225497126579285
+    },
+    {
+      "epoch": 4,
+      "error": 0.5322259068489075,
+      "coverage": 0.9528769850730896,
+      "score_auc": 0.432869553565979
+    },
+    {
+      "epoch": 5,
+      "error": 0.5544850528240204,
+      "coverage": 0.9201388955116272,
+      "score_auc": 0.4187522232532501
+    },
+    {
+      "epoch": 6,
+      "error": 0.5694352090358734,
+      "coverage": 0.89682537317276,
+      "score_auc": 0.4091709852218628
+    }
+  ],
+  "best_epoch": 1,
+  "training_windows": 1008,
+  "weights_sha256": "892bfc9114f0727aa2ec32c1b00b6b2c2da09c47ecd93340d628695462d8eae5",
+  "validation_rows": 2016,
+  "h4_calibration": {
+    "proposals": [
+      0.20145390927791595,
+      0.08979900926351547,
+      0.06958401203155518
+    ],
+    "reviewers": [
+      -0.05685872584581375,
+      -0.12799127399921417,
+      -0.022807806730270386,
+      -0.011482873931527138
+    ]
+  },
+  "h4_after_calibration": {
+    "balanced_accuracy": 0.5479998290538788,
+    "coverage": 0.8239087462425232,
+    "score_auc": 0.6667819619178772
+  },
+  "data": {
+    "H1_ENVIRONMENTAL.zip": "4d5ac73017245092a0368ee2def721f1a5b93bf906cf8563c18712d7759badd0",
+    "H1_GROUNDTRUTH.zip": "7ce7b4d41e67cdcef3a2c91d6fcecee117cc890f190a34c34d716e125ea9649c",
+    "H2_ENVIRONMENTAL.zip": "403ed10ff5cbe62db81d003facb1d4da2f0915ffcc8b7ac12aab5b7baf9aa6c8",
+    "H2_GROUNDTRUTH.zip": "f555403f5c3b991ec02e6d348c13d7096194dbea6878220aa59ddca53b68fed1",
+    "H3_ENVIRONMENTAL.zip": "0876ea45b663389e05934a1eae4754a5e5dd495d08e19890d1c06fdf387b93f7",
+    "H3_GROUNDTRUTH.zip": "57ead22674459c5eb12ccdbde9b767ec8b3bf1023bd3dfa2ff6b0788cd453223",
+    "H4_ENVIRONMENTAL.zip": "6163626eaa643082d42e494cf41bdd82e5f92ddae8f0d75b1bfe89ba47502f89",
+    "H4_GROUNDTRUTH.zip": "5c4484761e8438ee6546c3a36dbacfcca7ec75acea9885d6024e218290805ed0",
+    "H5_ENVIRONMENTAL.zip": "2052daee624cb0aff7827097d34422c536fdf5e86047734b90b858cd6bb1fe4f",
+    "H5_GROUNDTRUTH.zip": "4d3de5bee5abd29d0826a70376b80fefa2f052e2c5701e2b77e575b6f0852d9b",
+    "H6_ENVIRONMENTAL.zip": "ff9539b61c921a9f5dcbc32b95bd6b0705f91536ecd3dbfae48ddcc36dffff58",
+    "H6_GROUNDTRUTH.zip": "28ddb88f6deca3af403c0cb1d35e721614fcf02ecb523ef64d412ce7e3101574"
+  },
+  "torch_version": "2.7.1+cpu",
+  "code": {
+    "blackboard.py": "0c2e491f3b68229aa8ee4973526be483b81d30d9e8ac870c5c6d301ed883c8dc",
+    "data.py": "f44609f6e1b414e26fa0a7e0f6815b6337ede5b329c1582c8a2badab0c8e3797",
+    "online.py": "17c680f5aad520992226e84bda388884b5fe76ade5dfe58cdf62305b857883da",
+    "serve.py": "f4b82f3cc885c4b9f01dc0088fdd9f73defc4cc24d8508e30c6702558edf1f66",
+    "test_blackboard.py": "370f0d76e8123d94746cfb883d73f3bc639d12b94c2ebbeda7422c75abce265b",
+    "train.py": "082b18a8a592c021043acad7c89bb76f1ab9ccadcfc476e72a4e5bf06d42fb9b"
+  },
+  "prior_workflow_sha256": "7e47117899e8e4da8808aa11ee043a7536e5d1b5dc551c74f577a30092ca9aa3",
+  "comparisons": {
+    "H5": {
+      "frozen": {
+        "challenged_proposals": 1005,
+        "changed_votes": 17,
+        "committed": 1664,
+        "online_sensor_updates": 0,
+        "online_reward_updates": 0,
+        "forecast_mae": 0.0448279829582143,
+        "persistence_mae": 0.04259154784322127,
+        "trace": [
+          {
+            "row": 0,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.5300000905990601,
+              "humidity": -0.2880000174045563,
+              "light": 0.0,
+              "co2eq_change": null,
+              "voc_change": null,
+              "temperature_change": null,
+              "humidity_change": null,
+              "light_change": null
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08677517622709274,
+                    -0.17800430953502655
+                  ],
+                  "available": true,
+                  "review_support": 0.4984706938266754,
+                  "counter_values": [
+                    -0.07165374606847763,
+                    -0.09672065824270248
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.0014236699789762497,
+                    -0.04523690417408943
+                  ],
+                  "available": true,
+                  "review_support": 0.5144869685173035,
+                  "counter_values": [
+                    -0.03193705528974533,
+                    -0.04769745469093323
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.10191041231155396,
+                    -0.04978374019265175
+                  ],
+                  "available": true,
+                  "review_support": 0.48666658997535706,
+                  "counter_values": [
+                    -0.13182589411735535,
+                    -0.166684091091156
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.06142793223261833,
+                -0.09084396064281464
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08677517622709274,
+                    -0.17800430953502655
+                  ],
+                  "available": true,
+                  "review_support": 0.4984706938266754,
+                  "counter_values": [
+                    -0.07165374606847763,
+                    -0.09672065824270248
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.0014236699789762497,
+                    -0.04523690417408943
+                  ],
+                  "available": true,
+                  "review_support": 0.5144869685173035,
+                  "counter_values": [
+                    -0.03193705528974533,
+                    -0.04769745469093323
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.10148897767066956,
+                    -0.0506250336766243
+                  ],
+                  "available": true,
+                  "review_support": 0.4866872727870941,
+                  "counter_values": [
+                    -0.13182589411735535,
+                    -0.166684091091156
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.06129171699285507,
+                -0.09111642837524414
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "accepted": true,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 1
+          },
+          {
+            "row": 1,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.550000011920929,
+              "humidity": -0.29600003361701965,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": 0.019999921321868896,
+              "humidity_change": -0.008000016212463379,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.0822935402393341,
+                    -0.18747766315937042
+                  ],
+                  "available": true,
+                  "review_support": 0.4781436622142792,
+                  "counter_values": [
+                    -0.08766958862543106,
+                    -0.09065517038106918
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 1,
+                  "values": [
+                    -0.024487867951393127,
+                    -0.021143555641174316
+                  ],
+                  "available": true,
+                  "review_support": 0.47426941990852356,
+                  "counter_values": [
+                    -0.043418072164058685,
+                    -0.045258909463882446
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09630385786294937,
+                    -0.046195030212402344
+                  ],
+                  "available": true,
+                  "review_support": 0.45782676339149475,
+                  "counter_values": [
+                    -0.16282734274864197,
+                    -0.1717412769794464
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.06740163266658783,
+                -0.08567218482494354
+              ],
+              "quorum": false,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              1,
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.0822935402393341,
+                    -0.18747766315937042
+                  ],
+                  "available": true,
+                  "review_support": 0.4781436622142792,
+                  "counter_values": [
+                    -0.08766958862543106,
+                    -0.09065517038106918
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 1,
+                  "values": [
+                    -0.02670256793498993,
+                    -0.023564666509628296
+                  ],
+                  "available": true,
+                  "review_support": 0.47428056597709656,
+                  "counter_values": [
+                    -0.043418072164058685,
+                    -0.045258909463882446
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09599188715219498,
+                    -0.04708785563707352
+                  ],
+                  "available": true,
+                  "review_support": 0.45784440636634827,
+                  "counter_values": [
+                    -0.16282734274864197,
+                    -0.1717412769794464
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.06804518401622772,
+                -0.0867752656340599
+              ],
+              "quorum": false,
+              "consensus_objection": false
+            },
+            "accepted": false,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 1
+          },
+          {
+            "row": 2,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.6099998354911804,
+              "humidity": -0.30400002002716064,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": 0.059999823570251465,
+              "humidity_change": -0.007999986410140991,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.0822947770357132,
+                    -0.1874801516532898
+                  ],
+                  "available": true,
+                  "review_support": 0.4780178964138031,
+                  "counter_values": [
+                    -0.08810300379991531,
+                    -0.09068883210420609
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    -0.020115073770284653,
+                    -0.02438126504421234
+                  ],
+                  "available": true,
+                  "review_support": 0.47437357902526855,
+                  "counter_values": [
+                    -0.043418072164058685,
+                    -0.045258909463882446
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09630680084228516,
+                    -0.04619627445936203
+                  ],
+                  "available": true,
+                  "review_support": 0.45780059695243835,
+                  "counter_values": [
+                    -0.1625356376171112,
+                    -0.17191636562347412
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.06592700630426407,
+                -0.08674944192171097
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.0822947770357132,
+                    -0.1874801516532898
+                  ],
+                  "available": true,
+                  "review_support": 0.4780178964138031,
+                  "counter_values": [
+                    -0.08810300379991531,
+                    -0.09068883210420609
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    -0.020115073770284653,
+                    -0.02438126504421234
+                  ],
+                  "available": true,
+                  "review_support": 0.47437357902526855,
+                  "counter_values": [
+                    -0.043418072164058685,
+                    -0.045258909463882446
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09599366784095764,
+                    -0.04708808287978172
+                  ],
+                  "available": true,
+                  "review_support": 0.4578181803226471,
+                  "counter_values": [
+                    -0.1625356376171112,
+                    -0.17191636562347412
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.06582573056221008,
+                -0.08703845739364624
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "accepted": true,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 2
+          },
+          {
+            "row": 3,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.5399999618530273,
+              "humidity": -0.2979999780654907,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": -0.06999987363815308,
+              "humidity_change": 0.006000041961669922,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08239515125751495,
+                    -0.18749511241912842
+                  ],
+                  "available": true,
+                  "review_support": 0.4774131774902344,
+                  "counter_values": [
+                    -0.08958431333303452,
+                    -0.09005364030599594
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 1,
+                  "values": [
+                    -0.028790613636374474,
+                    -0.01865757256746292
+                  ],
+                  "available": true,
+                  "review_support": 0.4741828739643097,
+                  "counter_values": [
+                    -0.04540955275297165,
+                    -0.045025452971458435
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09753411263227463,
+                    -0.04498020187020302
+                  ],
+                  "available": true,
+                  "review_support": 0.45698368549346924,
+                  "counter_values": [
+                    -0.16804072260856628,
+                    -0.172601580619812
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.06926129013299942,
+                -0.08442188799381256
+              ],
+              "quorum": false,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08239515125751495,
+                    -0.18749511241912842
+                  ],
+                  "available": true,
+                  "review_support": 0.4774131774902344,
+                  "counter_values": [
+                    -0.08958431333303452,
+                    -0.09005364030599594
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 1,
+                  "values": [
+                    -0.028790613636374474,
+                    -0.01865757256746292
+                  ],
+                  "available": true,
+                  "review_support": 0.4741828739643097,
+                  "counter_values": [
+                    -0.04540955275297165,
+                    -0.045025452971458435
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09723246842622757,
+                    -0.04588349536061287
+                  ],
+                  "available": true,
+                  "review_support": 0.4570015072822571,
+                  "counter_values": [
+                    -0.16804072260856628,
+                    -0.172601580619812
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.06916378438472748,
+                -0.08471445739269257
+              ],
+              "quorum": false,
+              "consensus_objection": false
+            },
+            "accepted": false,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 2
+          },
+          {
+            "row": 4,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.4000000059604645,
+              "humidity": -0.27000001072883606,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": -0.13999995589256287,
+              "humidity_change": 0.027999967336654663,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08239243924617767,
+                    -0.18748991191387177
+                  ],
+                  "available": true,
+                  "review_support": 0.4780368506908417,
+                  "counter_values": [
+                    -0.08875393122434616,
+                    -0.0898386612534523
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 1,
+                  "values": [
+                    -0.04070058465003967,
+                    -0.009251527488231659
+                  ],
+                  "available": true,
+                  "review_support": 0.4738899767398834,
+                  "counter_values": [
+                    -0.04540955275297165,
+                    -0.045025452971458435
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09908033162355423,
+                    -0.043362248688936234
+                  ],
+                  "available": true,
+                  "review_support": 0.4573104679584503,
+                  "counter_values": [
+                    -0.16867488622665405,
+                    -0.17218127846717834
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.07378792762756348,
+                -0.0807822123169899
+              ],
+              "quorum": false,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08239243924617767,
+                    -0.18748991191387177
+                  ],
+                  "available": true,
+                  "review_support": 0.4780368506908417,
+                  "counter_values": [
+                    -0.08875393122434616,
+                    -0.0898386612534523
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 1,
+                  "values": [
+                    -0.04070058465003967,
+                    -0.009251527488231659
+                  ],
+                  "available": true,
+                  "review_support": 0.4738899767398834,
+                  "counter_values": [
+                    -0.04540955275297165,
+                    -0.045025452971458435
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09878106415271759,
+                    -0.044267747551202774
+                  ],
+                  "available": true,
+                  "review_support": 0.4573284685611725,
+                  "counter_values": [
+                    -0.16867488622665405,
+                    -0.17218127846717834
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.07369113713502884,
+                -0.08107558637857437
+              ],
+              "quorum": false,
+              "consensus_objection": false
+            },
+            "accepted": false,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 2
+          },
+          {
+            "row": 5,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.4000000059604645,
+              "humidity": -0.2720000445842743,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": 0.0,
+              "humidity_change": -0.0020000338554382324,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08237829804420471,
+                    -0.18750408291816711
+                  ],
+                  "available": true,
+                  "review_support": 0.4792638421058655,
+                  "counter_values": [
+                    -0.08995119482278824,
+                    -0.0892590805888176
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 1,
+                  "values": [
+                    -0.03639305382966995,
+                    -0.012787491083145142
+                  ],
+                  "available": true,
+                  "review_support": 0.4739980101585388,
+                  "counter_values": [
+                    -0.04540955275297165,
+                    -0.045025452971458435
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.0969800055027008,
+                    -0.04556429013609886
+                  ],
+                  "available": true,
+                  "review_support": 0.4587157368659973,
+                  "counter_values": [
+                    -0.16856971383094788,
+                    -0.17207205295562744
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.07168486714363098,
+                -0.0827394425868988
+              ],
+              "quorum": false,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08237829804420471,
+                    -0.18750408291816711
+                  ],
+                  "available": true,
+                  "review_support": 0.4792638421058655,
+                  "counter_values": [
+                    -0.08995119482278824,
+                    -0.0892590805888176
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 1,
+                  "values": [
+                    -0.03639305382966995,
+                    -0.012787491083145142
+                  ],
+                  "available": true,
+                  "review_support": 0.4739980101585388,
+                  "counter_values": [
+                    -0.04540955275297165,
+                    -0.045025452971458435
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09668104350566864,
+                    -0.046469882130622864
+                  ],
+                  "available": true,
+                  "review_support": 0.45873352885246277,
+                  "counter_values": [
+                    -0.16856971383094788,
+                    -0.17207205295562744
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.07158806174993515,
+                -0.08303318172693253
+              ],
+              "quorum": false,
+              "consensus_objection": false
+            },
+            "accepted": false,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 2
+          }
+        ],
+        "rows": 2010,
+        "occupied": 1226,
+        "correct": 729,
+        "coverage": 0.8278607130050659,
+        "balanced_accuracy": 0.460784831084311,
+        "score_auc": 0.5362542271614075
+      },
+      "live": {
+        "challenged_proposals": 1005,
+        "changed_votes": 17,
+        "committed": 1664,
+        "online_sensor_updates": 2004,
+        "online_reward_updates": 0,
+        "forecast_mae": 0.044290413299823264,
+        "persistence_mae": 0.04259154784322127,
+        "trace": [
+          {
+            "row": 0,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.5300000905990601,
+              "humidity": -0.2880000174045563,
+              "light": 0.0,
+              "co2eq_change": null,
+              "voc_change": null,
+              "temperature_change": null,
+              "humidity_change": null,
+              "light_change": null
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08677517622709274,
+                    -0.17800430953502655
+                  ],
+                  "available": true,
+                  "review_support": 0.4984706938266754,
+                  "counter_values": [
+                    -0.07165374606847763,
+                    -0.09672065824270248
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.0014236699789762497,
+                    -0.04523690417408943
+                  ],
+                  "available": true,
+                  "review_support": 0.5144869685173035,
+                  "counter_values": [
+                    -0.03193705528974533,
+                    -0.04769745469093323
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.10191041231155396,
+                    -0.04978374019265175
+                  ],
+                  "available": true,
+                  "review_support": 0.48666658997535706,
+                  "counter_values": [
+                    -0.13182589411735535,
+                    -0.166684091091156
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.06142793223261833,
+                -0.09084396064281464
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08677517622709274,
+                    -0.17800430953502655
+                  ],
+                  "available": true,
+                  "review_support": 0.4984706938266754,
+                  "counter_values": [
+                    -0.07165374606847763,
+                    -0.09672065824270248
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.0014236699789762497,
+                    -0.04523690417408943
+                  ],
+                  "available": true,
+                  "review_support": 0.5144869685173035,
+                  "counter_values": [
+                    -0.03193705528974533,
+                    -0.04769745469093323
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.10148897767066956,
+                    -0.0506250336766243
+                  ],
+                  "available": true,
+                  "review_support": 0.4866872727870941,
+                  "counter_values": [
+                    -0.13182589411735535,
+                    -0.166684091091156
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.06129171699285507,
+                -0.09111642837524414
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "accepted": true,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 1
+          },
+          {
+            "row": 1,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.550000011920929,
+              "humidity": -0.29600003361701965,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": 0.019999921321868896,
+              "humidity_change": -0.008000016212463379,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.0822935402393341,
+                    -0.18747766315937042
+                  ],
+                  "available": true,
+                  "review_support": 0.4781436622142792,
+                  "counter_values": [
+                    -0.08766958862543106,
+                    -0.09065517038106918
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 1,
+                  "values": [
+                    -0.024487867951393127,
+                    -0.021143555641174316
+                  ],
+                  "available": true,
+                  "review_support": 0.47426941990852356,
+                  "counter_values": [
+                    -0.043418072164058685,
+                    -0.045258909463882446
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09630385786294937,
+                    -0.046195030212402344
+                  ],
+                  "available": true,
+                  "review_support": 0.45782676339149475,
+                  "counter_values": [
+                    -0.16282734274864197,
+                    -0.1717412769794464
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.06740163266658783,
+                -0.08567218482494354
+              ],
+              "quorum": false,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              1,
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.0822935402393341,
+                    -0.18747766315937042
+                  ],
+                  "available": true,
+                  "review_support": 0.4781436622142792,
+                  "counter_values": [
+                    -0.08766958862543106,
+                    -0.09065517038106918
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 1,
+                  "values": [
+                    -0.02670256793498993,
+                    -0.023564666509628296
+                  ],
+                  "available": true,
+                  "review_support": 0.47428056597709656,
+                  "counter_values": [
+                    -0.043418072164058685,
+                    -0.045258909463882446
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09599188715219498,
+                    -0.04708785563707352
+                  ],
+                  "available": true,
+                  "review_support": 0.45784440636634827,
+                  "counter_values": [
+                    -0.16282734274864197,
+                    -0.1717412769794464
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.06804518401622772,
+                -0.0867752656340599
+              ],
+              "quorum": false,
+              "consensus_objection": false
+            },
+            "accepted": false,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 1
+          },
+          {
+            "row": 2,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.6099998354911804,
+              "humidity": -0.30400002002716064,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": 0.059999823570251465,
+              "humidity_change": -0.007999986410140991,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.0822947770357132,
+                    -0.1874801516532898
+                  ],
+                  "available": true,
+                  "review_support": 0.4780178964138031,
+                  "counter_values": [
+                    -0.08810300379991531,
+                    -0.09068883210420609
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    -0.020115073770284653,
+                    -0.02438126504421234
+                  ],
+                  "available": true,
+                  "review_support": 0.47437357902526855,
+                  "counter_values": [
+                    -0.043418072164058685,
+                    -0.045258909463882446
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09630679339170456,
+                    -0.04619627445936203
+                  ],
+                  "available": true,
+                  "review_support": 0.45780059695243835,
+                  "counter_values": [
+                    -0.1625356376171112,
+                    -0.17191636562347412
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.06592700630426407,
+                -0.08674944192171097
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.0822947770357132,
+                    -0.1874801516532898
+                  ],
+                  "available": true,
+                  "review_support": 0.4780178964138031,
+                  "counter_values": [
+                    -0.08810300379991531,
+                    -0.09068883210420609
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    -0.020115073770284653,
+                    -0.02438126504421234
+                  ],
+                  "available": true,
+                  "review_support": 0.47437357902526855,
+                  "counter_values": [
+                    -0.043418072164058685,
+                    -0.045258909463882446
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09599366784095764,
+                    -0.047088079154491425
+                  ],
+                  "available": true,
+                  "review_support": 0.4578181803226471,
+                  "counter_values": [
+                    -0.1625356376171112,
+                    -0.17191636562347412
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.06582573056221008,
+                -0.08703845739364624
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "accepted": true,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 2
+          },
+          {
+            "row": 3,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.5399999618530273,
+              "humidity": -0.2979999780654907,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": -0.06999987363815308,
+              "humidity_change": 0.006000041961669922,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08239516615867615,
+                    -0.18749511241912842
+                  ],
+                  "available": true,
+                  "review_support": 0.4774131774902344,
+                  "counter_values": [
+                    -0.08958431333303452,
+                    -0.09005364030599594
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 1,
+                  "values": [
+                    -0.028790613636374474,
+                    -0.01865757256746292
+                  ],
+                  "available": true,
+                  "review_support": 0.4741828739643097,
+                  "counter_values": [
+                    -0.04540955275297165,
+                    -0.045025452971458435
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09753410518169403,
+                    -0.04498019814491272
+                  ],
+                  "available": true,
+                  "review_support": 0.45698368549346924,
+                  "counter_values": [
+                    -0.16804072260856628,
+                    -0.172601580619812
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.06926129013299942,
+                -0.08442188799381256
+              ],
+              "quorum": false,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08239516615867615,
+                    -0.18749511241912842
+                  ],
+                  "available": true,
+                  "review_support": 0.4774131774902344,
+                  "counter_values": [
+                    -0.08958431333303452,
+                    -0.09005364030599594
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 1,
+                  "values": [
+                    -0.028790613636374474,
+                    -0.01865757256746292
+                  ],
+                  "available": true,
+                  "review_support": 0.4741828739643097,
+                  "counter_values": [
+                    -0.04540955275297165,
+                    -0.045025452971458435
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09723246842622757,
+                    -0.04588349536061287
+                  ],
+                  "available": true,
+                  "review_support": 0.4570015072822571,
+                  "counter_values": [
+                    -0.16804072260856628,
+                    -0.172601580619812
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.06916379183530807,
+                -0.08471445739269257
+              ],
+              "quorum": false,
+              "consensus_objection": false
+            },
+            "accepted": false,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 2
+          },
+          {
+            "row": 4,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.4000000059604645,
+              "humidity": -0.27000001072883606,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": -0.13999995589256287,
+              "humidity_change": 0.027999967336654663,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08239243924617767,
+                    -0.18748991191387177
+                  ],
+                  "available": true,
+                  "review_support": 0.4780368506908417,
+                  "counter_values": [
+                    -0.08875393122434616,
+                    -0.0898386612534523
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 1,
+                  "values": [
+                    -0.04070059210062027,
+                    -0.009251527488231659
+                  ],
+                  "available": true,
+                  "review_support": 0.4738899767398834,
+                  "counter_values": [
+                    -0.04540955275297165,
+                    -0.045025452971458435
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09908033162355423,
+                    -0.043362248688936234
+                  ],
+                  "available": true,
+                  "review_support": 0.4573104679584503,
+                  "counter_values": [
+                    -0.16867488622665405,
+                    -0.17218127846717834
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.07378792762756348,
+                -0.0807822123169899
+              ],
+              "quorum": false,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08239243924617767,
+                    -0.18748991191387177
+                  ],
+                  "available": true,
+                  "review_support": 0.4780368506908417,
+                  "counter_values": [
+                    -0.08875393122434616,
+                    -0.0898386612534523
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 1,
+                  "values": [
+                    -0.04070059210062027,
+                    -0.009251527488231659
+                  ],
+                  "available": true,
+                  "review_support": 0.4738899767398834,
+                  "counter_values": [
+                    -0.04540955275297165,
+                    -0.045025452971458435
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09878106415271759,
+                    -0.044267743825912476
+                  ],
+                  "available": true,
+                  "review_support": 0.4573284685611725,
+                  "counter_values": [
+                    -0.16867488622665405,
+                    -0.17218127846717834
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.07369113713502884,
+                -0.08107557892799377
+              ],
+              "quorum": false,
+              "consensus_objection": false
+            },
+            "accepted": false,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 2
+          },
+          {
+            "row": 5,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.4000000059604645,
+              "humidity": -0.2720000445842743,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": 0.0,
+              "humidity_change": -0.0020000338554382324,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08237829804420471,
+                    -0.1875040978193283
+                  ],
+                  "available": true,
+                  "review_support": 0.4792638421058655,
+                  "counter_values": [
+                    -0.08995119482278824,
+                    -0.0892590805888176
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 1,
+                  "values": [
+                    -0.03639305382966995,
+                    -0.012787498533725739
+                  ],
+                  "available": true,
+                  "review_support": 0.4739980101585388,
+                  "counter_values": [
+                    -0.04540955275297165,
+                    -0.045025452971458435
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.0969800129532814,
+                    -0.04556429386138916
+                  ],
+                  "available": true,
+                  "review_support": 0.4587157368659973,
+                  "counter_values": [
+                    -0.16856971383094788,
+                    -0.17207205295562744
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.07168487459421158,
+                -0.0827394425868988
+              ],
+              "quorum": false,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08237829804420471,
+                    -0.1875040978193283
+                  ],
+                  "available": true,
+                  "review_support": 0.4792638421058655,
+                  "counter_values": [
+                    -0.08995119482278824,
+                    -0.0892590805888176
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 1,
+                  "values": [
+                    -0.03639305382966995,
+                    -0.012787498533725739
+                  ],
+                  "available": true,
+                  "review_support": 0.4739980101585388,
+                  "counter_values": [
+                    -0.04540955275297165,
+                    -0.045025452971458435
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09668104350566864,
+                    -0.046469882130622864
+                  ],
+                  "available": true,
+                  "review_support": 0.45873352885246277,
+                  "counter_values": [
+                    -0.16856971383094788,
+                    -0.17207205295562744
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.07158806174993515,
+                -0.08303318917751312
+              ],
+              "quorum": false,
+              "consensus_objection": false
+            },
+            "accepted": false,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 2
+          }
+        ],
+        "online_parameter_change_l1": 0.020355478227429558,
+        "online_liquid_parameter_change_l1": 0.0005430873352452181,
+        "online_falsifier_parameter_change_l1": 7.566995918750763e-10,
+        "rows": 2010,
+        "occupied": 1226,
+        "correct": 729,
+        "coverage": 0.8278607130050659,
+        "balanced_accuracy": 0.460784831084311,
+        "score_auc": 0.5362547636032104
+      },
+      "forced_commit": {
+        "challenged_proposals": 994,
+        "changed_votes": 16,
+        "committed": 1665,
+        "online_sensor_updates": 0,
+        "online_reward_updates": 0,
+        "forecast_mae": 0.044830243504457794,
+        "persistence_mae": 0.04259154784322127,
+        "trace": [],
+        "rows": 2010,
+        "occupied": 1226,
+        "correct": 821,
+        "coverage": 1.0,
+        "balanced_accuracy": 0.5150897223502398,
+        "score_auc": 0.5541477799415588
+      },
+      "logistic": {
+        "rows": 2010,
+        "occupied": 1226,
+        "correct": 1084,
+        "coverage": 1.0,
+        "balanced_accuracy": 0.46094193682074547,
+        "score_auc": 0.4849851727485657
+      }
+    },
+    "H6": {
+      "frozen": {
+        "challenged_proposals": 920,
+        "changed_votes": 6,
+        "committed": 2015,
+        "online_sensor_updates": 0,
+        "online_reward_updates": 0,
+        "forecast_mae": 0.019810116908351386,
+        "persistence_mae": 0.017185995008255687,
+        "trace": [
+          {
+            "row": 0,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.9400001764297485,
+              "humidity": -0.9080000519752502,
+              "light": 0.0,
+              "co2eq_change": null,
+              "voc_change": null,
+              "temperature_change": null,
+              "humidity_change": null,
+              "light_change": null
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08677517622709274,
+                    -0.17800430953502655
+                  ],
+                  "available": true,
+                  "review_support": 0.496029794216156,
+                  "counter_values": [
+                    -0.07379121333360672,
+                    -0.0983181819319725
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.05814814567565918,
+                    -0.0927869901061058
+                  ],
+                  "available": true,
+                  "review_support": 0.5160021185874939,
+                  "counter_values": [
+                    -0.03193705528974533,
+                    -0.04769745469093323
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.10191041231155396,
+                    -0.04978374019265175
+                  ],
+                  "available": true,
+                  "review_support": 0.4838082492351532,
+                  "counter_values": [
+                    -0.13232627511024475,
+                    -0.16667845845222473
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.04167798534035683,
+                -0.1071367859840393
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08677517622709274,
+                    -0.17800430953502655
+                  ],
+                  "available": true,
+                  "review_support": 0.496029794216156,
+                  "counter_values": [
+                    -0.07379121333360672,
+                    -0.0983181819319725
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.05814814567565918,
+                    -0.0927869901061058
+                  ],
+                  "available": true,
+                  "review_support": 0.5160021185874939,
+                  "counter_values": [
+                    -0.03193705528974533,
+                    -0.04769745469093323
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.10149022936820984,
+                    -0.05062611401081085
+                  ],
+                  "available": true,
+                  "review_support": 0.483828604221344,
+                  "counter_values": [
+                    -0.13232627511024475,
+                    -0.16667845845222473
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.0415428951382637,
+                -0.10740846395492554
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "accepted": true,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 1
+          },
+          {
+            "row": 1,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.8200000524520874,
+              "humidity": -0.8980000019073486,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": -0.12000012397766113,
+              "humidity_change": 0.010000050067901611,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08228893578052521,
+                    -0.18743760883808136
+                  ],
+                  "available": true,
+                  "review_support": 0.4731762111186981,
+                  "counter_values": [
+                    -0.0886634811758995,
+                    -0.09279706329107285
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.020730381831526756,
+                    -0.058884456753730774
+                  ],
+                  "available": true,
+                  "review_support": 0.4754134714603424,
+                  "counter_values": [
+                    -0.043418072164058685,
+                    -0.045258909463882446
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09752853214740753,
+                    -0.04486236348748207
+                  ],
+                  "available": true,
+                  "review_support": 0.4529136121273041,
+                  "counter_values": [
+                    -0.16402378678321838,
+                    -0.171442449092865
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.05226792022585869,
+                -0.09775521606206894
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08228893578052521,
+                    -0.18743760883808136
+                  ],
+                  "available": true,
+                  "review_support": 0.4731762111186981,
+                  "counter_values": [
+                    -0.0886634811758995,
+                    -0.09279706329107285
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.020730381831526756,
+                    -0.058884456753730774
+                  ],
+                  "available": true,
+                  "review_support": 0.4754134714603424,
+                  "counter_values": [
+                    -0.043418072164058685,
+                    -0.045258909463882446
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09722030162811279,
+                    -0.04575848579406738
+                  ],
+                  "available": true,
+                  "review_support": 0.45293083786964417,
+                  "counter_values": [
+                    -0.16402378678321838,
+                    -0.171442449092865
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.052168868482112885,
+                -0.09804416447877884
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "accepted": true,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 2
+          },
+          {
+            "row": 2,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.800000011920929,
+              "humidity": -0.8959999680519104,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": -0.020000040531158447,
+              "humidity_change": 0.0020000338554382324,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08236999809741974,
+                    -0.18745587766170502
+                  ],
+                  "available": true,
+                  "review_support": 0.4742727279663086,
+                  "counter_values": [
+                    -0.0919293537735939,
+                    -0.09144728630781174
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.0199297945946455,
+                    -0.05921434611082077
+                  ],
+                  "available": true,
+                  "review_support": 0.4754140079021454,
+                  "counter_values": [
+                    -0.04540955275297165,
+                    -0.045025452971458435
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09721247851848602,
+                    -0.04525597020983696
+                  ],
+                  "available": true,
+                  "review_support": 0.4541313052177429,
+                  "counter_values": [
+                    -0.16926094889640808,
+                    -0.17205938696861267
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.052526868879795074,
+                -0.09802458435297012
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08236999809741974,
+                    -0.18745587766170502
+                  ],
+                  "available": true,
+                  "review_support": 0.4742727279663086,
+                  "counter_values": [
+                    -0.0919293537735939,
+                    -0.09144728630781174
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.0199297945946455,
+                    -0.05921434611082077
+                  ],
+                  "available": true,
+                  "review_support": 0.4754140079021454,
+                  "counter_values": [
+                    -0.04540955275297165,
+                    -0.045025452971458435
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09691545367240906,
+                    -0.04616323113441467
+                  ],
+                  "available": true,
+                  "review_support": 0.45414847135543823,
+                  "counter_values": [
+                    -0.16926094889640808,
+                    -0.17205938696861267
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.05243132635951042,
+                -0.09831744432449341
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "accepted": true,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 3
+          },
+          {
+            "row": 3,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.7799999117851257,
+              "humidity": -0.8939999938011169,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": -0.020000100135803223,
+              "humidity_change": 0.001999974250793457,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08211809396743774,
+                    -0.18754398822784424
+                  ],
+                  "available": true,
+                  "review_support": 0.47444549202919006,
+                  "counter_values": [
+                    -0.09243495017290115,
+                    -0.09117387980222702
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.018214033916592598,
+                    -0.05832014977931976
+                  ],
+                  "available": true,
+                  "review_support": 0.47537997364997864,
+                  "counter_values": [
+                    -0.04575618356466293,
+                    -0.04501470923423767
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09730617702007294,
+                    -0.0451846644282341
+                  ],
+                  "available": true,
+                  "review_support": 0.45426350831985474,
+                  "counter_values": [
+                    -0.17021191120147705,
+                    -0.172091543674469
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.05306260287761688,
+                -0.09773552417755127
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08211809396743774,
+                    -0.18754398822784424
+                  ],
+                  "available": true,
+                  "review_support": 0.47444549202919006,
+                  "counter_values": [
+                    -0.09243495017290115,
+                    -0.09117387980222702
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.018214033916592598,
+                    -0.05832014977931976
+                  ],
+                  "available": true,
+                  "review_support": 0.47537997364997864,
+                  "counter_values": [
+                    -0.04575618356466293,
+                    -0.04501470923423767
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09701132029294968,
+                    -0.04609435424208641
+                  ],
+                  "available": true,
+                  "review_support": 0.4542806148529053,
+                  "counter_values": [
+                    -0.17021191120147705,
+                    -0.172091543674469
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.05296774581074715,
+                -0.09802919626235962
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "accepted": true,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 4
+          },
+          {
+            "row": 4,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.7799999117851257,
+              "humidity": -0.8959999680519104,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": 0.0,
+              "humidity_change": -0.001999974250793457,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08198875188827515,
+                    -0.1875905692577362
+                  ],
+                  "available": true,
+                  "review_support": 0.47462528944015503,
+                  "counter_values": [
+                    -0.09269212931394577,
+                    -0.09105049818754196
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.018700895830988884,
+                    -0.058941327035427094
+                  ],
+                  "available": true,
+                  "review_support": 0.4753957986831665,
+                  "counter_values": [
+                    -0.04581669718027115,
+                    -0.04501752555370331
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09706586599349976,
+                    -0.0454520620405674
+                  ],
+                  "available": true,
+                  "review_support": 0.454483300447464,
+                  "counter_values": [
+                    -0.1703612506389618,
+                    -0.17207735776901245
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.05278618261218071,
+                -0.09805088490247726
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08198875188827515,
+                    -0.1875905692577362
+                  ],
+                  "available": true,
+                  "review_support": 0.47462528944015503,
+                  "counter_values": [
+                    -0.09269212931394577,
+                    -0.09105049818754196
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.018700895830988884,
+                    -0.058941327035427094
+                  ],
+                  "available": true,
+                  "review_support": 0.4753957986831665,
+                  "counter_values": [
+                    -0.04581669718027115,
+                    -0.04501752555370331
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09677141159772873,
+                    -0.04636228084564209
+                  ],
+                  "available": true,
+                  "review_support": 0.45450037717819214,
+                  "counter_values": [
+                    -0.1703612506389618,
+                    -0.17207735776901245
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.05269143357872963,
+                -0.09834478050470352
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "accepted": true,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 5
+          },
+          {
+            "row": 5,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.9399999380111694,
+              "humidity": -0.9120000004768372,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": 0.1600000262260437,
+              "humidity_change": -0.016000032424926758,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08192925155162811,
+                    -0.18763083219528198
+                  ],
+                  "available": true,
+                  "review_support": 0.474835604429245,
+                  "counter_values": [
+                    -0.0942806527018547,
+                    -0.09088215976953506
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.03168443590402603,
+                    -0.06894469261169434
+                  ],
+                  "available": true,
+                  "review_support": 0.4757113456726074,
+                  "counter_values": [
+                    -0.04582729935646057,
+                    -0.045018747448921204
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09611868113279343,
+                    -0.046474795788526535
+                  ],
+                  "available": true,
+                  "review_support": 0.45523667335510254,
+                  "counter_values": [
+                    -0.16961094737052917,
+                    -0.172477126121521
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.04807783290743828,
+                -0.10175719112157822
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08192925155162811,
+                    -0.18763083219528198
+                  ],
+                  "available": true,
+                  "review_support": 0.474835604429245,
+                  "counter_values": [
+                    -0.0942806527018547,
+                    -0.09088215976953506
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.03168443590402603,
+                    -0.06894469261169434
+                  ],
+                  "available": true,
+                  "review_support": 0.4757113456726074,
+                  "counter_values": [
+                    -0.04582729935646057,
+                    -0.045018747448921204
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09582138806581497,
+                    -0.04738261178135872
+                  ],
+                  "available": true,
+                  "review_support": 0.45525357127189636,
+                  "counter_values": [
+                    -0.16961094737052917,
+                    -0.172477126121521
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.04798213392496109,
+                -0.10205051302909851
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "accepted": true,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 6
+          }
+        ],
+        "rows": 2016,
+        "occupied": 1553,
+        "correct": 465,
+        "coverage": 0.9995039701461792,
+        "balanced_accuracy": 0.5006439150311053,
+        "score_auc": 0.7269883751869202
+      },
+      "live": {
+        "challenged_proposals": 920,
+        "changed_votes": 6,
+        "committed": 2015,
+        "online_sensor_updates": 2015,
+        "online_reward_updates": 0,
+        "forecast_mae": 0.019128546802355817,
+        "persistence_mae": 0.017185995008255687,
+        "trace": [
+          {
+            "row": 0,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.9400001764297485,
+              "humidity": -0.9080000519752502,
+              "light": 0.0,
+              "co2eq_change": null,
+              "voc_change": null,
+              "temperature_change": null,
+              "humidity_change": null,
+              "light_change": null
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08677517622709274,
+                    -0.17800430953502655
+                  ],
+                  "available": true,
+                  "review_support": 0.496029794216156,
+                  "counter_values": [
+                    -0.07379121333360672,
+                    -0.0983181819319725
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.05814814567565918,
+                    -0.0927869901061058
+                  ],
+                  "available": true,
+                  "review_support": 0.5160021185874939,
+                  "counter_values": [
+                    -0.03193705528974533,
+                    -0.04769745469093323
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.10191041231155396,
+                    -0.04978374019265175
+                  ],
+                  "available": true,
+                  "review_support": 0.4838082492351532,
+                  "counter_values": [
+                    -0.13232627511024475,
+                    -0.16667845845222473
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.04167798534035683,
+                -0.1071367859840393
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08677517622709274,
+                    -0.17800430953502655
+                  ],
+                  "available": true,
+                  "review_support": 0.496029794216156,
+                  "counter_values": [
+                    -0.07379121333360672,
+                    -0.0983181819319725
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.05814814567565918,
+                    -0.0927869901061058
+                  ],
+                  "available": true,
+                  "review_support": 0.5160021185874939,
+                  "counter_values": [
+                    -0.03193705528974533,
+                    -0.04769745469093323
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.10149022936820984,
+                    -0.05062611401081085
+                  ],
+                  "available": true,
+                  "review_support": 0.483828604221344,
+                  "counter_values": [
+                    -0.13232627511024475,
+                    -0.16667845845222473
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.0415428951382637,
+                -0.10740846395492554
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "accepted": true,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 1
+          },
+          {
+            "row": 1,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.8200000524520874,
+              "humidity": -0.8980000019073486,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": -0.12000012397766113,
+              "humidity_change": 0.010000050067901611,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08228893578052521,
+                    -0.18743760883808136
+                  ],
+                  "available": true,
+                  "review_support": 0.4731762111186981,
+                  "counter_values": [
+                    -0.0886634811758995,
+                    -0.09279706329107285
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.020730381831526756,
+                    -0.058884456753730774
+                  ],
+                  "available": true,
+                  "review_support": 0.4754134714603424,
+                  "counter_values": [
+                    -0.043418072164058685,
+                    -0.045258909463882446
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09752853214740753,
+                    -0.04486236348748207
+                  ],
+                  "available": true,
+                  "review_support": 0.4529136121273041,
+                  "counter_values": [
+                    -0.16402378678321838,
+                    -0.171442449092865
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.05226792022585869,
+                -0.09775521606206894
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08228893578052521,
+                    -0.18743760883808136
+                  ],
+                  "available": true,
+                  "review_support": 0.4731762111186981,
+                  "counter_values": [
+                    -0.0886634811758995,
+                    -0.09279706329107285
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.020730381831526756,
+                    -0.058884456753730774
+                  ],
+                  "available": true,
+                  "review_support": 0.4754134714603424,
+                  "counter_values": [
+                    -0.043418072164058685,
+                    -0.045258909463882446
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09722030162811279,
+                    -0.04575848579406738
+                  ],
+                  "available": true,
+                  "review_support": 0.45293083786964417,
+                  "counter_values": [
+                    -0.16402378678321838,
+                    -0.171442449092865
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.052168868482112885,
+                -0.09804416447877884
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "accepted": true,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 2
+          },
+          {
+            "row": 2,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.800000011920929,
+              "humidity": -0.8959999680519104,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": -0.020000040531158447,
+              "humidity_change": 0.0020000338554382324,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08236999809741974,
+                    -0.18745587766170502
+                  ],
+                  "available": true,
+                  "review_support": 0.4742727279663086,
+                  "counter_values": [
+                    -0.0919293537735939,
+                    -0.09144728630781174
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.0199297945946455,
+                    -0.05921433866024017
+                  ],
+                  "available": true,
+                  "review_support": 0.4754140079021454,
+                  "counter_values": [
+                    -0.04540955275297165,
+                    -0.045025452971458435
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09721249341964722,
+                    -0.04525597393512726
+                  ],
+                  "available": true,
+                  "review_support": 0.4541313052177429,
+                  "counter_values": [
+                    -0.16926094889640808,
+                    -0.17205938696861267
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.05252687633037567,
+                -0.09802458435297012
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08236999809741974,
+                    -0.18745587766170502
+                  ],
+                  "available": true,
+                  "review_support": 0.4742727279663086,
+                  "counter_values": [
+                    -0.0919293537735939,
+                    -0.09144728630781174
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.0199297945946455,
+                    -0.05921433866024017
+                  ],
+                  "available": true,
+                  "review_support": 0.4754140079021454,
+                  "counter_values": [
+                    -0.04540955275297165,
+                    -0.045025452971458435
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09691546857357025,
+                    -0.04616323113441467
+                  ],
+                  "available": true,
+                  "review_support": 0.45414847135543823,
+                  "counter_values": [
+                    -0.16926094889640808,
+                    -0.17205938696861267
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.05243133381009102,
+                -0.09831744432449341
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "accepted": true,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 3
+          },
+          {
+            "row": 3,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.7799999117851257,
+              "humidity": -0.8939999938011169,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": -0.020000100135803223,
+              "humidity_change": 0.001999974250793457,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08211809396743774,
+                    -0.18754400312900543
+                  ],
+                  "available": true,
+                  "review_support": 0.47444549202919006,
+                  "counter_values": [
+                    -0.09243495017290115,
+                    -0.09117387980222702
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.018214033916592598,
+                    -0.05832015722990036
+                  ],
+                  "available": true,
+                  "review_support": 0.47537997364997864,
+                  "counter_values": [
+                    -0.04575618356466293,
+                    -0.04501470923423767
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09730616956949234,
+                    -0.0451846644282341
+                  ],
+                  "available": true,
+                  "review_support": 0.45426350831985474,
+                  "counter_values": [
+                    -0.17021191120147705,
+                    -0.172091543674469
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.05306260287761688,
+                -0.09773553162813187
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08211809396743774,
+                    -0.18754400312900543
+                  ],
+                  "available": true,
+                  "review_support": 0.47444549202919006,
+                  "counter_values": [
+                    -0.09243495017290115,
+                    -0.09117387980222702
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.018214033916592598,
+                    -0.05832015722990036
+                  ],
+                  "available": true,
+                  "review_support": 0.47537997364997864,
+                  "counter_values": [
+                    -0.04575618356466293,
+                    -0.04501470923423767
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09701132029294968,
+                    -0.04609435424208641
+                  ],
+                  "available": true,
+                  "review_support": 0.4542806148529053,
+                  "counter_values": [
+                    -0.17021191120147705,
+                    -0.172091543674469
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.05296774581074715,
+                -0.09802920371294022
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "accepted": true,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 4
+          },
+          {
+            "row": 4,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.7799999117851257,
+              "humidity": -0.8959999680519104,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": 0.0,
+              "humidity_change": -0.001999974250793457,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08198875188827515,
+                    -0.1875905692577362
+                  ],
+                  "available": true,
+                  "review_support": 0.47462528944015503,
+                  "counter_values": [
+                    -0.09269212931394577,
+                    -0.09105049818754196
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.01870090328156948,
+                    -0.058941327035427094
+                  ],
+                  "available": true,
+                  "review_support": 0.4753957986831665,
+                  "counter_values": [
+                    -0.04581669718027115,
+                    -0.04501752555370331
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09706586599349976,
+                    -0.0454520620405674
+                  ],
+                  "available": true,
+                  "review_support": 0.454483300447464,
+                  "counter_values": [
+                    -0.1703612506389618,
+                    -0.17207735776901245
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.05278617516160011,
+                -0.09805088490247726
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08198875188827515,
+                    -0.1875905692577362
+                  ],
+                  "available": true,
+                  "review_support": 0.47462528944015503,
+                  "counter_values": [
+                    -0.09269212931394577,
+                    -0.09105049818754196
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.01870090328156948,
+                    -0.058941327035427094
+                  ],
+                  "available": true,
+                  "review_support": 0.4753957986831665,
+                  "counter_values": [
+                    -0.04581669718027115,
+                    -0.04501752555370331
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09677141159772873,
+                    -0.04636228457093239
+                  ],
+                  "available": true,
+                  "review_support": 0.4545004367828369,
+                  "counter_values": [
+                    -0.1703612506389618,
+                    -0.17207735776901245
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.05269143357872963,
+                -0.09834478050470352
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "accepted": true,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 5
+          },
+          {
+            "row": 5,
+            "evidence": {
+              "co2eq": 0.0,
+              "voc": 0.0,
+              "temperature": 0.9399999380111694,
+              "humidity": -0.9120000004768372,
+              "light": 0.0,
+              "co2eq_change": 0.0,
+              "voc_change": 0.0,
+              "temperature_change": 0.1600000262260437,
+              "humidity_change": -0.016000032424926758,
+              "light_change": 0.0
+            },
+            "first": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08192925155162811,
+                    -0.18763083219528198
+                  ],
+                  "available": true,
+                  "review_support": 0.474835604429245,
+                  "counter_values": [
+                    -0.0942806527018547,
+                    -0.09088215976953506
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.03168443590402603,
+                    -0.06894469261169434
+                  ],
+                  "available": true,
+                  "review_support": 0.4757113456726074,
+                  "counter_values": [
+                    -0.04582729935646057,
+                    -0.045018747448921204
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09611868113279343,
+                    -0.04647479206323624
+                  ],
+                  "available": true,
+                  "review_support": 0.45523667335510254,
+                  "counter_values": [
+                    -0.16961094737052917,
+                    -0.172477126121521
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.04807783290743828,
+                -0.10175719112157822
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "revised_experts": [
+              2
+            ],
+            "final": {
+              "proposals": [
+                {
+                  "expert": 0,
+                  "vote": 0,
+                  "values": [
+                    -0.08192925155162811,
+                    -0.18763083219528198
+                  ],
+                  "available": true,
+                  "review_support": 0.474835604429245,
+                  "counter_values": [
+                    -0.0942806527018547,
+                    -0.09088215976953506
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 1,
+                  "vote": 0,
+                  "values": [
+                    0.03168443590402603,
+                    -0.06894469261169434
+                  ],
+                  "available": true,
+                  "review_support": 0.4757113456726074,
+                  "counter_values": [
+                    -0.04582729935646057,
+                    -0.045018747448921204
+                  ],
+                  "objection": false
+                },
+                {
+                  "expert": 2,
+                  "vote": 1,
+                  "values": [
+                    -0.09582138806581497,
+                    -0.04738261178135872
+                  ],
+                  "available": true,
+                  "review_support": 0.45525357127189636,
+                  "counter_values": [
+                    -0.16961094737052917,
+                    -0.172477126121521
+                  ],
+                  "objection": false
+                }
+              ],
+              "consensus": 0,
+              "consensus_values": [
+                -0.04798213392496109,
+                -0.10205051302909851
+              ],
+              "quorum": true,
+              "consensus_objection": false
+            },
+            "accepted": true,
+            "last_committed_decision": 0,
+            "last_committed_votes": [
+              0,
+              0,
+              1
+            ],
+            "committed_decisions": 6
+          }
+        ],
+        "online_parameter_change_l1": 0.02445576273748884,
+        "online_liquid_parameter_change_l1": 0.0003542109261616133,
+        "online_falsifier_parameter_change_l1": 2.0372681319713593e-10,
+        "rows": 2016,
+        "occupied": 1553,
+        "correct": 465,
+        "coverage": 0.9995039701461792,
+        "balanced_accuracy": 0.5006439150311053,
+        "score_auc": 0.7269890904426575
+      },
+      "forced_commit": {
+        "challenged_proposals": 922,
+        "changed_votes": 7,
+        "committed": 2015,
+        "online_sensor_updates": 0,
+        "online_reward_updates": 0,
+        "forecast_mae": 0.01981012698883643,
+        "persistence_mae": 0.017185995008255687,
+        "trace": [],
+        "rows": 2016,
+        "occupied": 1553,
+        "correct": 465,
+        "coverage": 1.0,
+        "balanced_accuracy": 0.5006439150311053,
+        "score_auc": 0.7287434935569763
+      },
+      "logistic": {
+        "rows": 2016,
+        "occupied": 1553,
+        "correct": 1073,
+        "coverage": 1.0,
+        "balanced_accuracy": 0.674413338303566,
+        "score_auc": 0.715482771396637
+      }
+    }
+  }
+}

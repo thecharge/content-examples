@@ -39,6 +39,8 @@ In the heating replay, the model chose off on each of the 489 windows where it i
 
 See [all 84 comparisons](evidence/scores.json), [the tree baseline](evidence/xgboost.json), [the heating replay](evidence/heating.json), [CPU timing](evidence/latency.json) and [training resume verification](evidence/resume.json).
 
+[Recheck the charts and compare the architecture with the paper](recheck.md).
+
 ## Send readings to an inference process
 
 Use the cutoff in the fit manifest for the selected checkpoint. Pass `--live` to learn after each new reading in a continuous sequence. The cutoff stays fixed. The process drops short-term memory after a gap longer than 450 seconds. Learned coefficients carry across gaps.

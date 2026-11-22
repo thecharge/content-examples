@@ -10,7 +10,7 @@ import sys
 
 def main():
     cli = argparse.ArgumentParser(description=__doc__)
-    cli.add_argument("mode", choices=("check", "fit", "score"))
+    cli.add_argument("mode", choices=("check", "fit", "score", "route-ceiling"))
     cli.add_argument("work", type=Path)
     cli.add_argument("--data", type=Path, default=Path("data"))
     cli.add_argument("--model", default="v2")
@@ -24,7 +24,7 @@ def main():
     with TemporaryDirectory(prefix="liquid-check-") as temp:
         staged = Path(temp) / here.name
         staged.mkdir()
-        for file in ("adaptive.py", "policy.py", "experiment.py", "verify.py", "context_checks.py"):
+        for file in ("adaptive.py", "policy.py", "experiment.py", "verify.py", "context_checks.py", "route_ceiling.py"):
             shutil.copyfile(here / file, staged / file)
         (staged.parent / "attention-benchmark").symlink_to(earlier, target_is_directory=True)
         sys.path.insert(0, str(staged))
@@ -55,7 +55,12 @@ def main():
                     raise ValueError(f"Changed frozen source: {key}")
             record["source_sha256"] = actual
             (staged / "freeze.json").write_text(json.dumps(record))
-            experiment.score(work)
+            if config.mode == "score":
+                experiment.score(work)
+            else:
+                import route_ceiling
+                report = route_ceiling.measure(work, record["checkpoint_sha256"])
+                print(json.dumps(report, indent=2))
 
 
 if __name__ == "__main__":

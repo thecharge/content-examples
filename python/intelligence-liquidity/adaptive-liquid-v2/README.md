@@ -86,3 +86,22 @@ from the original freeze. The score command verifies those hashes before it
 scores the models. The refit command writes to a separate directory.
 For a fresh evaluation, choose an untouched site and freeze the model, its
 cutoff and its policy before opening that site's test labels.
+
+## How much could a better retry policy recover?
+
+The [route ceiling](route-ceiling.json) enumerates the four keep or revise
+routes through the trained stages on the Aalto windows. For each window it
+asks whether any of those routes predicts the observed label. It uses that
+label after scoring, so this is an analysis of possible corrections, not a
+policy score. Across nine full-model checkpoints, the direct prediction
+averaged 72.59% balanced accuracy. Perfect selection among the existing
+routes would reach 74.81% and could fix about 28 of 1,409 windows per
+checkpoint. The fused LTC averaged 78.73% in the same comparison. The
+no-delta ablation went from 78.62% to an 81.24% ceiling. The issue is also
+what the existing stages can predict and what they can change when they
+revise. Lowering the retry cost alone cannot make a missing correction
+available.
+
+```sh
+python reproduce.py route-ceiling replay --data data
+```

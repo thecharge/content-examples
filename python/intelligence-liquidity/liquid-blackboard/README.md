@@ -76,3 +76,19 @@ python measure_repairs.py /path/to/data frozen
 ```
 
 This [separate comparison](frozen/repairs.json) uses the same seed-41 full checkpoint, same cutoff and state carry in both passes. It disables only repairs in the second pass. The receipt counts decisions that repair fixed or broke and gives a real example of each. It evaluates a whole stream with repair on or off. Earlier repaired state and memory can influence later decisions.
+
+## Compare with boosted trees
+
+XGBoost is an established tree-boosting library. These three checkpoints are freshly fitted benchmarks. They use the same labeled blocks, sites, current sensor channels and score windows as the liquid comparison. Trees see up to eleven causal readings summarized as current values, changes, means and extrema. Aalto selects the exact tree count and cutoff. The tree experiment starts after the liquid scores were seen, so treat it as a follow-up on the same holdouts.
+
+```sh
+pip install xgboost-cpu==3.1.3
+cp -R frozen trees
+python xgboost_baseline.py score /path/to/data trees \
+  --freeze f3cdf3c0d1484681fb8e353956de24feddbded1a5d83b7acb14ac19264faf04b
+python adapter_ablation.py /path/to/data frozen
+```
+
+The [tree receipt](frozen/xgboost-scores.json) reports accuracy, balanced accuracy, false negatives and false positives for each seed and site. Use `xgboost_baseline.py fit` with a new output folder to refit the trees.
+
+The [adapter comparison](frozen/adapter-ablation.json) measures two changes against the original run. One arm applies the original first clamp without any optimizer steps. The other allows online learning within a range centered on the actual trained input settings. In Munich the frozen full model reached 68.25% balanced accuracy, the clamp alone reached 70.90%, the original online arm reached 71.29%, and centered learning reached 69.01%. Those scores give little evidence that learning itself caused the original gain. Centered learning still fell short of the frozen full model in Graz and Porto Alegre.

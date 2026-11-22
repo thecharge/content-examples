@@ -1,0 +1,82 @@
+{
+  "aux_weight": 0.25,
+  "batch": 256,
+  "budgets": [
+    25,
+    50,
+    100
+  ],
+  "comfort_weight": 2,
+  "features": [
+    "Temperature",
+    "Humidity",
+    "CO2"
+  ],
+  "files": {
+    "benchmark.py": "fd63d8d9dbdd2e778877f724d77f0b3cc0c1286bb9aed12712560ab4455d8bf2",
+    "data.py": "89d923a52d114a744db470dad149432dbb3f753cc2f2e098fa24671246ba5ec9",
+    "models.py": "5799dd905de171ba2b0201bd03cd4801bbb9df3d75133b6904ef3b04725787d0",
+    "protocol.md": "5fd5aa13b5e9ae9fd38a3f33d0bca482b7834f61058020b3ac19e0b5d56430fa",
+    "requirements.txt": "51cf9018e320039118f7d98f4eb73ab32d3491d657837c8390fcd84fae4ad327"
+  },
+  "heating_models": [
+    "mean",
+    "liquid",
+    "attention"
+  ],
+  "learning_rate": 0.01,
+  "max_epochs": 12,
+  "occupancy_models": [
+    "current",
+    "gru",
+    "library",
+    "liquid",
+    "attention",
+    "attention_aux"
+  ],
+  "occupancy_windows": {
+    "apartments": [
+      20,
+      15
+    ],
+    "datatest.txt": [
+      5,
+      1
+    ],
+    "datatest2.txt": [
+      5,
+      1
+    ]
+  },
+  "patience": 2,
+  "python": "3.12.3",
+  "seeds": [
+    41,
+    42,
+    43
+  ],
+  "sources": {
+    "danish": [
+      "https://zenodo.org/records/10761326",
+      "c08081438816078bdce5d607383dc3e610e2584c479de3d0a4d9b5ded1215ee9"
+    ],
+    "heat": [
+      "https://data.mendeley.com/datasets/xztfbtsgys/3",
+      "393c5c5d106d1597e0a059ea43b799d7d2e58baf74a6388beb256c46f2400fe8"
+    ],
+    "uci": [
+      "https://doi.org/10.24432/C5X01N",
+      "4ae3f46aa98eedff564a9f6924d1635173e2fd2c816004342a9be93076d3a81a"
+    ]
+  },
+  "substeps": 6,
+  "support_min": 8,
+  "threshold": 0.5,
+  "units": 8,
+  "versions": {
+    "ncps": "1.0.1",
+    "numpy": "2.5.5",
+    "torch": "2.7.1+cpu"
+  },
+  "window": 8
+}

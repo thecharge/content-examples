@@ -66,3 +66,6 @@ real replays. In H5, the 10,036 claims in the 70–80% confidence band averaged
 73.0% confidence and were correct 60.9% of the time. H6's 10,079 claims
 averaged 72.8% confidence and were correct 77.0% of the time. Confidence
 is a fitted estimate and a score of 1 is never treated as proof.
+
+[Training debug copy](debug-training/README.md) compares two learning rates,
+records raw predictions and overfits a five-row batch as a control.

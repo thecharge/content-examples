@@ -1,0 +1,7 @@
+--- occupancy.py
++++ occupancy.py
+@@ -43,2 +43,2 @@
+-        self.gru = nn.GRU(6, 9, batch_first=True)
+-        self.readout = nn.Linear(9, 1)
++        self.gru = nn.GRU(6, 11, batch_first=True)
++        self.readout = nn.Linear(11, 1)

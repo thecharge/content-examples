@@ -1,0 +1,24 @@
+{
+  "archive_url": "https://archive.ics.uci.edu/static/public/864/room+occupancy+estimation.zip",
+  "dataset_doi": "10.24432/C5P605",
+  "room": "The separate 6 m by 4.6 m room in the publisher's documentation",
+  "archive_csv": "Occupancy_Estimation.csv",
+  "checkpoint_sha256": "8fd2e03f0e1dc482e34ec9e7a83b3bb6ee2cd67e2ec4f7c732c4dc1c380832e2",
+  "baseline_checkpoint_sha256": "bfd5704418c51fcb84454a21d76dca9091d0187ddb489d9791cf8a8a85e4c1a4",
+  "seed": 41,
+  "threshold": 0.5,
+  "input_map": {
+    "Temperature": "S1_Temp",
+    "Humidity": null,
+    "Light": "S1_Light",
+    "CO2": "S5_CO2",
+    "HumidityRatio": null
+  },
+  "missing_input_rule": "Use the corresponding frozen source training mean, which becomes zero after scaling.",
+  "target": "Room_Occupancy_Count > 0",
+  "window": 8,
+  "max_gap_minutes": 5,
+  "nominal_cadence_seconds": 30,
+  "baseline": "Compare the frozen published predecessor bundle's LTC, GRU and final-row baselines, and always-empty.",
+  "metrics": ["tp", "tn", "fp", "fn", "accuracy", "balanced_accuracy", "bce"]
+}

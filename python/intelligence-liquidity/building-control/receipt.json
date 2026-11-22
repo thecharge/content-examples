@@ -1,0 +1,137 @@
+{
+  "archive_sha256": "393c5c5d106d1597e0a059ea43b799d7d2e58baf74a6388beb256c46f2400fe8",
+  "behavior_baseline": {
+    "exact_logged_action_matches": 292,
+    "matched_logged_degree_hours": 0.0,
+    "matched_logged_thermal_kwh": 95.523333,
+    "recommendations": {
+      "abstain": 64,
+      "off": 245,
+      "on": 223
+    }
+  },
+  "csv_sha256": "1789ef3090ad49507fc396831b4a999411a15b050e99a5bfa2a2c79766182c0e",
+  "dual_action_training_states": 10,
+  "held_out_behavior_degree_hours": 0.096667,
+  "held_out_behavior_thermal_kwh": 184.349167,
+  "held_out_logged_actions": {
+    "off": 244,
+    "on": 288
+  },
+  "held_out_transitions": 532,
+  "holdout_starts_utc": "2019-03-07T00:00:00+00:00",
+  "nonzero_comfort_penalty": {
+    "held_out": 3,
+    "training": 34
+  },
+  "policy_table": [
+    {
+      "learned": "off",
+      "state": [
+        20,
+        0,
+        false
+      ],
+      "training_mode": "off"
+    },
+    {
+      "learned": "off",
+      "state": [
+        21,
+        -2,
+        false
+      ],
+      "training_mode": "on"
+    },
+    {
+      "learned": "off",
+      "state": [
+        21,
+        -1,
+        false
+      ],
+      "training_mode": "off"
+    },
+    {
+      "learned": "off",
+      "state": [
+        21,
+        0,
+        false
+      ],
+      "training_mode": "off"
+    },
+    {
+      "learned": "off",
+      "state": [
+        21,
+        1,
+        false
+      ],
+      "training_mode": "off"
+    },
+    {
+      "learned": "off",
+      "state": [
+        22,
+        -1,
+        false
+      ],
+      "training_mode": "on"
+    },
+    {
+      "learned": "off",
+      "state": [
+        22,
+        0,
+        false
+      ],
+      "training_mode": "on"
+    },
+    {
+      "learned": "off",
+      "state": [
+        22,
+        1,
+        false
+      ],
+      "training_mode": "off"
+    },
+    {
+      "learned": "off",
+      "state": [
+        23,
+        0,
+        false
+      ],
+      "training_mode": "off"
+    },
+    {
+      "learned": "off",
+      "state": [
+        23,
+        1,
+        false
+      ],
+      "training_mode": "off"
+    }
+  ],
+  "reward_policy": {
+    "exact_logged_action_matches": 211,
+    "matched_logged_degree_hours": 0.0,
+    "matched_logged_thermal_kwh": 0.013333,
+    "recommendations": {
+      "abstain": 64,
+      "off": 468
+    }
+  },
+  "skipped": {
+    "other_or_changing_command": 229,
+    "split_boundary": 2
+  },
+  "training_actions": {
+    "off": 624,
+    "on": 477
+  },
+  "training_transitions": 1101
+}

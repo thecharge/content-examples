@@ -1,0 +1,1581 @@
+{
+  "frozen_sha256": "0e02e15af443d17c1230c6f17d22ee5ea41461c13db233d8fe0e0f2a14cc675a",
+  "site": "munich",
+  "test_sha256": "22c02aa064bc4c67086717671a48cade26c0e04576ba8adbac5145b49f072d35",
+  "evaluator_sha256": "e53ad50e087c8e8169b73282deb3e9d4601e225da20f2a3e5fda35abb197d62d",
+  "run_scores": [
+    {
+      "arm": "co2",
+      "seed": 41,
+      "cutoff": 0.52,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.568861186504364,
+          "balanced_accuracy": 0.6116717457771301,
+          "occupied_recall": 0.7382009029388428,
+          "empty_recall": 0.4851425886154175,
+          "auroc": 0.6767870654614229,
+          "brier": 0.2923579514026642,
+          "calibration_error": 0.26173526607453823,
+          "false_empty": 1947,
+          "false_occupied": 7745
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.7346975207328796,
+          "balanced_accuracy": 0.7675608992576599,
+          "occupied_recall": 0.8381079435348511,
+          "empty_recall": 0.6970138549804688,
+          "auroc": 0.8569803508836628,
+          "brier": 0.21728265285491943,
+          "calibration_error": 0.28619689494371414,
+          "false_empty": 243,
+          "false_occupied": 1248
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.602028489112854,
+        "balanced_accuracy": 0.6428322196006775,
+        "occupied_recall": 0.7549787163734436,
+        "empty_recall": 0.5306857228279114,
+        "auroc": 0.7025140825049315,
+        "brier": 0.27734288573265076,
+        "calibration_error": 0.26662761298939586,
+        "false_empty": 2190,
+        "false_occupied": 8993
+      }
+    },
+    {
+      "arm": "logistic",
+      "seed": 41,
+      "cutoff": 0.45,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.49982205033302307,
+          "balanced_accuracy": 0.5949974656105042,
+          "occupied_recall": 0.8762941956520081,
+          "empty_recall": 0.31370073556900024,
+          "auroc": 0.7978836671078117,
+          "brier": 0.2551101744174957,
+          "calibration_error": 0.3191885902779177,
+          "false_empty": 920,
+          "false_occupied": 10324
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.4985765218734741,
+          "balanced_accuracy": 0.6439529806375504,
+          "occupied_recall": 0.9560292959213257,
+          "empty_recall": 0.331876665353775,
+          "auroc": 0.899943211768346,
+          "brier": 0.21100789308547974,
+          "calibration_error": 0.31285761521576205,
+          "false_empty": 66,
+          "false_occupied": 2752
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.4995729625225067,
+        "balanced_accuracy": 0.6036461293697357,
+        "occupied_recall": 0.8896844983100891,
+        "empty_recall": 0.3176077604293823,
+        "auroc": 0.8109085723125894,
+        "brier": 0.24628974497318268,
+        "calibration_error": 0.3136002408573404,
+        "false_empty": 986,
+        "false_occupied": 13076
+      }
+    },
+    {
+      "arm": "gru",
+      "seed": 41,
+      "cutoff": 0.38,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.47584518790245056,
+          "balanced_accuracy": 0.5827250629663467,
+          "occupied_recall": 0.8986150622367859,
+          "empty_recall": 0.2668350636959076,
+          "auroc": 0.7497931504515615,
+          "brier": 0.29375553131103516,
+          "calibration_error": 0.28855318250498385,
+          "false_empty": 754,
+          "false_occupied": 11029
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.2825622856616974,
+          "balanced_accuracy": 0.500398138538003,
+          "occupied_recall": 0.9680213332176208,
+          "empty_recall": 0.032774943858385086,
+          "auroc": 0.8984878414794766,
+          "brier": 0.2988762855529785,
+          "calibration_error": 0.40273563197115436,
+          "false_empty": 48,
+          "false_occupied": 3984
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.43718862533569336,
+        "balanced_accuracy": 0.5633965134620667,
+        "occupied_recall": 0.9102707505226135,
+        "empty_recall": 0.21652227640151978,
+        "auroc": 0.774332854969613,
+        "brier": 0.2947796881198883,
+        "calibration_error": 0.3106757896093768,
+        "false_empty": 802,
+        "false_occupied": 15013
+      }
+    },
+    {
+      "arm": "liquid",
+      "seed": 41,
+      "cutoff": 0.51,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.4892793595790863,
+          "balanced_accuracy": 0.5851144343614578,
+          "occupied_recall": 0.8683608770370483,
+          "empty_recall": 0.3018679916858673,
+          "auroc": 0.7485048262570609,
+          "brier": 0.2785589098930359,
+          "calibration_error": 0.28604256211110624,
+          "false_empty": 979,
+          "false_occupied": 10502
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.3549821972846985,
+          "balanced_accuracy": 0.5478978380560875,
+          "occupied_recall": 0.9620253443717957,
+          "empty_recall": 0.13377033174037933,
+          "auroc": 0.8907254352888315,
+          "brier": 0.290546178817749,
+          "calibration_error": 0.39298892018268816,
+          "false_empty": 57,
+          "false_occupied": 3568
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.46241992712020874,
+        "balanced_accuracy": 0.5749123394489288,
+        "occupied_recall": 0.8840904235839844,
+        "empty_recall": 0.2657342553138733,
+        "auroc": 0.7748110036298486,
+        "brier": 0.28095635771751404,
+        "calibration_error": 0.3053581249259878,
+        "false_empty": 1036,
+        "false_occupied": 14070
+      }
+    },
+    {
+      "arm": "wide_liquid",
+      "seed": 41,
+      "cutoff": 0.6,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.5464412569999695,
+          "balanced_accuracy": 0.6107946783304214,
+          "occupied_recall": 0.8009950518608093,
+          "empty_recall": 0.42059430480003357,
+          "auroc": 0.7527563917415497,
+          "brier": 0.2770228385925293,
+          "calibration_error": 0.28479093877831474,
+          "false_empty": 1480,
+          "false_occupied": 8716
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.7243772149085999,
+          "balanced_accuracy": 0.7861387729644775,
+          "occupied_recall": 0.9187208414077759,
+          "empty_recall": 0.6535567045211792,
+          "auroc": 0.8961616428248288,
+          "brier": 0.2631918787956238,
+          "calibration_error": 0.36820808675838634,
+          "false_empty": 122,
+          "false_occupied": 1427
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.5820284485816956,
+        "balanced_accuracy": 0.6457181870937347,
+        "occupied_recall": 0.8207652568817139,
+        "empty_recall": 0.4706711173057556,
+        "auroc": 0.777959728675355,
+        "brier": 0.2742566764354706,
+        "calibration_error": 0.2991732795489952,
+        "false_empty": 1602,
+        "false_occupied": 10143
+      }
+    },
+    {
+      "arm": "moe",
+      "seed": 41,
+      "cutoff": 0.6,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.5586743950843811,
+          "balanced_accuracy": 0.6119126826524734,
+          "occupied_recall": 0.7692617774009705,
+          "empty_recall": 0.45456358790397644,
+          "auroc": 0.7095475557134225,
+          "brier": 0.27774539589881897,
+          "calibration_error": 0.2611047384489211,
+          "false_empty": 1716,
+          "false_occupied": 8205
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.5005338191986084,
+          "balanced_accuracy": 0.6391483098268509,
+          "occupied_recall": 0.9367088675498962,
+          "empty_recall": 0.34158775210380554,
+          "auroc": 0.8658248227814135,
+          "brier": 0.31927305459976196,
+          "calibration_error": 0.412668543325708,
+          "false_empty": 95,
+          "false_occupied": 2712
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.5470462441444397,
+        "balanced_accuracy": 0.6138303130865097,
+        "occupied_recall": 0.7973819375038147,
+        "empty_recall": 0.4302786886692047,
+        "auroc": 0.7307907873812964,
+        "brier": 0.286050945520401,
+        "calibration_error": 0.2908017596200807,
+        "false_empty": 1811,
+        "false_occupied": 10917
+      },
+      "expert_weight_share": [
+        0.7496833205223083,
+        0.13925448060035706,
+        0.1110621765255928
+      ],
+      "expert_top_share": [
+        0.9403558969497681,
+        0.010346975177526474,
+        0.04929715394973755
+      ]
+    },
+    {
+      "arm": "delta",
+      "seed": 41,
+      "cutoff": 0.61,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.5793594121932983,
+          "balanced_accuracy": 0.6396739631891251,
+          "occupied_recall": 0.8179373145103455,
+          "empty_recall": 0.46141061186790466,
+          "auroc": 0.7318866588988756,
+          "brier": 0.2881128489971161,
+          "calibration_error": 0.29171794024296105,
+          "false_empty": 1354,
+          "false_occupied": 8102
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.4750889539718628,
+          "balanced_accuracy": 0.621789738535881,
+          "occupied_recall": 0.9367088675498962,
+          "empty_recall": 0.30687060952186584,
+          "auroc": 0.8669792688179556,
+          "brier": 0.3220115602016449,
+          "calibration_error": 0.4247344612631423,
+          "false_empty": 95,
+          "false_occupied": 2855
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.5585053563117981,
+        "balanced_accuracy": 0.633037194609642,
+        "occupied_recall": 0.8378831744194031,
+        "empty_recall": 0.428191214799881,
+        "auroc": 0.754475814193588,
+        "brier": 0.2948925793170929,
+        "calibration_error": 0.31616518000373617,
+        "false_empty": 1449,
+        "false_occupied": 10957
+      },
+      "expert_weight_share": [
+        0.6259632110595703,
+        0.21013876795768738,
+        0.16389797627925873
+      ],
+      "expert_top_share": [
+        0.9146885871887207,
+        0.05772241950035095,
+        0.027588967233896255
+      ]
+    },
+    {
+      "arm": "delta_review",
+      "seed": 41,
+      "cutoff": 0.61,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.5798932313919067,
+          "balanced_accuracy": 0.6457497328519821,
+          "occupied_recall": 0.8403926491737366,
+          "empty_recall": 0.45110681653022766,
+          "auroc": 0.7333316850620977,
+          "brier": 0.2882067561149597,
+          "calibration_error": 0.2924994577188045,
+          "false_empty": 1187,
+          "false_occupied": 8257
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.4766903817653656,
+          "balanced_accuracy": 0.6254228949546814,
+          "occupied_recall": 0.9447035193443298,
+          "empty_recall": 0.30614227056503296,
+          "auroc": 0.8692375350963726,
+          "brier": 0.32195040583610535,
+          "calibration_error": 0.4249124221059901,
+          "false_empty": 83,
+          "false_occupied": 2858
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.5592526793479919,
+        "balanced_accuracy": 0.6389278769493103,
+        "occupied_recall": 0.8579100370407104,
+        "empty_recall": 0.41994571685791016,
+        "auroc": 0.756493038977601,
+        "brier": 0.2949554920196533,
+        "calibration_error": 0.3168260073871352,
+        "false_empty": 1270,
+        "false_occupied": 11115
+      },
+      "attempts": 16600,
+      "changes": 341,
+      "corrected": 181,
+      "broken": 160,
+      "guard_enabled": true
+    },
+    {
+      "arm": "co2",
+      "seed": 42,
+      "cutoff": 0.52,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.5687722563743591,
+          "balanced_accuracy": 0.6114692836999893,
+          "occupied_recall": 0.7376630306243896,
+          "empty_recall": 0.485275536775589,
+          "auroc": 0.6767870654614229,
+          "brier": 0.29969218373298645,
+          "calibration_error": 0.26281390036456287,
+          "false_empty": 1951,
+          "false_occupied": 7743
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.7350533604621887,
+          "balanced_accuracy": 0.7675919234752655,
+          "occupied_recall": 0.8374416828155518,
+          "empty_recall": 0.6977421641349792,
+          "auroc": 0.8569803508836628,
+          "brier": 0.2155660092830658,
+          "calibration_error": 0.28486805502325296,
+          "false_empty": 244,
+          "false_occupied": 1245
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.602028489112854,
+        "balanced_accuracy": 0.6426829993724823,
+        "occupied_recall": 0.7544193267822266,
+        "empty_recall": 0.530946671962738,
+        "auroc": 0.7025140825049315,
+        "brier": 0.2828669250011444,
+        "calibration_error": 0.26722472603432834,
+        "false_empty": 2195,
+        "false_occupied": 8988
+      }
+    },
+    {
+      "arm": "logistic",
+      "seed": 42,
+      "cutoff": 0.45,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.5189501643180847,
+          "balanced_accuracy": 0.6081340461969376,
+          "occupied_recall": 0.8717224597930908,
+          "empty_recall": 0.3445456326007843,
+          "auroc": 0.7870268781105477,
+          "brier": 0.25555357336997986,
+          "calibration_error": 0.3180106468498707,
+          "false_empty": 954,
+          "false_occupied": 9860
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.6217082142829895,
+          "balanced_accuracy": 0.7252015769481659,
+          "occupied_recall": 0.9473684430122375,
+          "empty_recall": 0.5030347108840942,
+          "auroc": 0.8936822728361556,
+          "brier": 0.208534836769104,
+          "calibration_error": 0.2982372524202219,
+          "false_empty": 79,
+          "false_occupied": 2047
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.5395017862319946,
+        "balanced_accuracy": 0.6315199881792068,
+        "occupied_recall": 0.8844260573387146,
+        "empty_recall": 0.3786139190196991,
+        "auroc": 0.8017089728218298,
+        "brier": 0.24614980816841125,
+        "calibration_error": 0.3122598207555711,
+        "false_empty": 1033,
+        "false_occupied": 11907
+      }
+    },
+    {
+      "arm": "gru",
+      "seed": 42,
+      "cutoff": 0.32,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.47753557562828064,
+          "balanced_accuracy": 0.5837501436471939,
+          "occupied_recall": 0.8976737856864929,
+          "empty_recall": 0.2698265016078949,
+          "auroc": 0.767269656843426,
+          "brier": 0.26909366250038147,
+          "calibration_error": 0.2752424975988106,
+          "false_empty": 761,
+          "false_occupied": 10984
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.2711743712425232,
+          "balanced_accuracy": 0.492840975522995,
+          "occupied_recall": 0.9686875343322754,
+          "empty_recall": 0.0169944167137146,
+          "auroc": 0.9013574991439712,
+          "brier": 0.27255263924598694,
+          "calibration_error": 0.3818466266966425,
+          "false_empty": 47,
+          "false_occupied": 4049
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.4362633526325226,
+        "balanced_accuracy": 0.5625390186905861,
+        "occupied_recall": 0.9095994830131531,
+        "empty_recall": 0.2154785543680191,
+        "auroc": 0.7879812469853148,
+        "brier": 0.26978546380996704,
+        "calibration_error": 0.29621693945955485,
+        "false_empty": 808,
+        "false_occupied": 15033
+      }
+    },
+    {
+      "arm": "liquid",
+      "seed": 42,
+      "cutoff": 0.38,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.48816725611686707,
+          "balanced_accuracy": 0.5875128507614136,
+          "occupied_recall": 0.8811348676681519,
+          "empty_recall": 0.2938908338546753,
+          "auroc": 0.7909405345838814,
+          "brier": 0.24372197687625885,
+          "calibration_error": 0.26800115141668357,
+          "false_empty": 884,
+          "false_occupied": 10622
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.2966192066669464,
+          "balanced_accuracy": 0.5093526802957058,
+          "occupied_recall": 0.9660226702690125,
+          "empty_recall": 0.05268269032239914,
+          "auroc": 0.8975240104557631,
+          "brier": 0.24243637919425964,
+          "calibration_error": 0.3495906383031979,
+          "false_empty": 51,
+          "false_occupied": 3902
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.4498576521873474,
+        "balanced_accuracy": 0.5687159970402718,
+        "occupied_recall": 0.8953904509544373,
+        "empty_recall": 0.24204154312610626,
+        "auroc": 0.8061259413180442,
+        "brier": 0.243464857339859,
+        "calibration_error": 0.27814507007133216,
+        "false_empty": 935,
+        "false_occupied": 14524
+      }
+    },
+    {
+      "arm": "wide_liquid",
+      "seed": 42,
+      "cutoff": 0.51,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.5067170858383179,
+          "balanced_accuracy": 0.592296913266182,
+          "occupied_recall": 0.8452333211898804,
+          "empty_recall": 0.3393605053424835,
+          "auroc": 0.7868257961706494,
+          "brier": 0.24474680423736572,
+          "calibration_error": 0.2693078999873251,
+          "false_empty": 1151,
+          "false_occupied": 9938
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.5149466395378113,
+          "balanced_accuracy": 0.6542738676071167,
+          "occupied_recall": 0.9533644318580627,
+          "empty_recall": 0.35518330335617065,
+          "auroc": 0.9015325867565186,
+          "brier": 0.2470896691083908,
+          "calibration_error": 0.3608663802733645,
+          "false_empty": 70,
+          "false_occupied": 2656
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.5083630084991455,
+        "balanced_accuracy": 0.6030769795179367,
+        "occupied_recall": 0.8633922338485718,
+        "empty_recall": 0.34276172518730164,
+        "auroc": 0.8048639511532308,
+        "brier": 0.24521537125110626,
+        "calibration_error": 0.2858387539163232,
+        "false_empty": 1221,
+        "false_occupied": 12594
+      }
+    },
+    {
+      "arm": "moe",
+      "seed": 42,
+      "cutoff": 0.53,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.4908807873725891,
+          "balanced_accuracy": 0.5842714160680771,
+          "occupied_recall": 0.8602931499481201,
+          "empty_recall": 0.30824968218803406,
+          "auroc": 0.7505995966508666,
+          "brier": 0.26640963554382324,
+          "calibration_error": 0.2735991270747036,
+          "false_empty": 1039,
+          "false_occupied": 10406
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.42633453011512756,
+          "balanced_accuracy": 0.5969981253147125,
+          "occupied_recall": 0.9633577466011047,
+          "empty_recall": 0.2306385040283203,
+          "auroc": 0.8900389139295176,
+          "brier": 0.2883222997188568,
+          "calibration_error": 0.38819956296356395,
+          "false_empty": 55,
+          "false_occupied": 3169
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.47797152400016785,
+        "balanced_accuracy": 0.5845839530229568,
+        "occupied_recall": 0.8776012659072876,
+        "empty_recall": 0.2915666401386261,
+        "auroc": 0.7721943946783054,
+        "brier": 0.270792156457901,
+        "calibration_error": 0.2960084960795939,
+        "false_empty": 1094,
+        "false_occupied": 13575
+      },
+      "expert_weight_share": [
+        0.6591247320175171,
+        0.2547891438007355,
+        0.08608619123697281
+      ],
+      "expert_top_share": [
+        0.897842526435852,
+        0.08786477148532867,
+        0.014292704872786999
+      ]
+    },
+    {
+      "arm": "delta",
+      "seed": 42,
+      "cutoff": 0.52,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.48274022340774536,
+          "balanced_accuracy": 0.5810782760381699,
+          "occupied_recall": 0.8717224597930908,
+          "empty_recall": 0.2904340922832489,
+          "auroc": 0.7164505943077024,
+          "brier": 0.27209633588790894,
+          "calibration_error": 0.26376731088384986,
+          "false_empty": 954,
+          "false_occupied": 10674
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.3437722325325012,
+          "balanced_accuracy": 0.5410972274839878,
+          "occupied_recall": 0.9646902084350586,
+          "empty_recall": 0.11750424653291702,
+          "auroc": 0.8812648814361681,
+          "brier": 0.30142468214035034,
+          "calibration_error": 0.39672528830124065,
+          "false_empty": 53,
+          "false_occupied": 3635
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.4549466073513031,
+        "balanced_accuracy": 0.5702983289957047,
+        "occupied_recall": 0.8873350024223328,
+        "empty_recall": 0.25326165556907654,
+        "auroc": 0.7425750258264795,
+        "brier": 0.27796199917793274,
+        "calibration_error": 0.2893991169516994,
+        "false_empty": 1007,
+        "false_occupied": 14309
+      },
+      "expert_weight_share": [
+        0.5697407722473145,
+        0.331780344247818,
+        0.09847887605428696
+      ],
+      "expert_top_share": [
+        0.8054448366165161,
+        0.17303380370140076,
+        0.021521352231502533
+      ]
+    },
+    {
+      "arm": "delta_review",
+      "seed": 42,
+      "cutoff": 0.52,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.4838523268699646,
+          "balanced_accuracy": 0.5825890898704529,
+          "occupied_recall": 0.8744117021560669,
+          "empty_recall": 0.29076647758483887,
+          "auroc": 0.7172022113542987,
+          "brier": 0.27200424671173096,
+          "calibration_error": 0.26386106631252915,
+          "false_empty": 934,
+          "false_occupied": 10669
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.33523130416870117,
+          "balanced_accuracy": 0.5352705717086792,
+          "occupied_recall": 0.9646902084350586,
+          "empty_recall": 0.1058509349822998,
+          "auroc": 0.8811846565347144,
+          "brier": 0.3018917739391327,
+          "calibration_error": 0.39715569716645405,
+          "false_empty": 53,
+          "false_occupied": 3683
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.45412811636924744,
+        "balanced_accuracy": 0.570295125246048,
+        "occupied_recall": 0.8895726203918457,
+        "empty_recall": 0.25101763010025024,
+        "auroc": 0.7432621983040621,
+        "brier": 0.2779817581176758,
+        "calibration_error": 0.2895601985042049,
+        "false_empty": 987,
+        "false_occupied": 14352
+      },
+      "attempts": 1557,
+      "changes": 125,
+      "corrected": 51,
+      "broken": 74,
+      "guard_enabled": true
+    },
+    {
+      "arm": "co2",
+      "seed": 43,
+      "cutoff": 0.52,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.5687722563743591,
+          "balanced_accuracy": 0.6114692836999893,
+          "occupied_recall": 0.7376630306243896,
+          "empty_recall": 0.485275536775589,
+          "auroc": 0.6767870654614229,
+          "brier": 0.2987043261528015,
+          "calibration_error": 0.2626895350404084,
+          "false_empty": 1951,
+          "false_occupied": 7743
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.7350533604621887,
+          "balanced_accuracy": 0.7675919234752655,
+          "occupied_recall": 0.8374416828155518,
+          "empty_recall": 0.6977421641349792,
+          "auroc": 0.8569803508836628,
+          "brier": 0.21576209366321564,
+          "calibration_error": 0.2850711257196963,
+          "false_empty": 244,
+          "false_occupied": 1245
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.602028489112854,
+        "balanced_accuracy": 0.6426829993724823,
+        "occupied_recall": 0.7544193267822266,
+        "empty_recall": 0.530946671962738,
+        "auroc": 0.7025140825049315,
+        "brier": 0.2821158766746521,
+        "calibration_error": 0.26716588507406414,
+        "false_empty": 2195,
+        "false_occupied": 8988
+      }
+    },
+    {
+      "arm": "logistic",
+      "seed": 43,
+      "cutoff": 0.44,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.49199289083480835,
+          "balanced_accuracy": 0.5897254645824432,
+          "occupied_recall": 0.8785800933837891,
+          "empty_recall": 0.3008708357810974,
+          "auroc": 0.7941896579721879,
+          "brier": 0.2553845942020416,
+          "calibration_error": 0.317973920609802,
+          "false_empty": 903,
+          "false_occupied": 10517
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.4115658402442932,
+          "balanced_accuracy": 0.5854408219456673,
+          "occupied_recall": 0.9586942195892334,
+          "empty_recall": 0.21218742430210114,
+          "auroc": 0.8986392336322196,
+          "brier": 0.21118681132793427,
+          "calibration_error": 0.3110456727717974,
+          "false_empty": 62,
+          "false_occupied": 3245
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.47590747475624084,
+        "balanced_accuracy": 0.5869208723306656,
+        "occupied_recall": 0.8920339941978455,
+        "empty_recall": 0.2818077504634857,
+        "auroc": 0.8077899196751122,
+        "brier": 0.24654501676559448,
+        "calibration_error": 0.31256868108175695,
+        "false_empty": 965,
+        "false_occupied": 13762
+      }
+    },
+    {
+      "arm": "gru",
+      "seed": 43,
+      "cutoff": 0.35,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.4716637134552002,
+          "balanced_accuracy": 0.5796346515417099,
+          "occupied_recall": 0.8987494707107544,
+          "empty_recall": 0.2605198323726654,
+          "auroc": 0.767560370235686,
+          "brier": 0.27668094635009766,
+          "calibration_error": 0.3037786951754242,
+          "false_empty": 753,
+          "false_occupied": 11124
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.26530247926712036,
+          "balanced_accuracy": 0.48819998325780034,
+          "occupied_recall": 0.966688871383667,
+          "empty_recall": 0.009711095131933689,
+          "auroc": 0.9020072237994934,
+          "brier": 0.27993130683898926,
+          "calibration_error": 0.39603497459029313,
+          "false_empty": 50,
+          "false_occupied": 4079
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.43039146065711975,
+        "balanced_accuracy": 0.5583828464150429,
+        "occupied_recall": 0.9101588726043701,
+        "empty_recall": 0.20660682022571564,
+        "auroc": 0.7899567831966979,
+        "brier": 0.27733102440834045,
+        "calibration_error": 0.3199565600107235,
+        "false_empty": 803,
+        "false_occupied": 15203
+      }
+    },
+    {
+      "arm": "liquid",
+      "seed": 43,
+      "cutoff": 0.42,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.473798930644989,
+          "balanced_accuracy": 0.5776607990264893,
+          "occupied_recall": 0.8846309185028076,
+          "empty_recall": 0.2706906795501709,
+          "auroc": 0.7257192060363268,
+          "brier": 0.27304425835609436,
+          "calibration_error": 0.27267022407613695,
+          "false_empty": 858,
+          "false_occupied": 10971
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.2702847123146057,
+          "balanced_accuracy": 0.49138715490698814,
+          "occupied_recall": 0.9660226702690125,
+          "empty_recall": 0.016751639544963837,
+          "auroc": 0.8874889427926903,
+          "brier": 0.2948184609413147,
+          "calibration_error": 0.40176143115968443,
+          "false_empty": 51,
+          "false_occupied": 4050
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.4330960810184479,
+        "balanced_accuracy": 0.5572020933032036,
+        "occupied_recall": 0.8982993960380554,
+        "empty_recall": 0.21610479056835175,
+        "auroc": 0.7543528766948477,
+        "brier": 0.27739912271499634,
+        "calibration_error": 0.2961774989962578,
+        "false_empty": 909,
+        "false_occupied": 15021
+      }
+    },
+    {
+      "arm": "wide_liquid",
+      "seed": 43,
+      "cutoff": 0.57,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.5995996594429016,
+          "balanced_accuracy": 0.6444292962551117,
+          "occupied_recall": 0.7769261598587036,
+          "empty_recall": 0.5119324326515198,
+          "auroc": 0.782488478570655,
+          "brier": 0.23717477917671204,
+          "calibration_error": 0.24968912499025464,
+          "false_empty": 1659,
+          "false_occupied": 7342
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.6807829141616821,
+          "balanced_accuracy": 0.7561868131160736,
+          "occupied_recall": 0.9180546402931213,
+          "empty_recall": 0.5943189859390259,
+          "auroc": 0.8890589894023876,
+          "brier": 0.2575375735759735,
+          "calibration_error": 0.35629520999646047,
+          "false_empty": 123,
+          "false_occupied": 1671
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.6158363223075867,
+        "balanced_accuracy": 0.6651342511177063,
+        "occupied_recall": 0.8006265163421631,
+        "empty_recall": 0.5296419858932495,
+        "auroc": 0.7955947597721109,
+        "brier": 0.24124735593795776,
+        "calibration_error": 0.2687227977439761,
+        "false_empty": 1782,
+        "false_occupied": 9013
+      }
+    },
+    {
+      "arm": "moe",
+      "seed": 43,
+      "cutoff": 0.32,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.45769572257995605,
+          "balanced_accuracy": 0.5813335552811623,
+          "occupied_recall": 0.9467527270317078,
+          "empty_recall": 0.21591438353061676,
+          "auroc": 0.7385110824475194,
+          "brier": 0.3098801076412201,
+          "calibration_error": 0.32191283180145547,
+          "false_empty": 396,
+          "false_occupied": 11795
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.277046263217926,
+          "balanced_accuracy": 0.4970585135743022,
+          "occupied_recall": 0.9693537354469299,
+          "empty_recall": 0.02476329170167446,
+          "auroc": 0.9072310617878928,
+          "brier": 0.29569998383522034,
+          "calibration_error": 0.40292598950327374,
+          "false_empty": 46,
+          "false_occupied": 4017
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.42156583070755005,
+        "balanced_accuracy": 0.5626867040991783,
+        "occupied_recall": 0.9505482316017151,
+        "empty_recall": 0.17482517659664154,
+        "auroc": 0.771282935928354,
+        "brier": 0.30704405903816223,
+        "calibration_error": 0.33805585704976693,
+        "false_empty": 442,
+        "false_occupied": 15812
+      },
+      "expert_weight_share": [
+        0.36646634340286255,
+        0.2967150807380676,
+        0.33681854605674744
+      ],
+      "expert_top_share": [
+        0.47304269671440125,
+        0.3423443138599396,
+        0.18461298942565918
+      ]
+    },
+    {
+      "arm": "delta",
+      "seed": 43,
+      "cutoff": 0.53,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.5189501643180847,
+          "balanced_accuracy": 0.602831095457077,
+          "occupied_recall": 0.8507462739944458,
+          "empty_recall": 0.35491591691970825,
+          "auroc": 0.7468296186582373,
+          "brier": 0.28830206394195557,
+          "calibration_error": 0.29156430982402526,
+          "false_empty": 1110,
+          "false_occupied": 9704
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.3798932433128357,
+          "balanced_accuracy": 0.563410185277462,
+          "occupied_recall": 0.9573617577552795,
+          "empty_recall": 0.16945861279964447,
+          "auroc": 0.8782368766375545,
+          "brier": 0.30859220027923584,
+          "calibration_error": 0.4142616447643377,
+          "false_empty": 64,
+          "false_occupied": 3421
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.4911387860774994,
+        "balanced_accuracy": 0.591850683093071,
+        "occupied_recall": 0.8686507344245911,
+        "empty_recall": 0.3150506317615509,
+        "auroc": 0.7664787979509962,
+        "brier": 0.2923600971698761,
+        "calibration_error": 0.3161037403042428,
+        "false_empty": 1174,
+        "false_occupied": 13125
+      },
+      "expert_weight_share": [
+        0.24710454046726227,
+        0.4079173803329468,
+        0.34497806429862976
+      ],
+      "expert_top_share": [
+        0.2403113842010498,
+        0.5607072710990906,
+        0.19898131489753723
+      ]
+    },
+    {
+      "arm": "delta_review",
+      "seed": 43,
+      "cutoff": 0.53,
+      "rooms": {
+        "Office_A": {
+          "rows": 22480,
+          "occupied": 7437,
+          "accuracy": 0.5189501643180847,
+          "balanced_accuracy": 0.602831095457077,
+          "occupied_recall": 0.8507462739944458,
+          "empty_recall": 0.35491591691970825,
+          "auroc": 0.7468296186582373,
+          "brier": 0.28830206394195557,
+          "calibration_error": 0.29156430982402526,
+          "false_empty": 1110,
+          "false_occupied": 9704
+        },
+        "Office_B": {
+          "rows": 5620,
+          "occupied": 1501,
+          "accuracy": 0.3798932433128357,
+          "balanced_accuracy": 0.563410185277462,
+          "occupied_recall": 0.9573617577552795,
+          "empty_recall": 0.16945861279964447,
+          "auroc": 0.8782368766375545,
+          "brier": 0.30859220027923584,
+          "calibration_error": 0.4142616447643377,
+          "false_empty": 64,
+          "false_occupied": 3421
+        }
+      },
+      "pooled": {
+        "rows": 28100,
+        "occupied": 8938,
+        "accuracy": 0.4911387860774994,
+        "balanced_accuracy": 0.591850683093071,
+        "occupied_recall": 0.8686507344245911,
+        "empty_recall": 0.3150506317615509,
+        "auroc": 0.7664787979509962,
+        "brier": 0.2923600971698761,
+        "calibration_error": 0.3161037403042428,
+        "false_empty": 1174,
+        "false_occupied": 13125
+      },
+      "attempts": 0,
+      "changes": 0,
+      "corrected": 0,
+      "broken": 0,
+      "guard_enabled": false
+    }
+  ],
+  "summary": {
+    "co2": {
+      "accuracy": {
+        "mean": 0.602028489112854,
+        "min": 0.602028489112854,
+        "max": 0.602028489112854
+      },
+      "balanced_accuracy": {
+        "mean": 0.6427327394485474,
+        "min": 0.6426829993724823,
+        "max": 0.6428322196006775
+      },
+      "auroc": {
+        "mean": 0.7025140825049315,
+        "min": 0.7025140825049315,
+        "max": 0.7025140825049315
+      },
+      "brier": {
+        "mean": 0.2807752291361491,
+        "min": 0.27734288573265076,
+        "max": 0.2828669250011444
+      },
+      "calibration_error": {
+        "mean": 0.2670060746992628,
+        "min": 0.26662761298939586,
+        "max": 0.26722472603432834
+      },
+      "occupied_recall": {
+        "mean": 0.754605789979299,
+        "min": 0.7544193267822266,
+        "max": 0.7549787163734436
+      },
+      "empty_recall": {
+        "mean": 0.5308596889177958,
+        "min": 0.5306857228279114,
+        "max": 0.530946671962738
+      },
+      "per_room_balanced_accuracy": {
+        "Office_A": {
+          "mean": 0.6115367710590363,
+          "min": 0.6114692836999893,
+          "max": 0.6116717457771301
+        },
+        "Office_B": {
+          "mean": 0.767581582069397,
+          "min": 0.7675608992576599,
+          "max": 0.7675919234752655
+        }
+      }
+    },
+    "logistic": {
+      "accuracy": {
+        "mean": 0.5049940745035807,
+        "min": 0.47590747475624084,
+        "max": 0.5395017862319946
+      },
+      "balanced_accuracy": {
+        "mean": 0.6073623299598694,
+        "min": 0.5869208723306656,
+        "max": 0.6315199881792068
+      },
+      "auroc": {
+        "mean": 0.8068024882698438,
+        "min": 0.8017089728218298,
+        "max": 0.8109085723125894
+      },
+      "brier": {
+        "mean": 0.2463281899690628,
+        "min": 0.24614980816841125,
+        "max": 0.24654501676559448
+      },
+      "calibration_error": {
+        "mean": 0.3128095808982228,
+        "min": 0.3122598207555711,
+        "max": 0.3136002408573404
+      },
+      "occupied_recall": {
+        "mean": 0.8887148499488831,
+        "min": 0.8844260573387146,
+        "max": 0.8920339941978455
+      },
+      "empty_recall": {
+        "mean": 0.3260098099708557,
+        "min": 0.2818077504634857,
+        "max": 0.3786139190196991
+      },
+      "per_room_balanced_accuracy": {
+        "Office_A": {
+          "mean": 0.5976189921299616,
+          "min": 0.5897254645824432,
+          "max": 0.6081340461969376
+        },
+        "Office_B": {
+          "mean": 0.6515317931771278,
+          "min": 0.5854408219456673,
+          "max": 0.7252015769481659
+        }
+      }
+    },
+    "gru": {
+      "accuracy": {
+        "mean": 0.43461447954177856,
+        "min": 0.43039146065711975,
+        "max": 0.43718862533569336
+      },
+      "balanced_accuracy": {
+        "mean": 0.5614394595225652,
+        "min": 0.5583828464150429,
+        "max": 0.5633965134620667
+      },
+      "auroc": {
+        "mean": 0.7840902950505418,
+        "min": 0.774332854969613,
+        "max": 0.7899567831966979
+      },
+      "brier": {
+        "mean": 0.2806320587793986,
+        "min": 0.26978546380996704,
+        "max": 0.2947796881198883
+      },
+      "calibration_error": {
+        "mean": 0.3089497630265517,
+        "min": 0.29621693945955485,
+        "max": 0.3199565600107235
+      },
+      "occupied_recall": {
+        "mean": 0.9100097020467123,
+        "min": 0.9095994830131531,
+        "max": 0.9102707505226135
+      },
+      "empty_recall": {
+        "mean": 0.21286921699841818,
+        "min": 0.20660682022571564,
+        "max": 0.21652227640151978
+      },
+      "per_room_balanced_accuracy": {
+        "Office_A": {
+          "mean": 0.5820366193850836,
+          "min": 0.5796346515417099,
+          "max": 0.5837501436471939
+        },
+        "Office_B": {
+          "mean": 0.49381303243959945,
+          "min": 0.48819998325780034,
+          "max": 0.500398138538003
+        }
+      }
+    },
+    "liquid": {
+      "accuracy": {
+        "mean": 0.44845788677533466,
+        "min": 0.4330960810184479,
+        "max": 0.46241992712020874
+      },
+      "balanced_accuracy": {
+        "mean": 0.566943476597468,
+        "min": 0.5572020933032036,
+        "max": 0.5749123394489288
+      },
+      "auroc": {
+        "mean": 0.7784299405475802,
+        "min": 0.7543528766948477,
+        "max": 0.8061259413180442
+      },
+      "brier": {
+        "mean": 0.2672734459241231,
+        "min": 0.243464857339859,
+        "max": 0.28095635771751404
+      },
+      "calibration_error": {
+        "mean": 0.2932268979978592,
+        "min": 0.27814507007133216,
+        "max": 0.3053581249259878
+      },
+      "occupied_recall": {
+        "mean": 0.8925934235254923,
+        "min": 0.8840904235839844,
+        "max": 0.8982993960380554
+      },
+      "empty_recall": {
+        "mean": 0.24129352966944376,
+        "min": 0.21610479056835175,
+        "max": 0.2657342553138733
+      },
+      "per_room_balanced_accuracy": {
+        "Office_A": {
+          "mean": 0.5834293613831202,
+          "min": 0.5776607990264893,
+          "max": 0.5875128507614136
+        },
+        "Office_B": {
+          "mean": 0.5162125577529272,
+          "min": 0.49138715490698814,
+          "max": 0.5478978380560875
+        }
+      }
+    },
+    "wide_liquid": {
+      "accuracy": {
+        "mean": 0.568742593129476,
+        "min": 0.5083630084991455,
+        "max": 0.6158363223075867
+      },
+      "balanced_accuracy": {
+        "mean": 0.6379764725764593,
+        "min": 0.6030769795179367,
+        "max": 0.6651342511177063
+      },
+      "auroc": {
+        "mean": 0.7928061465335655,
+        "min": 0.777959728675355,
+        "max": 0.8048639511532308
+      },
+      "brier": {
+        "mean": 0.25357313454151154,
+        "min": 0.24124735593795776,
+        "max": 0.2742566764354706
+      },
+      "calibration_error": {
+        "mean": 0.28457827706976485,
+        "min": 0.2687227977439761,
+        "max": 0.2991732795489952
+      },
+      "occupied_recall": {
+        "mean": 0.8282613356908163,
+        "min": 0.8006265163421631,
+        "max": 0.8633922338485718
+      },
+      "empty_recall": {
+        "mean": 0.44769160946210224,
+        "min": 0.34276172518730164,
+        "max": 0.5296419858932495
+      },
+      "per_room_balanced_accuracy": {
+        "Office_A": {
+          "mean": 0.6158402959505717,
+          "min": 0.592296913266182,
+          "max": 0.6444292962551117
+        },
+        "Office_B": {
+          "mean": 0.7321998178958893,
+          "min": 0.6542738676071167,
+          "max": 0.7861387729644775
+        }
+      }
+    },
+    "moe": {
+      "accuracy": {
+        "mean": 0.4821945329507192,
+        "min": 0.42156583070755005,
+        "max": 0.5470462441444397
+      },
+      "balanced_accuracy": {
+        "mean": 0.587033656736215,
+        "min": 0.5626867040991783,
+        "max": 0.6138303130865097
+      },
+      "auroc": {
+        "mean": 0.7580893726626519,
+        "min": 0.7307907873812964,
+        "max": 0.7721943946783054
+      },
+      "brier": {
+        "mean": 0.2879623870054881,
+        "min": 0.270792156457901,
+        "max": 0.30704405903816223
+      },
+      "calibration_error": {
+        "mean": 0.30828870424981386,
+        "min": 0.2908017596200807,
+        "max": 0.33805585704976693
+      },
+      "occupied_recall": {
+        "mean": 0.8751771450042725,
+        "min": 0.7973819375038147,
+        "max": 0.9505482316017151
+      },
+      "empty_recall": {
+        "mean": 0.29889016846815747,
+        "min": 0.17482517659664154,
+        "max": 0.4302786886692047
+      },
+      "per_room_balanced_accuracy": {
+        "Office_A": {
+          "mean": 0.5925058846672376,
+          "min": 0.5813335552811623,
+          "max": 0.6119126826524734
+        },
+        "Office_B": {
+          "mean": 0.5777349829052886,
+          "min": 0.4970585135743022,
+          "max": 0.6391483098268509
+        }
+      }
+    },
+    "delta": {
+      "accuracy": {
+        "mean": 0.5015302499135336,
+        "min": 0.4549466073513031,
+        "max": 0.5585053563117981
+      },
+      "balanced_accuracy": {
+        "mean": 0.5983954022328059,
+        "min": 0.5702983289957047,
+        "max": 0.633037194609642
+      },
+      "auroc": {
+        "mean": 0.7545098793236878,
+        "min": 0.7425750258264795,
+        "max": 0.7664787979509962
+      },
+      "brier": {
+        "mean": 0.2884048918883006,
+        "min": 0.27796199917793274,
+        "max": 0.2948925793170929
+      },
+      "calibration_error": {
+        "mean": 0.3072226790865595,
+        "min": 0.2893991169516994,
+        "max": 0.31616518000373617
+      },
+      "occupied_recall": {
+        "mean": 0.864622970422109,
+        "min": 0.8378831744194031,
+        "max": 0.8873350024223328
+      },
+      "empty_recall": {
+        "mean": 0.3321678340435028,
+        "min": 0.25326165556907654,
+        "max": 0.428191214799881
+      },
+      "per_room_balanced_accuracy": {
+        "Office_A": {
+          "mean": 0.6078611115614573,
+          "min": 0.5810782760381699,
+          "max": 0.6396739631891251
+        },
+        "Office_B": {
+          "mean": 0.575432383765777,
+          "min": 0.5410972274839878,
+          "max": 0.621789738535881
+        }
+      }
+    },
+    "delta_review": {
+      "accuracy": {
+        "mean": 0.501506527264913,
+        "min": 0.45412811636924744,
+        "max": 0.5592526793479919
+      },
+      "balanced_accuracy": {
+        "mean": 0.6003578950961431,
+        "min": 0.570295125246048,
+        "max": 0.6389278769493103
+      },
+      "auroc": {
+        "mean": 0.7554113450775531,
+        "min": 0.7432621983040621,
+        "max": 0.7664787979509962
+      },
+      "brier": {
+        "mean": 0.28843244910240173,
+        "min": 0.2779817581176758,
+        "max": 0.2949554920196533
+      },
+      "calibration_error": {
+        "mean": 0.30749664873186094,
+        "min": 0.2895601985042049,
+        "max": 0.3168260073871352
+      },
+      "occupied_recall": {
+        "mean": 0.8720444639523824,
+        "min": 0.8579100370407104,
+        "max": 0.8895726203918457
+      },
+      "empty_recall": {
+        "mean": 0.32867132623990375,
+        "min": 0.25101763010025024,
+        "max": 0.41994571685791016
+      },
+      "per_room_balanced_accuracy": {
+        "Office_A": {
+          "mean": 0.610389972726504,
+          "min": 0.5825890898704529,
+          "max": 0.6457497328519821
+        },
+        "Office_B": {
+          "mean": 0.5747012173136076,
+          "min": 0.5352705717086792,
+          "max": 0.6254228949546814
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1581 @@
+{
+  "frozen_sha256": "0e02e15af443d17c1230c6f17d22ee5ea41461c13db233d8fe0e0f2a14cc675a",
+  "site": "graz",
+  "test_sha256": "3bb3e7c81efcf3d81988933577ddc9e4bdc1289eeff11424747801c0c993b47c",
+  "evaluator_sha256": "e53ad50e087c8e8169b73282deb3e9d4601e225da20f2a3e5fda35abb197d62d",
+  "run_scores": [
+    {
+      "arm": "co2",
+      "seed": 41,
+      "cutoff": 0.52,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8591331839561462,
+          "balanced_accuracy": 0.7101037502288818,
+          "occupied_recall": 0.43609023094177246,
+          "empty_recall": 0.9841172695159912,
+          "auroc": 0.9254057215009535,
+          "brier": 0.12448009103536606,
+          "calibration_error": 0.19077519774145912,
+          "false_empty": 3000,
+          "false_occupied": 286
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.8833045363426208,
+          "balanced_accuracy": 0.6859250068664551,
+          "occupied_recall": 0.38288289308547974,
+          "empty_recall": 0.9889671206474304,
+          "auroc": 0.961611630652909,
+          "brier": 0.11806590855121613,
+          "calibration_error": 0.24146025720983744,
+          "false_empty": 685,
+          "false_occupied": 58
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.8643160462379456,
+        "balanced_accuracy": 0.7060591727495193,
+        "occupied_recall": 0.4269051253795624,
+        "empty_recall": 0.9852132201194763,
+        "auroc": 0.9267406532309648,
+        "brier": 0.1231047511100769,
+        "calibration_error": 0.18754332777461968,
+        "false_empty": 3685,
+        "false_occupied": 344
+      }
+    },
+    {
+      "arm": "logistic",
+      "seed": 41,
+      "cutoff": 0.45,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.9006301760673523,
+          "balanced_accuracy": 0.8310779631137848,
+          "occupied_recall": 0.7031955122947693,
+          "empty_recall": 0.9589604139328003,
+          "auroc": 0.8557793784038037,
+          "brier": 0.1725165694952011,
+          "calibration_error": 0.2859877880255226,
+          "false_empty": 1579,
+          "false_occupied": 739
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.9327784180641174,
+          "balanced_accuracy": 0.8967526853084564,
+          "occupied_recall": 0.8414414525032043,
+          "empty_recall": 0.9520639181137085,
+          "auroc": 0.9396336416309785,
+          "brier": 0.16768929362297058,
+          "calibration_error": 0.3176872335461667,
+          "false_empty": 176,
+          "false_occupied": 252
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.9075233936309814,
+        "balanced_accuracy": 0.8422313332557678,
+        "occupied_recall": 0.7270606756210327,
+        "empty_recall": 0.9574019908905029,
+        "auroc": 0.8707000022461767,
+        "brier": 0.17148150503635406,
+        "calibration_error": 0.2927156675796141,
+        "false_empty": 1755,
+        "false_occupied": 991
+      }
+    },
+    {
+      "arm": "gru",
+      "seed": 41,
+      "cutoff": 0.38,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8238521814346313,
+          "balanced_accuracy": 0.8443867862224579,
+          "occupied_recall": 0.8821428418159485,
+          "empty_recall": 0.8066307306289673,
+          "auroc": 0.9271921560579407,
+          "brier": 0.10343378037214279,
+          "calibration_error": 0.15865139024390373,
+          "false_empty": 627,
+          "false_occupied": 3482
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.8547196388244629,
+          "balanced_accuracy": 0.9002958834171295,
+          "occupied_recall": 0.9702702760696411,
+          "empty_recall": 0.8303214907646179,
+          "auroc": 0.972882488728028,
+          "brier": 0.08710712194442749,
+          "calibration_error": 0.1966444831341505,
+          "false_empty": 33,
+          "false_occupied": 892
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.8304708003997803,
+        "balanced_accuracy": 0.8546701669692993,
+        "occupied_recall": 0.8973561525344849,
+        "empty_recall": 0.8119841814041138,
+        "auroc": 0.9355950984413673,
+        "brier": 0.09993300586938858,
+        "calibration_error": 0.16679788935289253,
+        "false_empty": 660,
+        "false_occupied": 4374
+      }
+    },
+    {
+      "arm": "liquid",
+      "seed": 41,
+      "cutoff": 0.51,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8878552913665771,
+          "balanced_accuracy": 0.84134441614151,
+          "occupied_recall": 0.7558270692825317,
+          "empty_recall": 0.9268617630004883,
+          "auroc": 0.918979883971605,
+          "brier": 0.11550768464803696,
+          "calibration_error": 0.18497952659072325,
+          "false_empty": 1299,
+          "false_occupied": 1317
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.9129888415336609,
+          "balanced_accuracy": 0.9124850928783417,
+          "occupied_recall": 0.9117116928100586,
+          "empty_recall": 0.9132584929466248,
+          "auroc": 0.9677145187797651,
+          "brier": 0.10223948210477829,
+          "calibration_error": 0.21862789901933866,
+          "false_empty": 98,
+          "false_occupied": 456
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.8932444453239441,
+        "balanced_accuracy": 0.8532625138759613,
+        "occupied_recall": 0.7827371954917908,
+        "empty_recall": 0.9237878322601318,
+        "auroc": 0.9277039789148186,
+        "brier": 0.11266271024942398,
+        "calibration_error": 0.19217496879355167,
+        "false_empty": 1397,
+        "false_occupied": 1773
+      }
+    },
+    {
+      "arm": "wide_liquid",
+      "seed": 41,
+      "cutoff": 0.6,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8821108341217041,
+          "balanced_accuracy": 0.7523348927497864,
+          "occupied_recall": 0.5137218236923218,
+          "empty_recall": 0.990947961807251,
+          "auroc": 0.9297545315501783,
+          "brier": 0.10441610217094421,
+          "calibration_error": 0.16894920666891267,
+          "false_empty": 2587,
+          "false_occupied": 163
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.928066611289978,
+          "balanced_accuracy": 0.8292276263237,
+          "occupied_recall": 0.6774774789810181,
+          "empty_recall": 0.9809777736663818,
+          "auroc": 0.9716741470403255,
+          "brier": 0.0896696001291275,
+          "calibration_error": 0.19780065909435507,
+          "false_empty": 358,
+          "false_occupied": 100
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.8919647336006165,
+        "balanced_accuracy": 0.7653428316116333,
+        "occupied_recall": 0.5419906973838806,
+        "empty_recall": 0.988694965839386,
+        "auroc": 0.9371136977202377,
+        "brier": 0.10125414282083511,
+        "calibration_error": 0.1751355320411676,
+        "false_empty": 2945,
+        "false_occupied": 263
+      }
+    },
+    {
+      "arm": "moe",
+      "seed": 41,
+      "cutoff": 0.6,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8927423357963562,
+          "balanced_accuracy": 0.8035871386528015,
+          "occupied_recall": 0.6396616697311401,
+          "empty_recall": 0.9675126075744629,
+          "auroc": 0.925656850865432,
+          "brier": 0.10931738466024399,
+          "calibration_error": 0.16025481501128525,
+          "false_empty": 1917,
+          "false_occupied": 585
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.9370189905166626,
+          "balanced_accuracy": 0.9231284260749817,
+          "occupied_recall": 0.9018018245697021,
+          "empty_recall": 0.9444550275802612,
+          "auroc": 0.9722684640128049,
+          "brier": 0.08772506564855576,
+          "calibration_error": 0.18160060001537204,
+          "false_empty": 109,
+          "false_occupied": 292
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.9022361636161804,
+        "balanced_accuracy": 0.8236083686351776,
+        "occupied_recall": 0.6849144697189331,
+        "empty_recall": 0.9623022675514221,
+        "auroc": 0.9349093627596741,
+        "brier": 0.10468755662441254,
+        "calibration_error": 0.16367761927540414,
+        "false_empty": 2026,
+        "false_occupied": 877
+      },
+      "expert_weight_share": [
+        0.3983178734779358,
+        0.31782886385917664,
+        0.2838532328605652
+      ],
+      "expert_top_share": [
+        0.5451564192771912,
+        0.24865292012691498,
+        0.20619064569473267
+      ]
+    },
+    {
+      "arm": "delta",
+      "seed": 41,
+      "cutoff": 0.61,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8887984156608582,
+          "balanced_accuracy": 0.7952054142951965,
+          "occupied_recall": 0.6231203079223633,
+          "empty_recall": 0.9672905206680298,
+          "auroc": 0.9250134502831188,
+          "brier": 0.10639692097902298,
+          "calibration_error": 0.15506222167459782,
+          "false_empty": 2005,
+          "false_occupied": 589
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.9304224848747253,
+          "balanced_accuracy": 0.912737637758255,
+          "occupied_recall": 0.885585606098175,
+          "empty_recall": 0.939889669418335,
+          "auroc": 0.9687867056708601,
+          "brier": 0.09856616705656052,
+          "calibration_error": 0.20339860813692212,
+          "false_empty": 127,
+          "false_occupied": 316
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.8977234363555908,
+        "balanced_accuracy": 0.8147639632225037,
+        "occupied_recall": 0.6684292554855347,
+        "empty_recall": 0.9610986709594727,
+        "auroc": 0.9315150388214204,
+        "brier": 0.10471784323453903,
+        "calibration_error": 0.16515613295632647,
+        "false_empty": 2132,
+        "false_occupied": 905
+      },
+      "expert_weight_share": [
+        0.38342469930648804,
+        0.32337459921836853,
+        0.2932007610797882
+      ],
+      "expert_top_share": [
+        0.5628620386123657,
+        0.2542727589607239,
+        0.1828652322292328
+      ]
+    },
+    {
+      "arm": "delta_review",
+      "seed": 41,
+      "cutoff": 0.61,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8926137089729309,
+          "balanced_accuracy": 0.8036362826824188,
+          "occupied_recall": 0.6400375962257385,
+          "empty_recall": 0.9672349691390991,
+          "auroc": 0.9255555013902279,
+          "brier": 0.10614312440156937,
+          "calibration_error": 0.15717114639119245,
+          "false_empty": 1915,
+          "false_occupied": 590
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.9304224848747253,
+          "balanced_accuracy": 0.912737637758255,
+          "occupied_recall": 0.885585606098175,
+          "empty_recall": 0.939889669418335,
+          "auroc": 0.9687867056708601,
+          "brier": 0.09856616705656052,
+          "calibration_error": 0.20339860813692212,
+          "false_empty": 127,
+          "false_occupied": 316
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.9007206559181213,
+        "balanced_accuracy": 0.8217409253120422,
+        "occupied_recall": 0.6824261546134949,
+        "empty_recall": 0.9610556960105896,
+        "auroc": 0.9319947579851581,
+        "brier": 0.10451846569776535,
+        "calibration_error": 0.1656472864051466,
+        "false_empty": 2042,
+        "false_occupied": 906
+      },
+      "attempts": 7946,
+      "changes": 91,
+      "corrected": 90,
+      "broken": 1,
+      "guard_enabled": true
+    },
+    {
+      "arm": "co2",
+      "seed": 42,
+      "cutoff": 0.52,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8591331839561462,
+          "balanced_accuracy": 0.7101037502288818,
+          "occupied_recall": 0.43609023094177246,
+          "empty_recall": 0.9841172695159912,
+          "auroc": 0.9254057162815964,
+          "brier": 0.1167217418551445,
+          "calibration_error": 0.17333076329668984,
+          "false_empty": 3000,
+          "false_occupied": 286
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.8833045363426208,
+          "balanced_accuracy": 0.6859250068664551,
+          "occupied_recall": 0.38288289308547974,
+          "empty_recall": 0.9889671206474304,
+          "auroc": 0.9616154865156197,
+          "brier": 0.10769558697938919,
+          "calibration_error": 0.21500782063230872,
+          "false_empty": 685,
+          "false_occupied": 58
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.8643160462379456,
+        "balanced_accuracy": 0.7060591727495193,
+        "occupied_recall": 0.4269051253795624,
+        "empty_recall": 0.9852132201194763,
+        "auroc": 0.9267414052990517,
+        "brier": 0.11478636413812637,
+        "calibration_error": 0.17842621030285954,
+        "false_empty": 3685,
+        "false_occupied": 344
+      }
+    },
+    {
+      "arm": "logistic",
+      "seed": 42,
+      "cutoff": 0.45,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.9066746830940247,
+          "balanced_accuracy": 0.8203589022159576,
+          "occupied_recall": 0.6616541147232056,
+          "empty_recall": 0.9790636897087097,
+          "auroc": 0.862996240810278,
+          "brier": 0.16251151263713837,
+          "calibration_error": 0.2650067196082091,
+          "false_empty": 1800,
+          "false_occupied": 377
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.9403172731399536,
+          "balanced_accuracy": 0.8917238414287567,
+          "occupied_recall": 0.8171170949935913,
+          "empty_recall": 0.9663305878639221,
+          "auroc": 0.9511923184359935,
+          "brier": 0.15797816216945648,
+          "calibration_error": 0.29907609097426757,
+          "false_empty": 203,
+          "false_occupied": 177
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.9138883352279663,
+        "balanced_accuracy": 0.8323389291763306,
+        "occupied_recall": 0.6884914636611938,
+        "empty_recall": 0.9761863946914673,
+        "auroc": 0.8778032786424964,
+        "brier": 0.1615394949913025,
+        "calibration_error": 0.27205690542177763,
+        "false_empty": 2003,
+        "false_occupied": 554
+      }
+    },
+    {
+      "arm": "gru",
+      "seed": 42,
+      "cutoff": 0.32,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8054614663124084,
+          "balanced_accuracy": 0.8336004912853241,
+          "occupied_recall": 0.8853383660316467,
+          "empty_recall": 0.7818626165390015,
+          "auroc": 0.9245767258012861,
+          "brier": 0.09827953577041626,
+          "calibration_error": 0.14488496987178223,
+          "false_empty": 610,
+          "false_occupied": 3928
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.8083869814872742,
+          "balanced_accuracy": 0.8765020966529846,
+          "occupied_recall": 0.9810810685157776,
+          "empty_recall": 0.7719231247901917,
+          "auroc": 0.9717421815957102,
+          "brier": 0.08813649415969849,
+          "calibration_error": 0.1989418938755989,
+          "false_empty": 21,
+          "false_occupied": 1199
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.8060887455940247,
+        "balanced_accuracy": 0.8407414257526398,
+        "occupied_recall": 0.9018662571907043,
+        "empty_recall": 0.7796165943145752,
+        "auroc": 0.9312709676582646,
+        "brier": 0.09610465914011002,
+        "calibration_error": 0.15264825939084403,
+        "false_empty": 631,
+        "false_occupied": 5127
+      }
+    },
+    {
+      "arm": "liquid",
+      "seed": 42,
+      "cutoff": 0.38,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8768808841705322,
+          "balanced_accuracy": 0.8558231294155121,
+          "occupied_recall": 0.817105233669281,
+          "empty_recall": 0.8945410251617432,
+          "auroc": 0.9245758228525164,
+          "brier": 0.0989307165145874,
+          "calibration_error": 0.1492958818016632,
+          "false_empty": 973,
+          "false_occupied": 1899
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.8878592848777771,
+          "balanced_accuracy": 0.9157449305057526,
+          "occupied_recall": 0.9585585594177246,
+          "empty_recall": 0.8729313015937805,
+          "auroc": 0.971218127010404,
+          "brier": 0.08770550787448883,
+          "calibration_error": 0.2023469065898098,
+          "false_empty": 46,
+          "false_occupied": 668
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.8792348504066467,
+        "balanced_accuracy": 0.8655909895896912,
+        "occupied_recall": 0.8415241241455078,
+        "empty_recall": 0.8896578550338745,
+        "auroc": 0.9312389964082565,
+        "brier": 0.09652380645275116,
+        "calibration_error": 0.16067110887888703,
+        "false_empty": 1019,
+        "false_occupied": 2567
+      }
+    },
+    {
+      "arm": "wide_liquid",
+      "seed": 42,
+      "cutoff": 0.51,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.9035024046897888,
+          "balanced_accuracy": 0.8159202933311462,
+          "occupied_recall": 0.6548871994018555,
+          "empty_recall": 0.976953387260437,
+          "auroc": 0.9274396788466974,
+          "brier": 0.10655045509338379,
+          "calibration_error": 0.17489412607937993,
+          "false_empty": 1836,
+          "false_occupied": 415
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.9420449137687683,
+          "balanced_accuracy": 0.9233292639255524,
+          "occupied_recall": 0.8945946097373962,
+          "empty_recall": 0.9520639181137085,
+          "auroc": 0.9712361210363873,
+          "brier": 0.09551024436950684,
+          "calibration_error": 0.2104943649173947,
+          "false_empty": 117,
+          "false_occupied": 252
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.9117667078971863,
+        "balanced_accuracy": 0.8337982892990112,
+        "occupied_recall": 0.6962674856185913,
+        "empty_recall": 0.9713290929794312,
+        "auroc": 0.9340169554251585,
+        "brier": 0.10418321192264557,
+        "calibration_error": 0.18247649350792017,
+        "false_empty": 1953,
+        "false_occupied": 667
+      }
+    },
+    {
+      "arm": "moe",
+      "seed": 42,
+      "cutoff": 0.53,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8989582657814026,
+          "balanced_accuracy": 0.8482712209224701,
+          "occupied_recall": 0.755075216293335,
+          "empty_recall": 0.9414672255516052,
+          "auroc": 0.9254828218433016,
+          "brier": 0.1238970085978508,
+          "calibration_error": 0.21148637670557946,
+          "false_empty": 1303,
+          "false_occupied": 1054
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.9400031566619873,
+          "balanced_accuracy": 0.9256462156772614,
+          "occupied_recall": 0.9036036133766174,
+          "empty_recall": 0.9476888179779053,
+          "auroc": 0.9726684455046639,
+          "brier": 0.08986466377973557,
+          "calibration_error": 0.2098478720872663,
+          "false_empty": 107,
+          "false_occupied": 275
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.9077591300010681,
+        "balanced_accuracy": 0.8617942631244659,
+        "occupied_recall": 0.7807154059410095,
+        "empty_recall": 0.9428731203079224,
+        "auroc": 0.9364895346884553,
+        "brier": 0.11659979075193405,
+        "calibration_error": 0.2110210538667161,
+        "false_empty": 1410,
+        "false_occupied": 1329
+      },
+      "expert_weight_share": [
+        0.39290013909339905,
+        0.3297714293003082,
+        0.2773284614086151
+      ],
+      "expert_top_share": [
+        0.5638049840927124,
+        0.20964673161506653,
+        0.22654829919338226
+      ]
+    },
+    {
+      "arm": "delta",
+      "seed": 42,
+      "cutoff": 0.52,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8774810433387756,
+          "balanced_accuracy": 0.8476035296916962,
+          "occupied_recall": 0.7926691770553589,
+          "empty_recall": 0.9025378823280334,
+          "auroc": 0.921903423313657,
+          "brier": 0.12491186708211899,
+          "calibration_error": 0.20398599020700203,
+          "false_empty": 1103,
+          "false_occupied": 1755
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.924768328666687,
+          "balanced_accuracy": 0.9245932102203369,
+          "occupied_recall": 0.9243243336677551,
+          "empty_recall": 0.9248620867729187,
+          "auroc": 0.9716353313557042,
+          "brier": 0.09592781215906143,
+          "calibration_error": 0.208897614502348,
+          "false_empty": 84,
+          "false_occupied": 395
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.8876203894615173,
+        "balanced_accuracy": 0.8614895641803741,
+        "occupied_recall": 0.8153966069221497,
+        "empty_recall": 0.9075825214385986,
+        "auroc": 0.9327413242762498,
+        "brier": 0.11869709193706512,
+        "calibration_error": 0.2050391520242556,
+        "false_empty": 1187,
+        "false_occupied": 2150
+      },
+      "expert_weight_share": [
+        0.3802376687526703,
+        0.3414306938648224,
+        0.2783316373825073
+      ],
+      "expert_top_share": [
+        0.525009274482727,
+        0.2498568743467331,
+        0.22513386607170105
+      ]
+    },
+    {
+      "arm": "delta_review",
+      "seed": 42,
+      "cutoff": 0.52,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8799245357513428,
+          "balanced_accuracy": 0.847067266702652,
+          "occupied_recall": 0.7866541147232056,
+          "empty_recall": 0.9074804186820984,
+          "auroc": 0.9215006664075082,
+          "brier": 0.12465958297252655,
+          "calibration_error": 0.20359458326856839,
+          "false_empty": 1135,
+          "false_occupied": 1666
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.9242971539497375,
+          "balanced_accuracy": 0.9250185489654541,
+          "occupied_recall": 0.9261261224746704,
+          "empty_recall": 0.9239109754562378,
+          "auroc": 0.9716401297626331,
+          "brier": 0.09596940875053406,
+          "calibration_error": 0.20851003204006702,
+          "false_empty": 82,
+          "false_occupied": 400
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.8894389271736145,
+        "balanced_accuracy": 0.8609620928764343,
+        "occupied_recall": 0.8107309341430664,
+        "empty_recall": 0.9111932516098022,
+        "auroc": 0.9323970509037117,
+        "brier": 0.11850780993700027,
+        "calibration_error": 0.20464854206511518,
+        "false_empty": 1217,
+        "false_occupied": 2066
+      },
+      "attempts": 2124,
+      "changes": 264,
+      "corrected": 159,
+      "broken": 105,
+      "guard_enabled": true
+    },
+    {
+      "arm": "co2",
+      "seed": 43,
+      "cutoff": 0.52,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8591331839561462,
+          "balanced_accuracy": 0.7101037502288818,
+          "occupied_recall": 0.43609023094177246,
+          "empty_recall": 0.9841172695159912,
+          "auroc": 0.9254057267203105,
+          "brier": 0.1176532655954361,
+          "calibration_error": 0.17781292370636947,
+          "false_empty": 3000,
+          "false_occupied": 286
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.8833045363426208,
+          "balanced_accuracy": 0.6859250068664551,
+          "occupied_recall": 0.38288289308547974,
+          "empty_recall": 0.9889671206474304,
+          "auroc": 0.9616169431748659,
+          "brier": 0.10898485034704208,
+          "calibration_error": 0.21759620076045394,
+          "false_empty": 685,
+          "false_occupied": 58
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.8643160462379456,
+        "balanced_accuracy": 0.7060591727495193,
+        "occupied_recall": 0.4269051253795624,
+        "empty_recall": 0.9852132201194763,
+        "auroc": 0.9267416225631657,
+        "brier": 0.1157945841550827,
+        "calibration_error": 0.1812806031666696,
+        "false_empty": 3685,
+        "false_occupied": 344
+      }
+    },
+    {
+      "arm": "logistic",
+      "seed": 43,
+      "cutoff": 0.44,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8935568332672119,
+          "balanced_accuracy": 0.8366277515888214,
+          "occupied_recall": 0.7319548726081848,
+          "empty_recall": 0.941300630569458,
+          "auroc": 0.8583104064375967,
+          "brier": 0.17195919156074524,
+          "calibration_error": 0.2845908077506465,
+          "false_empty": 1426,
+          "false_occupied": 1057
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.9252395033836365,
+          "balanced_accuracy": 0.9056902229785919,
+          "occupied_recall": 0.8756756782531738,
+          "empty_recall": 0.93570476770401,
+          "auroc": 0.9411399986633009,
+          "brier": 0.16734600067138672,
+          "calibration_error": 0.31617537011334207,
+          "false_empty": 138,
+          "false_occupied": 338
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.9003502130508423,
+        "balanced_accuracy": 0.8484006524085999,
+        "occupied_recall": 0.7567651867866516,
+        "empty_recall": 0.9400361180305481,
+        "auroc": 0.8729590610232725,
+        "brier": 0.17097003757953644,
+        "calibration_error": 0.29132492611825,
+        "false_empty": 1564,
+        "false_occupied": 1395
+      }
+    },
+    {
+      "arm": "gru",
+      "seed": 43,
+      "cutoff": 0.35,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.7850987911224365,
+          "balanced_accuracy": 0.8236558437347412,
+          "occupied_recall": 0.8945488929748535,
+          "empty_recall": 0.7527627944946289,
+          "auroc": 0.9188986968726865,
+          "brier": 0.10971654951572418,
+          "calibration_error": 0.1785545092780012,
+          "false_empty": 561,
+          "false_occupied": 4452
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.8146693706512451,
+          "balanced_accuracy": 0.8785298764705658,
+          "occupied_recall": 0.976576566696167,
+          "empty_recall": 0.7804831862449646,
+          "auroc": 0.9695216331035239,
+          "brier": 0.09726797044277191,
+          "calibration_error": 0.21979855966128525,
+          "false_empty": 26,
+          "false_occupied": 1154
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.7914393544197083,
+        "balanced_accuracy": 0.833867996931076,
+        "occupied_recall": 0.9087091684341431,
+        "empty_recall": 0.759026825428009,
+        "auroc": 0.9275030196369323,
+        "brier": 0.10704731941223145,
+        "calibration_error": 0.18352511835382757,
+        "false_empty": 587,
+        "false_occupied": 5606
+      }
+    },
+    {
+      "arm": "liquid",
+      "seed": 43,
+      "cutoff": 0.42,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8405709862709045,
+          "balanced_accuracy": 0.8430980145931244,
+          "occupied_recall": 0.847744345664978,
+          "empty_recall": 0.8384516835212708,
+          "auroc": 0.919082976712064,
+          "brier": 0.11444582045078278,
+          "calibration_error": 0.18208526684111348,
+          "false_empty": 810,
+          "false_occupied": 2909
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.8446677923202515,
+          "balanced_accuracy": 0.892787367105484,
+          "occupied_recall": 0.9666666388511658,
+          "empty_recall": 0.8189080953598022,
+          "auroc": 0.9681483461776405,
+          "brier": 0.10798715054988861,
+          "calibration_error": 0.23399046946360613,
+          "false_empty": 37,
+          "false_occupied": 952
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.8414494395256042,
+        "balanced_accuracy": 0.8511545658111572,
+        "occupied_recall": 0.8682737350463867,
+        "empty_recall": 0.8340353965759277,
+        "auroc": 0.9263642916200496,
+        "brier": 0.11306095123291016,
+        "calibration_error": 0.19320207838563874,
+        "false_empty": 847,
+        "false_occupied": 3861
+      }
+    },
+    {
+      "arm": "wide_liquid",
+      "seed": 43,
+      "cutoff": 0.57,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8905560374259949,
+          "balanced_accuracy": 0.7749554216861725,
+          "occupied_recall": 0.5624060034751892,
+          "empty_recall": 0.9875048398971558,
+          "auroc": 0.9251422953312642,
+          "brier": 0.10558345913887024,
+          "calibration_error": 0.16470761178061366,
+          "false_empty": 2328,
+          "false_occupied": 225
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.9409455060958862,
+          "balanced_accuracy": 0.8874848783016205,
+          "occupied_recall": 0.8054053783416748,
+          "empty_recall": 0.9695643782615662,
+          "auroc": 0.9704784868566493,
+          "brier": 0.09058014303445816,
+          "calibration_error": 0.19498817648855038,
+          "false_empty": 216,
+          "false_occupied": 160
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.9013605713844299,
+        "balanced_accuracy": 0.7939026951789856,
+        "occupied_recall": 0.6043545603752136,
+        "empty_recall": 0.9834508299827576,
+        "auroc": 0.9326423086631827,
+        "brier": 0.10236643254756927,
+        "calibration_error": 0.16954637528397143,
+        "false_empty": 2544,
+        "false_occupied": 385
+      }
+    },
+    {
+      "arm": "moe",
+      "seed": 43,
+      "cutoff": 0.32,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.6256698369979858,
+          "balanced_accuracy": 0.7338326871395111,
+          "occupied_recall": 0.9327067732810974,
+          "empty_recall": 0.5349586009979248,
+          "auroc": 0.910265128723959,
+          "brier": 0.12688110768795013,
+          "calibration_error": 0.21556221618084237,
+          "false_empty": 358,
+          "false_occupied": 8374
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.7340977191925049,
+          "balanced_accuracy": 0.830093115568161,
+          "occupied_recall": 0.977477490901947,
+          "empty_recall": 0.682708740234375,
+          "auroc": 0.9650781369156869,
+          "brier": 0.10185316205024719,
+          "calibration_error": 0.21953396094613709,
+          "false_empty": 25,
+          "false_occupied": 1668
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.6489189863204956,
+        "balanced_accuracy": 0.7543907165527344,
+        "occupied_recall": 0.9404354691505432,
+        "empty_recall": 0.5683459639549255,
+        "auroc": 0.9221656993845476,
+        "brier": 0.12151461094617844,
+        "calibration_error": 0.21641383529640734,
+        "false_empty": 383,
+        "false_occupied": 10042
+      },
+      "expert_weight_share": [
+        0.3513340651988983,
+        0.30908674001693726,
+        0.33957919478416443
+      ],
+      "expert_top_share": [
+        0.4925658404827118,
+        0.2893766462802887,
+        0.2180575132369995
+      ]
+    },
+    {
+      "arm": "delta",
+      "seed": 43,
+      "cutoff": 0.53,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8857547044754028,
+          "balanced_accuracy": 0.834951251745224,
+          "occupied_recall": 0.74154132604599,
+          "empty_recall": 0.928361177444458,
+          "auroc": 0.9148191534536904,
+          "brier": 0.12107416987419128,
+          "calibration_error": 0.19186737327254377,
+          "false_empty": 1375,
+          "false_occupied": 1290
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.9241400957107544,
+          "balanced_accuracy": 0.9192380011081696,
+          "occupied_recall": 0.9117116928100586,
+          "empty_recall": 0.9267643094062805,
+          "auroc": 0.9687450623535844,
+          "brier": 0.10227415710687637,
+          "calibration_error": 0.22123939398079528,
+          "false_empty": 98,
+          "false_occupied": 385
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.8939853310585022,
+        "balanced_accuracy": 0.8494589626789093,
+        "occupied_recall": 0.7709175944328308,
+        "empty_recall": 0.9280003309249878,
+        "auroc": 0.9253427792639386,
+        "brier": 0.11704306304454803,
+        "calibration_error": 0.19814633829082595,
+        "false_empty": 1473,
+        "false_occupied": 1675
+      },
+      "expert_weight_share": [
+        0.32947319746017456,
+        0.3261038661003113,
+        0.34442296624183655
+      ],
+      "expert_top_share": [
+        0.4732900559902191,
+        0.2608313262462616,
+        0.2658786177635193
+      ]
+    },
+    {
+      "arm": "delta_review",
+      "seed": 43,
+      "cutoff": 0.53,
+      "rooms": {
+        "Room_A": {
+          "rows": 23327,
+          "occupied": 5320,
+          "accuracy": 0.8857547044754028,
+          "balanced_accuracy": 0.834951251745224,
+          "occupied_recall": 0.74154132604599,
+          "empty_recall": 0.928361177444458,
+          "auroc": 0.9148191534536904,
+          "brier": 0.12107416987419128,
+          "calibration_error": 0.19186737327254377,
+          "false_empty": 1375,
+          "false_occupied": 1290
+        },
+        "Room_B": {
+          "rows": 6367,
+          "occupied": 1110,
+          "accuracy": 0.9241400957107544,
+          "balanced_accuracy": 0.9192380011081696,
+          "occupied_recall": 0.9117116928100586,
+          "empty_recall": 0.9267643094062805,
+          "auroc": 0.9687450623535844,
+          "brier": 0.10227415710687637,
+          "calibration_error": 0.22123939398079528,
+          "false_empty": 98,
+          "false_occupied": 385
+        }
+      },
+      "pooled": {
+        "rows": 29694,
+        "occupied": 6430,
+        "accuracy": 0.8939853310585022,
+        "balanced_accuracy": 0.8494589626789093,
+        "occupied_recall": 0.7709175944328308,
+        "empty_recall": 0.9280003309249878,
+        "auroc": 0.9253427792639386,
+        "brier": 0.11704306304454803,
+        "calibration_error": 0.19814633829082595,
+        "false_empty": 1473,
+        "false_occupied": 1675
+      },
+      "attempts": 0,
+      "changes": 0,
+      "corrected": 0,
+      "broken": 0,
+      "guard_enabled": false
+    }
+  ],
+  "summary": {
+    "co2": {
+      "accuracy": {
+        "mean": 0.8643160462379456,
+        "min": 0.8643160462379456,
+        "max": 0.8643160462379456
+      },
+      "balanced_accuracy": {
+        "mean": 0.7060591727495193,
+        "min": 0.7060591727495193,
+        "max": 0.7060591727495193
+      },
+      "auroc": {
+        "mean": 0.9267412270310608,
+        "min": 0.9267406532309648,
+        "max": 0.9267416225631657
+      },
+      "brier": {
+        "mean": 0.11789523313442866,
+        "min": 0.11478636413812637,
+        "max": 0.1231047511100769
+      },
+      "calibration_error": {
+        "mean": 0.1824167137480496,
+        "min": 0.17842621030285954,
+        "max": 0.18754332777461968
+      },
+      "occupied_recall": {
+        "mean": 0.4269051253795624,
+        "min": 0.4269051253795624,
+        "max": 0.4269051253795624
+      },
+      "empty_recall": {
+        "mean": 0.9852132201194763,
+        "min": 0.9852132201194763,
+        "max": 0.9852132201194763
+      },
+      "per_room_balanced_accuracy": {
+        "Room_A": {
+          "mean": 0.7101037502288818,
+          "min": 0.7101037502288818,
+          "max": 0.7101037502288818
+        },
+        "Room_B": {
+          "mean": 0.6859250068664551,
+          "min": 0.6859250068664551,
+          "max": 0.6859250068664551
+        }
+      }
+    },
+    "logistic": {
+      "accuracy": {
+        "mean": 0.9072539806365967,
+        "min": 0.9003502130508423,
+        "max": 0.9138883352279663
+      },
+      "balanced_accuracy": {
+        "mean": 0.8409903049468994,
+        "min": 0.8323389291763306,
+        "max": 0.8484006524085999
+      },
+      "auroc": {
+        "mean": 0.8738207806373152,
+        "min": 0.8707000022461767,
+        "max": 0.8778032786424964
+      },
+      "brier": {
+        "mean": 0.167997012535731,
+        "min": 0.1615394949913025,
+        "max": 0.17148150503635406
+      },
+      "calibration_error": {
+        "mean": 0.28536583303988056,
+        "min": 0.27205690542177763,
+        "max": 0.2927156675796141
+      },
+      "occupied_recall": {
+        "mean": 0.7241057753562927,
+        "min": 0.6884914636611938,
+        "max": 0.7567651867866516
+      },
+      "empty_recall": {
+        "mean": 0.9578748345375061,
+        "min": 0.9400361180305481,
+        "max": 0.9761863946914673
+      },
+      "per_room_balanced_accuracy": {
+        "Room_A": {
+          "mean": 0.829354872306188,
+          "min": 0.8203589022159576,
+          "max": 0.8366277515888214
+        },
+        "Room_B": {
+          "mean": 0.8980555832386017,
+          "min": 0.8917238414287567,
+          "max": 0.9056902229785919
+        }
+      }
+    },
+    "gru": {
+      "accuracy": {
+        "mean": 0.8093329668045044,
+        "min": 0.7914393544197083,
+        "max": 0.8304708003997803
+      },
+      "balanced_accuracy": {
+        "mean": 0.843093196551005,
+        "min": 0.833867996931076,
+        "max": 0.8546701669692993
+      },
+      "auroc": {
+        "mean": 0.9314563619121881,
+        "min": 0.9275030196369323,
+        "max": 0.9355950984413673
+      },
+      "brier": {
+        "mean": 0.10102832814057668,
+        "min": 0.09610465914011002,
+        "max": 0.10704731941223145
+      },
+      "calibration_error": {
+        "mean": 0.16765708903252138,
+        "min": 0.15264825939084403,
+        "max": 0.18352511835382757
+      },
+      "occupied_recall": {
+        "mean": 0.9026438593864441,
+        "min": 0.8973561525344849,
+        "max": 0.9087091684341431
+      },
+      "empty_recall": {
+        "mean": 0.783542533715566,
+        "min": 0.759026825428009,
+        "max": 0.8119841814041138
+      },
+      "per_room_balanced_accuracy": {
+        "Room_A": {
+          "mean": 0.8338810404141744,
+          "min": 0.8236558437347412,
+          "max": 0.8443867862224579
+        },
+        "Room_B": {
+          "mean": 0.8851092855135599,
+          "min": 0.8765020966529846,
+          "max": 0.9002958834171295
+        }
+      }
+    },
+    "liquid": {
+      "accuracy": {
+        "mean": 0.8713095784187317,
+        "min": 0.8414494395256042,
+        "max": 0.8932444453239441
+      },
+      "balanced_accuracy": {
+        "mean": 0.8566693564256033,
+        "min": 0.8511545658111572,
+        "max": 0.8655909895896912
+      },
+      "auroc": {
+        "mean": 0.9284357556477083,
+        "min": 0.9263642916200496,
+        "max": 0.9312389964082565
+      },
+      "brier": {
+        "mean": 0.10741582264502843,
+        "min": 0.09652380645275116,
+        "max": 0.11306095123291016
+      },
+      "calibration_error": {
+        "mean": 0.18201605201935914,
+        "min": 0.16067110887888703,
+        "max": 0.19320207838563874
+      },
+      "occupied_recall": {
+        "mean": 0.8308450182278951,
+        "min": 0.7827371954917908,
+        "max": 0.8682737350463867
+      },
+      "empty_recall": {
+        "mean": 0.8824936946233114,
+        "min": 0.8340353965759277,
+        "max": 0.9237878322601318
+      },
+      "per_room_balanced_accuracy": {
+        "Room_A": {
+          "mean": 0.8467551867167155,
+          "min": 0.84134441614151,
+          "max": 0.8558231294155121
+        },
+        "Room_B": {
+          "mean": 0.9070057968298594,
+          "min": 0.892787367105484,
+          "max": 0.9157449305057526
+        }
+      }
+    },
+    "wide_liquid": {
+      "accuracy": {
+        "mean": 0.9016973376274109,
+        "min": 0.8919647336006165,
+        "max": 0.9117667078971863
+      },
+      "balanced_accuracy": {
+        "mean": 0.7976812720298767,
+        "min": 0.7653428316116333,
+        "max": 0.8337982892990112
+      },
+      "auroc": {
+        "mean": 0.9345909872695263,
+        "min": 0.9326423086631827,
+        "max": 0.9371136977202377
+      },
+      "brier": {
+        "mean": 0.10260126243034999,
+        "min": 0.10125414282083511,
+        "max": 0.10418321192264557
+      },
+      "calibration_error": {
+        "mean": 0.17571946694435306,
+        "min": 0.16954637528397143,
+        "max": 0.18247649350792017
+      },
+      "occupied_recall": {
+        "mean": 0.6142042477925619,
+        "min": 0.5419906973838806,
+        "max": 0.6962674856185913
+      },
+      "empty_recall": {
+        "mean": 0.9811582962671915,
+        "min": 0.9713290929794312,
+        "max": 0.988694965839386
+      },
+      "per_room_balanced_accuracy": {
+        "Room_A": {
+          "mean": 0.781070202589035,
+          "min": 0.7523348927497864,
+          "max": 0.8159202933311462
+        },
+        "Room_B": {
+          "mean": 0.8800139228502909,
+          "min": 0.8292276263237,
+          "max": 0.9233292639255524
+        }
+      }
+    },
+    "moe": {
+      "accuracy": {
+        "mean": 0.8196380933125814,
+        "min": 0.6489189863204956,
+        "max": 0.9077591300010681
+      },
+      "balanced_accuracy": {
+        "mean": 0.8132644494374593,
+        "min": 0.7543907165527344,
+        "max": 0.8617942631244659
+      },
+      "auroc": {
+        "mean": 0.9311881989442257,
+        "min": 0.9221656993845476,
+        "max": 0.9364895346884553
+      },
+      "brier": {
+        "mean": 0.11426731944084167,
+        "min": 0.10468755662441254,
+        "max": 0.12151461094617844
+      },
+      "calibration_error": {
+        "mean": 0.19703750281284252,
+        "min": 0.16367761927540414,
+        "max": 0.21641383529640734
+      },
+      "occupied_recall": {
+        "mean": 0.8020217816034952,
+        "min": 0.6849144697189331,
+        "max": 0.9404354691505432
+      },
+      "empty_recall": {
+        "mean": 0.8245071172714233,
+        "min": 0.5683459639549255,
+        "max": 0.9623022675514221
+      },
+      "per_room_balanced_accuracy": {
+        "Room_A": {
+          "mean": 0.7952303489049276,
+          "min": 0.7338326871395111,
+          "max": 0.8482712209224701
+        },
+        "Room_B": {
+          "mean": 0.8929559191068014,
+          "min": 0.830093115568161,
+          "max": 0.9256462156772614
+        }
+      }
+    },
+    "delta": {
+      "accuracy": {
+        "mean": 0.8931097189585367,
+        "min": 0.8876203894615173,
+        "max": 0.8977234363555908
+      },
+      "balanced_accuracy": {
+        "mean": 0.8419041633605957,
+        "min": 0.8147639632225037,
+        "max": 0.8614895641803741
+      },
+      "auroc": {
+        "mean": 0.9298663807872029,
+        "min": 0.9253427792639386,
+        "max": 0.9327413242762498
+      },
+      "brier": {
+        "mean": 0.11348599940538406,
+        "min": 0.10471784323453903,
+        "max": 0.11869709193706512
+      },
+      "calibration_error": {
+        "mean": 0.189447207757136,
+        "min": 0.16515613295632647,
+        "max": 0.2050391520242556
+      },
+      "occupied_recall": {
+        "mean": 0.7515811522801717,
+        "min": 0.6684292554855347,
+        "max": 0.8153966069221497
+      },
+      "empty_recall": {
+        "mean": 0.9322271744410197,
+        "min": 0.9075825214385986,
+        "max": 0.9610986709594727
+      },
+      "per_room_balanced_accuracy": {
+        "Room_A": {
+          "mean": 0.8259200652440389,
+          "min": 0.7952054142951965,
+          "max": 0.8476035296916962
+        },
+        "Room_B": {
+          "mean": 0.9188562830289205,
+          "min": 0.912737637758255,
+          "max": 0.9245932102203369
+        }
+      }
+    },
+    "delta_review": {
+      "accuracy": {
+        "mean": 0.8947149713834127,
+        "min": 0.8894389271736145,
+        "max": 0.9007206559181213
+      },
+      "balanced_accuracy": {
+        "mean": 0.8440539936224619,
+        "min": 0.8217409253120422,
+        "max": 0.8609620928764343
+      },
+      "auroc": {
+        "mean": 0.9299115293842695,
+        "min": 0.9253427792639386,
+        "max": 0.9323970509037117
+      },
+      "brier": {
+        "mean": 0.11335644622643788,
+        "min": 0.10451846569776535,
+        "max": 0.11850780993700027
+      },
+      "calibration_error": {
+        "mean": 0.18948072225369592,
+        "min": 0.1656472864051466,
+        "max": 0.20464854206511518
+      },
+      "occupied_recall": {
+        "mean": 0.7546915610631307,
+        "min": 0.6824261546134949,
+        "max": 0.8107309341430664
+      },
+      "empty_recall": {
+        "mean": 0.9334164261817932,
+        "min": 0.9111932516098022,
+        "max": 0.9610556960105896
+      },
+      "per_room_balanced_accuracy": {
+        "Room_A": {
+          "mean": 0.8285516003767649,
+          "min": 0.8036362826824188,
+          "max": 0.847067266702652
+        },
+        "Room_B": {
+          "mean": 0.9189980626106262,
+          "min": 0.912737637758255,
+          "max": 0.9250185489654541
+        }
+      }
+    }
+  }
+}

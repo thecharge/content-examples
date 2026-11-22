@@ -1,0 +1,264 @@
+{
+  "summary": {
+    "budget": 25,
+    "config": {
+      "adaptive.py": "9eb9d4619d2e2788b4c1438600b8ec68c368dc579990646394c6d0014426cf0a",
+      "experiment.py": "fa9ec6e6bfa0b8da8b3a74a49503eff2613429871739254b116c5c5bd68b1d60",
+      "graz.py": "f62d775c5da0916177de5107d8326cae9f449bd0911a6b0983ea906704e60434",
+      "protocol.md": "f7dce9b91851eb0eb76507ae23965073e873e1ba4e78f26044758cad88f1ddd3"
+    },
+    "epochs": 7,
+    "fit_positive": 276,
+    "fit_ranges": [
+      [
+        244,
+        405
+      ],
+      [
+        893,
+        1055
+      ],
+      [
+        1544,
+        1705
+      ],
+      [
+        2193,
+        2355
+      ],
+      [
+        2844,
+        3005
+      ],
+      [
+        3493,
+        3655
+      ],
+      [
+        4144,
+        4305
+      ],
+      [
+        4793,
+        4955
+      ],
+      [
+        5444,
+        5605
+      ],
+      [
+        6093,
+        6255
+      ]
+    ],
+    "fit_rows": 1625,
+    "fit_seconds": 0.7840949920937419,
+    "fit_windows": 1555,
+    "model": "current",
+    "parameters": 49,
+    "reload_exact": true,
+    "seed": 41,
+    "selected_epoch": 5,
+    "task": "occupancy",
+    "tests": {
+      "Room_A": {
+        "accepted": {
+          "accuracy": 0.8265825004383658,
+          "balanced_accuracy": 0.6835753904895616,
+          "bce": 0.42987242341041565,
+          "fn": 4110,
+          "fp": 835,
+          "n": 28515,
+          "tn": 20763,
+          "tp": 2807
+        },
+        "all": {
+          "accuracy": 0.8265825004383658,
+          "balanced_accuracy": 0.6835753904895616,
+          "bce": 0.42987242341041565,
+          "fn": 4110,
+          "fp": 835,
+          "n": 28515,
+          "tn": 20763,
+          "tp": 2807
+        },
+        "coverage": 1,
+        "examples": {},
+        "join": {
+          "ambiguous_or_nonexistent_local_time": 12,
+          "eligible": 28515,
+          "intermediate_label_matches": 23855,
+          "missing_or_invalid_history": 9,
+          "occupied": 6917,
+          "raw_image_rows": 28536,
+          "sensor_rows": 28548,
+          "sensor_without_raw_label": 12
+        },
+        "routes": [
+          {},
+          {},
+          {}
+        ],
+        "seconds": 0.1843850859440863
+      },
+      "Room_B": {
+        "accepted": {
+          "accuracy": 0.8311356434631504,
+          "balanced_accuracy": 0.6305092002372411,
+          "bce": 0.41745954751968384,
+          "fn": 1533,
+          "fp": 119,
+          "n": 9783,
+          "tn": 7545,
+          "tp": 586
+        },
+        "all": {
+          "accuracy": 0.8311356434631504,
+          "balanced_accuracy": 0.6305092002372411,
+          "bce": 0.41745954751968384,
+          "fn": 1533,
+          "fp": 119,
+          "n": 9783,
+          "tn": 7545,
+          "tp": 586
+        },
+        "coverage": 1,
+        "examples": {},
+        "join": {
+          "eligible": 9783,
+          "intermediate_label_matches": 6451,
+          "missing_or_invalid_history": 9,
+          "occupied": 2119,
+          "raw_image_rows": 9792,
+          "sensor_rows": 9792,
+          "sensor_without_raw_label": 0
+        },
+        "routes": [
+          {},
+          {},
+          {}
+        ],
+        "seconds": 0.059844795847311616
+      },
+      "apartments": {
+        "accepted": {
+          "accuracy": 0.7582582582582582,
+          "balanced_accuracy": 0.5612971823498139,
+          "bce": 0.5428359508514404,
+          "fn": 2308,
+          "fp": 268,
+          "n": 10656,
+          "tn": 7652,
+          "tp": 428
+        },
+        "all": {
+          "accuracy": 0.7582582582582582,
+          "balanced_accuracy": 0.5612971823498139,
+          "bce": 0.5428359508514404,
+          "fn": 2308,
+          "fp": 268,
+          "n": 10656,
+          "tn": 7652,
+          "tp": 428
+        },
+        "coverage": 1,
+        "examples": {},
+        "routes": [
+          {},
+          {},
+          {}
+        ],
+        "seconds": 0.06730556907132268
+      },
+      "datatest.txt": {
+        "accepted": {
+          "accuracy": 0.8607975921745673,
+          "balanced_accuracy": 0.8637676014310678,
+          "bce": 0.3926370143890381,
+          "fn": 121,
+          "fp": 249,
+          "n": 2658,
+          "tn": 1444,
+          "tp": 844
+        },
+        "all": {
+          "accuracy": 0.8607975921745673,
+          "balanced_accuracy": 0.8637676014310678,
+          "bce": 0.3926370143890381,
+          "fn": 121,
+          "fp": 249,
+          "n": 2658,
+          "tn": 1444,
+          "tp": 844
+        },
+        "coverage": 1,
+        "examples": {},
+        "routes": [
+          {},
+          {},
+          {}
+        ],
+        "seconds": 0.02175807091407478
+      },
+      "datatest2.txt": {
+        "accepted": {
+          "accuracy": 0.7623396613648025,
+          "balanced_accuracy": 0.7544763586645904,
+          "bce": 0.5388407707214355,
+          "fn": 529,
+          "fp": 1787,
+          "n": 9745,
+          "tn": 5916,
+          "tp": 1513
+        },
+        "all": {
+          "accuracy": 0.7623396613648025,
+          "balanced_accuracy": 0.7544763586645904,
+          "bce": 0.5388407707214355,
+          "fn": 529,
+          "fp": 1787,
+          "n": 9745,
+          "tn": 5916,
+          "tp": 1513
+        },
+        "coverage": 1,
+        "examples": {},
+        "routes": [
+          {},
+          {},
+          {}
+        ],
+        "seconds": 0.06840389408171177
+      }
+    },
+    "updates": 49,
+    "validation_loss": [
+      0.6114468178131178,
+      0.5211273539620098,
+      0.4379750340083992,
+      0.38869861504267944,
+      0.3835903948268564,
+      0.4235440032114901,
+      0.47940103436449044
+    ],
+    "validation_windows": 1636,
+    "x_stats": [
+      [
+        20.603092193603516,
+        23.491552352905273,
+        530.1821899414062
+      ],
+      [
+        0.8612804412841797,
+        4.181890487670898,
+        175.48809814453125
+      ]
+    ],
+    "y_stats": null
+  },
+  "gzip_sha256": "8b3d1cab33e51f90f1a3ff51d3cc6c8be561ef8364dc30167d12b6b4e114e82e",
+  "gzip_bytes": 1914,
+  "gzip_base64_chunks": [
+    "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"
+  ]
+}

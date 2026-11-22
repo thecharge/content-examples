@@ -1,0 +1,224 @@
+{
+  "summary": {
+    "budget": 100,
+    "config": {
+      "adaptive.py": "9eb9d4619d2e2788b4c1438600b8ec68c368dc579990646394c6d0014426cf0a",
+      "experiment.py": "fa9ec6e6bfa0b8da8b3a74a49503eff2613429871739254b116c5c5bd68b1d60",
+      "graz.py": "f62d775c5da0916177de5107d8326cae9f449bd0911a6b0983ea906704e60434",
+      "protocol.md": "f7dce9b91851eb0eb76507ae23965073e873e1ba4e78f26044758cad88f1ddd3"
+    },
+    "epochs": 3,
+    "fit_positive": 1134,
+    "fit_ranges": [
+      [
+        0,
+        6499
+      ]
+    ],
+    "fit_rows": 6500,
+    "fit_seconds": 1.0359340198338032,
+    "fit_windows": 6493,
+    "model": "current",
+    "parameters": 49,
+    "reload_exact": true,
+    "seed": 42,
+    "selected_epoch": 1,
+    "task": "occupancy",
+    "tests": {
+      "Room_A": {
+        "accepted": {
+          "accuracy": 0.8288970717166404,
+          "balanced_accuracy": 0.7121277694486112,
+          "bce": 0.5225052237510681,
+          "fn": 3560,
+          "fp": 1319,
+          "n": 28515,
+          "tn": 20279,
+          "tp": 3357
+        },
+        "all": {
+          "accuracy": 0.8288970717166404,
+          "balanced_accuracy": 0.7121277694486112,
+          "bce": 0.5225052237510681,
+          "fn": 3560,
+          "fp": 1319,
+          "n": 28515,
+          "tn": 20279,
+          "tp": 3357
+        },
+        "coverage": 1,
+        "examples": {},
+        "join": {
+          "ambiguous_or_nonexistent_local_time": 12,
+          "eligible": 28515,
+          "intermediate_label_matches": 23855,
+          "missing_or_invalid_history": 9,
+          "occupied": 6917,
+          "raw_image_rows": 28536,
+          "sensor_rows": 28548,
+          "sensor_without_raw_label": 12
+        },
+        "routes": [
+          {},
+          {},
+          {}
+        ],
+        "seconds": 0.2023768899962306
+      },
+      "Room_B": {
+        "accepted": {
+          "accuracy": 0.8454461821527139,
+          "balanced_accuracy": 0.7803163186538733,
+          "bce": 0.4979371726512909,
+          "fn": 709,
+          "fp": 803,
+          "n": 9783,
+          "tn": 6861,
+          "tp": 1410
+        },
+        "all": {
+          "accuracy": 0.8454461821527139,
+          "balanced_accuracy": 0.7803163186538733,
+          "bce": 0.4979371726512909,
+          "fn": 709,
+          "fp": 803,
+          "n": 9783,
+          "tn": 6861,
+          "tp": 1410
+        },
+        "coverage": 1,
+        "examples": {},
+        "join": {
+          "eligible": 9783,
+          "intermediate_label_matches": 6451,
+          "missing_or_invalid_history": 9,
+          "occupied": 2119,
+          "raw_image_rows": 9792,
+          "sensor_rows": 9792,
+          "sensor_without_raw_label": 0
+        },
+        "routes": [
+          {},
+          {},
+          {}
+        ],
+        "seconds": 0.07053512614220381
+      },
+      "apartments": {
+        "accepted": {
+          "accuracy": 0.7567567567567568,
+          "balanced_accuracy": 0.6003588516746411,
+          "bce": 0.5245187878608704,
+          "fn": 1973,
+          "fp": 619,
+          "n": 10656,
+          "tn": 7301,
+          "tp": 763
+        },
+        "all": {
+          "accuracy": 0.7567567567567568,
+          "balanced_accuracy": 0.6003588516746411,
+          "bce": 0.5245187878608704,
+          "fn": 1973,
+          "fp": 619,
+          "n": 10656,
+          "tn": 7301,
+          "tp": 763
+        },
+        "coverage": 1,
+        "examples": {},
+        "routes": [
+          {},
+          {},
+          {}
+        ],
+        "seconds": 0.0690755657851696
+      },
+      "datatest.txt": {
+        "accepted": {
+          "accuracy": 0.8510158013544018,
+          "balanced_accuracy": 0.8632185561394221,
+          "bce": 0.4752148687839508,
+          "fn": 89,
+          "fp": 307,
+          "n": 2658,
+          "tn": 1386,
+          "tp": 876
+        },
+        "all": {
+          "accuracy": 0.8510158013544018,
+          "balanced_accuracy": 0.8632185561394221,
+          "bce": 0.4752148687839508,
+          "fn": 89,
+          "fp": 307,
+          "n": 2658,
+          "tn": 1386,
+          "tp": 876
+        },
+        "coverage": 1,
+        "examples": {},
+        "routes": [
+          {},
+          {},
+          {}
+        ],
+        "seconds": 0.01779337483458221
+      },
+      "datatest2.txt": {
+        "accepted": {
+          "accuracy": 0.7120574653668548,
+          "balanced_accuracy": 0.7669378276243035,
+          "bce": 0.701598048210144,
+          "fn": 283,
+          "fp": 2523,
+          "n": 9745,
+          "tn": 5180,
+          "tp": 1759
+        },
+        "all": {
+          "accuracy": 0.7120574653668548,
+          "balanced_accuracy": 0.7669378276243035,
+          "bce": 0.701598048210144,
+          "fn": 283,
+          "fp": 2523,
+          "n": 9745,
+          "tn": 5180,
+          "tp": 1759
+        },
+        "coverage": 1,
+        "examples": {},
+        "routes": [
+          {},
+          {},
+          {}
+        ],
+        "seconds": 0.07385823386721313
+      }
+    },
+    "updates": 78,
+    "validation_loss": [
+      0.47040504188001303,
+      0.5040966549246119,
+      0.5101186019575683
+    ],
+    "validation_windows": 1636,
+    "x_stats": [
+      [
+        20.6055965423584,
+        23.827247619628906,
+        535.7278442382812
+      ],
+      [
+        1.0725265741348267,
+        4.250118732452393,
+        183.32948303222656
+      ]
+    ],
+    "y_stats": null
+  },
+  "gzip_sha256": "4bb05dd5cf43503d245ea44ecd2d75cac49cacaf84a69846df166d515867f4d2",
+  "gzip_bytes": 1812,
+  "gzip_base64_chunks": [
+    "H4sIAAAAAAACA9VYTW8bORK9768Y+LxjkKxiFTm33Z+w18AQ2N2U3DuSWpBasTNB/vu8YrdsB7PeZIA5ZGA7kSh28dWrVx/U57vuOuzqfPfLT965f/5010/H7bjD2893ZSinefxY70+f8P4u1y4PLD4PoQZNqePeMyVxrku1l9STpKGPmnN2wkKZexmc88xB+q0rd7Ben0/1PB7qcV6NbkvGs1W6bYGZoaSOinLhHB3V7TaIJw45qVfKIXLnvfSxj90gqfODODO6O5ffbuYkDKrYMBSXvXjVoUbvdEgEEKXmLXPuBnzmi3QuJ6oFaNVxFcfEZu50nuapn/b3h6GZ1KGvucs+RV87VzuV6LTUQNleUE34813hqgl4HbPG1Jchpa0fhoHuvpjfp6l/vMAc4c12nDen6TIat8Y7XFxXz+W4q7btwwfEQjjnh4fbR9OTfYAj3bpyqYjVYIv+3lHMxM7DIUqOwrrlaTwO63Oc7ejDNNS9edVfz2dEoflbzuVQ53q2fZyxcq77qQyb+lx6E8Z8vlasXmo1Qji01/vazxV7zDGDgMW5XH4121PfX0/l2H8y63O9zJcmp/9M02Hzr0VZfV9PczPX3lzPpbf4ufsUUsrqEG8vws6I6coexnDWVxvVBx9UJTMn8d5AdX1tH8UQosM/pAi9JIO2PRr3URp3J8NL3jy15YDARkPa3rig9sFsm4iiWvTKfv83QdpPH+u57OoiipZw5XDaN019tg3/ncbj4suhG3fX6XrZTOfNcTrW5/EyQxGb/dSX/WZGkpoRQ1v3427s9vUNgvEIvRzqMJa5bvalq/vNocz9YzsoUIq26TBeLuNxZweMx49lPw6bRxwynY0Xg96EMjYZSPZqyitPm/EAB256x4EkTXDHC+y8rnJ6XX0a58fpaunztIBpyM3dM5aXhDLvl7+H9uAtd9w9iCQVBDNnCeTEnmta/fe3tMqRUQ9T8DGop/y+ApCSXsgniYRqQW8UwFkzQUNBog/Z5ZsCdHlpscXDa/yzJrqFX6ClW/Q9e/e+Tn80lN+v0TfCW43+X90JR/8nZRd8S64/yA7+hj+o7uvF/yU6972ac+oigUvxHIKj5Fv4UIln642XbwhPo7z9Te+GFL2ZYkLOirKw91+VHrCVFD/ikrby1ULqs9ItpvJSeVCdotyCquRegqpC7yrvx4P5Tel9V+wkO41Rohri3OrFUOZine5+fp6/VTVQ6n1MzhPy0vn3WUlCAUNHxAiUoZK3rGDECB7dBLQQJqV0YyW9pCM5vTUNielGice4dqMkqbxfM34sjH9N2DAMZiLlRBwTsL6NW/iOwKGPuwiBoiHJ2n/eKaQiqJYpqAQmKPsNKQpac3KMamyD8Y2TkF7EHGJ4LaT80u2RBO6lkGrM7yfdj4byrwmeYqZIAcOtaMBERF/syetpKMujan62Wl/mcTpiiLk0iyZDxy469inhLkLWpVBVsJZFIueA1mjlA2vwFb0PM3S0YkUPX1t8HaXRI02gT3XcPa6luh57DNbne3ffjWU9mHCcywF4iZPDoGeHUEsVNFIXca1xigT4uW11iSVgmAROFduJUga12qUnMWGiSm2n9zZwkvcRIXIhN+Si3toyDONZYlp24t6Euw4Ej/8ciGurNm4S6EMaRJ8pmpOv4BeXlusHen700IeRl9mzNvhoV7iYKcThFNefZtN0gmMFexM8yXabAZ0WMYyujJkjwguc9MFc1QzPhRN6aTCFNrMBFxe7jKHUJLUm/rPFI6oGRWtwWeNiFE9gEYUG8wzGlKxmFcscTPWcHeSM0ZkXBhgYFW4kRrfIOTWusAKgwJQ88PpGNXQVo/EZMKfjprhY9WoEo3bh6ofo+KYcn0AFJxS7FDE4LnJCqYNXEVfMQCE3m86LE5t4UOTwdPCyQoUoUrRR02FiymmJNdiwc+EuYh1WWoEJsKPidorpVNpJIApEMyKINcorqZwhSYD0nDm2KtzCwigBMMegLCNoi1nkAwJGWbGIZtvCGoAegFA0YBnpxatdTEeKcJthmyF11aBxJaCLxQXTZvPXyn2EkQxamCKtcovWtBFWSMDq7kICsEcJoBZyhcz9ggwLuE+j7SCEIUqjEXcrRNWWkQeRVxeAIASMqDCMcSHFdkk+1zKgkrxkoFEgwIwOBGEFQ/F22xutm09wNRpb2eE2kFYFkTAipyh2SLnVUZhC+iD0wGBaXmXpbfi0rzqgKm6iBs1EqK2KAU/QRz3fwOMlxmwERwPUuOzFo46zbyelHBcTwbgwocGNkLH88GBl73lzQddaviYINj1BKAhdgKZhLRCupkh6xVgkIWUHiWHWvIe4AA3OheSbwlGNzTVkFNLBchhaYKsQKINKkE0g+87AJ0KCZsttiAnbpdH96QXE8brff/nH73j2wc1JEgAA"
+  ]
+}

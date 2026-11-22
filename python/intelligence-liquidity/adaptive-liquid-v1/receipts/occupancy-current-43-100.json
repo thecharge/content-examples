@@ -1,0 +1,224 @@
+{
+  "summary": {
+    "budget": 100,
+    "config": {
+      "adaptive.py": "9eb9d4619d2e2788b4c1438600b8ec68c368dc579990646394c6d0014426cf0a",
+      "experiment.py": "fa9ec6e6bfa0b8da8b3a74a49503eff2613429871739254b116c5c5bd68b1d60",
+      "graz.py": "f62d775c5da0916177de5107d8326cae9f449bd0911a6b0983ea906704e60434",
+      "protocol.md": "f7dce9b91851eb0eb76507ae23965073e873e1ba4e78f26044758cad88f1ddd3"
+    },
+    "epochs": 3,
+    "fit_positive": 1134,
+    "fit_ranges": [
+      [
+        0,
+        6499
+      ]
+    ],
+    "fit_rows": 6500,
+    "fit_seconds": 0.9815235019195825,
+    "fit_windows": 6493,
+    "model": "current",
+    "parameters": 49,
+    "reload_exact": true,
+    "seed": 43,
+    "selected_epoch": 1,
+    "task": "occupancy",
+    "tests": {
+      "Room_A": {
+        "accepted": {
+          "accuracy": 0.8166929686130107,
+          "balanced_accuracy": 0.6704628671396292,
+          "bce": 0.5006383061408997,
+          "fn": 4244,
+          "fp": 983,
+          "n": 28515,
+          "tn": 20615,
+          "tp": 2673
+        },
+        "all": {
+          "accuracy": 0.8166929686130107,
+          "balanced_accuracy": 0.6704628671396292,
+          "bce": 0.5006383061408997,
+          "fn": 4244,
+          "fp": 983,
+          "n": 28515,
+          "tn": 20615,
+          "tp": 2673
+        },
+        "coverage": 1,
+        "examples": {},
+        "join": {
+          "ambiguous_or_nonexistent_local_time": 12,
+          "eligible": 28515,
+          "intermediate_label_matches": 23855,
+          "missing_or_invalid_history": 9,
+          "occupied": 6917,
+          "raw_image_rows": 28536,
+          "sensor_rows": 28548,
+          "sensor_without_raw_label": 12
+        },
+        "routes": [
+          {},
+          {},
+          {}
+        ],
+        "seconds": 0.1806030550505966
+      },
+      "Room_B": {
+        "accepted": {
+          "accuracy": 0.8273535725237657,
+          "balanced_accuracy": 0.6214372264165257,
+          "bce": 0.5244130492210388,
+          "fn": 1572,
+          "fp": 117,
+          "n": 9783,
+          "tn": 7547,
+          "tp": 547
+        },
+        "all": {
+          "accuracy": 0.8273535725237657,
+          "balanced_accuracy": 0.6214372264165257,
+          "bce": 0.5244130492210388,
+          "fn": 1572,
+          "fp": 117,
+          "n": 9783,
+          "tn": 7547,
+          "tp": 547
+        },
+        "coverage": 1,
+        "examples": {},
+        "join": {
+          "eligible": 9783,
+          "intermediate_label_matches": 6451,
+          "missing_or_invalid_history": 9,
+          "occupied": 2119,
+          "raw_image_rows": 9792,
+          "sensor_rows": 9792,
+          "sensor_without_raw_label": 0
+        },
+        "routes": [
+          {},
+          {},
+          {}
+        ],
+        "seconds": 0.06372454296797514
+      },
+      "apartments": {
+        "accepted": {
+          "accuracy": 0.7509384384384384,
+          "balanced_accuracy": 0.5288609782030834,
+          "bce": 0.5418962836265564,
+          "fn": 2538,
+          "fp": 116,
+          "n": 10656,
+          "tn": 7804,
+          "tp": 198
+        },
+        "all": {
+          "accuracy": 0.7509384384384384,
+          "balanced_accuracy": 0.5288609782030834,
+          "bce": 0.5418962836265564,
+          "fn": 2538,
+          "fp": 116,
+          "n": 10656,
+          "tn": 7804,
+          "tp": 198
+        },
+        "coverage": 1,
+        "examples": {},
+        "routes": [
+          {},
+          {},
+          {}
+        ],
+        "seconds": 0.06707163597457111
+      },
+      "datatest.txt": {
+        "accepted": {
+          "accuracy": 0.8592927012791572,
+          "balanced_accuracy": 0.8581302467643359,
+          "bce": 0.44490742683410645,
+          "fn": 141,
+          "fp": 233,
+          "n": 2658,
+          "tn": 1460,
+          "tp": 824
+        },
+        "all": {
+          "accuracy": 0.8592927012791572,
+          "balanced_accuracy": 0.8581302467643359,
+          "bce": 0.44490742683410645,
+          "fn": 141,
+          "fp": 233,
+          "n": 2658,
+          "tn": 1460,
+          "tp": 824
+        },
+        "coverage": 1,
+        "examples": {},
+        "routes": [
+          {},
+          {},
+          {}
+        ],
+        "seconds": 0.017488623969256878
+      },
+      "datatest2.txt": {
+        "accepted": {
+          "accuracy": 0.7847101077475629,
+          "balanced_accuracy": 0.7918400084020332,
+          "bce": 0.6048897504806519,
+          "fn": 400,
+          "fp": 1698,
+          "n": 9745,
+          "tn": 6005,
+          "tp": 1642
+        },
+        "all": {
+          "accuracy": 0.7847101077475629,
+          "balanced_accuracy": 0.7918400084020332,
+          "bce": 0.6048897504806519,
+          "fn": 400,
+          "fp": 1698,
+          "n": 9745,
+          "tn": 6005,
+          "tp": 1642
+        },
+        "coverage": 1,
+        "examples": {},
+        "routes": [
+          {},
+          {},
+          {}
+        ],
+        "seconds": 0.060411835089325905
+      }
+    },
+    "updates": 78,
+    "validation_loss": [
+      0.42725500486299284,
+      0.4695296444927859,
+      0.49212202320471954
+    ],
+    "validation_windows": 1636,
+    "x_stats": [
+      [
+        20.6055965423584,
+        23.827247619628906,
+        535.7278442382812
+      ],
+      [
+        1.0725265741348267,
+        4.250118732452393,
+        183.32948303222656
+      ]
+    ],
+    "y_stats": null
+  },
+  "gzip_sha256": "ec406b2ffacd8bb0cdc63993267b40767dbd70782cce44e712f55ea10177fe42",
+  "gzip_bytes": 1812,
+  "gzip_base64_chunks": [
+    "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"
+  ]
+}

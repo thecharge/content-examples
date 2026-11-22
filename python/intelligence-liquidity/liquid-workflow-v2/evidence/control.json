@@ -1,0 +1,186 @@
+{
+  "source_sha256": "393c5c5d106d1597e0a059ea43b799d7d2e58baf74a6388beb256c46f2400fe8",
+  "fit": {
+    "validation_logged_return_error": [
+      0.2088698148727417,
+      0.1460813283920288,
+      0.1675904542207718,
+      0.08483690023422241,
+      0.11447186022996902,
+      0.1643436849117279,
+      0.1470615565776825,
+      0.14169660210609436
+    ],
+    "best_epoch": 4,
+    "fit_rows": 879,
+    "validation_rows": 221,
+    "checkpoint_sha256": "23e6ff41358dc5342116d867a363d33eaf78f5de448d8e3adcd7c2d67c0d373e",
+    "resume_sha256": "ca72a07d41ee7b385fdf7b573a6dbf89945138f9361971fe6e50123c45e894e3"
+  },
+  "frozen": {
+    "rows": 533,
+    "frozen_or_live": "frozen",
+    "eligible": 321,
+    "on": 0,
+    "off": 321,
+    "logged_reward_error": 0.07118062367718556,
+    "compared_logged_rows": 334,
+    "updates": 0,
+    "example": [
+      {
+        "row": 0,
+        "time": 1551916800,
+        "proposed": null,
+        "recorded_action": 1,
+        "recorded_reward": -0.5950000286102295,
+        "energy_kwh": 0.595,
+        "discomfort_degree_hours": 0.0,
+        "support": [
+          0,
+          0
+        ],
+        "predicted_values": [
+          -0.058823294937610626,
+          -0.666256844997406
+        ]
+      },
+      {
+        "row": 1,
+        "time": 1551917700,
+        "proposed": null,
+        "recorded_action": 1,
+        "recorded_reward": -0.6499999761581421,
+        "energy_kwh": 0.65,
+        "discomfort_degree_hours": 0.0,
+        "support": [
+          0,
+          0
+        ],
+        "predicted_values": [
+          -0.058823294937610626,
+          -0.666256844997406
+        ]
+      },
+      {
+        "row": 2,
+        "time": 1551918600,
+        "proposed": null,
+        "recorded_action": 1,
+        "recorded_reward": -0.6516666412353516,
+        "energy_kwh": 0.6516666666666666,
+        "discomfort_degree_hours": 0.0,
+        "support": [
+          0,
+          0
+        ],
+        "predicted_values": [
+          -0.058823294937610626,
+          -0.666256844997406
+        ]
+      },
+      {
+        "row": 3,
+        "time": 1551919500,
+        "proposed": null,
+        "recorded_action": 1,
+        "recorded_reward": -0.6349999904632568,
+        "energy_kwh": 0.635,
+        "discomfort_degree_hours": 0.0,
+        "support": [
+          0,
+          0
+        ],
+        "predicted_values": [
+          -0.058823294937610626,
+          -0.666256844997406
+        ]
+      }
+    ]
+  },
+  "live": {
+    "rows": 533,
+    "frozen_or_live": "live",
+    "eligible": 321,
+    "on": 0,
+    "off": 321,
+    "logged_reward_error": 0.07430659236196807,
+    "compared_logged_rows": 334,
+    "updates": 492,
+    "example": [
+      {
+        "row": 0,
+        "time": 1551916800,
+        "proposed": null,
+        "recorded_action": 1,
+        "recorded_reward": -0.5950000286102295,
+        "energy_kwh": 0.595,
+        "discomfort_degree_hours": 0.0,
+        "support": [
+          0,
+          0
+        ],
+        "predicted_values": [
+          -0.058823294937610626,
+          -0.666256844997406
+        ]
+      },
+      {
+        "row": 1,
+        "time": 1551917700,
+        "proposed": null,
+        "recorded_action": 1,
+        "recorded_reward": -0.6499999761581421,
+        "energy_kwh": 0.65,
+        "discomfort_degree_hours": 0.0,
+        "support": [
+          0,
+          0
+        ],
+        "predicted_values": [
+          -0.058823294937610626,
+          -0.666256844997406
+        ]
+      },
+      {
+        "row": 2,
+        "time": 1551918600,
+        "proposed": null,
+        "recorded_action": 1,
+        "recorded_reward": -0.6516666412353516,
+        "energy_kwh": 0.6516666666666666,
+        "discomfort_degree_hours": 0.0,
+        "support": [
+          0,
+          0
+        ],
+        "predicted_values": [
+          -0.058763839304447174,
+          -0.6659868359565735
+        ]
+      },
+      {
+        "row": 3,
+        "time": 1551919500,
+        "proposed": null,
+        "recorded_action": 1,
+        "recorded_reward": -0.6349999904632568,
+        "energy_kwh": 0.635,
+        "discomfort_degree_hours": 0.0,
+        "support": [
+          0,
+          0
+        ],
+        "predicted_values": [
+          -0.05872701108455658,
+          -0.6659279465675354
+        ]
+      }
+    ],
+    "expert_parameter_l1_change": 0.00951813830761239
+  },
+  "code": {
+    "control.py": "780735c594935761ac528d5b43e263f2a422c1204bf8273760825b593f91423f",
+    "workflow.py": "9c7fafaf955b7bca930a3f03fccd49bab8ed09cfee660ff1218a7ee5ecb487e6"
+  },
+  "trial": "Logged action replay in one building. No actual counterfactual or heater command."
+}

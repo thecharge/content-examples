@@ -68,3 +68,11 @@ The held-out heating replay starts on 7 March 2019 UTC. All six fits recommend o
 ## Share a checkpoint
 
 A model host needs the checkpoint, manifest, inference code, a usage example and a model card with the split and limitations. [Package and upload a checkpoint](MODEL-HOSTING.md).
+
+## Check what the repair gate changes
+
+```sh
+python measure_repairs.py /path/to/data frozen
+```
+
+This [separate comparison](frozen/repairs.json) uses the same seed-41 full checkpoint, same cutoff and state carry in both passes. It disables only repairs in the second pass. The receipt counts decisions that repair fixed or broke and gives a real example of each. It evaluates a whole stream with repair on or off. Earlier repaired state and memory can influence later decisions.

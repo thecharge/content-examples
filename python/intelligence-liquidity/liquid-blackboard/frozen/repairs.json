@@ -1,0 +1,267 @@
+{
+  "freeze": "f5bffb3986cac4eb5ab05b2ff8fffa83b46f1c6c65668b84e385608eb4be3f17",
+  "checkpoint": "occupancy-full-41.pt",
+  "sites": {
+    "graz": {
+      "Room_A": {
+        "cutoff": 0.75,
+        "labels": 2016,
+        "with_repair": {
+          "rows": 2016,
+          "occupied": 601,
+          "accuracy": 0.7460317611694336,
+          "balanced_accuracy": 0.5759576112031937,
+          "occupied_recall": 0.15474209189414978,
+          "empty_recall": 0.9971731305122375,
+          "auroc": 0.8380743519340558,
+          "brier": 0.15899355709552765,
+          "calibration_error": 0.13664194953162223,
+          "false_empty": 508,
+          "false_occupied": 4
+        },
+        "without_repair": {
+          "rows": 2016,
+          "occupied": 601,
+          "accuracy": 0.7673611044883728,
+          "balanced_accuracy": 0.6126885116100311,
+          "occupied_recall": 0.22961729764938354,
+          "empty_recall": 0.9957597255706787,
+          "auroc": 0.8487820652269774,
+          "brier": 0.15630994737148285,
+          "calibration_error": 0.144841501256451,
+          "false_empty": 463,
+          "false_occupied": 6
+        },
+        "helped": 2,
+        "hurt": 45,
+        "mean_repair_weight_by_layer": [
+          0.05489221587777138,
+          0.1665993630886078,
+          0.1251526176929474
+        ],
+        "examples": {
+          "helped": {
+            "index": 11,
+            "label": 0,
+            "without_repair": 0.7544021606445312,
+            "with_repair": 0.7380621433258057
+          },
+          "hurt": {
+            "index": 24,
+            "label": 1,
+            "without_repair": 0.7629398703575134,
+            "with_repair": 0.7401086688041687
+          }
+        }
+      },
+      "Room_B": {
+        "cutoff": 0.75,
+        "labels": 2016,
+        "with_repair": {
+          "rows": 2016,
+          "occupied": 398,
+          "accuracy": 0.911210298538208,
+          "balanced_accuracy": 0.8044906258583069,
+          "occupied_recall": 0.6281406879425049,
+          "empty_recall": 0.9808405637741089,
+          "auroc": 0.9622805001521825,
+          "brier": 0.1278257817029953,
+          "calibration_error": 0.19961522100493312,
+          "false_empty": 148,
+          "false_occupied": 31
+        },
+        "without_repair": {
+          "rows": 2016,
+          "occupied": 398,
+          "accuracy": 0.920634925365448,
+          "balanced_accuracy": 0.888037234544754,
+          "occupied_recall": 0.8341708779335022,
+          "empty_recall": 0.9419035911560059,
+          "auroc": 0.9627386002944264,
+          "brier": 0.1392076313495636,
+          "calibration_error": 0.21960345515981317,
+          "false_empty": 66,
+          "false_occupied": 94
+        },
+        "helped": 64,
+        "hurt": 83,
+        "mean_repair_weight_by_layer": [
+          0.10128779709339142,
+          0.245791494846344,
+          0.15053506195545197
+        ],
+        "examples": {
+          "helped": {
+            "index": 0,
+            "label": 0,
+            "without_repair": 0.7678781151771545,
+            "with_repair": 0.6692215800285339
+          },
+          "hurt": {
+            "index": 67,
+            "label": 1,
+            "without_repair": 0.768287181854248,
+            "with_repair": 0.7496939301490784
+          }
+        }
+      }
+    },
+    "munich": {
+      "Office_A": {
+        "cutoff": 0.75,
+        "labels": 2016,
+        "with_repair": {
+          "rows": 2016,
+          "occupied": 668,
+          "accuracy": 0.5778769850730896,
+          "balanced_accuracy": 0.6356389671564102,
+          "occupied_recall": 0.8068862557411194,
+          "empty_recall": 0.46439167857170105,
+          "auroc": 0.7890409833152686,
+          "brier": 0.30946338176727295,
+          "calibration_error": 0.3150166615960188,
+          "false_empty": 129,
+          "false_occupied": 722
+        },
+        "without_repair": {
+          "rows": 2016,
+          "occupied": 668,
+          "accuracy": 0.569940447807312,
+          "balanced_accuracy": 0.6263059824705124,
+          "occupied_recall": 0.7934131622314453,
+          "empty_recall": 0.45919880270957947,
+          "auroc": 0.7859958865651486,
+          "brier": 0.31849604845046997,
+          "calibration_error": 0.3274263601342682,
+          "false_empty": 138,
+          "false_occupied": 729
+        },
+        "helped": 19,
+        "hurt": 3,
+        "mean_repair_weight_by_layer": [
+          0.12966758012771606,
+          0.18787771463394165,
+          0.22887147963047028
+        ],
+        "examples": {
+          "helped": {
+            "index": 123,
+            "label": 1,
+            "without_repair": 0.719579815864563,
+            "with_repair": 0.7816429138183594
+          },
+          "hurt": {
+            "index": 1043,
+            "label": 1,
+            "without_repair": 0.7587140202522278,
+            "with_repair": 0.727999210357666
+          }
+        }
+      },
+      "Office_B": {
+        "cutoff": 0.75,
+        "labels": 2016,
+        "with_repair": {
+          "rows": 2016,
+          "occupied": 397,
+          "accuracy": 0.588789701461792,
+          "balanced_accuracy": 0.7373234629631042,
+          "occupied_recall": 0.982367753982544,
+          "empty_recall": 0.49227917194366455,
+          "auroc": 0.8374684749581093,
+          "brier": 0.4582791030406952,
+          "calibration_error": 0.5617508487775922,
+          "false_empty": 7,
+          "false_occupied": 822
+        },
+        "without_repair": {
+          "rows": 2016,
+          "occupied": 397,
+          "accuracy": 0.4702380895614624,
+          "balanced_accuracy": 0.6673149317502975,
+          "occupied_recall": 0.992443323135376,
+          "empty_recall": 0.3421865403652191,
+          "auroc": 0.8493682544967429,
+          "brier": 0.4889358878135681,
+          "calibration_error": 0.5881390906288289,
+          "false_empty": 3,
+          "false_occupied": 1065
+        },
+        "helped": 243,
+        "hurt": 4,
+        "mean_repair_weight_by_layer": [
+          0.04997987672686577,
+          0.288124680519104,
+          0.36287882924079895
+        ],
+        "examples": {
+          "helped": {
+            "index": 0,
+            "label": 0,
+            "without_repair": 0.7642229795455933,
+            "with_repair": 0.7092331051826477
+          },
+          "hurt": {
+            "index": 673,
+            "label": 1,
+            "without_repair": 0.7755969762802124,
+            "with_repair": 0.7355653643608093
+          }
+        }
+      }
+    },
+    "porto": {
+      "CONSEG office": {
+        "cutoff": 0.75,
+        "labels": 2016,
+        "with_repair": {
+          "rows": 2016,
+          "occupied": 140,
+          "accuracy": 0.9117063283920288,
+          "balanced_accuracy": 0.4997867876663804,
+          "occupied_recall": 0.02142857201397419,
+          "empty_recall": 0.9781450033187866,
+          "auroc": 0.8577444410600061,
+          "brier": 0.23684948682785034,
+          "calibration_error": 0.40659337205579504,
+          "false_empty": 137,
+          "false_occupied": 41
+        },
+        "without_repair": {
+          "rows": 2016,
+          "occupied": 140,
+          "accuracy": 0.9002976417541504,
+          "balanced_accuracy": 0.5828891322016716,
+          "occupied_recall": 0.2142857164144516,
+          "empty_recall": 0.9514925479888916,
+          "auroc": 0.8785561985988425,
+          "brier": 0.2506554424762726,
+          "calibration_error": 0.4223367626545951,
+          "false_empty": 110,
+          "false_occupied": 91
+        },
+        "helped": 50,
+        "hurt": 27,
+        "mean_repair_weight_by_layer": [
+          0.026631919667124748,
+          0.18313495814800262,
+          0.13998249173164368
+        ],
+        "examples": {
+          "helped": {
+            "index": 328,
+            "label": 0,
+            "without_repair": 0.7652265429496765,
+            "with_repair": 0.7296451926231384
+          },
+          "hurt": {
+            "index": 16,
+            "label": 1,
+            "without_repair": 0.7622718214988708,
+            "with_repair": 0.7467063069343567
+          }
+        }
+      }
+    }
+  }
+}

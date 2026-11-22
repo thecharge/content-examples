@@ -69,3 +69,6 @@ is a fitted estimate and a score of 1 is never treated as proof.
 
 [Training debug copy](debug-training/README.md) compares two learning rates,
 records raw predictions and overfits a five-row batch as a control.
+
+[One-class forecasting](one-class/README.md) compares a vacant-only fit,
+an occupied-only fit and the both-class classifier on H5 and H6.

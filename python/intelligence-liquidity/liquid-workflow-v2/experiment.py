@@ -18,8 +18,11 @@ from workflow import Blackboard, Observation, Online, loss
 
 BASE = Path(__file__).resolve().parent
 sys.path.insert(0, str(BASE.parent / "liquid-workflow"))
-from run import dump, io_data, metrics, blocks, save, sha
+from run import dump, io_data, metrics, save, sha
 from compare import matrix
+
+WINDOW_ROWS = 24
+WARMUP_ROWS = 4
 
 
 class Reference(nn.Module):
@@ -39,22 +42,35 @@ class Reference(nn.Module):
         return self.read(hidden).squeeze(-1), state
 
 
+def sequence_blocks(streams):
+    for _, x, y, stamps in streams:
+        breaks = [0, *((stamps.diff() > 450).nonzero().flatten() + 1).tolist(), len(x)]
+        for start, end in zip(breaks, breaks[1:]):
+            for left in range(start, end - WINDOW_ROWS + 1, WINDOW_ROWS - WARMUP_ROWS - 1):
+                right = left + WINDOW_ROWS
+                yield x[left:right], y[left:right], stamps[left:right]
+
+
 def forward(model, batch, training):
     x, y, t = batch
     state, answers, costs = None, [], []
+    idle = x.new_zeros(len(x))
     for i in range(x.shape[1] - 1):
         minutes = x.new_full((len(x),), 5.) if i == 0 else (t[:, i] - t[:, i-1]).float() / 60
         primary, witness = x[:, i].unbind(-1)
         if isinstance(model, Blackboard):
-            step = model.step(primary, witness, minutes, state, training=training)
+            step = model.step(primary, witness, minutes, state, training=training, idle_minutes=idle)
             state = step.ledger
-            costs.append(loss(step, witness, y[:, i], x[:, i+1, 0]))
-            answers.append(step.logit)
+            idle = torch.where(step.accepted, 0., idle + minutes)
+            if i >= WARMUP_ROWS:
+                costs.append(loss(step, witness, y[:, i], x[:, i+1, 0]))
+                answers.append(step.logit)
         else:
             logit, state = model.step(primary, minutes, state)
-            costs.append(F.binary_cross_entropy_with_logits(logit, y[:, i]))
-            answers.append(logit)
-    return torch.stack(costs).mean(), torch.stack(answers, 1).flatten().sigmoid(), y[:, :-1].flatten()
+            if i >= WARMUP_ROWS:
+                costs.append(F.binary_cross_entropy_with_logits(logit, y[:, i]))
+                answers.append(logit)
+    return torch.stack(costs).mean(), torch.stack(answers, 1).flatten().sigmoid(), y[:, WARMUP_ROWS:-1].flatten()
 
 
 FACTORIES = {
@@ -115,8 +131,8 @@ def train_model(name, train, valid, out, epochs, seed, share=1.):
 
 def tree_input(blocks):
     x, y, times = blocks
-    parts = [matrix(a[:, :1], t)[:-1] for a, t in zip(x, times, strict=True)]
-    return xgb.DMatrix(torch.cat(parts).numpy(), label=y[:, :-1].flatten().numpy())
+    parts = [matrix(a[:, :1], t)[WARMUP_ROWS:-1] for a, t in zip(x, times, strict=True)]
+    return xgb.DMatrix(torch.cat(parts).numpy(), label=y[:, WARMUP_ROWS:-1].flatten().numpy())
 
 
 def fit_job(payload):
@@ -128,7 +144,7 @@ def fit_job(payload):
 
 def fit(args):
     train, valid, hashes = io_data.fit_sources(args.data)
-    train, valid = [tuple(torch.stack(c) for c in zip(*blocks(split, 6), strict=True))
+    train, valid = [tuple(torch.stack(c) for c in zip(*sequence_blocks(split), strict=True))
                     for split in (train, valid)]
     jobs = [(name, train, valid, args.out, args.epochs, 1.) for name in FACTORIES]
     for fraction in (.25, .50):
@@ -149,7 +165,9 @@ def fit(args):
     records["xgboost"] = dict(cutoff=float(cutoff), rounds=rounds, best_sha256=sha(path))
     dump(args.out / "fit.json", dict(models=records, fit_sources=hashes,
          code={n: sha(BASE/n) for n in ("workflow.py", "experiment.py")},
-         training_blocks=len(train[0]), validation_blocks=len(valid[0]), torch=torch.__version__))
+         training_blocks=len(train[0]), validation_blocks=len(valid[0]),
+         sequence_rows=WINDOW_ROWS, warmup_rows=WARMUP_ROWS,
+         supervised_steps_per_block=WINDOW_ROWS-WARMUP_ROWS-1, torch=torch.__version__))
 
 
 def replay(model, room, mode, *, maximum=None):
@@ -159,16 +177,17 @@ def replay(model, room, mode, *, maximum=None):
     ledger, timestamp, trace, forecasts, errors = None, None, [], None, []
     learner = Online(model) if mode == "live" else None
     p, calls, updates, elapsed_total = [], [], 0, 0.
+    idle_minutes = 0.
     for row, (reading, time) in enumerate(zip(x, stamps.tolist(), strict=True)):
         dt = time - timestamp if timestamp is not None else 300
         minutes = x.new_tensor([dt / 60 if 0 < dt <= 450 else 5.])
         primary, witness = reading.unsqueeze(0).unbind(-1)
         if dt > 450:
-            ledger, forecasts = None, None
+            ledger, forecasts, idle_minutes = None, None, 0.
         begin = perf_counter()
         with torch.no_grad():
             if isinstance(model, Blackboard):
-                step = model.step(primary, witness, minutes, ledger)
+                step = model.step(primary, witness, minutes, ledger, idle_minutes=idle_minutes)
                 p.append(step.logit.sigmoid()[0])
                 calls.append(step.accepted[0])
                 if (not step.accepted.item() or len(step.attempts) > 3) and len(trace) < 3:
@@ -186,7 +205,8 @@ def replay(model, room, mode, *, maximum=None):
                 calls.append(x.new_ones((), dtype=torch.bool))
         if isinstance(model, Blackboard):
             if learner:
-                updates += learner.feedback(Observation(time, primary, witness, minutes, ledger)) is not None
+                updates += learner.feedback(Observation(time, primary, witness, minutes, ledger, idle_minutes)) is not None
+            idle_minutes = 0. if step.accepted.item() else idle_minutes + minutes.item()
             ledger = step.ledger.detach()
         elapsed_total += perf_counter() - begin
         timestamp = time

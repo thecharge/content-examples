@@ -1,30 +1,59 @@
 {
   "source_sha256": "393c5c5d106d1597e0a059ea43b799d7d2e58baf74a6388beb256c46f2400fe8",
   "fit": {
-    "validation_logged_return_error": [
-      0.2088698148727417,
-      0.1460813283920288,
-      0.1675904542207718,
-      0.08483690023422241,
-      0.11447186022996902,
-      0.1643436849117279,
-      0.1470615565776825,
-      0.14169660210609436
+    "validation_td_error": [
+      0.1744120568037033,
+      0.16204938292503357,
+      0.11708257347345352,
+      0.07381966710090637,
+      0.13095007836818695,
+      0.16791529953479767,
+      0.14250639081001282,
+      0.11577089875936508,
+      0.12169884890317917,
+      0.1661178469657898,
+      0.1364346444606781,
+      0.1156253069639206,
+      0.13178658485412598,
+      0.15787741541862488
     ],
-    "best_epoch": 4,
-    "fit_rows": 879,
+    "validation_logged_return_mae": [
+      4.26064920425415,
+      4.062090873718262,
+      4.112081527709961,
+      4.148708820343018,
+      4.078667640686035,
+      4.052464962005615,
+      4.071621894836426,
+      4.101531982421875,
+      4.092155456542969,
+      4.045448303222656,
+      4.082370758056641,
+      4.101938247680664,
+      4.0906596183776855,
+      4.06295108795166
+    ],
+    "best_epoch": 10,
+    "fit_rows": 880,
+    "fit_windows": 160,
+    "max_window_transitions": 8,
     "validation_rows": 221,
-    "checkpoint_sha256": "23e6ff41358dc5342116d867a363d33eaf78f5de448d8e3adcd7c2d67c0d373e",
-    "resume_sha256": "ca72a07d41ee7b385fdf7b573a6dbf89945138f9361971fe6e50123c45e894e3"
+    "discount": 0.95,
+    "bootstrap_clip": [
+      -5,
+      0
+    ],
+    "checkpoint_sha256": "662c98c2b112baaf1d471c4b5d6d629ff5bafa8c1df8a33edac4cefb256141f7",
+    "resume_sha256": "7cf684c5ab407770f089cd311c5ae4b192a07c52c0bb061d87e3f82a04a70b27"
   },
   "frozen": {
     "rows": 533,
     "frozen_or_live": "frozen",
-    "eligible": 321,
+    "eligible": 306,
     "on": 0,
-    "off": 321,
-    "logged_reward_error": 0.07118062367718556,
-    "compared_logged_rows": 334,
+    "off": 306,
+    "discounted_logged_return_mae": 2.463759913936193,
+    "compared_logged_rows": 319,
     "updates": 0,
     "example": [
       {
@@ -33,6 +62,7 @@
         "proposed": null,
         "recorded_action": 1,
         "recorded_reward": -0.5950000286102295,
+        "discounted_logged_return": -9.541664123535156,
         "energy_kwh": 0.595,
         "discomfort_degree_hours": 0.0,
         "support": [
@@ -40,8 +70,8 @@
           0
         ],
         "predicted_values": [
-          -0.058823294937610626,
-          -0.666256844997406
+          0.0021231919527053833,
+          -0.8411124348640442
         ]
       },
       {
@@ -50,6 +80,7 @@
         "proposed": null,
         "recorded_action": 1,
         "recorded_reward": -0.6499999761581421,
+        "discounted_logged_return": -9.417540550231934,
         "energy_kwh": 0.65,
         "discomfort_degree_hours": 0.0,
         "support": [
@@ -57,8 +88,8 @@
           0
         ],
         "predicted_values": [
-          -0.058823294937610626,
-          -0.666256844997406
+          0.0021231919527053833,
+          -0.8411124348640442
         ]
       },
       {
@@ -67,6 +98,7 @@
         "proposed": null,
         "recorded_action": 1,
         "recorded_reward": -0.6516666412353516,
+        "discounted_logged_return": -9.22899055480957,
         "energy_kwh": 0.6516666666666666,
         "discomfort_degree_hours": 0.0,
         "support": [
@@ -74,8 +106,8 @@
           0
         ],
         "predicted_values": [
-          -0.058823294937610626,
-          -0.666256844997406
+          0.0021231919527053833,
+          -0.8411124348640442
         ]
       },
       {
@@ -84,6 +116,7 @@
         "proposed": null,
         "recorded_action": 1,
         "recorded_reward": -0.6349999904632568,
+        "discounted_logged_return": -9.028761863708496,
         "energy_kwh": 0.635,
         "discomfort_degree_hours": 0.0,
         "support": [
@@ -91,8 +124,8 @@
           0
         ],
         "predicted_values": [
-          -0.058823294937610626,
-          -0.666256844997406
+          0.0021231919527053833,
+          -0.8411124348640442
         ]
       }
     ]
@@ -100,11 +133,11 @@
   "live": {
     "rows": 533,
     "frozen_or_live": "live",
-    "eligible": 321,
+    "eligible": 315,
     "on": 0,
-    "off": 321,
-    "logged_reward_error": 0.07430659236196807,
-    "compared_logged_rows": 334,
+    "off": 315,
+    "discounted_logged_return_mae": 2.507562005542799,
+    "compared_logged_rows": 332,
     "updates": 492,
     "example": [
       {
@@ -113,6 +146,7 @@
         "proposed": null,
         "recorded_action": 1,
         "recorded_reward": -0.5950000286102295,
+        "discounted_logged_return": -9.541664123535156,
         "energy_kwh": 0.595,
         "discomfort_degree_hours": 0.0,
         "support": [
@@ -120,8 +154,8 @@
           0
         ],
         "predicted_values": [
-          -0.058823294937610626,
-          -0.666256844997406
+          0.0021231919527053833,
+          -0.8411124348640442
         ]
       },
       {
@@ -130,6 +164,7 @@
         "proposed": null,
         "recorded_action": 1,
         "recorded_reward": -0.6499999761581421,
+        "discounted_logged_return": -9.417540550231934,
         "energy_kwh": 0.65,
         "discomfort_degree_hours": 0.0,
         "support": [
@@ -137,8 +172,8 @@
           0
         ],
         "predicted_values": [
-          -0.058823294937610626,
-          -0.666256844997406
+          0.0021231919527053833,
+          -0.8411124348640442
         ]
       },
       {
@@ -147,6 +182,7 @@
         "proposed": null,
         "recorded_action": 1,
         "recorded_reward": -0.6516666412353516,
+        "discounted_logged_return": -9.22899055480957,
         "energy_kwh": 0.6516666666666666,
         "discomfort_degree_hours": 0.0,
         "support": [
@@ -154,8 +190,8 @@
           0
         ],
         "predicted_values": [
-          -0.058763839304447174,
-          -0.6659868359565735
+          0.002159222960472107,
+          -0.8407003283500671
         ]
       },
       {
@@ -164,6 +200,7 @@
         "proposed": null,
         "recorded_action": 1,
         "recorded_reward": -0.6349999904632568,
+        "discounted_logged_return": -9.028761863708496,
         "energy_kwh": 0.635,
         "discomfort_degree_hours": 0.0,
         "support": [
@@ -171,16 +208,16 @@
           0
         ],
         "predicted_values": [
-          -0.05872701108455658,
-          -0.6659279465675354
+          0.002195008099079132,
+          -0.8403185606002808
         ]
       }
     ],
-    "expert_parameter_l1_change": 0.00951813830761239
+    "expert_parameter_l1_change": 0.04334412846947089
   },
   "code": {
-    "control.py": "780735c594935761ac528d5b43e263f2a422c1204bf8273760825b593f91423f",
-    "workflow.py": "9c7fafaf955b7bca930a3f03fccd49bab8ed09cfee660ff1218a7ee5ecb487e6"
+    "control.py": "e89c9b0b363b5c8a75712cb03dae8de2a181b035767516b48e22130da258a28d",
+    "workflow.py": "7e47117899e8e4da8808aa11ee043a7536e5d1b5dc551c74f577a30092ca9aa3"
   },
   "trial": "Logged action replay in one building. No actual counterfactual or heater command."
 }

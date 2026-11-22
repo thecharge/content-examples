@@ -14,7 +14,7 @@ from workflow import Blackboard, Observation, Online
 
 
 def replay(lines, model, cutoff, live, local=False):
-    state, last = None, None
+    state, last, idle_minutes = None, None, 0.
     reference = LocalTemperature() if local else None
     learner = Online(model) if live else None
     for line in lines:
@@ -29,7 +29,7 @@ def replay(lines, model, cutoff, live, local=False):
             raise ValueError("Sensor readings must be finite")
         gap = timestamp - last if last is not None else 300
         if gap > 450:
-            state = None
+            state, idle_minutes = None, 0.
             if reference is not None:
                 reference.center = None
         dt = torch.tensor([gap / 60 if gap <= 450 else 5.])
@@ -39,7 +39,7 @@ def replay(lines, model, cutoff, live, local=False):
             witness = torch.tensor([reference.aligned(temperature)])
         center = reference.center if reference is not None else FITTING_CENTER_C
         with torch.no_grad():
-            candidate = model.step(primary, witness, dt, state)
+            candidate = model.step(primary, witness, dt, state, idle_minutes=idle_minutes)
             reading_score = candidate.logit.sigmoid().item()
             yield dict(time=timestamp, decision=(
                 "occupied" if reading_score >= cutoff else "empty") if candidate.accepted.item() else None,
@@ -50,9 +50,10 @@ def replay(lines, model, cutoff, live, local=False):
                     error_c=r["error"].item()*3 if witness.isfinite().item() else None,
                     learned_check_score=r["process"].sigmoid().item()) for r in candidate.attempts])
         if learner is not None:
-            learner.feedback(Observation(timestamp, primary, witness, dt, state))
+            learner.feedback(Observation(timestamp, primary, witness, dt, state, idle_minutes))
         if reference is not None:
             reference.observe(temperature)
+        idle_minutes = 0. if candidate.accepted.item() else idle_minutes + dt.item()
         state, last = candidate.ledger, timestamp
 
 

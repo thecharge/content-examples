@@ -29,7 +29,7 @@ def measure(evidence, source, output):
         rec = model_receipt[key]
         if sha(path) != rec["best_sha256"]:
             raise ValueError(f"Changed weights for {key}")
-        state = None
+        state, idle_minutes = None, 0.
         if model:
             model.load_state_dict(torch.load(path, weights_only=True))
         else:
@@ -40,21 +40,22 @@ def measure(evidence, source, output):
         for i, (reading, stamp) in enumerate(zip(readings, timestamps.tolist(), strict=True)):
             seconds = stamp - int(timestamps[i-1]) if i else 300
             if seconds > 450:
-                state = None
+                state, idle_minutes = None, 0.
             minutes = readings.new_tensor([seconds/60 if seconds <= 450 else 5.])
             primary, witness = reading.reshape(1, 2).unbind(-1)
             start = perf_counter_ns()
             with torch.no_grad():
                 if key == "workflow":
-                    result = model.step(primary, witness, minutes, state)
+                    result = model.step(primary, witness, minutes, state, idle_minutes=idle_minutes)
                 elif model:
                     _, state = model.step(primary, minutes, state)
                 else:
                     tree.inplace_predict(next(causal).reshape(1, -1).numpy(),
                                          iteration_range=(0, rec["rounds"]))
             if learner:
-                learner.feedback(Observation(stamp, primary, witness, minutes, state))
+                learner.feedback(Observation(stamp, primary, witness, minutes, state, idle_minutes))
             if key == "workflow":
+                idle_minutes = 0. if result.accepted.item() else idle_minutes + minutes.item()
                 state = result.ledger.detach()
             if i >= 40:
                 values.append((perf_counter_ns() - start)/1_000_000)

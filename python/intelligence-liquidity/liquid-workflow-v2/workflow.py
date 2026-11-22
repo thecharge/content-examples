@@ -10,6 +10,17 @@ WIDTH = 8
 EXPERTS = 3
 DEPTH = 3
 HEADS = 2
+DISCOUNT = .95
+IDLE_HALF_LIFE_MINUTES = 60.
+
+
+def bellman_return(reward, next_value):
+    return reward + DISCOUNT * next_value.clamp(-5., 0.)
+
+
+def routing_balance(probabilities, greedy):
+    fractions = F.one_hot(greedy, EXPERTS).to(probabilities.dtype).mean(0)
+    return EXPERTS * (probabilities.mean(0) * fractions).sum()
 
 
 class LiquidODE(nn.Module):
@@ -112,7 +123,7 @@ class Blackboard(nn.Module):
                       tuple(x.new_zeros(len(x), WIDTH) for _ in self.layers),
                       x.new_zeros(len(x), HEADS, WIDTH // HEADS, WIDTH // HEADS))
 
-    def step(self, primary, witness, minutes, ledger=None, *, tolerance=.55, training=False, replay=False):
+    def step(self, primary, witness, minutes, ledger=None, *, tolerance=.55, training=False, replay=False, idle_minutes=0.):
         # The witness never enters a specialist, router, or attention projection.
         original = self.start(primary) if ledger is None else ledger
         batch = torch.arange(len(primary), device=primary.device)
@@ -121,25 +132,34 @@ class Blackboard(nn.Module):
         truth_available = witness.isfinite()
         evidence = witness.nan_to_num(nan=0., posinf=0., neginf=0.)
         initial = self.input(primary[:, None]).tanh()
+        idle = torch.broadcast_to(torch.as_tensor(idle_minutes, device=minutes.device, dtype=minutes.dtype),
+                                  minutes.shape)
+        bank_before = tuple(bank * torch.exp2(-idle[:, None, None] / IDLE_HALF_LIFE_MINUTES)
+                            for bank in original.experts)
+        idle_decay = torch.exp2(-minutes[:, None, None] / IDLE_HALF_LIFE_MINUTES)
 
         def path(retry_at=None, retry_rows=None, rank=0):
             draft, board = initial, original.board
             states, reviewers, errors, scores, claims, finite = [], [], [], [], [], []
+            balance = []
             for index, layer in enumerate(self.layers):
                 memory = layer.delta.read(board, draft) if self.use_delta else torch.zeros_like(draft)
                 inputs = torch.cat((primary[:, None], draft, memory), dim=-1)
                 logits = layer.route(inputs)
                 order = logits.argsort(dim=-1, descending=True)
+                probabilities = logits.softmax(-1)
+                if training and not self.fixed_expert:
+                    balance.append(routing_balance(probabilities, order[:, 0]))
                 if self.fixed_expert:
                     order = torch.zeros_like(order)
                 expert = order[:, 0]
                 if training and not replay and not self.fixed_expert:
-                    expert = torch.multinomial(logits.softmax(-1), 1).squeeze(-1)
+                    expert = torch.multinomial(probabilities, 1).squeeze(-1)
                 if retry_at == index:
                     expert = torch.where(retry_rows, order[:, rank], expert)
-                state = layer.expert(inputs, original.experts[index][batch, expert], minutes, expert)
+                state = layer.expert(inputs, bank_before[index][batch, expert], minutes, expert)
                 if training:
-                    score = logits.softmax(-1)[batch, expert, None]
+                    score = probabilities[batch, expert, None]
                     state = state * (1 + score - score.detach())
                 candidate = layer.draft(torch.cat((draft, state, primary[:, None]), -1)).tanh()
                 shadow = layer.shadow(candidate).squeeze(-1)
@@ -151,7 +171,7 @@ class Blackboard(nn.Module):
                 valid = candidate.isfinite().all(-1) & review.isfinite().all(-1)
                 board = layer.delta(board, candidate, minutes) if self.use_delta else board
                 valid = valid & board.isfinite().flatten(1).all(-1)
-                next_experts = original.experts[index].scatter(
+                next_experts = (bank_before[index] * idle_decay).scatter(
                     1, expert[:, None, None].expand(-1, 1, WIDTH), state[:, None, :])
                 states.append(next_experts)
                 reviewers.append(review)
@@ -166,9 +186,11 @@ class Blackboard(nn.Module):
             process = torch.stack(scores, -1)
             passes = (error <= tolerance) & torch.stack(finite, -1) & truth_available[:, None]
             reward = passes.to(primary.dtype) + .25 * process.sigmoid()
-            return draft, Ledger(tuple(states), tuple(reviewers), board), passes, reward, torch.stack(claims, -1), process
+            route_loss = torch.stack(balance).mean() if balance else primary.new_zeros(())
+            return (draft, Ledger(tuple(states), tuple(reviewers), board), passes, reward,
+                    torch.stack(claims, -1), process, route_loss)
 
-        proposed, candidate, passes, rewards, claims, process = path()
+        proposed, candidate, passes, rewards, claims, process, route_loss = path()
         allowed = passes.all(-1)
         if self.use_checks and not training and (~allowed & truth_available).any():
             # One rewind per row. Try the two remaining specialists; the verifier has veto power.
@@ -179,7 +201,7 @@ class Blackboard(nn.Module):
                     continue
                 best_reward = rewards.sum(-1)
                 for rank in (1, 2) if not self.fixed_expert else (1,):
-                    other_draft, other, other_passes, other_reward, other_claims, other_process = path(
+                    other_draft, other, other_passes, other_reward, other_claims, other_process, _ = path(
                         index, retry_rows, rank)
                     total = other_reward.sum(-1)
                     choose = retry_rows & other_passes.all(-1) & (total > best_reward)
@@ -192,7 +214,7 @@ class Blackboard(nn.Module):
         accepted = allowed if self.use_checks and not training else active
         return Result(select(accepted, candidate, original), self.occupancy(proposed).squeeze(-1),
                       self.next_sensor(proposed).squeeze(-1), self.action_value(proposed),
-                      accepted, claims, process, attempts)
+                      accepted, claims, process, attempts, route_loss)
 
 
 def select(mask, yes, no):
@@ -211,14 +233,23 @@ class Result:
     claims: torch.Tensor
     process: torch.Tensor
     attempts: list
+    route_loss: torch.Tensor
+
+
+def verification_loss(result, witness, tolerance=.55):
+    available = witness.isfinite()[:, None].expand_as(result.claims)
+    truth = torch.where(available, witness[:, None], result.claims.detach())
+    verified = ((result.claims.detach() - truth).abs() <= tolerance).to(result.process.dtype)
+    claims = F.smooth_l1_loss(result.claims, truth, reduction="none")
+    process = F.binary_cross_entropy_with_logits(result.process, verified, reduction="none")
+    return ((.3 * claims + .12 * process) * available).sum() / available.sum().clamp_min(1)
 
 
 def loss(result, witness, label, next_sensor, tolerance=.55):
-    verified = ((result.claims.detach() - witness[:, None]).abs() <= tolerance).float()
     return (F.binary_cross_entropy_with_logits(result.logit, label)
-            + .3 * F.smooth_l1_loss(result.claims, witness[:, None].expand_as(result.claims))
-            + .12 * F.binary_cross_entropy_with_logits(result.process, verified)
-            + .25 * F.smooth_l1_loss(result.forecast, next_sensor))
+            + verification_loss(result, witness, tolerance)
+            + .25 * F.smooth_l1_loss(result.forecast, next_sensor)
+            + .02 * result.route_loss)
 
 
 @dataclass(frozen=True)
@@ -228,16 +259,18 @@ class Observation:
     witness: torch.Tensor
     minutes: torch.Tensor
     before: Ledger | None
+    idle_minutes: float = 0.
 
 
 class Online:
     """Forecast, then learn on the later reading after its own prediction is emitted."""
 
-    def __init__(self, model, lr=.001, max_gap=450):
+    def __init__(self, model, lr=.001, max_gap=450, tolerance=.55):
         self.model = model
         self.optimizer = torch.optim.SGD(model.parameters(), lr=lr)
         self.pending = None
         self.max_gap = max_gap
+        self.tolerance = tolerance
 
     def feedback(self, current, *, observed_action=None, observed_reward=None,
                  next_action_return=None):
@@ -251,12 +284,13 @@ class Online:
             return None
         self.optimizer.zero_grad()
         replay = self.model.step(previous.primary, previous.witness, previous.minutes,
-                                 previous.before, training=True, replay=True)
-        error = F.smooth_l1_loss(replay.forecast, current.primary)
+                                 previous.before, training=True, replay=True, idle_minutes=previous.idle_minutes)
+        error = (F.smooth_l1_loss(replay.forecast, current.primary)
+                 + verification_loss(replay, previous.witness, self.tolerance))
         if observed_reward is not None:
             target = replay.forecast.new_tensor(observed_reward)
             if next_action_return is not None:
-                target = target + .95 * replay.forecast.new_tensor(next_action_return).detach()
+                target = bellman_return(target, replay.forecast.new_tensor(next_action_return).detach())
             q = replay.action_value[:, observed_action]
             error = error + F.smooth_l1_loss(q, target.expand_as(q))
         if not error.isfinite():

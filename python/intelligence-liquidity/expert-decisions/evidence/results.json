@@ -1,0 +1,739 @@
+{
+  "rows": {
+    "H1": 4032,
+    "H2": 4023,
+    "H3": 4032,
+    "H4": 2016,
+    "H5": 2010,
+    "H6": 2016
+  },
+  "data": {
+    "H1_ENVIRONMENTAL.zip": "4d5ac73017245092a0368ee2def721f1a5b93bf906cf8563c18712d7759badd0",
+    "H1_GROUNDTRUTH.zip": "7ce7b4d41e67cdcef3a2c91d6fcecee117cc890f190a34c34d716e125ea9649c",
+    "H2_ENVIRONMENTAL.zip": "403ed10ff5cbe62db81d003facb1d4da2f0915ffcc8b7ac12aab5b7baf9aa6c8",
+    "H2_GROUNDTRUTH.zip": "f555403f5c3b991ec02e6d348c13d7096194dbea6878220aa59ddca53b68fed1",
+    "H3_ENVIRONMENTAL.zip": "0876ea45b663389e05934a1eae4754a5e5dd495d08e19890d1c06fdf387b93f7",
+    "H3_GROUNDTRUTH.zip": "57ead22674459c5eb12ccdbde9b767ec8b3bf1023bd3dfa2ff6b0788cd453223",
+    "H4_ENVIRONMENTAL.zip": "6163626eaa643082d42e494cf41bdd82e5f92ddae8f0d75b1bfe89ba47502f89",
+    "H4_GROUNDTRUTH.zip": "5c4484761e8438ee6546c3a36dbacfcca7ec75acea9885d6024e218290805ed0",
+    "H5_ENVIRONMENTAL.zip": "2052daee624cb0aff7827097d34422c536fdf5e86047734b90b858cd6bb1fe4f",
+    "H5_GROUNDTRUTH.zip": "4d3de5bee5abd29d0826a70376b80fefa2f052e2c5701e2b77e575b6f0852d9b",
+    "H6_ENVIRONMENTAL.zip": "ff9539b61c921a9f5dcbc32b95bd6b0705f91536ecd3dbfae48ddcc36dffff58",
+    "H6_GROUNDTRUTH.zip": "28ddb88f6deca3af403c0cb1d35e721614fcf02ecb523ef64d412ce7e3101574"
+  },
+  "selected_epoch": 1,
+  "curve": [
+    0.6669962048530579,
+    0.6607739329338074,
+    0.6461491584777832,
+    0.5905697166919708,
+    0.5687057673931122
+  ],
+  "threshold": 0.75,
+  "act_cost": 0.1,
+  "curiosity_bonus": 0.15,
+  "code_sha256": "af9251122c41b41efb378f15b7d70a421819d572e8138217e6eb8c8c9b59e413",
+  "checkpoints": {
+    "experts.pt": "3eba3c7bf0783ad026757a3b7b4ea8d4c8ef38397736220b9811f4e25bd26ad2",
+    "review-0.ubj": "b1a4b875ff1f6ae600f5575c17fecd03cecbde4446d329c7e208590ebd3004a9",
+    "review-1.ubj": "d07f864119fcb27daccdf71ae2cd0f0a78d5b099927bf224a7a3b95664cefb63",
+    "review-2.ubj": "ee9b825ed1ffdbbde853739141eeb9103028ab978c1a936d8fe8880d0bab5e46",
+    "review-3.ubj": "7419ee5a4a1ce4d0798f244e459759b887556bc3e11b852ef3f805b495bc5668",
+    "review-4.ubj": "39533800974786a918ea545e1e474e66671c916d71a1379cad8048a309f5b8d9"
+  },
+  "dependencies": {
+    "liquid-workflow-v3/blackboard.py": "0c2e491f3b68229aa8ee4973526be483b81d30d9e8ac870c5c6d301ed883c8dc",
+    "liquid-workflow-v3/data.py": "f44609f6e1b414e26fa0a7e0f6815b6337ede5b329c1582c8a2badab0c8e3797",
+    "liquid-workflow-v3/train.py": "082b18a8a592c021043acad7c89bb76f1ab9ccadcfc476e72a4e5bf06d42fb9b",
+    "liquid-workflow-v2/workflow.py": "7e47117899e8e4da8808aa11ee043a7536e5d1b5dc551c74f577a30092ca9aa3"
+  },
+  "homes": {
+    "H5": {
+      "no_falsifier": {
+        "rows": 2010,
+        "called": 2010,
+        "right": 1226,
+        "wrong": 784,
+        "withheld": 0,
+        "balanced_accuracy": 0.5,
+        "auc": 0.5618164539337158,
+        "detected": 1226,
+        "occupied": 1226
+      },
+      "independent_review": {
+        "rows": 2010,
+        "called": 2010,
+        "right": 1226,
+        "wrong": 784,
+        "withheld": 0,
+        "balanced_accuracy": 0.5,
+        "auc": 0.5618164539337158,
+        "detected": 1226,
+        "occupied": 1226
+      },
+      "proposals": 10044,
+      "abstentions": 6,
+      "low_confidence_trials": 0,
+      "low_confidence_correct": 0,
+      "total_reward": 1199.599,
+      "total_confidence_reward": -4.43,
+      "average_calibration_score": 0.7477947473526001,
+      "vetoed_correct": 0,
+      "vetoed_wrong": 0,
+      "calibration": [
+        {
+          "bin": 0,
+          "count": 0,
+          "confidence": null,
+          "observed_accuracy": null
+        },
+        {
+          "bin": 1,
+          "count": 0,
+          "confidence": null,
+          "observed_accuracy": null
+        },
+        {
+          "bin": 2,
+          "count": 10036,
+          "confidence": 0.73048996925354,
+          "observed_accuracy": 0.6094061136245728
+        },
+        {
+          "bin": 3,
+          "count": 8,
+          "confidence": 0.8160008788108826,
+          "observed_accuracy": 1.0
+        },
+        {
+          "bin": 4,
+          "count": 0,
+          "confidence": null,
+          "observed_accuracy": null
+        }
+      ],
+      "trace": [
+        {
+          "row": 0,
+          "recorded_occupancy": 1,
+          "experts": [
+            {
+              "expert": "air",
+              "evidence": {
+                "co2eq": 0.0,
+                "voc": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.728113055229187,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3562261164188385,
+              "reward": 0.9,
+              "confidence_reward": 0.03522,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7785143852233887
+            },
+            {
+              "expert": "thermal",
+              "evidence": {
+                "temperature": 0.5300000905990601,
+                "humidity": -0.2880000174045563
+              },
+              "proposed": 1,
+              "confidence": 0.735196053981781,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3703921139240265,
+              "reward": 0.9,
+              "confidence_reward": 0.03598,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.8075931072235107
+            },
+            {
+              "expert": "light",
+              "evidence": {
+                "light": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.739835798740387,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3796716034412384,
+              "reward": 0.9,
+              "confidence_reward": 0.03646,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7311487197875977
+            },
+            {
+              "expert": "change",
+              "evidence": {},
+              "proposed": null,
+              "confidence": null,
+              "reason": "missing evidence",
+              "expected_payoff": 0.36393752694129944,
+              "reward": 0.0,
+              "confidence_reward": 0.0,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7311487197875977
+            },
+            {
+              "expert": "mixed",
+              "evidence": {
+                "co2eq": 0.0,
+                "temperature": 0.5300000905990601,
+                "humidity": -0.2880000174045563,
+                "light": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.7415545582771301,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.38310912251472473,
+              "reward": 0.9,
+              "confidence_reward": 0.03664,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.6752311587333679
+            }
+          ]
+        },
+        {
+          "row": 287,
+          "recorded_occupancy": 1,
+          "experts": [
+            {
+              "expert": "air",
+              "evidence": {
+                "co2eq": 0.0,
+                "voc": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.728113055229187,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3562261164188385,
+              "reward": 0.9,
+              "confidence_reward": 0.03522,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7785143852233887
+            },
+            {
+              "expert": "thermal",
+              "evidence": {
+                "temperature": 0.4099998474121094,
+                "humidity": -0.37400001287460327
+              },
+              "proposed": 1,
+              "confidence": 0.7353289127349854,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3706578314304352,
+              "reward": 0.9,
+              "confidence_reward": 0.03599,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.8075931072235107
+            },
+            {
+              "expert": "light",
+              "evidence": {
+                "light": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.739835798740387,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3796716034412384,
+              "reward": 0.9,
+              "confidence_reward": 0.03646,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7311487197875977
+            },
+            {
+              "expert": "change",
+              "evidence": {},
+              "proposed": null,
+              "confidence": null,
+              "reason": "missing evidence",
+              "expected_payoff": 0.36393752694129944,
+              "reward": 0.0,
+              "confidence_reward": 0.0,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7311487197875977
+            },
+            {
+              "expert": "mixed",
+              "evidence": {
+                "co2eq": 0.0,
+                "temperature": 0.4099998474121094,
+                "humidity": -0.37400001287460327,
+                "light": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.7417141795158386,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3834283649921417,
+              "reward": 0.9,
+              "confidence_reward": 0.03666,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.6752311587333679
+            }
+          ]
+        },
+        {
+          "row": 862,
+          "recorded_occupancy": 1,
+          "experts": [
+            {
+              "expert": "air",
+              "evidence": {
+                "co2eq": 0.0,
+                "voc": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.728113055229187,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3562261164188385,
+              "reward": 0.9,
+              "confidence_reward": 0.03522,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7785143852233887
+            },
+            {
+              "expert": "thermal",
+              "evidence": {
+                "temperature": 0.6799999475479126,
+                "humidity": -0.5699999928474426
+              },
+              "proposed": 1,
+              "confidence": 0.7314833998680115,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3629668056964874,
+              "reward": 0.9,
+              "confidence_reward": 0.03558,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.8075931072235107
+            },
+            {
+              "expert": "light",
+              "evidence": {
+                "light": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.739835798740387,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3796716034412384,
+              "reward": 0.9,
+              "confidence_reward": 0.03646,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7311487197875977
+            },
+            {
+              "expert": "change",
+              "evidence": {},
+              "proposed": null,
+              "confidence": null,
+              "reason": "missing evidence",
+              "expected_payoff": 0.36393752694129944,
+              "reward": 0.0,
+              "confidence_reward": 0.0,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7311487197875977
+            },
+            {
+              "expert": "mixed",
+              "evidence": {
+                "co2eq": 0.0,
+                "temperature": 0.6799999475479126,
+                "humidity": -0.5699999928474426,
+                "light": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.7363367080688477,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3726734220981598,
+              "reward": 0.9,
+              "confidence_reward": 0.0361,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.6752311587333679
+            }
+          ]
+        },
+        {
+          "row": 1149,
+          "recorded_occupancy": 1,
+          "experts": [
+            {
+              "expert": "air",
+              "evidence": {
+                "co2eq": 0.0,
+                "voc": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.728113055229187,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3562261164188385,
+              "reward": 0.9,
+              "confidence_reward": 0.03522,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7785143852233887
+            },
+            {
+              "expert": "thermal",
+              "evidence": {
+                "temperature": 0.3499999940395355,
+                "humidity": -0.6040000319480896
+              },
+              "proposed": 1,
+              "confidence": 0.7336980700492859,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.36739614605903625,
+              "reward": 0.9,
+              "confidence_reward": 0.03582,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.8075931072235107
+            },
+            {
+              "expert": "light",
+              "evidence": {
+                "light": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.739835798740387,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3796716034412384,
+              "reward": 0.9,
+              "confidence_reward": 0.03646,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7311487197875977
+            },
+            {
+              "expert": "change",
+              "evidence": {},
+              "proposed": null,
+              "confidence": null,
+              "reason": "missing evidence",
+              "expected_payoff": 0.36393752694129944,
+              "reward": 0.0,
+              "confidence_reward": 0.0,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7311487197875977
+            },
+            {
+              "expert": "mixed",
+              "evidence": {
+                "co2eq": 0.0,
+                "temperature": 0.3499999940395355,
+                "humidity": -0.6040000319480896,
+                "light": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.739395260810852,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3787905275821686,
+              "reward": 0.9,
+              "confidence_reward": 0.03642,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.6752311587333679
+            }
+          ]
+        },
+        {
+          "row": 1436,
+          "recorded_occupancy": 1,
+          "experts": [
+            {
+              "expert": "air",
+              "evidence": {
+                "co2eq": 0.0,
+                "voc": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.728113055229187,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3562261164188385,
+              "reward": 0.9,
+              "confidence_reward": 0.03522,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7785143852233887
+            },
+            {
+              "expert": "thermal",
+              "evidence": {
+                "temperature": 0.6799999475479126,
+                "humidity": -0.34200000762939453
+              },
+              "proposed": 1,
+              "confidence": 0.7335629463195801,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.36712589859962463,
+              "reward": 0.9,
+              "confidence_reward": 0.0358,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.8075931072235107
+            },
+            {
+              "expert": "light",
+              "evidence": {
+                "light": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.739835798740387,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3796716034412384,
+              "reward": 0.9,
+              "confidence_reward": 0.03646,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7311487197875977
+            },
+            {
+              "expert": "change",
+              "evidence": {},
+              "proposed": null,
+              "confidence": null,
+              "reason": "missing evidence",
+              "expected_payoff": 0.36393752694129944,
+              "reward": 0.0,
+              "confidence_reward": 0.0,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7311487197875977
+            },
+            {
+              "expert": "mixed",
+              "evidence": {
+                "co2eq": 0.0,
+                "temperature": 0.6799999475479126,
+                "humidity": -0.34200000762939453,
+                "light": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.739281952381134,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.37856391072273254,
+              "reward": 0.9,
+              "confidence_reward": 0.03641,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.6752311587333679
+            }
+          ]
+        },
+        {
+          "row": 1723,
+          "recorded_occupancy": 1,
+          "experts": [
+            {
+              "expert": "air",
+              "evidence": {
+                "co2eq": 0.0,
+                "voc": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.728113055229187,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3562261164188385,
+              "reward": 0.9,
+              "confidence_reward": 0.03522,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7785143852233887
+            },
+            {
+              "expert": "thermal",
+              "evidence": {
+                "temperature": 0.5099998712539673,
+                "humidity": -0.3659999966621399
+              },
+              "proposed": 1,
+              "confidence": 0.7346407771110535,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3692815601825714,
+              "reward": 0.9,
+              "confidence_reward": 0.03592,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.8075931072235107
+            },
+            {
+              "expert": "light",
+              "evidence": {
+                "light": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.739835798740387,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3796716034412384,
+              "reward": 0.9,
+              "confidence_reward": 0.03646,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7311487197875977
+            },
+            {
+              "expert": "change",
+              "evidence": {},
+              "proposed": null,
+              "confidence": null,
+              "reason": "missing evidence",
+              "expected_payoff": 0.36393752694129944,
+              "reward": 0.0,
+              "confidence_reward": 0.0,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7311487197875977
+            },
+            {
+              "expert": "mixed",
+              "evidence": {
+                "co2eq": 0.0,
+                "temperature": 0.5099998712539673,
+                "humidity": -0.3659999966621399,
+                "light": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.7407655119895935,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3815310299396515,
+              "reward": 0.9,
+              "confidence_reward": 0.03656,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.6752311587333679
+            }
+          ]
+        }
+      ]
+    },
+    "H6": {
+      "no_falsifier": {
+        "rows": 2016,
+        "called": 2016,
+        "right": 1553,
+        "wrong": 463,
+        "withheld": 0,
+        "balanced_accuracy": 0.5,
+        "auc": 0.7654174566268921,
+        "detected": 1553,
+        "occupied": 1553
+      },
+      "independent_review": {
+        "rows": 2016,
+        "called": 2016,
+        "right": 1553,
+        "wrong": 463,
+        "withheld": 0,
+        "balanced_accuracy": 0.5,
+        "auc": 0.7654174566268921,
+        "detected": 1553,
+        "occupied": 1553
+      },
+      "proposals": 10079,
+      "abstentions": 1,
+      "low_confidence_trials": 0,
+      "low_confidence_correct": 0,
+      "total_reward": 4441.1,
+      "total_confidence_reward": 145.048,
+      "average_calibration_score": 0.8219555020332336,
+      "vetoed_correct": 0,
+      "vetoed_wrong": 0,
+      "calibration": [
+        {
+          "bin": 0,
+          "count": 0,
+          "confidence": null,
+          "observed_accuracy": null
+        },
+        {
+          "bin": 1,
+          "count": 0,
+          "confidence": null,
+          "observed_accuracy": null
+        },
+        {
+          "bin": 2,
+          "count": 10079,
+          "confidence": 0.7279993891716003,
+          "observed_accuracy": 0.7703145146369934
+        },
+        {
+          "bin": 3,
+          "count": 0,
+          "confidence": null,
+          "observed_accuracy": null
+        },
+        {
+          "bin": 4,
+          "count": 0,
+          "confidence": null,
+          "observed_accuracy": null
+        }
+      ],
+      "trace": [
+        {
+          "row": 0,
+          "recorded_occupancy": 1,
+          "experts": [
+            {
+              "expert": "air",
+              "evidence": {
+                "co2eq": 0.0,
+                "voc": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.728113055229187,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3562261164188385,
+              "reward": 0.9,
+              "confidence_reward": 0.03522,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7785143852233887
+            },
+            {
+              "expert": "thermal",
+              "evidence": {
+                "temperature": 0.9400001764297485,
+                "humidity": -0.9080000519752502
+              },
+              "proposed": 1,
+              "confidence": 0.7263687252998352,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3527374565601349,
+              "reward": 0.9,
+              "confidence_reward": 0.03503,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.8075931072235107
+            },
+            {
+              "expert": "light",
+              "evidence": {
+                "light": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.739835798740387,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3796716034412384,
+              "reward": 0.9,
+              "confidence_reward": 0.03646,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7311487197875977
+            },
+            {
+              "expert": "change",
+              "evidence": {},
+              "proposed": null,
+              "confidence": null,
+              "reason": "missing evidence",
+              "expected_payoff": 0.36393752694129944,
+              "reward": 0.0,
+              "confidence_reward": 0.0,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.7311487197875977
+            },
+            {
+              "expert": "mixed",
+              "evidence": {
+                "co2eq": 0.0,
+                "temperature": 0.9400001764297485,
+                "humidity": -0.9080000519752502,
+                "light": 0.0
+              },
+              "proposed": 1,
+              "confidence": 0.7291295528411865,
+              "reason": "expected payoff covered the cost",
+              "expected_payoff": 0.3582591116428375,
+              "reward": 0.9,
+              "confidence_reward": 0.03533,
+              "reviewed_out": false,
+              "counter_probability_occupied": 0.6752311587333679
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

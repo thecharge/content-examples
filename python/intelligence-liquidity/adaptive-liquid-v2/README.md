@@ -140,3 +140,19 @@ python compare_coverage.py replay
 
 The comparison uses the original per-window predictions and the same
 acceptance decisions for both models. [Results by checkpoint](compare-coverage.json)
+
+## Change only the integration step
+
+The frozen V2 weights used the same sensors, gates and cutoffs. We
+changed only the formula or number of substeps used at inference.
+The original exponential solver with three substeps scored 72.59%
+balanced accuracy. Six and twelve substeps gave 72.66% and 72.70%.
+Switching to the fused step gave 72.38% at three substeps and 72.61%
+at twelve. The spread is 0.32 percentage points under this test.
+This measures how sensitive the trained model is to solving its
+current equation. It does not compare training with different cell
+equations or gate designs. [Results by checkpoint](solver-sensitivity.json)
+
+```sh
+python reproduce.py solver-sensitivity replay --data data
+```

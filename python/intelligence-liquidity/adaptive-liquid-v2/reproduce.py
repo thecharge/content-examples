@@ -10,7 +10,7 @@ import sys
 
 def main():
     cli = argparse.ArgumentParser(description=__doc__)
-    cli.add_argument("mode", choices=("check", "fit", "score", "route-ceiling"))
+    cli.add_argument("mode", choices=("check", "fit", "score", "route-ceiling", "solver-sensitivity"))
     cli.add_argument("work", type=Path)
     cli.add_argument("--data", type=Path, default=Path("data"))
     cli.add_argument("--model", default="v2")
@@ -24,7 +24,7 @@ def main():
     with TemporaryDirectory(prefix="liquid-check-") as temp:
         staged = Path(temp) / here.name
         staged.mkdir()
-        for file in ("adaptive.py", "policy.py", "experiment.py", "verify.py", "context_checks.py", "route_ceiling.py"):
+        for file in ("adaptive.py", "policy.py", "experiment.py", "verify.py", "context_checks.py", "route_ceiling.py", "solver_sensitivity.py"):
             shutil.copyfile(here / file, staged / file)
         (staged.parent / "attention-benchmark").symlink_to(earlier, target_is_directory=True)
         sys.path.insert(0, str(staged))
@@ -58,8 +58,9 @@ def main():
             if config.mode == "score":
                 experiment.score(work)
             else:
-                import route_ceiling
-                report = route_ceiling.measure(work, record["checkpoint_sha256"])
+                module_name = config.mode.replace("-", "_")
+                diagnostic = importlib.import_module(module_name)
+                report = diagnostic.measure(work, record["checkpoint_sha256"])
                 print(json.dumps(report, indent=2))
 
 

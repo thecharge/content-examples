@@ -105,3 +105,20 @@ available.
 ```sh
 python reproduce.py route-ceiling replay --data data
 ```
+
+## Check what changes when the input columns change
+
+The [single-reading check](prior/paper_feature_check.py) fits the same type
+of linear classifier on UCI twice. It first uses temperature, relative
+humidity and CO₂, then adds light and humidity ratio. The two same-office
+test accuracies go from 87.77% to 97.30% and from 75.30% to 87.79%.
+[Recorded comparison](prior/paper-feature-diagnostic.json)
+
+```sh
+python prior/paper_feature_check.py \
+  data/occupancy-fresh.zip
+```
+
+This isolates the input-column change in a simple model on UCI. It does
+not measure a liquid solver effect or estimate how well those added
+signals would work at another site.

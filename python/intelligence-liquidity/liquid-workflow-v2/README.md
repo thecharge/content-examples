@@ -98,7 +98,6 @@ operate an actuator or measure the return from running the proposed policy.
 - [Conservative Q-Learning](https://arxiv.org/abs/2006.04779), the action-value penalty used in the heater fit.
 - [HPDmobile environmental readings](https://doi.org/10.6084/m9.figshare.14368703) and [occupancy labels](https://doi.org/10.6084/m9.figshare.14368706).
 - [Measured residential building logs](https://data.mendeley.com/datasets/xztfbtsgys/3), logged heater commands, temperature and energy.
-- [Checkpoint hosting](MODEL-HOSTING.md).
 
 ## Compare a local thermometer reference
 

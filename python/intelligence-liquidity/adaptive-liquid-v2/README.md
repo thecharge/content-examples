@@ -122,3 +122,21 @@ python prior/paper_feature_check.py \
 This isolates the input-column change in a simple model on UCI. It does
 not measure a liquid solver effect or estimate how well those added
 signals would work at another site.
+
+## Compare decisions at the same coverage
+
+When the direct model is forced to skip the same windows as the learned
+route, its all-window balanced accuracy is 67.68%. The learned revisions
+lift this to 68.22%. Among answered windows, the change is 74.96% to 75.67%.
+The model answered 90.51% of the windows. Without those omissions the
+direct model reached 72.59% across all windows. The revisions helped
+slightly on the windows the learned route answered. Its omissions account
+for the larger drop across the full set. The learned route also earned
+less reward than the direct model under its own payoff table.
+
+```sh
+python compare_coverage.py replay
+```
+
+The comparison uses the original per-window predictions and the same
+acceptance decisions for both models. [Results by checkpoint](compare-coverage.json)

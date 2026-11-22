@@ -69,3 +69,31 @@ The occupancy label is held back until scoring. The heating path sees the record
 - [Test-Time Training with Self-Supervision](https://proceedings.mlr.press/v119/sun20b.html)
 - [Conservative Q-Learning](https://arxiv.org/abs/2006.04779)
 - [XGBoost](https://arxiv.org/abs/1603.02754)
+
+## Same-reading CPU comparison
+
+Use the same downloaded data folder and retained checkpoints as the full replay.
+
+```sh
+python compare_latency.py /path/to/downloads evidence /tmp/liquid-cpu-timing.json
+```
+
+Each model read the first 400 consecutive Munich Office_A rows in order. Three
+fresh passes used one CPU thread, alternated model order and discarded the first
+20 rows of each pass. This left 1,140 timed readings per model on the measured
+Ryzen 7 PRO 8840HS. Timing includes input preparation, causal features or
+state, checks and the live update where used. It excludes input/output,
+checkpoint writes, loading, and training. The median is the middle reading.
+The 95th percentile is the time within which 95% of readings finished.
+
+| Model | Median | 95th percentile |
+| --- | ---: | ---: |
+| XGBoost | 0.14 ms | 0.16 ms |
+| Frozen liquid MoE | 1.41 ms | 3.58 ms |
+| Live liquid MoE | 8.12 ms | 10.59 ms |
+
+The live path took about three times as long as the frozen path at the 95th
+percentile in this run. Unused experts still occupy memory. This measurement
+covers one CPU, room and checkpoint seed. It does not measure energy or memory.
+The [timing receipt](evidence/cpu-timing.json) records the exact percentiles,
+library versions, checkpoint hashes and sample counts.

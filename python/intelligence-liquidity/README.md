@@ -12,6 +12,7 @@ These are the runnable experiments behind the article and vlog. Download the dat
 | [Temporal attention and logged rewards](attention-and-reward/README.md) | Six occupancy networks, three data budgets and three seeds, with separate Danish apartments and a matched heating comparison | The plain custom LTC led apartment balanced accuracy at full budget. The heating lookup had the lowest error on logged actions. |
 | [First adaptive network](adaptive-liquid-v1/README.md) | Three proposal and check stages, 123 frozen receipts, Graz and logged heating comparisons | The model lost to simpler comparisons. A replay found a defect in how it committed revisions. |
 | [Corrected adaptive network](adaptive-liquid-v2/README.md) | Time-aware delta memory, corrected proposal replay, and the learned retry policy on unseen Aalto windows | The base fused LTC averaged 78.73% balanced accuracy. The full policy averaged 68.22% with 90.51% coverage. |
+| [Liquid workflow with sparse experts and live updates](liquid-workflow/README.md) | Three reviewed stages, rewind and alternate execution, live coefficient updates, four external datasets and heating replay | The full model lost to XGBoost on equal-weight occupancy score in all four evaluations. The heating choices tied always off in simulation. |
 
 The examples use Python 3.12 and CPU PyTorch 2.7.1 for the neural models. The first example also needs `ncps` and Node for its parity check. The heating-policy code needs only Python 3.11 or later.
 

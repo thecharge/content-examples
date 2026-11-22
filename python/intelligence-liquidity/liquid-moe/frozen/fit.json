@@ -1,0 +1,207 @@
+{
+  "batch_plans": {
+    "41": "5327e67d77cde998fdb866582abcf85fbccb4c1748f224504b51ed1090248a32",
+    "42": "0fa84503e2f919e4572e467480ff99815419316f4ef85356a639b0cd43e9f90d",
+    "43": "52313f81a019ca0dd2b481abea3e2e696ac79fd736dddecbe402e7c85a803171"
+  },
+  "batch_size": 64,
+  "digests": {
+    "dataset__2023_09_02__2023_10_04.csv": "c9c4cd86cac80898fa5ea91dcab4ba3142298d4af85ae6a6481338d00054e11e",
+    "occupancy-fresh.zip": "4ae3f46aa98eedff564a9f6924d1635173e2fd2c816004342a9be93076d3a81a"
+  },
+  "mean": [
+    535.5059814453125,
+    20.602346420288086
+  ],
+  "optimizer": {
+    "lr": 0.003,
+    "name": "Adam"
+  },
+  "pos_weight": 4.746666431427002,
+  "runs": [
+    {
+      "arm": "current",
+      "cutoff": 0.0,
+      "file": "current-41.pt",
+      "fit_seconds": 0.05957553698681295,
+      "parameters": 3,
+      "seed": 41,
+      "sha256": "bd825b0d00debfbbd1f6b1488f45ae7ded5d64cb4a662c11b53f131eb23b92d4",
+      "snapshot": 144,
+      "validation_loss": 0.7341252565383911
+    },
+    {
+      "arm": "gru",
+      "cutoff": 1.5,
+      "file": "gru-41.pt",
+      "fit_seconds": 0.23602573107928038,
+      "parameters": 1126,
+      "seed": 41,
+      "sha256": "0ffe57975ec2c0a9e5ea85fa9fcc671ccfce6eb7e88f32655408a0fde0835853",
+      "snapshot": 48,
+      "validation_loss": 0.3733869791030884
+    },
+    {
+      "arm": "liquid",
+      "cutoff": 1.0,
+      "file": "liquid-41.pt",
+      "fit_seconds": 0.27877068403176963,
+      "parameters": 726,
+      "seed": 41,
+      "sha256": "447acea6fa903c27a4b5b3c32ca4a3de2843b2e896ff0946fcce0d672484a654",
+      "snapshot": 24,
+      "validation_loss": 0.5014249086380005
+    },
+    {
+      "arm": "moe",
+      "cutoff": 0.0,
+      "file": "moe-41.pt",
+      "fit_seconds": 1.2686830640304834,
+      "parameters": 4440,
+      "seed": 41,
+      "sha256": "ee5c6b0013517bc451195f2f6c7d76636cbfa8a26f5de5fb14018af5fdbd1d24",
+      "snapshot": 24,
+      "validation_loss": 0.5744813084602356
+    },
+    {
+      "arm": "moe_delta",
+      "cutoff": 0.25,
+      "file": "moe_delta-41.pt",
+      "fit_seconds": 3.106098175048828,
+      "parameters": 8990,
+      "seed": 41,
+      "sha256": "f4e10d501f3c4dc785873d21f2e946b78af000463797aa162087c5b823b679df",
+      "snapshot": 24,
+      "validation_loss": 0.5907570123672485
+    },
+    {
+      "arm": "current",
+      "cutoff": 0.5,
+      "file": "current-42.pt",
+      "fit_seconds": 0.046156448079273105,
+      "parameters": 3,
+      "seed": 42,
+      "sha256": "9fd31b1eafcc0f1c289c157a6d3885b5372d280a81bfff74b82a4bb10121146e",
+      "snapshot": 24,
+      "validation_loss": 0.5744490623474121
+    },
+    {
+      "arm": "gru",
+      "cutoff": 2.0,
+      "file": "gru-42.pt",
+      "fit_seconds": 0.23834261600859463,
+      "parameters": 1126,
+      "seed": 42,
+      "sha256": "151bb1cf68689b1ef3a5bf4b58c533dc9e83da0f736054bdd41fd9f32e1fb823",
+      "snapshot": 48,
+      "validation_loss": 0.47432592511177063
+    },
+    {
+      "arm": "liquid",
+      "cutoff": 1.0,
+      "file": "liquid-42.pt",
+      "fit_seconds": 0.27739312779158354,
+      "parameters": 726,
+      "seed": 42,
+      "sha256": "de450a221696871340d1fede12278f66be8236fb03cd0cc8e46876101038df31",
+      "snapshot": 24,
+      "validation_loss": 0.41373416781425476
+    },
+    {
+      "arm": "moe",
+      "cutoff": 2.25,
+      "file": "moe-42.pt",
+      "fit_seconds": 1.124267035163939,
+      "parameters": 4440,
+      "seed": 42,
+      "sha256": "01078c38c45c9fa892ea3f75949df66741db64f28d6fbb565a8eb1c627517357",
+      "snapshot": 24,
+      "validation_loss": 0.45066261291503906
+    },
+    {
+      "arm": "moe_delta",
+      "cutoff": 2.5,
+      "file": "moe_delta-42.pt",
+      "fit_seconds": 2.260337766027078,
+      "parameters": 8990,
+      "seed": 42,
+      "sha256": "726f61ed30cd909d3eb28c0716e8864521c5b2795e99d123ec36cb8ddd1e7c5e",
+      "snapshot": 24,
+      "validation_loss": 0.4687334895133972
+    },
+    {
+      "arm": "current",
+      "cutoff": 0.5,
+      "file": "current-43.pt",
+      "fit_seconds": 0.05735740903764963,
+      "parameters": 3,
+      "seed": 43,
+      "sha256": "bd8ae0511ef728310fcbc317a38a217f5fe6be6b5bd92b26bc9c7566b61eacf7",
+      "snapshot": 144,
+      "validation_loss": 0.6794222593307495
+    },
+    {
+      "arm": "gru",
+      "cutoff": 2.0,
+      "file": "gru-43.pt",
+      "fit_seconds": 0.24054136802442372,
+      "parameters": 1126,
+      "seed": 43,
+      "sha256": "4256cf578a5258b4dc67b952c1f2d6e0dde81ad5643b7e1323cf229a6cab652f",
+      "snapshot": 48,
+      "validation_loss": 0.4258010685443878
+    },
+    {
+      "arm": "liquid",
+      "cutoff": 1.25,
+      "file": "liquid-43.pt",
+      "fit_seconds": 0.2866581219714135,
+      "parameters": 726,
+      "seed": 43,
+      "sha256": "3538d13f423eabea566bc7775b1ea6f3ccda2ca39baf52582b6f5acc50f185b5",
+      "snapshot": 24,
+      "validation_loss": 0.41346681118011475
+    },
+    {
+      "arm": "moe",
+      "cutoff": 2.5,
+      "file": "moe-43.pt",
+      "fit_seconds": 1.2931166009511799,
+      "parameters": 4440,
+      "seed": 43,
+      "sha256": "511abcdbda7de54d9e6bac714f60cd35e20c79a42e0f24306b01ae9a958725b9",
+      "snapshot": 24,
+      "validation_loss": 0.49500399827957153
+    },
+    {
+      "arm": "moe_delta",
+      "cutoff": 3.25,
+      "file": "moe_delta-43.pt",
+      "fit_seconds": 2.934295707149431,
+      "parameters": 8990,
+      "seed": 43,
+      "sha256": "8fc056fb974da28e7cbff2c9f183f65bb06ed9b4525fb60c43177959942c915d",
+      "snapshot": 24,
+      "validation_loss": 0.5278581976890564
+    }
+  ],
+  "scale": [
+    183.59803771972656,
+    1.0662510395050049
+  ],
+  "schema": 1,
+  "seeds": [
+    41,
+    42,
+    43
+  ],
+  "sources": {
+    "benchmark.py": "c0fafee8950caef96a146eaf605c7e2e75bb39b6ff9918b19d2f4d5f9c82e682",
+    "liquid-moe-protocol.md": "e9f0a6719a612d68ad81096749e5c1506be5e64157aeb0daeb36718c58b75e40",
+    "model.py": "e26fba7f2e69398ba2adf0a4b981a3f391426578f1dcb4ad1429cfdb873d748c"
+  },
+  "steps": 144,
+  "torch": "2.7.1+cpu",
+  "train_windows": 6465,
+  "validation_windows": 1608
+}

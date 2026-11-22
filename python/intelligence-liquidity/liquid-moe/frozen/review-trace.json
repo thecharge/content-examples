@@ -1,0 +1,203 @@
+[
+  {
+    "seed": 41,
+    "logit_cutoff": 0.25,
+    "totals": {
+      "windows": 55621,
+      "attempted": 55621,
+      "committed": 45111,
+      "rolled_back": 10510,
+      "abstained": 6,
+      "changed_label": 5807,
+      "helped": 2546,
+      "hurt": 3108
+    },
+    "first_example_per_action": {
+      "committed": {
+        "room": "RoomA",
+        "window_index": 0,
+        "actual_occupied": false,
+        "initial_expert": 2,
+        "challenger_expert": 1,
+        "returned_expert": 1,
+        "initial_logits": 0.4205256700515747,
+        "challenger_logits": 0.6067131161689758,
+        "logits": 0.6067131161689758,
+        "initial_check": 0.5422698259353638,
+        "challenger_check": 0.6880797147750854,
+        "process_gain": -0.13695575296878815,
+        "revision_gain": 0.0773320123553276,
+        "budget_remaining": 0,
+        "decision": 1
+      },
+      "rolled_back": {
+        "room": "RoomA",
+        "window_index": 550,
+        "actual_occupied": false,
+        "initial_expert": 2,
+        "challenger_expert": 1,
+        "returned_expert": 2,
+        "initial_logits": 0.8793588280677795,
+        "challenger_logits": 1.0180964469909668,
+        "logits": 0.8793588280677795,
+        "initial_check": 0.567457914352417,
+        "challenger_check": 0.6756396293640137,
+        "process_gain": -0.10293017327785492,
+        "revision_gain": 0.05671662837266922,
+        "budget_remaining": 0,
+        "decision": 1
+      },
+      "abstained": {
+        "room": "RoomA",
+        "window_index": 4756,
+        "actual_occupied": true,
+        "initial_expert": 2,
+        "challenger_expert": 1,
+        "returned_expert": 1,
+        "initial_logits": -0.2350417822599411,
+        "challenger_logits": 0.11719703674316406,
+        "logits": 0.11719703674316406,
+        "initial_check": 0.45587727427482605,
+        "challenger_check": 0.572993814945221,
+        "process_gain": -0.028329625725746155,
+        "revision_gain": 0.16150996088981628,
+        "budget_remaining": 0,
+        "decision": -1
+      }
+    }
+  },
+  {
+    "seed": 42,
+    "logit_cutoff": 2.5,
+    "totals": {
+      "windows": 55621,
+      "attempted": 55621,
+      "committed": 254,
+      "rolled_back": 55367,
+      "abstained": 182,
+      "changed_label": 0,
+      "helped": 0,
+      "hurt": 0
+    },
+    "first_example_per_action": {
+      "rolled_back": {
+        "room": "RoomA",
+        "window_index": 0,
+        "actual_occupied": false,
+        "initial_expert": 0,
+        "challenger_expert": 2,
+        "returned_expert": 0,
+        "initial_logits": 2.3391716480255127,
+        "challenger_logits": 1.8844438791275024,
+        "logits": 2.3391716480255127,
+        "initial_check": 0.6172102093696594,
+        "challenger_check": 0.5147541761398315,
+        "process_gain": -0.07024432718753815,
+        "revision_gain": -0.1888062059879303,
+        "budget_remaining": 0,
+        "decision": 0
+      },
+      "abstained": {
+        "room": "RoomA",
+        "window_index": 1063,
+        "actual_occupied": false,
+        "initial_expert": 0,
+        "challenger_expert": 2,
+        "returned_expert": 0,
+        "initial_logits": 2.2991394996643066,
+        "challenger_logits": 1.7884470224380493,
+        "logits": 2.2991394996643066,
+        "initial_check": 0.5932218432426453,
+        "challenger_check": 0.49969345331192017,
+        "process_gain": -0.06527525186538696,
+        "revision_gain": -0.17293021082878113,
+        "budget_remaining": 0,
+        "decision": -1
+      },
+      "committed": {
+        "room": "RoomA",
+        "window_index": 7983,
+        "actual_occupied": false,
+        "initial_expert": 2,
+        "challenger_expert": 0,
+        "returned_expert": 0,
+        "initial_logits": -2.900710105895996,
+        "challenger_logits": -3.5630810260772705,
+        "logits": -3.5630810260772705,
+        "initial_check": 0.8663803339004517,
+        "challenger_check": 0.9178488254547119,
+        "process_gain": 0.1921170949935913,
+        "revision_gain": 0.17326128482818604,
+        "budget_remaining": 0,
+        "decision": 0
+      }
+    }
+  },
+  {
+    "seed": 43,
+    "logit_cutoff": 3.25,
+    "totals": {
+      "windows": 55621,
+      "attempted": 55621,
+      "committed": 46972,
+      "rolled_back": 8649,
+      "abstained": 30023,
+      "changed_label": 0,
+      "helped": 0,
+      "hurt": 0
+    },
+    "first_example_per_action": {
+      "abstained": {
+        "room": "RoomA",
+        "window_index": 0,
+        "actual_occupied": false,
+        "initial_expert": 2,
+        "challenger_expert": 1,
+        "returned_expert": 1,
+        "initial_logits": 0.377521276473999,
+        "challenger_logits": -0.2822503447532654,
+        "logits": -0.2822503447532654,
+        "initial_check": 0.47418931126594543,
+        "challenger_check": 0.5167908072471619,
+        "process_gain": 0.37945252656936646,
+        "revision_gain": 0.25362855195999146,
+        "budget_remaining": 0,
+        "decision": -1
+      },
+      "committed": {
+        "room": "RoomA",
+        "window_index": 386,
+        "actual_occupied": false,
+        "initial_expert": 2,
+        "challenger_expert": 1,
+        "returned_expert": 1,
+        "initial_logits": -0.018541395664215088,
+        "challenger_logits": -0.9853893518447876,
+        "logits": -0.9853893518447876,
+        "initial_check": 0.5268482565879822,
+        "challenger_check": 0.6011754870414734,
+        "process_gain": 0.4089282155036926,
+        "revision_gain": 0.31595495343208313,
+        "budget_remaining": 0,
+        "decision": 0
+      },
+      "rolled_back": {
+        "room": "RoomA",
+        "window_index": 624,
+        "actual_occupied": false,
+        "initial_expert": 1,
+        "challenger_expert": 2,
+        "returned_expert": 1,
+        "initial_logits": -1.678343415260315,
+        "challenger_logits": -0.3891121447086334,
+        "logits": -1.678343415260315,
+        "initial_check": 0.6624511480331421,
+        "challenger_check": 0.5289547443389893,
+        "process_gain": -0.12720172107219696,
+        "revision_gain": -0.2638454735279083,
+        "budget_remaining": 0,
+        "decision": 0
+      }
+    }
+  }
+]

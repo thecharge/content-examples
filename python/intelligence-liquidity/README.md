@@ -40,3 +40,7 @@ weights from the best qualifying epoch and stops after two checks with less
 than 0.005 improvement. The heating policy uses a separate table of state and
 action estimates, scored by heat use and temperature. The original experiments use final state pooling. The later attention comparison
 learns a temporal pool and puts the heated-room forecast into a reward formula.
+
+## Routed liquid experts
+
+The [liquid MoE experiment](liquid-moe/README.md) compares ordinary predictions, delta memory, and bounded learned review on six unseen Aalborg offices. It includes the models, checkpoints, and replay commands.

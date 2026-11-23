@@ -72,3 +72,7 @@ records raw predictions and overfits a five-row batch as a control.
 
 [One-class forecasting](one-class/README.md) compares a vacant-only fit,
 an occupied-only fit and the both-class classifier on H5 and H6.
+
+[Label audit and sensor baseline](sensor-baseline/README.md) checks the
+five-minute timestamp join and compares a shallow tree model with the
+liquid classifier on the same held-out homes.

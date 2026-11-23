@@ -69,10 +69,10 @@ class BoardFeedback(Feedback):
                     step=step, fit_gain=fit_gain, fit_brier_gain=fit_brier, board_gain=gain)
 
 
-def paired_replay(model, stream, evaluation_start):
+def paired_replay(model, stream, evaluation_start, *, learner_type=BoardFeedback):
     times, features, truth = stream
     adaptive = deepcopy(model)
-    learner = BoardFeedback(adaptive)
+    learner = learner_type(adaptive)
     states = [None, None]
     predictions = [[], []]
     probabilities = [[], []]
@@ -106,13 +106,17 @@ def paired_replay(model, stream, evaluation_start):
                for answers, probs in zip(guesses, chances, strict=True)]
     gains = guesses[1].eq(expected).float() - guesses[0].eq(expected).float()
     lower, upper = paired_margin(gains, expected), paired_margin(-gains, expected)
-    return dict(frozen=metrics[0], adaptive=metrics[1],
+    result = dict(frozen=metrics[0], adaptive=metrics[1],
                 evaluation_from=int(times[evaluation_start]),
                 paired_gain_90=None if lower is None or upper is None else [lower, -upper],
                 evaluation_quorum=[sum(values[evaluation_start:]) for values in quorum],
                 online_updates=learner.receipts,
                 accepted_updates=sum(bool(item["accepted"]) for item in learner.receipts),
                 final_expert_bias=adaptive.outputs[-1].bias.detach().flatten().tolist())
+
+    if hasattr(adaptive, "correction"):
+        result["final_contextual_correction"] = adaptive.correction.tolist()
+    return result
 
 
 def run(source, checkpoint, output):

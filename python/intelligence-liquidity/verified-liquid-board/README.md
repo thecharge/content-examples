@@ -6,6 +6,9 @@ from the [HPDmobile study](https://www.nature.com/articles/s41597-021-01055-x).
 The task is to tell whether somebody was home at the end of a window.
 Each answer is either vacant or occupied.
 
+The [online learning follow-up](ONLINE.md) tests sensor-dependent vote
+corrections on later readings against an identical frozen board.
+
 ## How the board makes a decision
 
 Five experts read the same sensor fields. Each has its own weights,

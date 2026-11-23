@@ -14,10 +14,14 @@ class BoardTests(unittest.TestCase):
         self.row = torch.linspace(-1, 1, 10).reshape(1, 10)
         self.dt = torch.tensor([5.])
         self.before = self.model.start(self.row)
+
+    def force_full_participation(self):
         with torch.no_grad():
+            self.model.subscription.weight.zero_()
             self.model.subscription.bias.fill_(6.)
 
     def test_every_expert_connects_all_inputs_to_a_three_layer_prediction(self):
+        self.force_full_participation()
         row = self.row.requires_grad_(True)
         result = self.model(row, self.dt, self.before)
         scores = result.rounds[0].margins
@@ -77,6 +81,7 @@ class BoardTests(unittest.TestCase):
         self.assertTrue(decision.committed.item())
 
     def test_quorum_commits_and_no_evidence_exhausts_without_changing_memory(self):
+        self.force_full_participation()
         with torch.no_grad():
             self.model.outputs[-1].bias.fill_(7)
             agreed = self.model(self.row, self.dt, self.before, checks=False)
@@ -92,6 +97,7 @@ class BoardTests(unittest.TestCase):
                 self.assertTrue(torch.equal(prior, after))
 
     def test_only_an_actual_later_answer_sets_reward(self):
+        self.force_full_participation()
         with torch.no_grad():
             self.model.outputs[-1].bias.fill_(7)
             issued = self.model(self.row, self.dt, self.before, checks=False)
@@ -105,25 +111,90 @@ class BoardTests(unittest.TestCase):
         self.assertTrue(measured_reward(issued.rounds, torch.tensor([1])).gt(0).all())
         self.assertTrue(all(torch.equal(p, current) for p, current in zip(params, self.model.parameters())))
 
-    def test_update_changes_only_experts_with_verified_gain(self):
+    @torch.no_grad()
+    def test_checker_changes_quorum_and_rolls_back_the_failed_round(self):
+        self.force_full_participation()
+        for output, checker in zip(self.model.outputs, self.model.falsifiers, strict=True):
+            output.weight.zero_()
+            output.bias.fill_(8.)
+            checker[-1].weight.zero_()
+            checker[-1].bias.fill_(-8.)
+        self.model.process.weight.zero_()
+        self.model.process.bias.fill_(-8.)
+        unchecked = self.model(self.row, self.dt, self.before, checks=False)
+        checked = self.model(self.row, self.dt, self.before)
+        self.assertTrue(unchecked.committed.item())
+        self.assertEqual(unchecked.answer.item(), 1)
+        self.assertFalse(checked.committed.item())
+        self.assertTrue(checked.rounds[0].challenged.all())
+        self.assertEqual(checked.answer.item(), self.before.last.item())
+        self.assertEqual(checked.probability.item(), .5)
+        self.assertTrue(torch.equal(checked.state.memory, self.before.memory))
+
+    @torch.no_grad()
+    def test_a_committed_round_does_not_save_a_challenged_expert_state(self):
+        self.force_full_participation()
+        for output, checker in zip(self.model.outputs, self.model.falsifiers, strict=True):
+            output.weight.zero_()
+            output.bias[:3].fill_(8.)
+            output.bias[3:].fill_(-8.)
+            checker[-1].weight.zero_()
+            checker[-1].bias.fill_(8.)
+        self.model.process.weight.zero_()
+        self.model.process.bias.fill_(-8.)
+        decision = self.model(self.row, self.dt, self.before)
+        self.assertTrue(decision.committed.item())
+        self.assertEqual(decision.answer.item(), 1)
+        self.assertEqual(decision.rounds[0].challenged.tolist(), [[False, False, False, True, True]])
+        self.assertEqual(decision.state.elapsed.tolist(), [[0., 0., 0., 5., 5.]])
+        for prior, after in zip(self.before.cells, decision.state.cells, strict=True):
+            self.assertTrue(torch.equal(prior[:, 3:], after[:, 3:]))
+            self.assertFalse(torch.equal(prior[:, :3], after[:, :3]))
+
+    @torch.no_grad()
+    def test_acting_experts_can_withhold_a_vote(self):
+        self.force_full_participation()
+        for output in self.model.outputs:
+            output.weight.zero_()
+            output.bias.zero_()
+        self.model.drive.weight.zero_()
+        self.model.drive.bias.fill_(-8.)
+        result = self.model(self.row, self.dt, self.before, checks=False)
+        self.assertTrue(result.rounds[0].acted.all())
+        self.assertFalse(result.rounds[0].speaks.any())
+        self.assertFalse(result.committed.item())
+
+    def test_real_gradient_changes_only_the_expert_with_verified_gain(self):
         feedback = Feedback(self.model)
-        example = Example(100, self.row, self.before, torch.tensor([1]), torch.zeros(1, 5))
-        later = Example(200, self.row, self.before, torch.tensor([0]), torch.zeros(1, 5))
+        fit = [Example(index * 300, self.row + index * .2, self.before,
+                       torch.tensor([index % 2]), torch.zeros(1, 5)) for index in range(6)]
+        check = [Example((index + 6) * 300, example.inputs, self.before, example.truth, example.reward)
+                 for index, example in enumerate(fit)]
         prior = self.model.input.weight.detach().clone()
-        def fixture(model, examples, train=False):
-            if train:
-                return model.input.weight.mean((1, 2)), torch.zeros(5)
-            candidates = torch.tensor([.7, .99, .8, 1.5, 1.])
-            accuracy = torch.tensor([.7, .8, .5, .9, .8])
-            return (torch.ones(5), torch.full((5,), .7)) if model is self.model else (candidates, accuracy)
-        with patch("learn.measurements", side_effect=fixture):
-            receipt = feedback.try_update([example], [later])
-        self.assertEqual(receipt["accepted"], [1, 2])
-        self.assertTrue(torch.equal(prior[2:], self.model.input.weight[2:]))
-        self.assertFalse(torch.equal(prior[:2], self.model.input.weight[:2]))
+        approved = dict(accuracy_gain=.03, brier_gain=.01, accuracy_lower=.01,
+                        class_gain=[.03, .03], quorum_gain=.01)
+        with patch("learn.deployment_gain", return_value=approved) as grade:
+            receipt = feedback.try_update(fit, check)
+        grade.assert_called_once()
+        self.assertEqual(len(receipt["accepted"]), 1)
+        chosen = receipt["accepted"][0] - 1
+        changed = (prior != self.model.input.weight).flatten(1).any(1)
+        self.assertEqual(changed.nonzero().flatten().tolist(), [chosen])
+
+    def test_real_board_replay_freezes_when_an_update_does_not_improve_accuracy(self):
+        self.force_full_participation()
+        with torch.no_grad():
+            self.model.outputs[-1].bias.fill_(8.)
+        feedback = Feedback(self.model, rate=0., checks=False)
+        examples = [Example(index * 300, self.row, self.before,
+                            torch.tensor([index % 2]), torch.zeros(1, 5)) for index in range(8)]
+        receipt = feedback.try_update(examples[:4], examples[4:])
+        self.assertEqual(receipt["status"], "frozen_no_board_gain")
+        self.assertEqual(receipt["board_gain"]["accuracy_gain"], 0.)
+        self.assertEqual(receipt["accepted"], [])
 
     def test_buffer_freezes_if_there_is_only_one_class(self):
-        feedback = Feedback(self.model, minimum=4)
+        feedback = Feedback(self.model, minimum=4, minority=2)
         with torch.no_grad():
             issued = self.model(self.row, self.dt, self.before)
         for index in range(4):

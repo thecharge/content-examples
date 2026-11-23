@@ -1,113 +1,176 @@
 # A liquid board with self-selecting experts
 
-The board estimates whether a house was occupied during a five-minute sensor
-window. It fits and evaluates that same target. The separate heating experiments
-in this repository use a different data source, target and reward.
+Can five small models read the same sensors, disagree, and improve when the
+right answer arrives? This example tests that idea on five-minute windows
+from the [HPDmobile study](https://www.nature.com/articles/s41597-021-01055-x).
+The task is to tell whether somebody was home at the end of a window.
+Each answer is either vacant or occupied.
 
-## An expert reads the board and decides whether to act
+## How the board makes a decision
 
-The board posts all available sensor features. Every expert can read the same
-fields: carbon dioxide equivalent, volatile organic compounds, temperature,
-humidity and light, plus their changes and missing-value indicators. The parser
-combines readings from the home's hubs into one value per field per window.
-A missing reading stays marked missing. See the
-[HPDmobile study](https://www.nature.com/articles/s41597-021-01055-x) and
-[the original archive IDs](../liquid-workflow-v3/README.md#reproduce-the-fits).
+Five experts read the same sensor fields. Each has its own weights,
+participation decision and three [liquid time-constant layers](https://arxiv.org/abs/2006.04439).
+Each layer adds to the expert's proposed answer. During training, later layers
+pay more attention to mistakes made earlier. An expert can stay idle, work
+without voting, or submit a vote. The board has no central router.
 
-Every expert has its own learned weights, participation policy and three
-liquid time-constant layers. Its participation policy reads the shared
-fields, its private state and feedback from the previous attempt. A low
-score leaves its liquid computation idle. There is no central router, fixed
-quota or sensor assignment. Different experts can act on the same reading
-or decline it for different reasons.
+The board reads its shared [delta memory](https://arxiv.org/abs/2412.06464)
+on every round. It compares each layer's answer with a separate checker.
+Two strong disagreements can remove an expert's vote if the expert's
+own reliability score is low. The checker reads the same sensors as the
+experts and can make the same mistake.
 
-An active expert can still decline to submit a vote. It adds a correction
-at each layer. Training puts extra weight on cases the previous layer
-struggled with, borrowing the sequential correction idea from boosting.
-The comparison also fits XGBoost itself on the same fields and training
-homes. [Liquid time-constant equations](https://arxiv.org/abs/2006.04439) ·
-[XGBoost paper](https://arxiv.org/abs/1603.02754)
+Three of five matching votes settle the question. If that fails, the board
+shares the objection and tries again, up to four rounds. If it runs out of
+rounds, it returns its best remaining answer and keeps the last accepted state.
+When a round succeeds, a challenged expert's private state rolls back.
+The shared memory uses the states of experts whose votes backed the decision.
+A quiet expert carries elapsed time into its next call.
 
-Separate classifiers challenge competing claims at each layer. They see
-the same sensor fields and can make correlated errors. The board requires
-a strict majority of all its experts, which is three with five experts.
-If it lacks that majority, it posts the objections and tries again. After
-four rounds it returns an unresolved answer and retains the last accepted
-state. A majority saves the working state and updates the board's shared
-delta memory. An inactive expert carries its own elapsed time to the next
-call. [Gated delta memory](https://arxiv.org/abs/2412.06464)
+How certain the board sounds depends on how many experts back the answer and
+how strongly they disagree. Five strong votes for the same answer contribute
+more than a split vote. The reported probability is an estimate scored against
+the recorded answers. The score used for an individual expert to speak has a
+floor of 0.5 and should be read as vote strength.
 
-## The next recorded answer grades the previous decision
+## When the board learns
 
-The simultaneous votes can settle where to read and what to publish.
-They cannot grade accuracy. The recorded occupancy answer for each decision
-is revealed at the next observation in the labeled replay. Each submitted
-vote receives credit or a penalty from that answer. A failed later attempt
-costs more. Wrong answers receive no reward for agreement. No correctness
-label for the current decision enters its prediction.
+The replay reveals the recorded answer for a window when the next observation
+arrives. A correct vote earns credit. A wrong vote costs more on later rounds.
+Agreement earns a bonus only when the recorded answer confirms it.
 
-The update loop proposes candidate expert weights from earlier revealed
-answers. It tests those weights against a later, separate block of revealed
-answers. For each expert, an update must lower its log loss by at least 0.001 and preserve or improve classification
-accuracy on that block. A block with too few examples of either class
-freezes all weights. A candidate that fails freezes the affected expert.
-The checker and delta memory parameters stay fixed during this experiment.
-The board's memory state continues to evolve when it commits.
+The learner uses earlier revealed labels to propose a weight change for one
+expert. Before keeping it, it replays the current board and the changed board
+over the same later block of 288 already-revealed answers. The check runs
+the actual voting, checking and retry logic. It looks at each block once.
+At least 16 answers of each class are needed in both the fitting history
+and the check block. The board keeps a change only when all of these hold.
 
-The live replay needs a source of delayed ground truth. The benchmark
-has the recorded answer labels. It gives no evidence that a real deployment
-could obtain labels after every window.
+- Average recall across the two classes improves by at least one percentage point.
+- The lower end of the paired accuracy improvement estimate is above zero.
+- The two classes' average probability error drops by at least 0.002.
+- Neither class recall nor the share of results settled by quorum falls by more than two points.
 
-## Reproduce the fit
+This is supervised learning after a delay, using a reward to weight learning
+from mistakes. The experiment has no human preference scores. An installation
+would need to supply real delayed occupancy answers to use the same update loop.
+A replay can finish with every expert's weights unchanged.
 
-Use Python 3.12, PyTorch 2.7.1 CPU and XGBoost 3.1.3. Download the twelve
-HPDmobile archives listed above into one directory.
+## Data and evaluation
+
+The 12 original archives and their download IDs are listed in the
+[data instructions](../liquid-workflow-v3/README.md#reproduce-the-fits).
+The parser skips files with fewer than 8,640 ground-truth rows and ignores
+nonbinary labels. The last valid label in each five-minute window is the
+answer. The parser uses the latest sensor reading from each hub and combines
+hubs per field. Its five fields are carbon dioxide equivalent, volatile
+organic compounds, temperature, relative humidity and light. The features
+include changes since the prior window, a difference from recent readings
+and time of day as encoded by the archive parser. Missing values remain marked
+missing. The recent-history features reset at gaps. An archive spot check
+across all 63 selected days found no short days skipped, nonbinary labels,
+out-of-order ground-truth timestamps or duplicate timestamps in those days.
+That check does not validate label correctness.
+
+Homes 1 through 3 supply 14 days each for fitting. Home 4 supplies seven
+days for checkpoint selection and policy checks. Homes 5 and 6 each supply
+seven days for replay. The frozen weights have never fitted these homes in
+each new run. Those homes have been inspected in earlier experiments, so
+a new result on them cannot establish performance in a new building.
+
+Training advances recurrent state over 36 consecutive windows and limits
+gradient history to 12 at a time. The code drops the short tail of a segment
+and starts a new block with a new state. Replay can retain state across many
+more consecutive windows, with a reset when a window is missing. How much
+that difference matters remains open.
+
+Plain accuracy asks how often the answer is right. Balanced accuracy
+first scores vacant and occupied windows separately, then averages the two
+scores. Always answering occupied can look good in a house that is usually
+occupied, but earns 50% balanced accuracy. The Brier score averages squared
+probability error with equal weight for each class. Lower is better.
+The 90% ranges resample blocks of 24 windows from each home’s ordered
+replay, with wraparound at the end. They describe uncertainty within that week. The two replay homes are too few to
+rank close models or estimate performance across buildings.
+
+## Reproduce the fit and replay
+
+Use Python 3.12 and install the pinned CPU packages in an isolated environment.
+Download all 12 archives into the same directory.
 
 ```sh
-python test_model.py -v
-python benchmark.py /path/to/archives ./new-run --epochs 16
-python check_replay.py /path/to/archives ./evidence
+python -m venv .venv
+. .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m unittest discover -v
+python benchmark.py /path/to/archives ./new-run --epochs 8 --seed 73
+python check_replay.py /path/to/archives ./new-run
 ```
 
-Homes 1 through 3 are for fitting and home 4 selects the checkpoint. Homes 5
-and 6 score the frozen model and the separate replay with delayed answers.
-Those homes were excluded from the fit and checkpoint selection. The delayed
-replay can learn from earlier outcomes in each of those homes. The frozen
-run measures accuracy with no such adaptation. Both runs start from the same
-checkpoint independently for each home. The receipt records input hashes,
-checkpoint hashes, each expert's participation, and the evidence used in
-weight decisions.
+Repeat with seeds 83 and 97 to compare fits. Use
+`--seed 73 --no-history` to test the effect of removing the clock and
+recent-history features together. The XGBoost baseline in each run sees
+the same features and fitting homes as the board. Model and tree
+checkpoints, archive and source hashes, counts and sample decisions are
+in each receipt. The verifier checks file hashes, class counts and discrete
+decisions exactly. It allows small differences in recorded floating point
+scores and parameters across CPU builds.
 
+The [original receipt](evidence/results.json) reports the older model checked
+in the audit. Use commit `0453f9a` to replay it with its original code.
+On Home 5 it got zero of 784 vacant windows right. Its balanced accuracy
+was 49.0% and 50.6% on Homes 5 and 6. Its plain accuracy was 59.8% and
+75.4%, below always occupied at 61.0% and 77.0%. The [earlier averaging experiment](../full-liquid-board/README.md)
+reports 57.5% and 54.2% on those homes under an earlier recipe. Treat those
+numbers as history. For a matched comparison use the baselines in each new run.
 
-## What happened on the replay homes
+## Results on the two replay homes
 
-These scores give occupied and vacant windows equal weight. They include
-the answers returned after an exhausted round.
+| Fit | Home 5 balanced | Home 5 plain | Home 6 balanced | Home 6 plain |
+| --- | ---: | ---: | ---: | ---: |
+| [Board, seed 73](evidence/seed-73/results.json) | 64.1% | 63.2% | 74.3% | 61.8% |
+| [Board, seed 83](evidence/seed-83/results.json) | 59.1% | 61.4% | 74.7% | 64.7% |
+| [Board, seed 97](evidence/seed-97/results.json) | 66.2% | 65.6% | 74.2% | 61.3% |
+| [Board without added history or clock, seed 73](evidence/no-history-seed-73/results.json) | 44.7% | 52.0% | 67.2% | 56.7% |
+| XGBoost with the same added features | 56.2% | 63.2% | 77.5% | 75.2% |
+| XGBoost without added history or clock | 48.6% | 58.3% | 60.6% | 77.9% |
+| Always occupied | 50.0% | 61.0% | 50.0% | 77.0% |
+| Always vacant | 50.0% | 39.0% | 50.0% | 23.0% |
 
-| Model | Home 5 | Home 6 |
-| --- | ---: | ---: |
-| Checks off, frozen weights | 49.0% | 50.6% |
-| Checks on, frozen weights | 49.0% | 50.6% |
-| Checks on, delayed answers can justify updates | 48.8% | 50.6% |
-| XGBoost trained on the same homes and fields | 48.6% | 60.6% |
-| Always predict vacant | 50.0% | 50.0% |
+Two of three seeds clear 60% balanced accuracy on both homes. All three
+beat the matched tree on Home 5 and lose to it on Home 6. On Home 6, always
+answering occupied still beats every liquid board in plain accuracy because
+77% of the windows are occupied. The no-history fit shows how much the
+conclusion can change when the added features are removed together.
 
-The fit ran for five epochs. Home 4 chose the epoch 1 copy. On the frozen
-replay, three votes agreed in 1,388 of 2,010 decisions on Home 5 and
-98 of 2,016 on Home 6. Across 13,574 frozen rounds, there were rounds
-with zero, one, two, three and four acting experts. None had all five.
-Enabling checks left the scores and majority counts unchanged.
+For example, seed 97 got 543 of 784 vacant windows and 775 of 1,226
+occupied windows right in Home 5. Its within-home balanced accuracy range
+was 59.5% to 73.3%. In Home 6 it got 455 of 463 vacant windows and 780 of
+1,553 occupied windows right, with a range of 69.4% to 79.2%.
 
-The delayed replay accepted six expert updates across four checks on
-Home 5. It accepted none on Home 6. Too few examples of one class
-blocked 50 of 62 update checks on Home 5 and 54 of 62 on Home 6.
-The accepted updates on Home 5 improved the individual experts on
-their check blocks, while the board score fell slightly across the
-whole replay. On Home 5, the frozen board missed all 784 vacant windows.
+## What changed when the board checked, voted and learned
 
-The experiment demonstrates independent participation and conditional
-updates. The scores are near the constant baseline. Home 6 also
-shows a clear gap to XGBoost. The model needs better evidence of
-occupancy before anybody relies on it.
+| Seed | Home 5 majority / 2,010 | Home 6 majority / 2,016 | Home 5 votes blocked | Home 6 votes blocked |
+| --- | ---: | ---: | ---: | ---: |
+| 73 | 448 | 340 | 7 | 0 |
+| 83 | 526 | 362 | 16 | 0 |
+| 97 | 1,958 | 1,976 | 8 | 0 |
 
-[Replay receipt and round traces](evidence/results.json)
+The checker blocked 31 votes in Home 5 across three seeds and none in
+Home 6. The checked seed 73 answered one additional window incorrectly
+on Home 5. For seed 83, checking lowered the Home 5 majority count by four
+with the same class totals. The results show the checker can intervene.
+They give no evidence that it improves accuracy. Expert participation
+and quorum still vary widely across seeds. Seed 97 had a majority most of
+the time, while the other two seeds relied mainly on fallback answers.
+
+The delayed update gate kept zero candidates. Across the 36 completed
+feedback blocks in the three main runs, 12 had too few examples of a class
+or too little earlier history. The other 24 failed the whole-board gain
+rule. The largest balanced gain on any candidate check block was 3.45
+points. Its probability error rose by 0.00083, so the gate rejected it.
+There was no measured improvement from online weight changes.
+
+See [the audit and verification record](AUDIT.md) for the changes and
+remaining limits. An independent test in more buildings is still needed. Establishing an
+adaptive gain also requires a reliable source of delayed labels.

@@ -1,15 +1,15 @@
 """Liquid expert consensus with delayed answers and verified updates."""
 
 from dataclasses import dataclass
-from pathlib import Path
-import sys
 
 import torch
 from torch import nn
 from torch.nn import functional as F
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "liquid-workflow-v3"))
-from blackboard import DeltaAttention, HEADS, LiquidODE, WIDTH
+from sources import primitives
+
+DeltaAttention, LiquidODE = primitives.DeltaAttention, primitives.LiquidODE
+HEADS, WIDTH = primitives.HEADS, primitives.WIDTH
 
 
 class ExpertLinear(nn.Module):
@@ -66,6 +66,7 @@ class Decision:
     answer: torch.Tensor
     rounds: tuple
     committed: torch.Tensor
+    probability: torch.Tensor
 
 
 class Board(nn.Module):
@@ -75,6 +76,10 @@ class Board(nn.Module):
             raise ValueError("At least five experts, three liquid layers and one round are required")
         self.features, self.experts, self.round_limit = features, experts, rounds
         self.majority = experts // 2 + 1
+        self.register_buffer("checker_logit", torch.tensor(.55))
+        self.register_buffer("speaking_confidence", torch.tensor(.60))
+        self.register_buffer("vote_offset", torch.tensor(0.))
+        self.register_buffer("probability_scale", torch.tensor(1.))
         inputs = 2 * features + WIDTH + 3
         self.specialty = ExpertLinear(experts, inputs + WIDTH, 2 * WIDTH)
         self.subscription = ExpertLinear(experts, 2 * WIDTH, 1)
@@ -142,13 +147,13 @@ class Board(nn.Module):
         cells, margins, falsifiers, process, drive, available, evidence, acted, interest = self.stages(
             x, minutes, before, feedback, active, assess=assess
         )
-        final = margins[..., -1]
+        final = margins[..., -1] - self.vote_offset
         choices = final.ge(0)
         confidence = final.abs().sigmoid()
-        speaks = acted & (confidence + .15 * drive.sigmoid()).ge(.60)
+        speaks = acted & (confidence + .15 * drive.sigmoid()).ge(self.speaking_confidence)
         counter = falsifiers[:, None, :]
-        strong = counter.abs().ge(1.4)
-        contradicts = margins.ge(0) != counter.ge(0)
+        strong = counter.abs().ge(self.checker_logit)
+        contradicts = margins.ge(self.vote_offset) != counter.ge(0)
         challenged_layers = (strong & contradicts).sum(-1)
         challenged = (challenged_layers.ge(2) & process.sigmoid().lt(.8)) if checks else torch.zeros_like(speaks)
         challenged = challenged & acted
@@ -159,7 +164,8 @@ class Board(nn.Module):
         choice = (count + confidence_sum / self.experts).argmax(-1)
         tied = count[:, 0].eq(count[:, 1]) & confidence_sum[:, 0].eq(confidence_sum[:, 1])
         # Exhaustion still has an answer. With observations, use the strongest aggregate evidence.
-        fallback = torch.where(acted.any(-1), final.sum(-1).ge(0).long(), before.last)
+        remaining = acted & ~challenged
+        fallback = torch.where(remaining.any(-1), (final * remaining).sum(-1).ge(0).long(), before.last)
         choice = torch.where(tied, fallback, choice)
         accepted = count.max(-1).values.ge(self.majority)
         return Round(cells, margins, falsifiers, process, drive, available, acted, interest, evidence, confidence,
@@ -170,6 +176,7 @@ class Board(nn.Module):
         active = torch.ones(len(x), device=x.device, dtype=torch.bool)
         feedback = x.new_zeros(len(x), self.experts, 3)
         answer, last = before.last, before.last
+        probability = x.new_full((len(x),), .5)
         cells, memory = before.cells, before.memory
         elapsed = before.elapsed + minutes[:, None]
         rounds = []
@@ -177,10 +184,20 @@ class Board(nn.Module):
             result = self.round(x, minutes, before, feedback, active, checks)
             rounds.append(result)
             answer = torch.where(active, result.choice, answer)
+            accepted_votes = result.votes.any(-1)
+            usable = torch.where(accepted_votes.any(1, keepdim=True), accepted_votes,
+                                 result.acted & ~result.challenged)
+            margins = (result.margins[..., -1] - self.vote_offset).abs() * self.probability_scale
+            strength = (margins.sigmoid() - .5) * usable
+            agrees = result.choices.eq(result.choice[:, None])
+            signed = torch.where(agrees, strength, -strength)
+            confidence = .5 + signed.sum(1).clamp_min(0.) / self.experts
+            current = torch.where(result.choice.eq(1), confidence, 1 - confidence)
+            probability = torch.where(active, current, probability)
             accepts = active & result.accepted
             support = result.votes.gather(2, result.choice[:, None, None].expand(-1, self.experts, 1)).squeeze(-1)
             last = torch.where(accepts, result.choice, last)
-            changed = accepts[:, None] & result.acted
+            changed = accepts[:, None] & result.acted & ~result.challenged
             cells = tuple(torch.where(changed.unsqueeze(-1), trial, old)
                           for trial, old in zip(result.cells, cells, strict=True))
             elapsed = torch.where(changed, 0., elapsed)
@@ -193,7 +210,7 @@ class Board(nn.Module):
             feedback = torch.stack((result.challenged.to(x.dtype) - .5 * result.acted.to(x.dtype),
                                     direction[:, None].expand_as(result.confidence),
                                     torch.full_like(result.confidence, (number + 1) / self.round_limit)), -1)
-        return Decision(State(cells, memory, last, elapsed), answer, tuple(rounds), ~active)
+        return Decision(State(cells, memory, last, elapsed), answer, tuple(rounds), ~active, probability)
 
     def expert_parameters(self):
         for group in (self.specialty, self.subscription, self.input, self.mixers, self.cells, self.outputs, self.process, self.drive):
@@ -212,7 +229,7 @@ def measured_reward(rounds, truth):
     return torch.stack(scores).sum(0)
 
 
-def offline_loss(result, target, class_weight):
+def offline_loss(result, target, class_weight, residual_weight=2.):
     losses = []
     for index, item in enumerate(result.rounds):
         truth = target[:, None, None].expand_as(item.margins).float()
@@ -220,7 +237,7 @@ def offline_loss(result, target, class_weight):
         error = (truth - item.margins.sigmoid()).abs().detach()
         difficulty = F.pad(error[..., :-1], (1, 0))
         # Boosting principle: later stages spend more gradient on remaining errors.
-        boosted = (by_stage * (1 + 2 * difficulty)).mean(-1)
+        boosted = (by_stage * (1 + residual_weight * difficulty)).mean(-1)
         correct = item.choices.eq(target[:, None]).float()
         process = F.binary_cross_entropy_with_logits(item.process, correct, reduction="none")
         payoff = torch.where(correct.bool(), .90, -1.10 * 1.25**index)
@@ -231,7 +248,9 @@ def offline_loss(result, target, class_weight):
         expertise = boosted + .12 * process - .10 * attempt * payoff
         subscription = F.binary_cross_entropy_with_logits(item.interest, correct, reduction="none")
         acting_loss = ((expertise + .25 * subscription) * issued).sum() / issued.sum().clamp_min(1)
-        checker_loss = (independent.mean(1) * valid).sum() / valid.sum().clamp_min(1)
+        hard = 1 + .5 * (item.acted & item.choices.ne(target[:, None])).sum(1).float()
+        checker_weight = valid * hard
+        checker_loss = (independent.mean(1) * checker_weight).sum() / checker_weight.sum().clamp_min(1)
         # A cost for frequent activation, and a small floor for learning participation.
         probability = item.interest.sigmoid()
         floor = F.relu(.35 - (probability * valid[:, None]).sum(0) / valid.sum().clamp_min(1))

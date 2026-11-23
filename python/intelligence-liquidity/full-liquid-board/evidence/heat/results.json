@@ -1,0 +1,2223 @@
+{
+  "task": "heat",
+  "archives": {
+    "six-buildings.zip": "393c5c5d106d1597e0a059ea43b799d7d2e58baf74a6388beb256c46f2400fe8"
+  },
+  "source_sha256": {
+    "board.py": "d08780fc6729d29e135e171c2148824973b612272183acd21776d3b601dbe8f7",
+    "run_board.py": "519f0e13da66257fb461bd1714c71ad8709d29bc86074adf8f741aa06d5f0255"
+  },
+  "checkpoint_sha256": "4c7ce33b68a4a35d1fd296cbc5c1f7ff2e0860f67d57aec521afe2af02811733",
+  "reviewer_sha256": [],
+  "max_rounds": 4,
+  "expert_count": 5,
+  "quorum": 3,
+  "learning_rate": 0.003,
+  "max_epochs": 16,
+  "best_epoch": 16,
+  "curve": [
+    {
+      "epoch": 1,
+      "training_loss": 0.3656578063964844,
+      "largest_gradient": 0.5092046856880188,
+      "validation": {
+        "rows": 221,
+        "final_answers": 221,
+        "quorum": 150,
+        "exhausted": 71,
+        "rounds": 434,
+        "objections": 993,
+        "sensor_updates": 0,
+        "reward_updates": 0,
+        "forecast_mae": 0.2821664720046811,
+        "parameter_change_l1": 0.0,
+        "logged_td_mae": 0.5648618264169227,
+        "on": 221,
+        "matches_logged_action": 118
+      }
+    },
+    {
+      "epoch": 2,
+      "training_loss": 0.3595559597015381,
+      "largest_gradient": 0.502251386642456,
+      "validation": {
+        "rows": 221,
+        "final_answers": 221,
+        "quorum": 150,
+        "exhausted": 71,
+        "rounds": 434,
+        "objections": 992,
+        "sensor_updates": 0,
+        "reward_updates": 0,
+        "forecast_mae": 0.2781276831903109,
+        "parameter_change_l1": 0.0,
+        "logged_td_mae": 0.5590049652791604,
+        "on": 221,
+        "matches_logged_action": 118
+      }
+    },
+    {
+      "epoch": 3,
+      "training_loss": 0.35382601618766785,
+      "largest_gradient": 0.4959837794303894,
+      "validation": {
+        "rows": 221,
+        "final_answers": 221,
+        "quorum": 153,
+        "exhausted": 68,
+        "rounds": 425,
+        "objections": 959,
+        "sensor_updates": 0,
+        "reward_updates": 0,
+        "forecast_mae": 0.27405387988177743,
+        "parameter_change_l1": 0.0,
+        "logged_td_mae": 0.5531125661803455,
+        "on": 221,
+        "matches_logged_action": 118
+      }
+    },
+    {
+      "epoch": 4,
+      "training_loss": 0.34843191504478455,
+      "largest_gradient": 0.48934441804885864,
+      "validation": {
+        "rows": 221,
+        "final_answers": 221,
+        "quorum": 153,
+        "exhausted": 68,
+        "rounds": 425,
+        "objections": 956,
+        "sensor_updates": 0,
+        "reward_updates": 0,
+        "forecast_mae": 0.2699339130666198,
+        "parameter_change_l1": 0.0,
+        "logged_td_mae": 0.5471833998110236,
+        "on": 221,
+        "matches_logged_action": 118
+      }
+    },
+    {
+      "epoch": 5,
+      "training_loss": 0.34303152561187744,
+      "largest_gradient": 0.4832867681980133,
+      "validation": {
+        "rows": 221,
+        "final_answers": 221,
+        "quorum": 154,
+        "exhausted": 67,
+        "rounds": 422,
+        "objections": 944,
+        "sensor_updates": 0,
+        "reward_updates": 0,
+        "forecast_mae": 0.2657679820932993,
+        "parameter_change_l1": 0.0,
+        "logged_td_mae": 0.5412135752962857,
+        "on": 221,
+        "matches_logged_action": 118
+      }
+    },
+    {
+      "epoch": 6,
+      "training_loss": 0.3377680480480194,
+      "largest_gradient": 0.47730135917663574,
+      "validation": {
+        "rows": 221,
+        "final_answers": 221,
+        "quorum": 157,
+        "exhausted": 64,
+        "rounds": 413,
+        "objections": 912,
+        "sensor_updates": 0,
+        "reward_updates": 0,
+        "forecast_mae": 0.2615453236350199,
+        "parameter_change_l1": 0.0,
+        "logged_td_mae": 0.5353115594241677,
+        "on": 221,
+        "matches_logged_action": 118
+      }
+    },
+    {
+      "epoch": 7,
+      "training_loss": 0.33277514576911926,
+      "largest_gradient": 0.47114190459251404,
+      "validation": {
+        "rows": 221,
+        "final_answers": 221,
+        "quorum": 157,
+        "exhausted": 64,
+        "rounds": 413,
+        "objections": 912,
+        "sensor_updates": 0,
+        "reward_updates": 0,
+        "forecast_mae": 0.25725008431004315,
+        "parameter_change_l1": 0.0,
+        "logged_td_mae": 0.5294943700476391,
+        "on": 221,
+        "matches_logged_action": 118
+      }
+    },
+    {
+      "epoch": 8,
+      "training_loss": 0.32792386412620544,
+      "largest_gradient": 0.4653743505477905,
+      "validation": {
+        "rows": 221,
+        "final_answers": 221,
+        "quorum": 159,
+        "exhausted": 62,
+        "rounds": 407,
+        "objections": 888,
+        "sensor_updates": 0,
+        "reward_updates": 0,
+        "forecast_mae": 0.2528762315831533,
+        "parameter_change_l1": 0.0,
+        "logged_td_mae": 0.5236549657292482,
+        "on": 221,
+        "matches_logged_action": 118
+      }
+    },
+    {
+      "epoch": 9,
+      "training_loss": 0.32306307554244995,
+      "largest_gradient": 0.45966705679893494,
+      "validation": {
+        "rows": 221,
+        "final_answers": 221,
+        "quorum": 160,
+        "exhausted": 61,
+        "rounds": 404,
+        "objections": 875,
+        "sensor_updates": 0,
+        "reward_updates": 0,
+        "forecast_mae": 0.248410817944422,
+        "parameter_change_l1": 0.0,
+        "logged_td_mae": 0.5178680190225927,
+        "on": 221,
+        "matches_logged_action": 118
+      }
+    },
+    {
+      "epoch": 10,
+      "training_loss": 0.3182967007160187,
+      "largest_gradient": 0.4540093243122101,
+      "validation": {
+        "rows": 221,
+        "final_answers": 221,
+        "quorum": 161,
+        "exhausted": 60,
+        "rounds": 401,
+        "objections": 861,
+        "sensor_updates": 0,
+        "reward_updates": 0,
+        "forecast_mae": 0.2438477518718417,
+        "parameter_change_l1": 0.0,
+        "logged_td_mae": 0.5125020194344404,
+        "on": 221,
+        "matches_logged_action": 118
+      }
+    },
+    {
+      "epoch": 11,
+      "training_loss": 0.31358882784843445,
+      "largest_gradient": 0.44839805364608765,
+      "validation": {
+        "rows": 221,
+        "final_answers": 221,
+        "quorum": 163,
+        "exhausted": 58,
+        "rounds": 395,
+        "objections": 840,
+        "sensor_updates": 0,
+        "reward_updates": 0,
+        "forecast_mae": 0.23918355641568578,
+        "parameter_change_l1": 0.0,
+        "logged_td_mae": 0.5072084806314329,
+        "on": 221,
+        "matches_logged_action": 118
+      }
+    },
+    {
+      "epoch": 12,
+      "training_loss": 0.3089425265789032,
+      "largest_gradient": 0.44283273816108704,
+      "validation": {
+        "rows": 221,
+        "final_answers": 221,
+        "quorum": 165,
+        "exhausted": 56,
+        "rounds": 389,
+        "objections": 813,
+        "sensor_updates": 0,
+        "reward_updates": 0,
+        "forecast_mae": 0.23441233934789169,
+        "parameter_change_l1": 0.0,
+        "logged_td_mae": 0.5019025526395658,
+        "on": 221,
+        "matches_logged_action": 118
+      }
+    },
+    {
+      "epoch": 13,
+      "training_loss": 0.3051316440105438,
+      "largest_gradient": 0.4374406635761261,
+      "validation": {
+        "rows": 221,
+        "final_answers": 221,
+        "quorum": 168,
+        "exhausted": 53,
+        "rounds": 380,
+        "objections": 785,
+        "sensor_updates": 0,
+        "reward_updates": 0,
+        "forecast_mae": 0.22954002691478265,
+        "parameter_change_l1": 0.0,
+        "logged_td_mae": 0.4969347588172773,
+        "on": 221,
+        "matches_logged_action": 118
+      }
+    },
+    {
+      "epoch": 14,
+      "training_loss": 0.3006601631641388,
+      "largest_gradient": 0.4319784939289093,
+      "validation": {
+        "rows": 221,
+        "final_answers": 221,
+        "quorum": 170,
+        "exhausted": 51,
+        "rounds": 374,
+        "objections": 765,
+        "sensor_updates": 0,
+        "reward_updates": 0,
+        "forecast_mae": 0.22454450312184124,
+        "parameter_change_l1": 0.0,
+        "logged_td_mae": 0.49214961710499555,
+        "on": 221,
+        "matches_logged_action": 118
+      }
+    },
+    {
+      "epoch": 15,
+      "training_loss": 0.2962099015712738,
+      "largest_gradient": 0.42656078934669495,
+      "validation": {
+        "rows": 221,
+        "final_answers": 221,
+        "quorum": 175,
+        "exhausted": 46,
+        "rounds": 359,
+        "objections": 714,
+        "sensor_updates": 0,
+        "reward_updates": 0,
+        "forecast_mae": 0.21944177121650882,
+        "parameter_change_l1": 0.0,
+        "logged_td_mae": 0.48757844690869495,
+        "on": 221,
+        "matches_logged_action": 118
+      }
+    },
+    {
+      "epoch": 16,
+      "training_loss": 0.29179486632347107,
+      "largest_gradient": 0.42119142413139343,
+      "validation": {
+        "rows": 221,
+        "final_answers": 221,
+        "quorum": 178,
+        "exhausted": 43,
+        "rounds": 350,
+        "objections": 685,
+        "sensor_updates": 0,
+        "reward_updates": 0,
+        "forecast_mae": 0.2142204955765387,
+        "parameter_change_l1": 0.0,
+        "logged_td_mae": 0.48309921113456167,
+        "on": 221,
+        "matches_logged_action": 118
+      }
+    }
+  ],
+  "results": {
+    "off_frozen": {
+      "held_out_heat": {
+        "rows": 533,
+        "final_answers": 533,
+        "quorum": 533,
+        "exhausted": 0,
+        "rounds": 533,
+        "objections": 0,
+        "sensor_updates": 0,
+        "reward_updates": 0,
+        "forecast_mae": 0.21250672162911757,
+        "parameter_change_l1": 0.0,
+        "trace": [
+          {
+            "row": 0,
+            "rounds": [
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5657526254653931,
+                    "drive": 0.12169696390628815,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5850716829299927,
+                    "drive": 0.12226874381303787,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5993987917900085,
+                    "drive": 0.12727005779743195,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6091399192810059,
+                    "drive": 0.12935903668403625,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5833441615104675,
+                    "drive": 0.1265879124403,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 4,
+                "answer": 1,
+                "confidence": 0.5718725919723511
+              }
+            ],
+            "answer": 1,
+            "committed": true
+          }
+        ],
+        "logged_td_mae": 0.5187239821667109,
+        "on": 533,
+        "matches_logged_action": 289
+      }
+    },
+    "learned_frozen": {
+      "held_out_heat": {
+        "rows": 533,
+        "final_answers": 533,
+        "quorum": 529,
+        "exhausted": 4,
+        "rounds": 545,
+        "objections": 218,
+        "sensor_updates": 0,
+        "reward_updates": 0,
+        "forecast_mae": 0.2125088574849372,
+        "parameter_change_l1": 0.0,
+        "trace": [
+          {
+            "row": 0,
+            "rounds": [
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5657526254653931,
+                    "drive": 0.12169696390628815,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5850716829299927,
+                    "drive": 0.12226874381303787,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5993987917900085,
+                    "drive": 0.12727005779743195,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6091399192810059,
+                    "drive": 0.12935903668403625,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5833441615104675,
+                    "drive": 0.1265879124403,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5330302715301514
+              },
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5657404661178589,
+                    "drive": 0.12168103456497192,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5850210189819336,
+                    "drive": 0.12224148958921432,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5997142791748047,
+                    "drive": 0.12725505232810974,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6091428399085999,
+                    "drive": 0.12938104569911957,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5830702185630798,
+                    "drive": 0.12659309804439545,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5330909490585327
+              },
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5657389760017395,
+                    "drive": 0.12166907638311386,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5849488377571106,
+                    "drive": 0.12222612649202347,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6000317931175232,
+                    "drive": 0.12723702192306519,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6091892123222351,
+                    "drive": 0.12940622866153717,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5828261971473694,
+                    "drive": 0.1266070306301117,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5331541299819946
+              },
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5657393932342529,
+                    "drive": 0.12165780365467072,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.584878146648407,
+                    "drive": 0.12221070379018784,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6003462672233582,
+                    "drive": 0.12722128629684448,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.609230637550354,
+                    "drive": 0.1294291466474533,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5826014876365662,
+                    "drive": 0.12661845982074738,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5332171320915222
+              }
+            ],
+            "answer": 1,
+            "committed": false
+          },
+          {
+            "row": 320,
+            "rounds": [
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5658811330795288,
+                    "drive": 0.12171065807342529,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5851466655731201,
+                    "drive": 0.12225766479969025,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5994110703468323,
+                    "drive": 0.12727302312850952,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6091448664665222,
+                    "drive": 0.12933845818042755,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5833441615104675,
+                    "drive": 0.1265879124403,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5330584645271301
+              },
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5658687949180603,
+                    "drive": 0.12169472128152847,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.585098922252655,
+                    "drive": 0.12223051488399506,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5997266173362732,
+                    "drive": 0.1272580325603485,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6091477870941162,
+                    "drive": 0.12936025857925415,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5830702185630798,
+                    "drive": 0.12659309804439545,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5331190824508667
+              },
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5658673644065857,
+                    "drive": 0.12168274819850922,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5850269198417664,
+                    "drive": 0.1222151592373848,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6000441908836365,
+                    "drive": 0.12724001705646515,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.609194278717041,
+                    "drive": 0.12938544154167175,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5828261971473694,
+                    "drive": 0.1266070306301117,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5331823229789734
+              },
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5658677220344543,
+                    "drive": 0.12167147547006607,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5849562883377075,
+                    "drive": 0.12219970673322678,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6003587245941162,
+                    "drive": 0.12722429633140564,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6092358231544495,
+                    "drive": 0.1294083446264267,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5826014280319214,
+                    "drive": 0.12661845982074738,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5332452654838562
+              }
+            ],
+            "answer": 1,
+            "committed": false
+          },
+          {
+            "row": 362,
+            "rounds": [
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5656736493110657,
+                    "drive": 0.1216772273182869,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.585014820098877,
+                    "drive": 0.12227704375982285,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5994110703468323,
+                    "drive": 0.12727302312850952,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.609136164188385,
+                    "drive": 0.12937447428703308,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5833441615104675,
+                    "drive": 0.1265879124403,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5330169200897217
+              },
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5656614899635315,
+                    "drive": 0.12166129797697067,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5849668383598328,
+                    "drive": 0.12224998325109482,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5997266173362732,
+                    "drive": 0.1272580325603485,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6091389060020447,
+                    "drive": 0.1293962150812149,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5830702185630798,
+                    "drive": 0.12659311294555664,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.533077597618103
+              },
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5656601190567017,
+                    "drive": 0.1216493770480156,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5848945379257202,
+                    "drive": 0.12223462015390396,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6000441908836365,
+                    "drive": 0.12724001705646515,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6091852188110352,
+                    "drive": 0.1294214278459549,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5828261971473694,
+                    "drive": 0.1266070455312729,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5331408381462097
+              },
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5656605958938599,
+                    "drive": 0.12163809686899185,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.584823727607727,
+                    "drive": 0.12221920490264893,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6003587245941162,
+                    "drive": 0.12722429633140564,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6092265248298645,
+                    "drive": 0.12944433093070984,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5826014876365662,
+                    "drive": 0.12661847472190857,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5332038402557373
+              }
+            ],
+            "answer": 1,
+            "committed": false
+          }
+        ],
+        "logged_td_mae": 0.5187284451856361,
+        "on": 533,
+        "matches_logged_action": 289
+      }
+    },
+    "learned_live": {
+      "held_out_heat": {
+        "rows": 533,
+        "final_answers": 533,
+        "quorum": 518,
+        "exhausted": 15,
+        "rounds": 578,
+        "objections": 275,
+        "sensor_updates": 492,
+        "reward_updates": 492,
+        "forecast_mae": 0.20245754133485924,
+        "parameter_change_l1": 0.4366009416116867,
+        "trace": [
+          {
+            "row": 0,
+            "rounds": [
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5657526254653931,
+                    "drive": 0.12169696390628815,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5850716829299927,
+                    "drive": 0.12226874381303787,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5993987917900085,
+                    "drive": 0.12727005779743195,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6091399192810059,
+                    "drive": 0.12935903668403625,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5833441615104675,
+                    "drive": 0.1265879124403,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5330302715301514
+              },
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5657404661178589,
+                    "drive": 0.12168103456497192,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5850210189819336,
+                    "drive": 0.12224148958921432,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5997142791748047,
+                    "drive": 0.12725505232810974,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6091428399085999,
+                    "drive": 0.12938104569911957,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5830702185630798,
+                    "drive": 0.12659309804439545,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5330909490585327
+              },
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5657389760017395,
+                    "drive": 0.12166907638311386,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5849488377571106,
+                    "drive": 0.12222612649202347,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6000317931175232,
+                    "drive": 0.12723702192306519,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6091892123222351,
+                    "drive": 0.12940622866153717,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5828261971473694,
+                    "drive": 0.1266070306301117,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5331541299819946
+              },
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5657393932342529,
+                    "drive": 0.12165780365467072,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.584878146648407,
+                    "drive": 0.12221070379018784,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.6003462672233582,
+                    "drive": 0.12722128629684448,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.609230637550354,
+                    "drive": 0.1294291466474533,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5826014876365662,
+                    "drive": 0.12661845982074738,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5332171320915222
+              }
+            ],
+            "answer": 1,
+            "committed": false
+          },
+          {
+            "row": 320,
+            "rounds": [
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5474666953086853,
+                    "drive": 0.12164480239152908,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5674068331718445,
+                    "drive": 0.12219342589378357,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5823038220405579,
+                    "drive": 0.12721078097820282,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5918907523155212,
+                    "drive": 0.1292753368616104,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5657523274421692,
+                    "drive": 0.1265246421098709,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5259541273117065
+              },
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.547456681728363,
+                    "drive": 0.12162963300943375,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5673754811286926,
+                    "drive": 0.12217002362012863,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5826265215873718,
+                    "drive": 0.1271948516368866,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5919041633605957,
+                    "drive": 0.12929631769657135,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5654779076576233,
+                    "drive": 0.12653200328350067,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5260166525840759
+              },
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5474554896354675,
+                    "drive": 0.12161768227815628,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5673010945320129,
+                    "drive": 0.12215465307235718,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5829509496688843,
+                    "drive": 0.12717685103416443,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5919500589370728,
+                    "drive": 0.12932150065898895,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5652300715446472,
+                    "drive": 0.12654592096805573,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5260812640190125
+              },
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5474562048912048,
+                    "drive": 0.12160640209913254,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5672281384468079,
+                    "drive": 0.12213920056819916,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5832724571228027,
+                    "drive": 0.12716113030910492,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5919909477233887,
+                    "drive": 0.1293443739414215,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5650021433830261,
+                    "drive": 0.1265573501586914,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5261457562446594
+              }
+            ],
+            "answer": 1,
+            "committed": false
+          },
+          {
+            "row": 362,
+            "rounds": [
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5448002815246582,
+                    "drive": 0.12159249931573868,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5649038553237915,
+                    "drive": 0.12219443917274475,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.580017626285553,
+                    "drive": 0.12719297409057617,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5895759463310242,
+                    "drive": 0.1292933225631714,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.563401460647583,
+                    "drive": 0.126506507396698,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5249635577201843
+              },
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5447907447814941,
+                    "drive": 0.12157747149467468,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.564874529838562,
+                    "drive": 0.12217158824205399,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5803412795066833,
+                    "drive": 0.1271769106388092,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5895906090736389,
+                    "drive": 0.12931416928768158,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5631271004676819,
+                    "drive": 0.12651418149471283,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5250263810157776
+              },
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.544789731502533,
+                    "drive": 0.12156552821397781,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5647996068000793,
+                    "drive": 0.12215621769428253,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5806664824485779,
+                    "drive": 0.12715891003608704,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5896362662315369,
+                    "drive": 0.12933936715126038,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5628787875175476,
+                    "drive": 0.12652809917926788,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5250912308692932
+              },
+              {
+                "experts": [
+                  {
+                    "expert": 1,
+                    "evidence_indices": [
+                      0,
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5447905659675598,
+                    "drive": 0.12155427038669586,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 2,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5647261142730713,
+                    "drive": 0.1221407875418663,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 3,
+                    "evidence_indices": [
+                      1
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.580988883972168,
+                    "drive": 0.12714318931102753,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 4,
+                    "evidence_indices": [
+                      0
+                    ],
+                    "spoke": true,
+                    "reason": "expected payoff supports a claim",
+                    "claim": 1,
+                    "confidence": 0.5896767973899841,
+                    "drive": 0.12936227023601532,
+                    "witness_rejected": true,
+                    "vote_rejected": false
+                  },
+                  {
+                    "expert": 5,
+                    "evidence_indices": [],
+                    "spoke": false,
+                    "reason": "no readings",
+                    "claim": null,
+                    "confidence": 0.5626505017280579,
+                    "drive": 0.12653952836990356,
+                    "witness_rejected": false,
+                    "vote_rejected": false
+                  }
+                ],
+                "agreement": 2,
+                "answer": 1,
+                "confidence": 0.5251559019088745
+              }
+            ],
+            "answer": 1,
+            "committed": false
+          }
+        ],
+        "logged_td_mae": 0.492188033655407,
+        "on": 533,
+        "matches_logged_action": 289
+      }
+    }
+  }
+}

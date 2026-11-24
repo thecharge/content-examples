@@ -53,3 +53,5 @@ The [liquid MoE experiment](liquid-moe/README.md) compares ordinary predictions,
 [Liquid Adaptable Net](liquid-adaptable-net/README.md) extends the CPU experiment with editable liquid stages, recurrent neurons, hierarchical delta attention and bounded network scaling.
 
 [Liquid adaptive hypergraph](liquid-adaptive-hypergraph/README.md) adds overlapping liquid vertices, similarity evidence, guarded hyperedge changes, durable revisions and visual evolution without replacing the preceding experiment.
+
+[Liquid multistream hypergraph](liquid-multistream-hypergraph/README.md) extends the hypergraph experiment to six streams in each of six room contexts. It separates shared learning from private liquid state and measures both offline bootstrap and live empty-model learning.

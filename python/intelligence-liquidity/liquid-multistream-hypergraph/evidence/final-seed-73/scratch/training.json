@@ -1,0 +1,133 @@
+{
+  "selected_epoch": 8,
+  "completed_epochs": 12,
+  "early_stopped": true,
+  "initial_validation": {
+    "H1": {
+      "rows": 576,
+      "balanced_accuracy": 0.7077763271610613,
+      "accuracy": 0.71875,
+      "classes": [
+        {
+          "rows": 119,
+          "right": 82
+        },
+        {
+          "rows": 457,
+          "right": 332
+        }
+      ],
+      "brier": 0.24201840162277222,
+      "quorum": 0,
+      "maximum_replica_spread": 0.0
+    },
+    "H2": {
+      "rows": 574,
+      "balanced_accuracy": 0.6336582228379181,
+      "accuracy": 0.6463414430618286,
+      "classes": [
+        {
+          "rows": 248,
+          "right": 134
+        },
+        {
+          "rows": 326,
+          "right": 237
+        }
+      ],
+      "brier": 0.24286852777004242,
+      "quorum": 12,
+      "maximum_replica_spread": 0.0
+    },
+    "H3": {
+      "rows": 576,
+      "balanced_accuracy": 0.5034722222222222,
+      "accuracy": 0.5034722089767456,
+      "classes": [
+        {
+          "rows": 288,
+          "right": 160
+        },
+        {
+          "rows": 288,
+          "right": 130
+        }
+      ],
+      "brier": 0.25032609701156616,
+      "quorum": 0,
+      "maximum_replica_spread": 0.0
+    },
+    "H4": {
+      "rows": 576,
+      "balanced_accuracy": 0.5260416666666666,
+      "accuracy": 0.5260416865348816,
+      "classes": [
+        {
+          "rows": 0,
+          "right": 0
+        },
+        {
+          "rows": 576,
+          "right": 303
+        }
+      ],
+      "brier": null,
+      "quorum": 0,
+      "maximum_replica_spread": 0.0
+    },
+    "H5": {
+      "rows": 574,
+      "balanced_accuracy": 0.38897941680960546,
+      "accuracy": 0.5836237072944641,
+      "classes": [
+        {
+          "rows": 44,
+          "right": 7
+        },
+        {
+          "rows": 530,
+          "right": 328
+        }
+      ],
+      "brier": 0.2629173994064331,
+      "quorum": 5,
+      "maximum_replica_spread": 0.0
+    },
+    "H6": {
+      "rows": 576,
+      "balanced_accuracy": 0.6470718531188856,
+      "accuracy": 0.6423611044883728,
+      "classes": [
+        {
+          "rows": 247,
+          "right": 168
+        },
+        {
+          "rows": 329,
+          "right": 202
+        }
+      ],
+      "brier": 0.2500157356262207,
+      "quorum": 0,
+      "maximum_replica_spread": 0.0
+    },
+    "execution": {
+      "seconds": 6.023624664871022,
+      "logical_streams": 6,
+      "replicas_per_room": 1,
+      "logical_predictions": 3452,
+      "unique_observations": 3452,
+      "frozen_hash": "59bcbb20c823cb1b8cf4f1fadde474fe7b40150072ffa98fc2fbfe85d3708428",
+      "memory_bytes": 4704,
+      "backend": "cpu"
+    }
+  },
+  "unique_training_blocks": 558,
+  "block_length": 36,
+  "repeated_feeds_in_loss": false,
+  "optimizer": "AdamW",
+  "learning_rate": 0.002,
+  "validation_target": "mean per-room balanced accuracy",
+  "bootstrap": "bounded supervised retraining stages; no topology changes during tensor updates",
+  "online_structural_learning": "MultiRuntime separate prospective stages, not this offline bootstrap"
+}

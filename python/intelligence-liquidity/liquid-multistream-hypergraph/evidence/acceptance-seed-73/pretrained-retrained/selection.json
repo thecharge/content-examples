@@ -1,0 +1,79 @@
+{
+  "protocol_sha256": "3cfb693106833bcbe28244d6c2df42c08fe77ba909eb7d4395f9b4623bac112f",
+  "partition": "validation only",
+  "before": "738d952d5ffeab8ff90b162eadfd8c2eea7388fdff5fb61d293796352da050ed",
+  "after": "abe0a90d4279d2e4048ff1188af999bf8f3ed40f950adcbd5bdfa90d928e25ec",
+  "policy_choices": [
+    {
+      "offset": 0.0,
+      "checker": 0.55,
+      "speaking": 0.6,
+      "balanced_accuracy": 0.7122241059502654,
+      "brier": 0.19974961123489351
+    },
+    {
+      "offset": 0.25,
+      "checker": 0.55,
+      "speaking": 0.6,
+      "balanced_accuracy": 0.7122784302284457,
+      "brier": 0.2053520569259608
+    },
+    {
+      "offset": -0.25,
+      "checker": 0.55,
+      "speaking": 0.6,
+      "balanced_accuracy": 0.7040700962959399,
+      "brier": 0.20490347613787516
+    },
+    {
+      "offset": 0.0,
+      "checker": 0.35,
+      "speaking": 0.6,
+      "balanced_accuracy": 0.7122241059502654,
+      "brier": 0.19975130748374273
+    },
+    {
+      "offset": 0.0,
+      "checker": 0.85,
+      "speaking": 0.6,
+      "balanced_accuracy": 0.7122241059502654,
+      "brier": 0.19974961123489351
+    },
+    {
+      "offset": 0.0,
+      "checker": 0.55,
+      "speaking": 0.57,
+      "balanced_accuracy": 0.7126521687956467,
+      "brier": 0.19981170263797177
+    },
+    {
+      "offset": 0.0,
+      "checker": 0.55,
+      "speaking": 0.64,
+      "balanced_accuracy": 0.7103893778247713,
+      "brier": 0.20023659890060105
+    }
+  ],
+  "selected_policy": {
+    "offset": 0.0,
+    "checker": 0.55,
+    "speaking": 0.57,
+    "balanced_accuracy": 0.7126521687956467,
+    "brier": 0.19981170263797177
+  },
+  "scale_choices": [
+    {
+      "scale": 0.5,
+      "brier": 0.2170197911332885
+    },
+    {
+      "scale": 1.0,
+      "brier": 0.20301617187221313
+    },
+    {
+      "scale": 2.0,
+      "brier": 0.19981170263797177
+    }
+  ],
+  "selected_scale": 2.0
+}

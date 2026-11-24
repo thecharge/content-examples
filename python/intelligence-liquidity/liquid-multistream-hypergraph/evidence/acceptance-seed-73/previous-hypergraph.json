@@ -1,0 +1,47 @@
+{
+  "results_sha256": "32d776b840a04e416859d46148a5dfaf25c8e0dee1e046866483a84fa523a596",
+  "homes": {
+    "H5": {
+      "metrics": {
+        "rows": 288,
+        "balanced_accuracy": 0.7373188405797102,
+        "accuracy": 0.4965277910232544,
+        "classes": [
+          {
+            "rows": 12,
+            "right": 12
+          },
+          {
+            "rows": 276,
+            "right": 131
+          }
+        ],
+        "brier": 0.20777548849582672
+      },
+      "predictions_sha256": "7ba46ba7d960c09a6734517f5e342336f98055a9bb468041a8982b5a458005d7",
+      "checkpoint_sha256": "4229c0b8c56623ebf908715a1939148651292697ba1e1b0d253afbb319b9c125"
+    },
+    "H6": {
+      "metrics": {
+        "rows": 2016,
+        "balanced_accuracy": 0.6253933712755273,
+        "accuracy": 0.6254960298538208,
+        "classes": [
+          {
+            "rows": 1030,
+            "right": 649
+          },
+          {
+            "rows": 986,
+            "right": 612
+          }
+        ],
+        "brier": 0.23519249260425568
+      },
+      "predictions_sha256": "e376d9c142d5bce1e342a7573d146a312a72018e1b2543431e3a78a6eb205a77",
+      "checkpoint_sha256": "877702390d933ba8cbcb382f19cfd1a4d1bb54e2a5f05b83fa01d54d87f47316"
+    }
+  },
+  "protocol": "Adapt only on first 14 selected days of each room; freeze weights and architecture; infer after day 14 without labels or rewards. Recurrent state may update.",
+  "comparison_caveat": "Prior models learned separately per room on 14 days and retained temporal state; new shared-model comparisons start fresh temporal states."
+}

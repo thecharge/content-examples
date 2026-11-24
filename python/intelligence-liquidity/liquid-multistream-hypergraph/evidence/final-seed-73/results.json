@@ -1,0 +1,623 @@
+{
+  "seed": 73,
+  "random_model_sha256": "59bcbb20c823cb1b8cf4f1fadde474fe7b40150072ffa98fc2fbfe85d3708428",
+  "pretrained_sha256": "357a4f607ef1178f97f1b0cb69f63ae421bce5392ddc301083633f72fd079594",
+  "archive_sha256": {
+    "H1_ENVIRONMENTAL.zip": "4d5ac73017245092a0368ee2def721f1a5b93bf906cf8563c18712d7759badd0",
+    "H1_GROUNDTRUTH.zip": "7ce7b4d41e67cdcef3a2c91d6fcecee117cc890f190a34c34d716e125ea9649c",
+    "H2_ENVIRONMENTAL.zip": "403ed10ff5cbe62db81d003facb1d4da2f0915ffcc8b7ac12aab5b7baf9aa6c8",
+    "H2_GROUNDTRUTH.zip": "f555403f5c3b991ec02e6d348c13d7096194dbea6878220aa59ddca53b68fed1",
+    "H3_ENVIRONMENTAL.zip": "0876ea45b663389e05934a1eae4754a5e5dd495d08e19890d1c06fdf387b93f7",
+    "H3_GROUNDTRUTH.zip": "57ead22674459c5eb12ccdbde9b767ec8b3bf1023bd3dfa2ff6b0788cd453223",
+    "H4_ENVIRONMENTAL.zip": "6163626eaa643082d42e494cf41bdd82e5f92ddae8f0d75b1bfe89ba47502f89",
+    "H4_GROUNDTRUTH.zip": "5c4484761e8438ee6546c3a36dbacfcca7ec75acea9885d6024e218290805ed0",
+    "H5_ENVIRONMENTAL.zip": "2052daee624cb0aff7827097d34422c536fdf5e86047734b90b858cd6bb1fe4f",
+    "H5_GROUNDTRUTH.zip": "4d3de5bee5abd29d0826a70376b80fefa2f052e2c5701e2b77e575b6f0852d9b",
+    "H6_ENVIRONMENTAL.zip": "ff9539b61c921a9f5dcbc32b95bd6b0705f91536ecd3dbfae48ddcc36dffff58",
+    "H6_GROUNDTRUTH.zip": "28ddb88f6deca3af403c0cb1d35e721614fcf02ecb523ef64d412ce7e3101574"
+  },
+  "source_sha256": {
+    "adaptive/BASELINE.json": "3157d4074f441ba22f56074260a36e4efe7d7edd6bc3a5c21eb1bb0ba4ed0c5b",
+    "adaptive/adaptation.py": "7441070dd9a73ee9ce32091b9d58f70256aaa1af92c5cac054904e64b73bc42c",
+    "adaptive/attention.py": "e044a7b3ace10dbbee759c6610326232711f7f7f1c5b8a28273ee4f41a88b006",
+    "adaptive/batching.py": "71fc0259d4301d5cef2fc5a22a8c083d33d2f0a2abdd14453843ecaa73695dfb",
+    "adaptive/cold_start.py": "6009784fd9103cb22418fece49afc4422e1ad41ed733561176277b1de83bd478",
+    "adaptive/compare.py": "dfd26055c778d0a3edd2e2dd1f234a2d2f38e574e9276a80066b8408e2f787d8",
+    "adaptive/configuration.json": "0ed1f3819ba4cc2998b66b84f5c4c70e1734cee22eabc96a4c0bced2ffa80e6c",
+    "adaptive/control.py": "aeaf5f708a4b6d29ac2c6e89ae911254f1a41fd15d87ff62fea2de807874b56c",
+    "adaptive/demonstrate.py": "78000a5d1bd16bbfae69603cc1ab1b6b7175a9223b6c24fc1fc302cb0d89bfee",
+    "adaptive/device.py": "fb32c8481882c59bf9e3a3701f9d7efbe44172c1620a78d50399b0bea560783e",
+    "adaptive/evaluate.py": "8ae0ef9047a503fc57727412ba310932a311426684898ad3ca369aa66a1ec39d",
+    "adaptive/evolve.py": "c6ed0d1343f4591c32f2a9c19c7cdccb24fdb5b3011e96a8fea44fc3fe505c5f",
+    "adaptive/experiment.py": "2d12c3bdf36a5ca14177d47a3a8ac50f78e0eaf1069ef39804ea12f81fe7b81f",
+    "adaptive/graph.py": "1038974a9f97c3fbd800a73f5359a1c071c05ff16b1a244699c67ce934a0d17a",
+    "adaptive/hierarchy.py": "0926226daadda59a5e3e65ed3bd0f938c45a191ee121763098c457f1507066e5",
+    "adaptive/hypergraph.py": "b19ee72941e2532d8095135fa08c59b42485b84327fb80dbf251325071ee73dd",
+    "adaptive/inspection.py": "365fa83f51bd0bc11faf520f66a4d4d9b915aa009ec26026dabe4a5d16f070ab",
+    "adaptive/ledger.py": "45b218550a1af845b91dd6a6cbe28cbb8463b8e61f87b989a34e96902cd61ad5",
+    "adaptive/liquid.py": "b422de55d34e69a2240f39373d662e9898e7cca60b200e2e7075e2b118d8aade",
+    "adaptive/multistream.py": "816717986504f4a48b4c1bfda6f28cb08179ae95b3b2e3cb51e8bda27b3405b2",
+    "adaptive/policy.py": "fa4019331b5683e30e5d991660aeb064531950a30781e206b7f2d60431d4eb50",
+    "adaptive/provenance.py": "1f40c582cfc920de9a52e0c203caa2cc84666a95ed97ff338c33d8ff674bdf20",
+    "adaptive/reference.py": "59b6b60e6a68438279446f3232eabe532014ef11b97f63c4b2f47a003fdaab0e",
+    "adaptive/requirements.txt": "2e9e74e010723eed3b6dd56d7f9bffe67ca94f68f6b70cd41585879e2b185b79",
+    "adaptive/runtime.py": "452b135ea85a9ae56ddcc84beed4ec8c8c00b24670ecd4bd13ac1d45d2caaa6d",
+    "adaptive/session.py": "b57310c44485519e7e0f6ed532452f704839fb809d63ab45853eb4e32b7443b9",
+    "adaptive/storage-configuration.json": "f882280b36a877ee0a7781d41ec132eef7683e34e0257d764ef0ce91305b2362",
+    "adaptive/stream-configuration.json": "c9ed241ae1bb2583ad8242108ac892e751d6a39f5e69ed3e84b5d99872daa1db",
+    "adaptive/stream_replay.py": "52e0a05a9b26478bb51c2552d98645dbf4f354641cc3f0f96dc9fe2e05fd0459",
+    "adaptive/test_adaptive.py": "cf71aaabdfd78e2f007b2569c57a3810e12c205cdacee4437a495511e2f2ab02",
+    "adaptive/test_hypergraph.py": "ee3f1a5143006d99359f9a8b50d9d0cf337c95e6cb7d82eab9309c4a77037698",
+    "adaptive/test_multistream.py": "691908c4d7143c7d5065d7e31a8fe4d057be5ed2740c9badc74edcdfc1c3f298",
+    "adaptive/test_scaling.py": "f4565127d95b355073d113f875029ddcb9af66b248d8fc52dc38f925fc7cc87d",
+    "adaptive/training-configuration.json": "5d4962f8f323720311b63c05092013cac6bfacaa6c805577d4cfcb4cca48ffc8",
+    "adaptive/verify.py": "5fa49e1f9e1642f1615256cfc38ed6e38a2b4083b0b36f0952246ee9810b4f9d",
+    "adaptive/worker-configuration.json": "2bb19c9290be7bbc880a0e9db6db936b848d8ad1e93f90fe81375e4ccec38365",
+    "adaptive/worker.py": "d220be66239becd28fb8844526fe823b4d9f9bfa9bfed21408975b3f0cedee55",
+    "adaptive/workflow.py": "7e50994aebffeddbeaa053cd878e20c48df124d3fba582fa0a0e132f4356df50",
+    "reference/sources.py": "a11e5bee383f1bfb09ca8f7bb3026b8df33126ed31bea78e42d5366aa67d2c9d",
+    "reference/model.py": "e4444c8ec81892195b39fcef7cb823c789cb065493adb6823a52abb1971a7d49",
+    "reference/learn.py": "eddb985bac82a23b603f20f73eb7285b791297b780f90cab663cf974aea28b8d",
+    "reference/benchmark.py": "75eba2b73319f0b45386254cf069a6d772a04caea4f1741604f87d93b35c2126",
+    "reference/check_replay.py": "f791bd124958082653a0b969b49fbc66b580b9255b7660255ce1bd445a06a7aa",
+    "reference/requirements.txt": "2e9e74e010723eed3b6dd56d7f9bffe67ca94f68f6b70cd41585879e2b185b79",
+    "reference/../liquid-workflow-v2/workflow.py": "7e47117899e8e4da8808aa11ee043a7536e5d1b5dc551c74f577a30092ca9aa3",
+    "reference/../liquid-workflow-v3/data.py": "f44609f6e1b414e26fa0a7e0f6815b6337ede5b329c1582c8a2badab0c8e3797",
+    "reference/online.py": "14a23ec472e71dfdb9e9b151959c3a4be48a88f653a38402245058010f09ad37",
+    "reference/contextual.py": "329ce71f7930af4ef64072e703444cd9f9dce1de71307d70a6052c7417148906"
+  },
+  "executed_sources_archive_sha256": "6d801462b61e346c0c7cdddfc8a5ac847196e1cf1fd684eaf98e49554125f2e9",
+  "source_changed_during_run": true,
+  "configuration": {
+    "source": "/tmp/liquid-v3-data",
+    "output": "evidence/final-seed-73",
+    "dataset": "evidence/seed-73/dataset.pt",
+    "seed": 73,
+    "epochs": 16,
+    "patience": 4,
+    "minimum_delta": 0.0001,
+    "length": 36,
+    "truncate": 12,
+    "batch": 8,
+    "rate": 0.002,
+    "residual": 2.0,
+    "variant": "both"
+  },
+  "reports": {
+    "scratch_single": {
+      "H1": {
+        "rows": 2016,
+        "balanced_accuracy": 0.6911225695689751,
+        "accuracy": 0.6765872836112976,
+        "classes": [
+          {
+            "rows": 601,
+            "right": 437
+          },
+          {
+            "rows": 1415,
+            "right": 927
+          }
+        ],
+        "brier": 0.21890312433242798,
+        "quorum": 1358,
+        "maximum_replica_spread": 0.0
+      },
+      "H2": {
+        "rows": 861,
+        "balanced_accuracy": 0.7411105330655503,
+        "accuracy": 0.7015098929405212,
+        "classes": [
+          {
+            "rows": 289,
+            "right": 249
+          },
+          {
+            "rows": 572,
+            "right": 355
+          }
+        ],
+        "brier": 0.20178887248039246,
+        "quorum": 516,
+        "maximum_replica_spread": 0.0
+      },
+      "H3": {
+        "rows": 2011,
+        "balanced_accuracy": 0.485067605599083,
+        "accuracy": 0.5499751567840576,
+        "classes": [
+          {
+            "rows": 812,
+            "right": 120
+          },
+          {
+            "rows": 1199,
+            "right": 986
+          }
+        ],
+        "brier": 0.28644612431526184,
+        "quorum": 1435,
+        "maximum_replica_spread": 0.0
+      },
+      "H4": {
+        "rows": 864,
+        "balanced_accuracy": 0.5620959354834786,
+        "accuracy": 0.5914351940155029,
+        "classes": [
+          {
+            "rows": 283,
+            "right": 135
+          },
+          {
+            "rows": 581,
+            "right": 376
+          }
+        ],
+        "brier": 0.25849416851997375,
+        "quorum": 529,
+        "maximum_replica_spread": 0.0
+      },
+      "H5": {
+        "rows": 288,
+        "balanced_accuracy": 0.8985507246376812,
+        "accuracy": 0.8055555820465088,
+        "classes": [
+          {
+            "rows": 12,
+            "right": 12
+          },
+          {
+            "rows": 276,
+            "right": 220
+          }
+        ],
+        "brier": 0.1931786686182022,
+        "quorum": 166,
+        "maximum_replica_spread": 0.0
+      },
+      "H6": {
+        "rows": 2016,
+        "balanced_accuracy": 0.6450707969830047,
+        "accuracy": 0.6453372836112976,
+        "classes": [
+          {
+            "rows": 1030,
+            "right": 677
+          },
+          {
+            "rows": 986,
+            "right": 624
+          }
+        ],
+        "brier": 0.24125158786773682,
+        "quorum": 1238,
+        "maximum_replica_spread": 0.0
+      },
+      "execution": {
+        "seconds": 18.744142930023372,
+        "logical_streams": 6,
+        "replicas_per_room": 1,
+        "logical_predictions": 8056,
+        "unique_observations": 8056,
+        "frozen_hash": "33dba67a66f5a0a0a78caa246a7734fb4ff635ffa798994cc9d9c2245b12e8c8",
+        "memory_bytes": 4704,
+        "backend": "cpu"
+      }
+    },
+    "scratch_36": {
+      "H1": {
+        "rows": 2016,
+        "balanced_accuracy": 0.6911225695689751,
+        "accuracy": 0.6765872836112976,
+        "classes": [
+          {
+            "rows": 601,
+            "right": 437
+          },
+          {
+            "rows": 1415,
+            "right": 927
+          }
+        ],
+        "brier": 0.21890312433242798,
+        "quorum": 1358,
+        "maximum_replica_spread": 1.1920928955078125e-07
+      },
+      "H2": {
+        "rows": 861,
+        "balanced_accuracy": 0.7411105330655503,
+        "accuracy": 0.7015098929405212,
+        "classes": [
+          {
+            "rows": 289,
+            "right": 249
+          },
+          {
+            "rows": 572,
+            "right": 355
+          }
+        ],
+        "brier": 0.20178887248039246,
+        "quorum": 516,
+        "maximum_replica_spread": 5.960464477539063e-08
+      },
+      "H3": {
+        "rows": 2011,
+        "balanced_accuracy": 0.485067605599083,
+        "accuracy": 0.5499751567840576,
+        "classes": [
+          {
+            "rows": 812,
+            "right": 120
+          },
+          {
+            "rows": 1199,
+            "right": 986
+          }
+        ],
+        "brier": 0.28644612431526184,
+        "quorum": 1435,
+        "maximum_replica_spread": 5.960464477539063e-08
+      },
+      "H4": {
+        "rows": 864,
+        "balanced_accuracy": 0.5620959354834786,
+        "accuracy": 0.5914351940155029,
+        "classes": [
+          {
+            "rows": 283,
+            "right": 135
+          },
+          {
+            "rows": 581,
+            "right": 376
+          }
+        ],
+        "brier": 0.25849416851997375,
+        "quorum": 529,
+        "maximum_replica_spread": 5.960464477539063e-08
+      },
+      "H5": {
+        "rows": 288,
+        "balanced_accuracy": 0.8985507246376812,
+        "accuracy": 0.8055555820465088,
+        "classes": [
+          {
+            "rows": 12,
+            "right": 12
+          },
+          {
+            "rows": 276,
+            "right": 220
+          }
+        ],
+        "brier": 0.1931786686182022,
+        "quorum": 166,
+        "maximum_replica_spread": 5.960464477539063e-08
+      },
+      "H6": {
+        "rows": 2016,
+        "balanced_accuracy": 0.6450707969830047,
+        "accuracy": 0.6453372836112976,
+        "classes": [
+          {
+            "rows": 1030,
+            "right": 677
+          },
+          {
+            "rows": 986,
+            "right": 624
+          }
+        ],
+        "brier": 0.24125158786773682,
+        "quorum": 1238,
+        "maximum_replica_spread": 1.1920928955078125e-07
+      },
+      "execution": {
+        "seconds": 77.45211571711116,
+        "logical_streams": 36,
+        "replicas_per_room": 6,
+        "logical_predictions": 48336,
+        "unique_observations": 8056,
+        "frozen_hash": "33dba67a66f5a0a0a78caa246a7734fb4ff635ffa798994cc9d9c2245b12e8c8",
+        "memory_bytes": 28224,
+        "backend": "cpu"
+      }
+    },
+    "pretrained_frozen": {
+      "H1": {
+        "rows": 2016,
+        "balanced_accuracy": 0.6426009654110052,
+        "accuracy": 0.6185516119003296,
+        "classes": [
+          {
+            "rows": 601,
+            "right": 422
+          },
+          {
+            "rows": 1415,
+            "right": 825
+          }
+        ],
+        "brier": 0.23438477516174316,
+        "quorum": 689,
+        "maximum_replica_spread": 0.0
+      },
+      "H2": {
+        "rows": 861,
+        "balanced_accuracy": 0.631993006993007,
+        "accuracy": 0.5110336542129517,
+        "classes": [
+          {
+            "rows": 289,
+            "right": 289
+          },
+          {
+            "rows": 572,
+            "right": 151
+          }
+        ],
+        "brier": 0.23681825399398804,
+        "quorum": 0,
+        "maximum_replica_spread": 0.0
+      },
+      "H3": {
+        "rows": 2011,
+        "balanced_accuracy": 0.5266755547521128,
+        "accuracy": 0.5365489721298218,
+        "classes": [
+          {
+            "rows": 812,
+            "right": 386
+          },
+          {
+            "rows": 1199,
+            "right": 693
+          }
+        ],
+        "brier": 0.24636903405189514,
+        "quorum": 389,
+        "maximum_replica_spread": 0.0
+      },
+      "H4": {
+        "rows": 864,
+        "balanced_accuracy": 0.5068421084641443,
+        "accuracy": 0.49884259700775146,
+        "classes": [
+          {
+            "rows": 283,
+            "right": 150
+          },
+          {
+            "rows": 581,
+            "right": 281
+          }
+        ],
+        "brier": 0.263134628534317,
+        "quorum": 268,
+        "maximum_replica_spread": 0.0
+      },
+      "H5": {
+        "rows": 288,
+        "balanced_accuracy": 0.7318840579710145,
+        "accuracy": 0.4861111044883728,
+        "classes": [
+          {
+            "rows": 12,
+            "right": 12
+          },
+          {
+            "rows": 276,
+            "right": 128
+          }
+        ],
+        "brier": 0.20767579972743988,
+        "quorum": 33,
+        "maximum_replica_spread": 0.0
+      },
+      "H6": {
+        "rows": 2016,
+        "balanced_accuracy": 0.6331958092912424,
+        "accuracy": 0.6354166865348816,
+        "classes": [
+          {
+            "rows": 1030,
+            "right": 757
+          },
+          {
+            "rows": 986,
+            "right": 524
+          }
+        ],
+        "brier": 0.23622249066829681,
+        "quorum": 334,
+        "maximum_replica_spread": 0.0
+      },
+      "execution": {
+        "seconds": 18.823121865978464,
+        "logical_streams": 6,
+        "replicas_per_room": 1,
+        "logical_predictions": 8056,
+        "unique_observations": 8056,
+        "frozen_hash": "ace1f52adb3a4534aeb8e3227a58f4f5c8fdc849adc89945188b9ff8b830145d",
+        "memory_bytes": 4704,
+        "backend": "cpu"
+      }
+    },
+    "pretrained_retrained": {
+      "H1": {
+        "rows": 2016,
+        "balanced_accuracy": 0.6753291040256816,
+        "accuracy": 0.6765872836112976,
+        "classes": [
+          {
+            "rows": 601,
+            "right": 404
+          },
+          {
+            "rows": 1415,
+            "right": 960
+          }
+        ],
+        "brier": 0.22975213825702667,
+        "quorum": 1769,
+        "maximum_replica_spread": 0.0
+      },
+      "H2": {
+        "rows": 861,
+        "balanced_accuracy": 0.7516181914970843,
+        "accuracy": 0.7166085839271545,
+        "classes": [
+          {
+            "rows": 289,
+            "right": 248
+          },
+          {
+            "rows": 572,
+            "right": 369
+          }
+        ],
+        "brier": 0.18247994780540466,
+        "quorum": 813,
+        "maximum_replica_spread": 0.0
+      },
+      "H3": {
+        "rows": 2011,
+        "balanced_accuracy": 0.43701853350698655,
+        "accuracy": 0.510691225528717,
+        "classes": [
+          {
+            "rows": 812,
+            "right": 44
+          },
+          {
+            "rows": 1199,
+            "right": 983
+          }
+        ],
+        "brier": 0.3429766595363617,
+        "quorum": 1841,
+        "maximum_replica_spread": 0.0
+      },
+      "H4": {
+        "rows": 864,
+        "balanced_accuracy": 0.5618222511449128,
+        "accuracy": 0.5983796119689941,
+        "classes": [
+          {
+            "rows": 283,
+            "right": 129
+          },
+          {
+            "rows": 581,
+            "right": 388
+          }
+        ],
+        "brier": 0.30227428674697876,
+        "quorum": 731,
+        "maximum_replica_spread": 0.0
+      },
+      "H5": {
+        "rows": 288,
+        "balanced_accuracy": 0.8351449275362319,
+        "accuracy": 0.6840277910232544,
+        "classes": [
+          {
+            "rows": 12,
+            "right": 12
+          },
+          {
+            "rows": 276,
+            "right": 185
+          }
+        ],
+        "brier": 0.12389020621776581,
+        "quorum": 272,
+        "maximum_replica_spread": 0.0
+      },
+      "H6": {
+        "rows": 2016,
+        "balanced_accuracy": 0.6364540459638827,
+        "accuracy": 0.6359127163887024,
+        "classes": [
+          {
+            "rows": 1030,
+            "right": 630
+          },
+          {
+            "rows": 986,
+            "right": 652
+          }
+        ],
+        "brier": 0.25770264863967896,
+        "quorum": 1596,
+        "maximum_replica_spread": 0.0
+      },
+      "execution": {
+        "seconds": 15.641248618951067,
+        "logical_streams": 6,
+        "replicas_per_room": 1,
+        "logical_predictions": 8056,
+        "unique_observations": 8056,
+        "frozen_hash": "738d952d5ffeab8ff90b162eadfd8c2eea7388fdff5fb61d293796352da050ed",
+        "memory_bytes": 4704,
+        "backend": "cpu"
+      }
+    }
+  },
+  "verdict": {
+    "H1": {
+      "scratch": 0.6911225695689751,
+      "pretrained_frozen": 0.6426009654110052,
+      "pretrained_same_prefix_retrained": 0.6753291040256816,
+      "matches_frozen": true,
+      "matches_retrained": true
+    },
+    "H2": {
+      "scratch": 0.7411105330655503,
+      "pretrained_frozen": 0.631993006993007,
+      "pretrained_same_prefix_retrained": 0.7516181914970843,
+      "matches_frozen": true,
+      "matches_retrained": false
+    },
+    "H3": {
+      "scratch": 0.485067605599083,
+      "pretrained_frozen": 0.5266755547521128,
+      "pretrained_same_prefix_retrained": 0.43701853350698655,
+      "matches_frozen": false,
+      "matches_retrained": true
+    },
+    "H4": {
+      "scratch": 0.5620959354834786,
+      "pretrained_frozen": 0.5068421084641443,
+      "pretrained_same_prefix_retrained": 0.5618222511449128,
+      "matches_frozen": true,
+      "matches_retrained": true
+    },
+    "H5": {
+      "scratch": 0.8985507246376812,
+      "pretrained_frozen": 0.7318840579710145,
+      "pretrained_same_prefix_retrained": 0.8351449275362319,
+      "matches_frozen": true,
+      "matches_retrained": true
+    },
+    "H6": {
+      "scratch": 0.6450707969830047,
+      "pretrained_frozen": 0.6331958092912424,
+      "pretrained_same_prefix_retrained": 0.6364540459638827,
+      "matches_frozen": true,
+      "matches_retrained": true
+    }
+  },
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.7.1+cpu",
+    "device": "cpu"
+  },
+  "scope": "Offline cold-start bootstrap and frozen 36-stream inference. Online mutation/feedback tested separately.",
+  "limitations": [
+    "One recorded timeline per room is replicated six times.",
+    "Scratch training includes rooms H5/H6 prefix; original pretrained benchmark did not.",
+    "Future suffix is not used by training, validation, calibration or controller."
+  ]
+}

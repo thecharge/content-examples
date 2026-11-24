@@ -1,0 +1,103 @@
+{
+  "date": "2026-11-24",
+  "baseline_revision": "21ce84c3e9d7814ec2859cc8c09053884f71572b",
+  "checks": [
+    {
+      "command": "python -m unittest discover -q",
+      "exit_code": 0,
+      "tests": 94,
+      "seconds": 79.206
+    },
+    {
+      "command": "python reporting/contract_checks.py -q",
+      "exit_code": 0,
+      "tests": 4,
+      "seconds": 2.321
+    },
+    {
+      "command": "ruff check . --exclude evidence",
+      "exit_code": 0
+    },
+    {
+      "command": "ruff format --check . --exclude evidence",
+      "exit_code": 0,
+      "files": 38
+    },
+    {
+      "command": "python reporting/audit_online.py evidence/live-seed-73",
+      "exit_code": 0
+    },
+    {
+      "command": "python reporting/acceptance.py evidence/seed-73/dataset.pt evidence/final-seed-73 evidence/live-seed-73 evidence/acceptance-seed-73 --archives /tmp/liquid-v3-data --wait-online-seconds 1800",
+      "exit_code": 0
+    },
+    {
+      "command": "python reporting/check_reference.py evidence/seed-73/dataset.pt reporting/reference-fidelity.json",
+      "exit_code": 0
+    },
+    {
+      "command": "python reporting/build_report.py evidence/final-seed-73 evidence/live-seed-73 evidence/acceptance-seed-73 figures",
+      "exit_code": 0
+    }
+  ],
+  "local_links_checked": 37,
+  "visual_qa": [
+    "before.png",
+    "learning.png",
+    "live-learning.png",
+    "future.png",
+    "evolution.png",
+    "calibration.png"
+  ],
+  "cli_smoke": "reporting/cli-smoke.json",
+  "hardware": "reporting/hardware.json",
+  "versions": {
+    "torch": "2.7.1+cpu",
+    "xgboost-cpu": "3.1.3",
+    "numpy": "2.5.5",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2",
+    "ruff": "0.14.6"
+  },
+  "acceptance": {
+    "execution_fidelity": true,
+    "all_rooms_offline_accuracy": false,
+    "all_rooms_live_accuracy": false,
+    "missed_offline_room": "H3",
+    "missed_live_room": "H4",
+    "gpu_verified": false
+  },
+  "source_drift": {
+    "live": false,
+    "offline": true,
+    "offline_changed_files": [
+      "adaptation.py",
+      "cold_start.py",
+      "multistream.py",
+      "stream_replay.py",
+      "test_multistream.py"
+    ],
+    "exact_executed_archives_retained": true
+  },
+  "constraints": {
+    "github_actions_used": false,
+    "drivers_changed": false,
+    "deployed": false,
+    "subagents_used": false
+  },
+  "limitations": [
+    "One seed and six recorded timelines replicated six times each.",
+    "Future data is now exposed evaluation evidence; do not tune against it and call the same evaluation unseen.",
+    "H4 validation lacks vacant examples; H5 future contains only 12 vacant examples.",
+    "Source and model assertions passed; the all-room accuracy target failed."
+  ],
+  "manifest_check": {
+    "delivered_files": 134,
+    "preceding_files": 31,
+    "passed": true
+  },
+  "push_safety_check": {
+    "github_actions_enabled": false,
+    "tracked_workflows": 0
+  }
+}

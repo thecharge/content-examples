@@ -1,0 +1,17 @@
+{
+  "seed": 73,
+  "rooms": ["H1", "H2", "H3", "H4", "H5", "H6"],
+  "streams_per_room": 6,
+  "fit_selected_days": 12,
+  "validation_selected_days": 2,
+  "future_selected_days_after": 14,
+  "future_selection_used_for_fitting": false,
+  "accuracy_target": "Every room matches or exceeds its frozen pretrained reference; report the equally retrained reference separately. Also compare H5/H6 with the preceding frozen hypergraph using its exact future rows and disclose the different training/state protocol.",
+  "policy_selection": "Use only validation and the seven original verified-board policy choices, followed by the three original probability scales.",
+  "policy_choices": [[0.0, 0.55, 0.60], [0.25, 0.55, 0.60], [-0.25, 0.55, 0.60], [0.0, 0.35, 0.60], [0.0, 0.85, 0.60], [0.0, 0.55, 0.57], [0.0, 0.55, 0.64]],
+  "probability_scales": [0.5, 1.0, 2.0],
+  "policy_selection_fixed_before_any_future_results_available": true,
+  "execution_comparison": "Six independent one-stream runs, one six-stream run and one thirty-six-stream run use the same frozen tensors and fresh private recurrent states.",
+  "online_comparison": "Separate live random initialization with delayed labels, rewards, room calibration and all bounded structural actions. Frozen future carries learned room calibration but starts fresh temporal states.",
+  "evidence": "Source ZIPs, file hashes, predictions, selected checkpoints, chronological boundaries and worker resource records. Replicas contribute once to shared learning."
+}

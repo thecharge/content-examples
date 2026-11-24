@@ -12,3 +12,5 @@ The [adaptive liquid board](python/intelligence-liquidity/adaptive-liquid-board/
 [Liquid Adaptable Net](python/intelligence-liquidity/liquid-adaptable-net/README.md) extends the CPU experiment with editable liquid stages, recurrent neurons, hierarchical delta attention and bounded network scaling.
 
 [Liquid adaptive hypergraph](python/intelligence-liquidity/liquid-adaptive-hypergraph/README.md) adds overlapping expert, layer and neuron memberships, guarded hyperedge changes, provenance and transactional recovery in a separate experiment.
+
+[Liquid multistream hypergraph](python/intelligence-liquidity/liquid-multistream-hypergraph/README.md) adds one shared liquid model with private stream memories, bounded CPU batching, room-level quality gates and a 36-stream cold-start comparison.

@@ -1,0 +1,54 @@
+{
+  "seed": 73,
+  "homes": {
+    "H5": {
+      "logical_streams": 36,
+      "rows_per_stream": 288,
+      "logical_predictions": 10368,
+      "original_checkpoint_sha256": "4229c0b8c56623ebf908715a1939148651292697ba1e1b0d253afbb319b9c125",
+      "exact_answers_and_quorum": true,
+      "maximum_probability_difference": 5.960464477539063e-08,
+      "metrics": {
+        "rows": 288,
+        "balanced_accuracy": 0.7373188405797102,
+        "accuracy": 0.4965277910232544,
+        "classes": [
+          {
+            "rows": 12,
+            "right": 12
+          },
+          {
+            "rows": 276,
+            "right": 131
+          }
+        ],
+        "brier": 0.20777548849582672
+      }
+    },
+    "H6": {
+      "logical_streams": 36,
+      "rows_per_stream": 2016,
+      "logical_predictions": 72576,
+      "original_checkpoint_sha256": "877702390d933ba8cbcb382f19cfd1a4d1bb54e2a5f05b83fa01d54d87f47316",
+      "exact_answers_and_quorum": true,
+      "maximum_probability_difference": 1.1920928955078125e-07,
+      "metrics": {
+        "rows": 2016,
+        "balanced_accuracy": 0.6253933712755273,
+        "accuracy": 0.6254960298538208,
+        "classes": [
+          {
+            "rows": 1030,
+            "right": 649
+          },
+          {
+            "rows": 986,
+            "right": 612
+          }
+        ],
+        "brier": 0.23519249260425568
+      }
+    }
+  },
+  "scope": "Each pre-existing per-room trained model is separately served through 36 copies of its private historical context. This tests execution fidelity, not shared six-room training or independent data."
+}

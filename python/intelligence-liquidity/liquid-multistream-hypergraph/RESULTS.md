@@ -30,6 +30,59 @@ The preceding per-room hypergraph's same-seed future scores were 73.73% for H5 a
 reaches 89.86% and 64.51%. These comparisons share the exact future rows; their
 training and starting-state differences are listed below.
 
+## Matched XGBoost comparison
+
+The added CPU baseline uses the original reference tree recipe: one shared
+histogram booster, 150 rounds, depth 3, eta 0.04, seed 73, one thread,
+inverse-frequency fitting weights and a fixed 0.5 threshold. It receives the
+same 17 causal features without room identity. Neither validation nor future
+labels fit the trees. No tree settings were selected from the scores.
+
+| Room | XGBoost all prefix | XGBoost exact blocks | Liquid scratch bootstrap | Liquid live empty start |
+| --- | ---: | ---: | ---: | ---: |
+| H1 | 68.18 | 69.79 | 69.11 | 66.72 |
+| H2 | 72.32 | 62.30 | 74.11 | 73.19 |
+| H3 | 73.16 | 73.70 | 48.51 | 71.88 |
+| H4 | 56.99 | 57.30 | 56.12 | 49.57 |
+| H5 | 82.07 | 79.35 | 89.86 | 78.26 |
+| H6 | 61.34 | 62.20 | 64.51 | 63.61 |
+| Equal-room mean | **69.01** | **67.44** | **67.04** | **67.21** |
+
+These are balanced accuracy percentages on exactly joined future timestamps and
+truths. The all-prefix booster fits 20,718 unique rows; the block control fits
+exactly the 20,088 rows used by offline liquid gradient fitting, omitting the
+same incomplete contiguous blocks. Six replica streams never multiply training
+rows. Saved-model reload and six-replica tree predictions are exactly equal.
+
+The strict block comparison puts XGBoost 0.40 percentage points above offline
+scratch on average; each wins three rooms. All-prefix XGBoost beats live liquid
+by 1.81 points and wins four rooms; liquid wins H2 and H6. This is neither an
+all-room liquid accuracy win nor a demonstration of XGBoost's best achievable
+score. It is one fixed reference recipe and one seed.
+
+The live liquid model also learns from the validation-period prefix as time
+passes; the offline model selects and calibrates there. Trees use that period
+only for reporting. Liquid future results were already known when this new tree
+protocol was written. No liquid fitting or tree tuning followed these scores.
+H4 validation has one class; its reported validation balanced score therefore
+cannot assess both recalls. Every future room has both classes. H5 has only
+12 vacant examples, so its 89.86% liquid result is not a six-room result.
+
+Reproduce with the existing dataset cache and pinned environment:
+
+```sh
+python reporting/xgboost_compare.py
+python reporting/verify_xgboost.py
+```
+
+[Protocol](reporting/xgboost-protocol.json),
+[results, versions, timing and hashes](evidence/xgboost-seed-73/results.json),
+[independent row joins and metric checks](evidence/xgboost-seed-73/verification.json),
+and saved boosters, unique fitting-row lists and timestamped predictions in the
+same evidence folder make the comparison inspectable. The recorded tree fit
+wall times exclude Python import and preprocessing; they are not an end-to-end
+speed comparison against liquid training or serving. No efficiency win is claimed.
+
 ## What adapted
 
 The live run accepted **11 room-calibration updates**. Each room learned at least

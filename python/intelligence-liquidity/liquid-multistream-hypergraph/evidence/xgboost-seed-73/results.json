@@ -1,0 +1,496 @@
+{
+  "protocol_sha256": "6e2fb82e4753fb61f6af8e9791d45bade8b23c633718d11bb77f4e5961371dbe",
+  "dataset_sha256": "f995ffdd8996fb79d22d971ab0a4687c2124359342161b7bbc3bb7c1b8eb933c",
+  "dataset_metadata_sha256": "913aa24766bb601225f5110b828d1feee86886ae38c801c00c43a61ee5e9289b",
+  "script_sha256": "0fc883a362b64029e7179b7bb2d5e063946a81a10eef05f1b0245b185fc87296",
+  "versions": {
+    "python": "3.12.3",
+    "xgboost": "3.1.3",
+    "numpy": "2.5.5",
+    "torch": "2.7.1+cpu"
+  },
+  "variants": {
+    "all-prefix": {
+      "training_rows": 20718,
+      "training_classes": [
+        5069,
+        15649
+      ],
+      "per_room_training_rows": {
+        "H1": 3456,
+        "H2": 3449,
+        "H3": 3456,
+        "H4": 3456,
+        "H5": 3445,
+        "H6": 3456
+      },
+      "training_rows_sha256": "7fd99c444866fd4290bc981866f241582b8ca8e81109b9907e9005e56c040599",
+      "fit_seconds": 0.13745928998105228,
+      "model_bytes": 173621,
+      "model_sha256": "bf0fbaf177757eea336f5c8ea7d4ca4be2300106869f4806ce916ec5eb412a07",
+      "partitions": {
+        "validation": {
+          "room_scores": {
+            "H1": {
+              "rows": 576,
+              "balanced_accuracy": 0.8821874482834708,
+              "accuracy": 0.8229166666666666,
+              "brier": 0.11726928468107767,
+              "classes": [
+                {
+                  "rows": 119,
+                  "right": 117
+                },
+                {
+                  "rows": 457,
+                  "right": 357
+                }
+              ],
+              "both_classes_present": true
+            },
+            "H2": {
+              "rows": 574,
+              "balanced_accuracy": 0.7644468632495547,
+              "accuracy": 0.7543554006968641,
+              "brier": 0.16774940599035795,
+              "classes": [
+                {
+                  "rows": 248,
+                  "right": 208
+                },
+                {
+                  "rows": 326,
+                  "right": 225
+                }
+              ],
+              "both_classes_present": true
+            },
+            "H3": {
+              "rows": 576,
+              "balanced_accuracy": 0.6892361111111112,
+              "accuracy": 0.6892361111111112,
+              "brier": 0.24893558631973164,
+              "classes": [
+                {
+                  "rows": 288,
+                  "right": 135
+                },
+                {
+                  "rows": 288,
+                  "right": 262
+                }
+              ],
+              "both_classes_present": true
+            },
+            "H4": {
+              "rows": 576,
+              "balanced_accuracy": 0.6631944444444444,
+              "accuracy": 0.6631944444444444,
+              "brier": 0.17391752738118496,
+              "classes": [
+                {
+                  "rows": 0,
+                  "right": 0
+                },
+                {
+                  "rows": 576,
+                  "right": 382
+                }
+              ],
+              "both_classes_present": false
+            },
+            "H5": {
+              "rows": 574,
+              "balanced_accuracy": 0.42675814751286445,
+              "accuracy": 0.6341463414634146,
+              "brier": 0.1816526136667002,
+              "classes": [
+                {
+                  "rows": 44,
+                  "right": 8
+                },
+                {
+                  "rows": 530,
+                  "right": 356
+                }
+              ],
+              "both_classes_present": true
+            },
+            "H6": {
+              "rows": 576,
+              "balanced_accuracy": 0.864274023848492,
+              "accuracy": 0.8559027777777778,
+              "brier": 0.11400071530895556,
+              "classes": [
+                {
+                  "rows": 247,
+                  "right": 228
+                },
+                {
+                  "rows": 329,
+                  "right": 265
+                }
+              ],
+              "both_classes_present": true
+            }
+          },
+          "macro_balanced_accuracy": 0.7150161730749897,
+          "scoring_and_reload_replica_check_seconds": 0.028814896941184998
+        },
+        "future": {
+          "room_scores": {
+            "H1": {
+              "rows": 2016,
+              "balanced_accuracy": 0.6818147610284391,
+              "accuracy": 0.6850198412698413,
+              "brier": 0.18001576077248116,
+              "classes": [
+                {
+                  "rows": 601,
+                  "right": 405
+                },
+                {
+                  "rows": 1415,
+                  "right": 976
+                }
+              ],
+              "both_classes_present": true
+            },
+            "H2": {
+              "rows": 861,
+              "balanced_accuracy": 0.723189440317468,
+              "accuracy": 0.7049941927990708,
+              "brier": 0.20339248283327313,
+              "classes": [
+                {
+                  "rows": 289,
+                  "right": 225
+                },
+                {
+                  "rows": 572,
+                  "right": 382
+                }
+              ],
+              "both_classes_present": true
+            },
+            "H3": {
+              "rows": 2011,
+              "balanced_accuracy": 0.7316267250623467,
+              "accuracy": 0.7553455992043759,
+              "brier": 0.18515832550001518,
+              "classes": [
+                {
+                  "rows": 812,
+                  "right": 494
+                },
+                {
+                  "rows": 1199,
+                  "right": 1025
+                }
+              ],
+              "both_classes_present": true
+            },
+            "H4": {
+              "rows": 864,
+              "balanced_accuracy": 0.5699263485035548,
+              "accuracy": 0.6226851851851852,
+              "brier": 0.25184273290570985,
+              "classes": [
+                {
+                  "rows": 283,
+                  "right": 118
+                },
+                {
+                  "rows": 581,
+                  "right": 420
+                }
+              ],
+              "both_classes_present": true
+            },
+            "H5": {
+              "rows": 288,
+              "balanced_accuracy": 0.8206521739130435,
+              "accuracy": 0.65625,
+              "brier": 0.1848272494451693,
+              "classes": [
+                {
+                  "rows": 12,
+                  "right": 12
+                },
+                {
+                  "rows": 276,
+                  "right": 177
+                }
+              ],
+              "both_classes_present": true
+            },
+            "H6": {
+              "rows": 2016,
+              "balanced_accuracy": 0.6134405955217708,
+              "accuracy": 0.6160714285714286,
+              "brier": 0.23394037362514786,
+              "classes": [
+                {
+                  "rows": 1030,
+                  "right": 756
+                },
+                {
+                  "rows": 986,
+                  "right": 486
+                }
+              ],
+              "both_classes_present": true
+            }
+          },
+          "macro_balanced_accuracy": 0.690108340724437,
+          "scoring_and_reload_replica_check_seconds": 0.05979877104982734
+        }
+      },
+      "predictions_sha256": "38f652d17f953b5dc1c37cada0e267a2d6e5e11fccdb35ce56d3fb8234cfab7d"
+    },
+    "block-matched": {
+      "training_rows": 20088,
+      "training_classes": [
+        4737,
+        15351
+      ],
+      "per_room_training_rows": {
+        "H1": 3456,
+        "H2": 3204,
+        "H3": 3456,
+        "H4": 3456,
+        "H5": 3060,
+        "H6": 3456
+      },
+      "training_rows_sha256": "badca30bb98386cb9fb8e1aadf5cca1a1d48991df86a4b012005b9fc1f96d9d8",
+      "fit_seconds": 0.13509602611884475,
+      "model_bytes": 173621,
+      "model_sha256": "1d42111ab89d703980eba105fc0102580b923889ded672858559040818de9396",
+      "partitions": {
+        "validation": {
+          "room_scores": {
+            "H1": {
+              "rows": 576,
+              "balanced_accuracy": 0.8657760697276722,
+              "accuracy": 0.796875,
+              "brier": 0.12356034379735431,
+              "classes": [
+                {
+                  "rows": 119,
+                  "right": 117
+                },
+                {
+                  "rows": 457,
+                  "right": 342
+                }
+              ],
+              "both_classes_present": true
+            },
+            "H2": {
+              "rows": 574,
+              "balanced_accuracy": 0.7739090639224223,
+              "accuracy": 0.7700348432055749,
+              "brier": 0.1603115096144011,
+              "classes": [
+                {
+                  "rows": 248,
+                  "right": 199
+                },
+                {
+                  "rows": 326,
+                  "right": 243
+                }
+              ],
+              "both_classes_present": true
+            },
+            "H3": {
+              "rows": 576,
+              "balanced_accuracy": 0.6753472222222222,
+              "accuracy": 0.6753472222222222,
+              "brier": 0.25969137337361514,
+              "classes": [
+                {
+                  "rows": 288,
+                  "right": 142
+                },
+                {
+                  "rows": 288,
+                  "right": 247
+                }
+              ],
+              "both_classes_present": true
+            },
+            "H4": {
+              "rows": 576,
+              "balanced_accuracy": 0.6215277777777778,
+              "accuracy": 0.6215277777777778,
+              "brier": 0.18049651260703742,
+              "classes": [
+                {
+                  "rows": 0,
+                  "right": 0
+                },
+                {
+                  "rows": 576,
+                  "right": 358
+                }
+              ],
+              "both_classes_present": false
+            },
+            "H5": {
+              "rows": 574,
+              "balanced_accuracy": 0.44665523156089193,
+              "accuracy": 0.632404181184669,
+              "brier": 0.18733370567554422,
+              "classes": [
+                {
+                  "rows": 44,
+                  "right": 10
+                },
+                {
+                  "rows": 530,
+                  "right": 353
+                }
+              ],
+              "both_classes_present": true
+            },
+            "H6": {
+              "rows": 576,
+              "balanced_accuracy": 0.8460307889199267,
+              "accuracy": 0.8333333333333334,
+              "brier": 0.12013473786447279,
+              "classes": [
+                {
+                  "rows": 247,
+                  "right": 231
+                },
+                {
+                  "rows": 329,
+                  "right": 249
+                }
+              ],
+              "both_classes_present": true
+            }
+          },
+          "macro_balanced_accuracy": 0.7048743590218188,
+          "scoring_and_reload_replica_check_seconds": 0.02780384197831154
+        },
+        "future": {
+          "room_scores": {
+            "H1": {
+              "rows": 2016,
+              "balanced_accuracy": 0.6979080801726216,
+              "accuracy": 0.7008928571428571,
+              "brier": 0.17764922723453103,
+              "classes": [
+                {
+                  "rows": 601,
+                  "right": 415
+                },
+                {
+                  "rows": 1415,
+                  "right": 998
+                }
+              ],
+              "both_classes_present": true
+            },
+            "H2": {
+              "rows": 861,
+              "balanced_accuracy": 0.6230430469184794,
+              "accuracy": 0.6504065040650406,
+              "brier": 0.20553978884004928,
+              "classes": [
+                {
+                  "rows": 289,
+                  "right": 156
+                },
+                {
+                  "rows": 572,
+                  "right": 404
+                }
+              ],
+              "both_classes_present": true
+            },
+            "H3": {
+              "rows": 2011,
+              "balanced_accuracy": 0.7370088784989133,
+              "accuracy": 0.7608155146693187,
+              "brier": 0.1831227113803714,
+              "classes": [
+                {
+                  "rows": 812,
+                  "right": 498
+                },
+                {
+                  "rows": 1199,
+                  "right": 1032
+                }
+              ],
+              "both_classes_present": true
+            },
+            "H4": {
+              "rows": 864,
+              "balanced_accuracy": 0.5730098587180625,
+              "accuracy": 0.6134259259259259,
+              "brier": 0.25992435035709527,
+              "classes": [
+                {
+                  "rows": 283,
+                  "right": 129
+                },
+                {
+                  "rows": 581,
+                  "right": 401
+                }
+              ],
+              "both_classes_present": true
+            },
+            "H5": {
+              "rows": 288,
+              "balanced_accuracy": 0.7934782608695652,
+              "accuracy": 0.6041666666666666,
+              "brier": 0.21037201838388017,
+              "classes": [
+                {
+                  "rows": 12,
+                  "right": 12
+                },
+                {
+                  "rows": 276,
+                  "right": 162
+                }
+              ],
+              "both_classes_present": true
+            },
+            "H6": {
+              "rows": 2016,
+              "balanced_accuracy": 0.6219834971149492,
+              "accuracy": 0.625,
+              "brier": 0.23774150574660616,
+              "classes": [
+                {
+                  "rows": 1030,
+                  "right": 783
+                },
+                {
+                  "rows": 986,
+                  "right": 477
+                }
+              ],
+              "both_classes_present": true
+            }
+          },
+          "macro_balanced_accuracy": 0.6744052703820986,
+          "scoring_and_reload_replica_check_seconds": 0.05820606602355838
+        }
+      },
+      "predictions_sha256": "34616d105cb7c70c38909e2353383587f470acdfb713869d253b7c101b8155d2"
+    }
+  },
+  "process_peak_rss_kib": 272864,
+  "verification": {
+    "fit_only": true,
+    "saved_model_reload_exact": true,
+    "six_replicas_exact": true
+  }
+}

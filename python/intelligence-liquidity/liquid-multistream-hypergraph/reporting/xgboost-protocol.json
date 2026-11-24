@@ -1,0 +1,29 @@
+{
+  "purpose": "Fixed reference-recipe XGBoost comparison; no liquid retuning",
+  "declared_before_xgboost_future_scoring": true,
+  "seed": 73,
+  "features": "Same 17 causal sensor, delta, history and clock features; no room identity",
+  "split": "Existing dataset.pt: first 12 selected days fit, next 2 validation, remaining future",
+  "variants": {
+    "all-prefix": "One pooled model, every unique fit row from H1-H6",
+    "block-matched": "One pooled model, exactly the full contiguous 36-row blocks used by offline liquid gradient fitting"
+  },
+  "params": {
+    "tree_method": "hist",
+    "objective": "binary:logistic",
+    "eta": 0.04,
+    "max_depth": 3,
+    "nthread": 1,
+    "seed": 73
+  },
+  "num_boost_round": 150,
+  "threshold": 0.5,
+  "weights": "Pooled fitting class count mean divided by each label's count, as in verified-liquid-board.tree_fit",
+  "selection": "No hyperparameter, round or threshold selection; validation reported only",
+  "limitations": [
+    "Single seed and one fixed reference recipe, not an optimized XGBoost ceiling",
+    "Liquid future results already known before this baseline was specified",
+    "Six streams per room are replicas, not additional training evidence",
+    "Live liquid learns chronologically from fit plus validation prefixes; offline liquid uses validation for selection and calibration; XGBoost fits only the fit prefix"
+  ]
+}

@@ -6,3 +6,5 @@ Runnable examples for the articles and videos on [sndv.xyz](https://sndv.xyz/).
 
 Example code is available under the [MIT License](LICENSE). Reused dataset
 extracts keep the licenses credited in each example.
+
+The [adaptive liquid board](python/intelligence-liquidity/adaptive-liquid-board/README.md) extends the verified network with guarded splits, learned expert hierarchies, delta memory and same-data comparisons.

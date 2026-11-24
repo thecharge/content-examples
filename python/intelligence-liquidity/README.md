@@ -49,3 +49,5 @@ learns a temporal pool and puts the heated-room forecast into a reward formula.
 ## Routed liquid experts
 
 The [liquid MoE experiment](liquid-moe/README.md) compares ordinary predictions, delta memory, and bounded learned review on six unseen Aalborg offices. It includes the models, checkpoints, and replay commands.
+
+[Liquid Adaptable Net](liquid-adaptable-net/README.md) extends the CPU experiment with editable liquid stages, recurrent neurons, hierarchical delta attention and bounded network scaling.

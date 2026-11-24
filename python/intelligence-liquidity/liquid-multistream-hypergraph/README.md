@@ -85,4 +85,4 @@ single-stream runs with six and 36 streams. No GitHub Actions are needed.
 
 The [matched XGBoost comparison](RESULTS.md#matched-xgboost-comparison) uses the
 same six-room future rows: 69.01% balanced accuracy for all-prefix trees,
-67.44% for exact-block trees, 67.04% offline liquid and 67.21% live liquid.
+67.44% for exact-block trees, 67.04% offline liquid and 67.20% live liquid.

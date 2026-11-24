@@ -46,7 +46,7 @@ labels fit the trees. No tree settings were selected from the scores.
 | H4 | 56.99 | 57.30 | 56.12 | 49.57 |
 | H5 | 82.07 | 79.35 | 89.86 | 78.26 |
 | H6 | 61.34 | 62.20 | 64.51 | 63.61 |
-| Equal-room mean | **69.01** | **67.44** | **67.04** | **67.21** |
+| Equal-room mean | **69.01** | **67.44** | **67.04** | **67.20** |
 
 These are balanced accuracy percentages on exactly joined future timestamps and
 truths. The all-prefix booster fits 20,718 unique rows; the block control fits

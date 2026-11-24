@@ -10,3 +10,5 @@ extracts keep the licenses credited in each example.
 The [adaptive liquid board](python/intelligence-liquidity/adaptive-liquid-board/README.md) extends the verified network with guarded splits, learned expert hierarchies, delta memory and same-data comparisons.
 
 [Liquid Adaptable Net](python/intelligence-liquidity/liquid-adaptable-net/README.md) extends the CPU experiment with editable liquid stages, recurrent neurons, hierarchical delta attention and bounded network scaling.
+
+[Liquid adaptive hypergraph](python/intelligence-liquidity/liquid-adaptive-hypergraph/README.md) adds overlapping expert, layer and neuron memberships, guarded hyperedge changes, provenance and transactional recovery in a separate experiment.

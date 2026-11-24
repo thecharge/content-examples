@@ -1,0 +1,8 @@
+{"kind":"observation","event_id":"o1","event_time":300.0,"arrival_time":300.0,"context":"room-a:day","values":{"temp_c":0.2},"sensors":{"temp_c":{"field":"temp_c","source":"synthetic-temperature","incarnation":"first","room":"room-a","schema":"environment-v1","calibration":"identity","normalization":"identity"}}}
+{"kind":"reward","event_id":"r1","prediction_id":"o1","value":0.7,"revealed_at":300.5}
+{"kind":"label","event_id":"l1","prediction_id":"o1","truth":1,"revealed_at":301.0,"authority":"synthetic-meter"}
+{"kind":"derived_feature","event_id":"feature1","name":"derived:temperature","sources":["temp_c"],"evidence_id":"l1","operation":"mean"}
+{"kind":"observation","event_id":"o2","event_time":600.0,"arrival_time":600.0,"context":"room-a:day","values":{"temp_c":null},"quality":{"temp_c":"broken"},"sensors":{"temp_c":{"field":"temp_c","source":"synthetic-temperature","incarnation":"replacement","room":"room-a","schema":"environment-v1","calibration":"identity","normalization":"identity"}}}
+{"kind":"label","event_id":"l2","prediction_id":"o2","truth":0,"revealed_at":601.0,"authority":"synthetic-meter"}
+{"kind":"correction","event_id":"correction","target":"l1","reason":"Controlled correction test"}
+{"kind":"restore","event_id":"restore","revision":2}

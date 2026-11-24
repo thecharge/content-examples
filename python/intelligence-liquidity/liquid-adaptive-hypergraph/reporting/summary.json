@@ -1,0 +1,232 @@
+{
+  "protocols": {
+    "online": [
+      {
+        "home": "H5",
+        "previous": [
+          0.8260869565217391,
+          0.875,
+          0.8985507246376812
+        ],
+        "new": [
+          0.8260869565217391,
+          0.875,
+          0.8985507246376812
+        ],
+        "original_frozen": [
+          0.7373188405797102,
+          0.730072463768116,
+          0.7898550724637681
+        ],
+        "previous_mean": 0.8665458937198067,
+        "new_mean": 0.8665458937198067,
+        "original_frozen_mean": 0.7524154589371981
+      },
+      {
+        "home": "H6",
+        "previous": [
+          0.6253933712755273,
+          0.645742334429587,
+          0.6263681836979854
+        ],
+        "new": [
+          0.6278422182398236,
+          0.645742334429587,
+          0.6263681836979854
+        ],
+        "original_frozen": [
+          0.6341666830776502,
+          0.6052659563992989,
+          0.6273794285039092
+        ],
+        "previous_mean": 0.6325012964676999,
+        "new_mean": 0.633317578789132,
+        "original_frozen_mean": 0.6222706893269527
+      }
+    ],
+    "strict_frozen": [
+      {
+        "home": "H5",
+        "previous": [
+          0.7373188405797102,
+          0.730072463768116,
+          0.8713768115942029
+        ],
+        "new": [
+          0.7373188405797102,
+          0.730072463768116,
+          0.8713768115942029
+        ],
+        "previous_mean": 0.7795893719806763,
+        "new_mean": 0.7795893719806763
+      },
+      {
+        "home": "H6",
+        "previous": [
+          0.6253933712755273,
+          0.645742334429587,
+          0.6263681836979854
+        ],
+        "new": [
+          0.6253933712755273,
+          0.645742334429587,
+          0.6263681836979854
+        ],
+        "previous_mean": 0.6325012964676999,
+        "new_mean": 0.6325012964676999
+      }
+    ]
+  },
+  "controlled": {
+    "action": "connect",
+    "accepted": true,
+    "balanced_gain": 0.5,
+    "brier_gain": 0.22753637097775936,
+    "monitor_rollback": false,
+    "ledger_revision": 291,
+    "ledger_bytes": 4255744,
+    "intervention": "connect action value biased to 10; all quality gates unchanged; final three views explicitly constructed",
+    "profiles": [
+      {
+        "stage": "before",
+        "parameters": 35249,
+        "buffer_bytes": 24593,
+        "hyperedges": 0,
+        "boards": 1,
+        "experts": 5,
+        "attention_nodes": 1,
+        "heads": 2,
+        "context_experts": 5,
+        "work_units": 72832
+      },
+      {
+        "stage": "fitted candidate",
+        "parameters": 35735,
+        "buffer_bytes": 24602,
+        "hyperedges": 1,
+        "boards": 1,
+        "experts": 5,
+        "attention_nodes": 1,
+        "heads": 2,
+        "context_experts": 5,
+        "work_units": 73704
+      },
+      {
+        "stage": "prospective decision",
+        "parameters": 35735,
+        "buffer_bytes": 24602,
+        "hyperedges": 1,
+        "boards": 1,
+        "experts": 5,
+        "attention_nodes": 1,
+        "heads": 2,
+        "context_experts": 5,
+        "work_units": 73704
+      },
+      {
+        "stage": "monitor decision",
+        "parameters": 35735,
+        "buffer_bytes": 24602,
+        "hyperedges": 1,
+        "boards": 1,
+        "experts": 5,
+        "attention_nodes": 1,
+        "heads": 2,
+        "context_experts": 5,
+        "work_units": 73704
+      }
+    ]
+  },
+  "cost": {
+    "previous_parameters": 34749,
+    "new_parameters": 35249,
+    "parameter_increase_fraction": 0.014388903277792187,
+    "previous_work": 72832,
+    "new_work": 72832,
+    "note": "Operation proxy is not latency. Runs shared the host; SQLite durability excluded from neural benchmark."
+  },
+  "online_decisions": {
+    "completed": 50,
+    "accepted": 1,
+    "by_action": {
+      "add_layer": 1,
+      "deepen": 1,
+      "learn": 27,
+      "prune_heads": 3,
+      "prune_liquid": 2,
+      "prune_neuron": 1,
+      "retire": 7,
+      "spawn": 2,
+      "split": 4,
+      "split_liquid": 2
+    },
+    "final_profiles": {
+      "seed-73/H5": {
+        "parameters": 35249,
+        "buffer_bytes": 24593,
+        "hyperedges": 0,
+        "boards": 1,
+        "experts": 5,
+        "attention_nodes": 1,
+        "heads": 2,
+        "context_experts": 5,
+        "work_units": 72832
+      },
+      "seed-73/H6": {
+        "parameters": 34754,
+        "buffer_bytes": 24593,
+        "hyperedges": 0,
+        "boards": 1,
+        "experts": 5,
+        "attention_nodes": 1,
+        "heads": 2,
+        "context_experts": 5,
+        "work_units": 70492
+      },
+      "seed-83/H5": {
+        "parameters": 35249,
+        "buffer_bytes": 24593,
+        "hyperedges": 0,
+        "boards": 1,
+        "experts": 5,
+        "attention_nodes": 1,
+        "heads": 2,
+        "context_experts": 5,
+        "work_units": 72832
+      },
+      "seed-83/H6": {
+        "parameters": 35249,
+        "buffer_bytes": 24593,
+        "hyperedges": 0,
+        "boards": 1,
+        "experts": 5,
+        "attention_nodes": 1,
+        "heads": 2,
+        "context_experts": 5,
+        "work_units": 72832
+      },
+      "seed-97/H5": {
+        "parameters": 35249,
+        "buffer_bytes": 24593,
+        "hyperedges": 0,
+        "boards": 1,
+        "experts": 5,
+        "attention_nodes": 1,
+        "heads": 2,
+        "context_experts": 5,
+        "work_units": 72832
+      },
+      "seed-97/H6": {
+        "parameters": 35249,
+        "buffer_bytes": 24593,
+        "hyperedges": 0,
+        "boards": 1,
+        "experts": 5,
+        "attention_nodes": 1,
+        "heads": 2,
+        "context_experts": 5,
+        "work_units": 72832
+      }
+    }
+  }
+}

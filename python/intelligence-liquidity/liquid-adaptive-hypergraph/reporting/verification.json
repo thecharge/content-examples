@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-24",
+  "tests": {
+    "command": "python -m unittest test_hypergraph test_adaptive test_scaling -q",
+    "passed": 78,
+    "elapsed_seconds": 76.722
+  },
+  "checks": {
+    "ruff_check": "passed",
+    "ruff_format_check": "29 files already formatted",
+    "compileall": "passed",
+    "git_diff_check": "passed",
+    "local_document_links": "passed",
+    "pinned_baseline_sources": 22
+  },
+  "online_verified_seeds": [
+    73,
+    83,
+    97
+  ],
+  "strict_verified": {
+    "new": [
+      73,
+      83,
+      97
+    ],
+    "previous": [
+      73,
+      83,
+      97
+    ]
+  },
+  "cli_smoke": [
+    "create",
+    "observation",
+    "reward",
+    "label",
+    "derived_feature",
+    "correction",
+    "clean_restore",
+    "branch"
+  ],
+  "controlled": {
+    "recovered_revision": 291,
+    "independent_views": 7,
+    "svg_visual_review": true,
+    "viewer_javascript_syntax": "passed"
+  },
+  "github_actions_used": false,
+  "limitations": [
+    "CPU only; GPU execution unverified",
+    "Shared multi-stream learning not implemented",
+    "SQLite persistence excluded from neural timings",
+    "No guarantee of future accuracy"
+  ]
+}

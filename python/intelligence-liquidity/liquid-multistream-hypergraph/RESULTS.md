@@ -60,9 +60,12 @@ by 1.81 points and wins four rooms; liquid wins H2 and H6. This is neither an
 all-room liquid accuracy win nor a demonstration of XGBoost's best achievable
 score. It is one fixed reference recipe and one seed.
 
-The live liquid model also learns from the validation-period prefix as time
-passes; the offline model selects and calibrates there. Trees use that period
-only for reporting. Liquid future results were already known when this new tree
+The live liquid model learns only from the 12-day fitting prefix, just as the
+trees fit only that prefix. The offline liquid model uses the following two
+validation days for selection and calibration; trees report validation without
+selection. An earlier description incorrectly said live learning also consumed
+the validation prefix; the recorded source and 20,718 unique labelled rows
+establish that it did not. Liquid future results were already known when this new tree
 protocol was written. No liquid fitting or tree tuning followed these scores.
 H4 validation has one class; its reported validation balanced score therefore
 cannot assess both recalls. Every future room has both classes. H5 has only

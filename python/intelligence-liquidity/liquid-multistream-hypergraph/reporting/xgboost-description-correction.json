@@ -1,0 +1,12 @@
+{
+  "correction": "Live empty-start fitting uses fit only: 12 selected days, 20718 unique labels. It does not learn on the two validation days.",
+  "original_incorrect_description": "Live liquid learns from fit plus validation prefixes",
+  "evidence": [
+    "stream_replay.py:42 selects s[fit]",
+    "evidence/live-seed-73/results.json: unique_labeled_rows=20718",
+    "evidence/live-seed-73/curve.json: final step=3456, 12 daily snapshots",
+    "reporting/acceptance.py: loaded live graph and room corrections certified without validation fitting"
+  ],
+  "unchanged": "Models, probabilities, scores and tree recipe are unchanged. The original xgboost-protocol.json limitation text is retained as a historical declaration; this record corrects that factual description.",
+  "affected_declaration_sha256": "6e2fb82e4753fb61f6af8e9791d45bade8b23c633718d11bb77f4e5961371dbe"
+}

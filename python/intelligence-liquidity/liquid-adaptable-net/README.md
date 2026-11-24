@@ -8,6 +8,7 @@ The new model can change its liquid layers, recurrent neuron counts, delta-atten
 - [Every operating setting and resource boundary](CONFIGURATION.md)
 - [Training, online feedback, snapshots and recovery](OPERATIONS.md)
 - [Measured accuracy, topology and CPU performance](RESULTS.md)
+- [Before, during and after: visual evolution and offline inspector](EVOLUTION.md)
 - [Requirements and test evidence](TESTING.md)
 - [Delivery and verification record](TASK.md)
 

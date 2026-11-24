@@ -1,0 +1,7561 @@
+{
+  "schema": "liquid-evolution-v1",
+  "seed": 62,
+  "action": "split_liquid",
+  "source_sha256": {
+    "adaptation.py": "081ac4a6cc3646df8eb70db36d23e03bb20ffd0bf70943bb9e3060a2903154e3",
+    "workflow.py": "de6150cfbb8817d4ad6407bfb9f5c7b6ee4f107d1a6eebea72b9409eead4bb85",
+    "policy.py": "5047c5231bc762df3df4ac9ab873ddb7a6ca21124f4b59937b06753aea4828bb",
+    "attention.py": "e044a7b3ace10dbbee759c6610326232711f7f7f1c5b8a28273ee4f41a88b006",
+    "graph.py": "2e2f27f3a8e178a1a625b35f6fee0a828c1eaefabfc710e0119def91e8cb471a",
+    "control.py": "7287ff8a25ff42ee749913863745112e9a47f46a1e3930e32fa09570fad271c6",
+    "compare.py": "7eb7695faf6b0698bba031d3cfc94e7cf99760b9c5d6c58d6d570bfae625e7dd",
+    "reference.py": "b3b494da76b47db31ffcb244af4ecfd873681d79f4c129483201bbe923505a4b",
+    "hierarchy.py": "f9a8a97d00a3d5a34b6cfa037078efcbb53456131049bf107b48df8b2b9f1080",
+    "runtime.py": "d58cc97456566f46f71cf9e8e8d731ff001e71c1fc49ea1a46c2322371c7e450",
+    "evaluate.py": "6279d79ef25e244876966c5adb8cb3df6dea972275a75ae26b8142bcfe012d01",
+    "verify.py": "32afd84dbcc2dfe83ceb9b2848d18edcf9fc87607f6abcf54651c8bbcc9dec1e",
+    "demonstrate.py": "e890e83d5d768afc0687480c16cf399be28f4020bcd9544f90f05a35bab6b913",
+    "worker.py": "9b4c33ac9acc4dba81777e8648ffb574d0a354032d0c5a76545f95cf752f092a",
+    "liquid.py": "b422de55d34e69a2240f39373d662e9898e7cca60b200e2e7075e2b118d8aade",
+    "test_adaptive.py": "222804fdc1e3ac25cb02d4d733c5e965268c67ac7d84fc0878e9c46dd52da945",
+    "test_scaling.py": "7bdcf35f746ed8a4ad11a57444a049876141decc6ea291c4634916af9e1cf5bf"
+  },
+  "observer_sha256": "43b2fb85681b67eea4b284f53b8d5da4b7fde2391a5d834304ed65efaa128a10",
+  "original_checkpoint_sha256": "357a4f607ef1178f97f1b0cb69f63ae421bce5392ddc301083633f72fd079594",
+  "model": "evidence/controlled-62.pt",
+  "model_sha256": "f671e7275a501d5e6ef8f13e0f8548b1cb4d702b982c30fefbeae77bbb904902",
+  "published_receipt": "evidence/controlled-62.json",
+  "parity": "Exact predictions, trial receipt and final weight/buffer tensors match the published 145-observation run.",
+  "settings": {
+    "window": 48,
+    "history": 96,
+    "minority": 16,
+    "exploration": 1.0,
+    "fit_rate": 0.01,
+    "fit_passes": 8,
+    "complexity_rate": 0.002,
+    "maximum_pending": 64,
+    "maximum_receipts": 128,
+    "contextual": true,
+    "full_weight_learning": true,
+    "early_stop_patience": 2,
+    "early_stop_min_delta": 0.0001,
+    "validation_fraction": 0.2,
+    "gradient_window": 12,
+    "gradient_clip": 1.0,
+    "statistic_retention": 0.95,
+    "checkpoint_retention": 2,
+    "minimum_accuracy_gain": 0.01,
+    "minimum_brier_gain": 0.002,
+    "maximum_class_loss": 0.0,
+    "maximum_quorum_loss": 0.0,
+    "policy_rate": 0.02,
+    "policy_updates": 8,
+    "group_rate": 0.02,
+    "group_updates": 12,
+    "group_fraction": 0.5,
+    "minimum_policy_reward": 0.01,
+    "external_reward_scale": 0.1,
+    "compute_rate": 0.002
+  },
+  "guards": {
+    "max_abs_input": 10000.0,
+    "target_brier": 0.1,
+    "error_deadband": 0.02,
+    "drift_threshold": 0.02,
+    "plateau_tolerance": 0.002,
+    "minimum_gradient": 1e-07,
+    "minimum_life": 48,
+    "cooldown_stages": 2,
+    "max_parameters": 200000,
+    "max_training_bytes": 134217728,
+    "probe_rows": 96,
+    "probe_batch": 8,
+    "max_context_experts": 256,
+    "old_gradient_scale": 0.1,
+    "warmup_steps": 4,
+    "max_batch": 8,
+    "replay_states": 4096
+  },
+  "definition": "Original inputs zero; truth=(index//3)%2; new:cue=2*truth-1. Prediction precedes its answer by one second. No action forced.",
+  "phases": [
+    {
+      "phase": "initial",
+      "revealed_labels": 0,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 34749,
+          "buffer_bytes": 24593,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 72832
+        },
+        "weights_sha256": "ceabeb951803710a8429b332742fc68a2c958667bb00fa6540460091507ad354",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      }
+    },
+    {
+      "phase": "before_fit",
+      "revealed_labels": 48,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35226,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 73472
+        },
+        "weights_sha256": "db0540801f8a06389f688df48d39dc06f6839bb4382448e89942e9266894a7af",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      },
+      "candidate": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "next_unit": 9,
+                  "births": {
+                    "8": 0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35936,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 74792
+        },
+        "weights_sha256": "f1dea8411e06ddb9170f9f631fa7c7661eba09ef5fda58a02fa904f3e5e4399e",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      }
+    },
+    {
+      "phase": "after_fit",
+      "revealed_labels": 48,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35226,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 73472
+        },
+        "weights_sha256": "db0540801f8a06389f688df48d39dc06f6839bb4382448e89942e9266894a7af",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      },
+      "candidate": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "next_unit": 9,
+                  "births": {
+                    "8": 0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35936,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 74792
+        },
+        "weights_sha256": "8d10cae411fb2d28c25beea4ebdd3d61b1c1bebd7b8585b4318a94f5c47b4ee7",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0267467498779297,
+              1.0262014865875244,
+              1.0190496444702148
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      }
+    },
+    {
+      "phase": "adopted",
+      "revealed_labels": 96,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "next_unit": 9,
+                  "births": {
+                    "8": 0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35936,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 74792
+        },
+        "weights_sha256": "89a706508280a2dc97841a46e704f640a6386e2a92436f4d4bbba048756abcd4",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0267467498779297,
+              1.0262014865875244,
+              1.0190496444702148
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      },
+      "predecessor": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35226,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 73472
+        },
+        "weights_sha256": "c3e71aa617073abc97ab190dbf258fd8d0e1ba15c8090609d1cb348042834d9b",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      }
+    },
+    {
+      "phase": "retained",
+      "revealed_labels": 144,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "next_unit": 9,
+                  "births": {
+                    "8": 0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35936,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 74792
+        },
+        "weights_sha256": "89a706508280a2dc97841a46e704f640a6386e2a92436f4d4bbba048756abcd4",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0267467498779297,
+              1.0262014865875244,
+              1.0190496444702148
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      }
+    },
+    {
+      "phase": "end",
+      "revealed_labels": 145,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "next_unit": 9,
+                  "births": {
+                    "8": 0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35936,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 74792
+        },
+        "weights_sha256": "89a706508280a2dc97841a46e704f640a6386e2a92436f4d4bbba048756abcd4",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0267467498779297,
+              1.0262014865875244,
+              1.0190496444702148
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      }
+    }
+  ],
+  "samples": [
+    {
+      "revealed_labels": 12,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 34749,
+          "buffer_bytes": 24593,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 72832
+        },
+        "weights_sha256": "ceabeb951803710a8429b332742fc68a2c958667bb00fa6540460091507ad354",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      },
+      "candidate": null
+    },
+    {
+      "revealed_labels": 24,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 34749,
+          "buffer_bytes": 24593,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 72832
+        },
+        "weights_sha256": "ceabeb951803710a8429b332742fc68a2c958667bb00fa6540460091507ad354",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      },
+      "candidate": null
+    },
+    {
+      "revealed_labels": 36,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 34749,
+          "buffer_bytes": 24593,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 72832
+        },
+        "weights_sha256": "ceabeb951803710a8429b332742fc68a2c958667bb00fa6540460091507ad354",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      },
+      "candidate": null
+    },
+    {
+      "revealed_labels": 48,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35226,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 73472
+        },
+        "weights_sha256": "db0540801f8a06389f688df48d39dc06f6839bb4382448e89942e9266894a7af",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      },
+      "candidate": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "next_unit": 9,
+                  "births": {
+                    "8": 0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35936,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 74792
+        },
+        "weights_sha256": "8d10cae411fb2d28c25beea4ebdd3d61b1c1bebd7b8585b4318a94f5c47b4ee7",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0267467498779297,
+              1.0262014865875244,
+              1.0190496444702148
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      }
+    },
+    {
+      "revealed_labels": 60,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35226,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 73472
+        },
+        "weights_sha256": "db0540801f8a06389f688df48d39dc06f6839bb4382448e89942e9266894a7af",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      },
+      "candidate": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "next_unit": 9,
+                  "births": {
+                    "8": 0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35936,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 74792
+        },
+        "weights_sha256": "8d10cae411fb2d28c25beea4ebdd3d61b1c1bebd7b8585b4318a94f5c47b4ee7",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0267467498779297,
+              1.0262014865875244,
+              1.0190496444702148
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      }
+    },
+    {
+      "revealed_labels": 72,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35226,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 73472
+        },
+        "weights_sha256": "db0540801f8a06389f688df48d39dc06f6839bb4382448e89942e9266894a7af",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      },
+      "candidate": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "next_unit": 9,
+                  "births": {
+                    "8": 0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35936,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 74792
+        },
+        "weights_sha256": "8d10cae411fb2d28c25beea4ebdd3d61b1c1bebd7b8585b4318a94f5c47b4ee7",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0267467498779297,
+              1.0262014865875244,
+              1.0190496444702148
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      }
+    },
+    {
+      "revealed_labels": 84,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35226,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 73472
+        },
+        "weights_sha256": "db0540801f8a06389f688df48d39dc06f6839bb4382448e89942e9266894a7af",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      },
+      "candidate": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "next_unit": 9,
+                  "births": {
+                    "8": 0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35936,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 74792
+        },
+        "weights_sha256": "8d10cae411fb2d28c25beea4ebdd3d61b1c1bebd7b8585b4318a94f5c47b4ee7",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0267467498779297,
+              1.0262014865875244,
+              1.0190496444702148
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      }
+    },
+    {
+      "revealed_labels": 96,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "next_unit": 9,
+                  "births": {
+                    "8": 0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35936,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 74792
+        },
+        "weights_sha256": "89a706508280a2dc97841a46e704f640a6386e2a92436f4d4bbba048756abcd4",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0267467498779297,
+              1.0262014865875244,
+              1.0190496444702148
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      },
+      "candidate": null
+    },
+    {
+      "revealed_labels": 108,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "next_unit": 9,
+                  "births": {
+                    "8": 0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35936,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 74792
+        },
+        "weights_sha256": "89a706508280a2dc97841a46e704f640a6386e2a92436f4d4bbba048756abcd4",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0267467498779297,
+              1.0262014865875244,
+              1.0190496444702148
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      },
+      "candidate": null
+    },
+    {
+      "revealed_labels": 120,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "next_unit": 9,
+                  "births": {
+                    "8": 0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35936,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 74792
+        },
+        "weights_sha256": "89a706508280a2dc97841a46e704f640a6386e2a92436f4d4bbba048756abcd4",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0267467498779297,
+              1.0262014865875244,
+              1.0190496444702148
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      },
+      "candidate": null
+    },
+    {
+      "revealed_labels": 132,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "next_unit": 9,
+                  "births": {
+                    "8": 0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35936,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 74792
+        },
+        "weights_sha256": "89a706508280a2dc97841a46e704f640a6386e2a92436f4d4bbba048756abcd4",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0267467498779297,
+              1.0262014865875244,
+              1.0190496444702148
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      },
+      "candidate": null
+    },
+    {
+      "revealed_labels": 144,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "next_unit": 9,
+                  "births": {
+                    "8": 0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35936,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 74792
+        },
+        "weights_sha256": "89a706508280a2dc97841a46e704f640a6386e2a92436f4d4bbba048756abcd4",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0267467498779297,
+              1.0262014865875244,
+              1.0190496444702148
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      },
+      "candidate": null
+    },
+    {
+      "revealed_labels": 145,
+      "active": {
+        "layout": {
+          "fields": [
+            "co2eq_ppm",
+            "tvoc_ppb",
+            "temp_c",
+            "rh_percent",
+            "light_lux",
+            "delta:co2eq_ppm",
+            "delta:tvoc_ppb",
+            "delta:temp_c",
+            "delta:rh_percent",
+            "delta:light_lux",
+            "history:co2eq_ppm",
+            "history:tvoc_ppb",
+            "history:temp_c",
+            "history:rh_percent",
+            "history:light_lux",
+            "clock:sin",
+            "clock:cos",
+            "new:cue"
+          ],
+          "edges": {},
+          "kernel_ties": {},
+          "next_board": 1,
+          "max_experts": 32,
+          "max_depth": 3,
+          "max_fields": 64,
+          "max_encoding": 32,
+          "min_heads": 1,
+          "max_heads": 8,
+          "policy_capacity": 64,
+          "min_layers": 3,
+          "max_layers": 8,
+          "min_encoding": 8,
+          "min_experts": 1,
+          "max_boards": 16,
+          "max_attention_nodes": 16,
+          "max_attention_depth": 3,
+          "max_total_heads": 64,
+          "max_work": 1000000,
+          "max_batch": 8,
+          "route_floor": 0.05,
+          "min_liquid": 4,
+          "max_liquid": 16,
+          "cores": {
+            "b0": {
+              "names": [
+                "co2eq_ppm",
+                "tvoc_ppb",
+                "temp_c",
+                "rh_percent",
+                "light_lux",
+                "delta:co2eq_ppm",
+                "delta:tvoc_ppb",
+                "delta:temp_c",
+                "delta:rh_percent",
+                "delta:light_lux",
+                "history:co2eq_ppm",
+                "history:tvoc_ppb",
+                "history:temp_c",
+                "history:rh_percent",
+                "history:light_lux",
+                "clock:sin",
+                "clock:cos",
+                "new:cue"
+              ],
+              "experts": 5,
+              "rounds": 4,
+              "depth": 3,
+              "ids": [
+                "e0",
+                "e1",
+                "e2",
+                "e3",
+                "e4"
+              ],
+              "next_expert": 5,
+              "encoding": 16,
+              "births": {},
+              "attention": {
+                "identities": [
+                  0,
+                  1
+                ],
+                "next_identity": 2,
+                "births": {},
+                "branches": {},
+                "next_branch": 0
+              },
+              "layer_ids": [
+                "l0",
+                "l1",
+                "l2"
+              ],
+              "next_layer": 3,
+              "liquid": [
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7
+                  ],
+                  "next_unit": 8,
+                  "births": {}
+                },
+                {
+                  "units": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "next_unit": 9,
+                  "births": {
+                    "8": 0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "profile": {
+          "parameters": 35936,
+          "buffer_bytes": 24602,
+          "boards": 1,
+          "experts": 5,
+          "attention_nodes": 1,
+          "heads": 2,
+          "context_experts": 5,
+          "work_units": 74792
+        },
+        "weights_sha256": "89a706508280a2dc97841a46e704f640a6386e2a92436f4d4bbba048756abcd4",
+        "gates": {
+          "b0": {
+            "layers": [
+              1.0267467498779297,
+              1.0262014865875244,
+              1.0190496444702148
+            ],
+            "child_routes": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "attention": {}
+          }
+        }
+      },
+      "candidate": null
+    }
+  ],
+  "predictions": [
+    {
+      "stamp": 300,
+      "truth": 0,
+      "token": 0,
+      "probability": 0.5173588991165161,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 600,
+      "truth": 0,
+      "token": 1,
+      "probability": 0.5105924606323242,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 900,
+      "truth": 0,
+      "token": 2,
+      "probability": 0.5081493854522705,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 1200,
+      "truth": 1,
+      "token": 3,
+      "probability": 0.5070115327835083,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 1500,
+      "truth": 1,
+      "token": 4,
+      "probability": 0.5063954591751099,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 1800,
+      "truth": 1,
+      "token": 5,
+      "probability": 0.5060268640518188,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 2100,
+      "truth": 0,
+      "token": 6,
+      "probability": 0.5057902932167053,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 2400,
+      "truth": 0,
+      "token": 7,
+      "probability": 0.5056300759315491,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 2700,
+      "truth": 0,
+      "token": 8,
+      "probability": 0.5055170059204102,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 3000,
+      "truth": 1,
+      "token": 9,
+      "probability": 0.5054345726966858,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 3300,
+      "truth": 1,
+      "token": 10,
+      "probability": 0.5053728818893433,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 3600,
+      "truth": 1,
+      "token": 11,
+      "probability": 0.5053256750106812,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 3900,
+      "truth": 0,
+      "token": 12,
+      "probability": 0.50528883934021,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 4200,
+      "truth": 0,
+      "token": 13,
+      "probability": 0.50525963306427,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 4500,
+      "truth": 0,
+      "token": 14,
+      "probability": 0.5052361488342285,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 4800,
+      "truth": 1,
+      "token": 15,
+      "probability": 0.5052170753479004,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 5100,
+      "truth": 1,
+      "token": 16,
+      "probability": 0.5052013397216797,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 5400,
+      "truth": 1,
+      "token": 17,
+      "probability": 0.5051883459091187,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 5700,
+      "truth": 0,
+      "token": 18,
+      "probability": 0.5051774382591248,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 6000,
+      "truth": 0,
+      "token": 19,
+      "probability": 0.5051682591438293,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 6300,
+      "truth": 0,
+      "token": 20,
+      "probability": 0.5051605105400085,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 6600,
+      "truth": 1,
+      "token": 21,
+      "probability": 0.5051538348197937,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 6900,
+      "truth": 1,
+      "token": 22,
+      "probability": 0.50514817237854,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 7200,
+      "truth": 1,
+      "token": 23,
+      "probability": 0.5051432251930237,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 7500,
+      "truth": 0,
+      "token": 24,
+      "probability": 0.5051389932632446,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 7800,
+      "truth": 0,
+      "token": 25,
+      "probability": 0.5051352977752686,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 8100,
+      "truth": 0,
+      "token": 26,
+      "probability": 0.5051320195198059,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 8400,
+      "truth": 1,
+      "token": 27,
+      "probability": 0.5051292181015015,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 8700,
+      "truth": 1,
+      "token": 28,
+      "probability": 0.5051267147064209,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 9000,
+      "truth": 1,
+      "token": 29,
+      "probability": 0.5051245093345642,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 9300,
+      "truth": 0,
+      "token": 30,
+      "probability": 0.5051226019859314,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 9600,
+      "truth": 0,
+      "token": 31,
+      "probability": 0.5051208734512329,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 9900,
+      "truth": 0,
+      "token": 32,
+      "probability": 0.5051193237304688,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 10200,
+      "truth": 1,
+      "token": 33,
+      "probability": 0.5051180124282837,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 10500,
+      "truth": 1,
+      "token": 34,
+      "probability": 0.5051168203353882,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 10800,
+      "truth": 1,
+      "token": 35,
+      "probability": 0.5051157474517822,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 11100,
+      "truth": 0,
+      "token": 36,
+      "probability": 0.5051147937774658,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 11400,
+      "truth": 0,
+      "token": 37,
+      "probability": 0.505113959312439,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 11700,
+      "truth": 0,
+      "token": 38,
+      "probability": 0.5051131844520569,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 12000,
+      "truth": 1,
+      "token": 39,
+      "probability": 0.5051125288009644,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 12300,
+      "truth": 1,
+      "token": 40,
+      "probability": 0.5051119327545166,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 12600,
+      "truth": 1,
+      "token": 41,
+      "probability": 0.5051113963127136,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 12900,
+      "truth": 0,
+      "token": 42,
+      "probability": 0.5051109194755554,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 13200,
+      "truth": 0,
+      "token": 43,
+      "probability": 0.5051104426383972,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 13500,
+      "truth": 0,
+      "token": 44,
+      "probability": 0.5051100850105286,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 13800,
+      "truth": 1,
+      "token": 45,
+      "probability": 0.5051097273826599,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 14100,
+      "truth": 1,
+      "token": 46,
+      "probability": 0.505109429359436,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 14400,
+      "truth": 1,
+      "token": 47,
+      "probability": 0.5051091313362122,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 17
+    },
+    {
+      "stamp": 14700,
+      "truth": 0,
+      "token": 48,
+      "probability": 0.5051088929176331,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 15000,
+      "truth": 0,
+      "token": 49,
+      "probability": 0.5051087141036987,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 15300,
+      "truth": 0,
+      "token": 50,
+      "probability": 0.5051084756851196,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 15600,
+      "truth": 1,
+      "token": 51,
+      "probability": 0.5051082968711853,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 15900,
+      "truth": 1,
+      "token": 52,
+      "probability": 0.5051081776618958,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 16200,
+      "truth": 1,
+      "token": 53,
+      "probability": 0.5051080584526062,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 16500,
+      "truth": 0,
+      "token": 54,
+      "probability": 0.5051079392433167,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 16800,
+      "truth": 0,
+      "token": 55,
+      "probability": 0.5051078200340271,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 17100,
+      "truth": 0,
+      "token": 56,
+      "probability": 0.5051077604293823,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 17400,
+      "truth": 1,
+      "token": 57,
+      "probability": 0.5051077008247375,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 17700,
+      "truth": 1,
+      "token": 58,
+      "probability": 0.5051076412200928,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 18000,
+      "truth": 1,
+      "token": 59,
+      "probability": 0.505107581615448,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 18300,
+      "truth": 0,
+      "token": 60,
+      "probability": 0.5051075220108032,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 18600,
+      "truth": 0,
+      "token": 61,
+      "probability": 0.5051075220108032,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 18900,
+      "truth": 0,
+      "token": 62,
+      "probability": 0.5051075220108032,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 19200,
+      "truth": 1,
+      "token": 63,
+      "probability": 0.5051075220108032,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 19500,
+      "truth": 1,
+      "token": 64,
+      "probability": 0.5051074624061584,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 19800,
+      "truth": 1,
+      "token": 65,
+      "probability": 0.5051074624061584,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 20100,
+      "truth": 0,
+      "token": 66,
+      "probability": 0.5051075220108032,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 20400,
+      "truth": 0,
+      "token": 67,
+      "probability": 0.5051075220108032,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 20700,
+      "truth": 0,
+      "token": 68,
+      "probability": 0.5051075220108032,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 21000,
+      "truth": 1,
+      "token": 69,
+      "probability": 0.5051075220108032,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 21300,
+      "truth": 1,
+      "token": 70,
+      "probability": 0.505107581615448,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 21600,
+      "truth": 1,
+      "token": 71,
+      "probability": 0.505107581615448,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 21900,
+      "truth": 0,
+      "token": 72,
+      "probability": 0.5051076412200928,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 22200,
+      "truth": 0,
+      "token": 73,
+      "probability": 0.5051077008247375,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 22500,
+      "truth": 0,
+      "token": 74,
+      "probability": 0.5051077008247375,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 22800,
+      "truth": 1,
+      "token": 75,
+      "probability": 0.5051077008247375,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 23100,
+      "truth": 1,
+      "token": 76,
+      "probability": 0.5051077604293823,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 23400,
+      "truth": 1,
+      "token": 77,
+      "probability": 0.5051078200340271,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 23700,
+      "truth": 0,
+      "token": 78,
+      "probability": 0.5051078796386719,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 24000,
+      "truth": 0,
+      "token": 79,
+      "probability": 0.5051078796386719,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 24300,
+      "truth": 0,
+      "token": 80,
+      "probability": 0.5051079392433167,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 24600,
+      "truth": 1,
+      "token": 81,
+      "probability": 0.5051079988479614,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 24900,
+      "truth": 1,
+      "token": 82,
+      "probability": 0.5051080584526062,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 25200,
+      "truth": 1,
+      "token": 83,
+      "probability": 0.505108118057251,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 25500,
+      "truth": 0,
+      "token": 84,
+      "probability": 0.5051081776618958,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 25800,
+      "truth": 0,
+      "token": 85,
+      "probability": 0.5051081776618958,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 26100,
+      "truth": 0,
+      "token": 86,
+      "probability": 0.5051082372665405,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 26400,
+      "truth": 1,
+      "token": 87,
+      "probability": 0.5051082968711853,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 26700,
+      "truth": 1,
+      "token": 88,
+      "probability": 0.5051083564758301,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 27000,
+      "truth": 1,
+      "token": 89,
+      "probability": 0.5051084160804749,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 27300,
+      "truth": 0,
+      "token": 90,
+      "probability": 0.5051085352897644,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 27600,
+      "truth": 0,
+      "token": 91,
+      "probability": 0.5051085352897644,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 27900,
+      "truth": 0,
+      "token": 92,
+      "probability": 0.5051085948944092,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 28200,
+      "truth": 1,
+      "token": 93,
+      "probability": 0.505108654499054,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 28500,
+      "truth": 1,
+      "token": 94,
+      "probability": 0.5051087141036987,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 28800,
+      "truth": 1,
+      "token": 95,
+      "probability": 0.5051087737083435,
+      "answer": 1,
+      "quorum": false,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 29100,
+      "truth": 0,
+      "token": 96,
+      "probability": 0.04906874895095825,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 29400,
+      "truth": 0,
+      "token": 97,
+      "probability": 0.048965275287628174,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 29700,
+      "truth": 0,
+      "token": 98,
+      "probability": 0.04893738031387329,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 30000,
+      "truth": 1,
+      "token": 99,
+      "probability": 0.8282625079154968,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 30300,
+      "truth": 1,
+      "token": 100,
+      "probability": 0.8286423683166504,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 30600,
+      "truth": 1,
+      "token": 101,
+      "probability": 0.8287354111671448,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 30900,
+      "truth": 0,
+      "token": 102,
+      "probability": 0.04906874895095825,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 31200,
+      "truth": 0,
+      "token": 103,
+      "probability": 0.048965275287628174,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 31500,
+      "truth": 0,
+      "token": 104,
+      "probability": 0.04893738031387329,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 31800,
+      "truth": 1,
+      "token": 105,
+      "probability": 0.8282625079154968,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 32100,
+      "truth": 1,
+      "token": 106,
+      "probability": 0.8286423087120056,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 32400,
+      "truth": 1,
+      "token": 107,
+      "probability": 0.8287354111671448,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 32700,
+      "truth": 0,
+      "token": 108,
+      "probability": 0.04906874895095825,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 33000,
+      "truth": 0,
+      "token": 109,
+      "probability": 0.048965275287628174,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 33300,
+      "truth": 0,
+      "token": 110,
+      "probability": 0.04893738031387329,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 33600,
+      "truth": 1,
+      "token": 111,
+      "probability": 0.8282625079154968,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 33900,
+      "truth": 1,
+      "token": 112,
+      "probability": 0.8286423683166504,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 34200,
+      "truth": 1,
+      "token": 113,
+      "probability": 0.8287354111671448,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 34500,
+      "truth": 0,
+      "token": 114,
+      "probability": 0.04906874895095825,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 34800,
+      "truth": 0,
+      "token": 115,
+      "probability": 0.048965275287628174,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 35100,
+      "truth": 0,
+      "token": 116,
+      "probability": 0.04893738031387329,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 35400,
+      "truth": 1,
+      "token": 117,
+      "probability": 0.8282625079154968,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 35700,
+      "truth": 1,
+      "token": 118,
+      "probability": 0.8286423683166504,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 36000,
+      "truth": 1,
+      "token": 119,
+      "probability": 0.8287354111671448,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 36300,
+      "truth": 0,
+      "token": 120,
+      "probability": 0.04906874895095825,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 36600,
+      "truth": 0,
+      "token": 121,
+      "probability": 0.048965275287628174,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 36900,
+      "truth": 0,
+      "token": 122,
+      "probability": 0.04893738031387329,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 37200,
+      "truth": 1,
+      "token": 123,
+      "probability": 0.8282625079154968,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 37500,
+      "truth": 1,
+      "token": 124,
+      "probability": 0.8286423683166504,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 37800,
+      "truth": 1,
+      "token": 125,
+      "probability": 0.8287354111671448,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 38100,
+      "truth": 0,
+      "token": 126,
+      "probability": 0.04906874895095825,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 38400,
+      "truth": 0,
+      "token": 127,
+      "probability": 0.048965275287628174,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 38700,
+      "truth": 0,
+      "token": 128,
+      "probability": 0.04893738031387329,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 39000,
+      "truth": 1,
+      "token": 129,
+      "probability": 0.8282625079154968,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 39300,
+      "truth": 1,
+      "token": 130,
+      "probability": 0.8286423683166504,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 39600,
+      "truth": 1,
+      "token": 131,
+      "probability": 0.8287354111671448,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 39900,
+      "truth": 0,
+      "token": 132,
+      "probability": 0.04906874895095825,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 40200,
+      "truth": 0,
+      "token": 133,
+      "probability": 0.048965275287628174,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 40500,
+      "truth": 0,
+      "token": 134,
+      "probability": 0.04893738031387329,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 40800,
+      "truth": 1,
+      "token": 135,
+      "probability": 0.8282625079154968,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 41100,
+      "truth": 1,
+      "token": 136,
+      "probability": 0.8286423683166504,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 41400,
+      "truth": 1,
+      "token": 137,
+      "probability": 0.8287353515625,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 41700,
+      "truth": 0,
+      "token": 138,
+      "probability": 0.04906874895095825,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 42000,
+      "truth": 0,
+      "token": 139,
+      "probability": 0.048965275287628174,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 42300,
+      "truth": 0,
+      "token": 140,
+      "probability": 0.04893738031387329,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 42600,
+      "truth": 1,
+      "token": 141,
+      "probability": 0.8282625079154968,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 42900,
+      "truth": 1,
+      "token": 142,
+      "probability": 0.8286423683166504,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 43200,
+      "truth": 1,
+      "token": 143,
+      "probability": 0.8287353515625,
+      "answer": 1,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    },
+    {
+      "stamp": 43500,
+      "truth": 0,
+      "token": 144,
+      "probability": 0.04906874895095825,
+      "answer": 0,
+      "quorum": true,
+      "experts": 5,
+      "depth": 0,
+      "fields": 18
+    }
+  ],
+  "receipts": [
+    {
+      "number": 1,
+      "action": "split_liquid",
+      "board": "b0",
+      "expert": "e0",
+      "action_index": 15,
+      "context": [
+        -0.07305780053138733,
+        0.09248165786266327,
+        0.09886481612920761,
+        -0.05598634108901024,
+        0.06442424654960632,
+        0.09417346864938736,
+        -0.19636833667755127,
+        0.02177794650197029,
+        0.25813159346580505,
+        -0.021232564002275467,
+        0.0833333358168602,
+        0.0555555559694767,
+        0.0,
+        0.0,
+        0.9147424101829529,
+        0.638993501663208
+      ],
+      "neural_utility": 0.0,
+      "mutation": {
+        "board": "b0",
+        "layer": "l2",
+        "unit": 0,
+        "width": 9,
+        "kind": "liquid_neuron_split"
+      },
+      "fit": {
+        "optimizer": "fresh_AdamW",
+        "updates": 32,
+        "warmup_steps": 4,
+        "old_learning_rate": 0.001,
+        "new_learning_rate": 0.01,
+        "static_parameter_shapes": true,
+        "requested_passes": 8,
+        "completed_passes": 8,
+        "best_epoch": 8,
+        "stopped_early": false,
+        "validation_status": "chronological_holdout",
+        "validation_rows": 10,
+        "training_rows": 38,
+        "validation_brier": [
+          0.23032745718955994,
+          0.17582425475120544,
+          0.14240090548992157,
+          0.10519319772720337,
+          0.07526160031557083,
+          0.05018630623817444,
+          0.03138504922389984,
+          0.016893934458494186
+        ],
+        "best_validation_brier": 0.016893934458494186
+      },
+      "preservation": {
+        "passed": true,
+        "frames": 12,
+        "maximum_probability_difference": 5.960464477539063e-08
+      },
+      "control": {
+        "stage": 1,
+        "brier": 0.2504062224718709,
+        "older_brier": 0.2507842766105668,
+        "recent_brier": 0.250028168333175,
+        "drift": -0.0007561082773918093,
+        "plateau": true,
+        "integral": 0.015040622247187089,
+        "effective_error": 0.265446844719058,
+        "growth_latched": true,
+        "growth_pressure": true,
+        "cooled": true,
+        "signals": {
+          "b0/e0": {
+            "gradient": 0.2699086666107178,
+            "singular": 0.26962530612945557,
+            "neuron": 2
+          },
+          "b0/e1": {
+            "gradient": 0.22198143601417542,
+            "singular": 0.22194133698940277,
+            "neuron": 7
+          },
+          "b0/e2": {
+            "gradient": 0.0794658213853836,
+            "singular": 0.07928477972745895,
+            "neuron": 13
+          },
+          "b0/e3": {
+            "gradient": 0.12745852768421173,
+            "singular": 0.1270250827074051,
+            "neuron": 13
+          },
+          "b0/e4": {
+            "gradient": 0.17684823274612427,
+            "singular": 0.17673896253108978,
+            "neuron": 2
+          }
+        },
+        "guards": {
+          "max_abs_input": 10000.0,
+          "target_brier": 0.1,
+          "error_deadband": 0.02,
+          "drift_threshold": 0.02,
+          "plateau_tolerance": 0.002,
+          "minimum_gradient": 1e-07,
+          "minimum_life": 48,
+          "cooldown_stages": 2,
+          "max_parameters": 200000,
+          "max_training_bytes": 134217728,
+          "probe_rows": 96,
+          "probe_batch": 8,
+          "max_context_experts": 256,
+          "old_gradient_scale": 0.1,
+          "warmup_steps": 4,
+          "max_batch": 8,
+          "replay_states": 4096
+        }
+      },
+      "budget": {
+        "parameters": 35936,
+        "context_experts": 5,
+        "work_units": 74792,
+        "estimated_training_bytes": 37963678,
+        "allowed": true
+      },
+      "boundary_checkpoint": "boundary.pt",
+      "fit_first": 300.0,
+      "fit_last": 14400.0,
+      "fit_revealed_through": 14401.0,
+      "fit_rows": 48,
+      "before_experts": 5,
+      "candidate_experts": 5,
+      "before_profile": {
+        "parameters": 35226,
+        "buffer_bytes": 24602,
+        "boards": 1,
+        "experts": 5,
+        "attention_nodes": 1,
+        "heads": 2,
+        "context_experts": 5,
+        "work_units": 73472
+      },
+      "candidate_profile": {
+        "parameters": 35936,
+        "buffer_bytes": 24602,
+        "boards": 1,
+        "experts": 5,
+        "attention_nodes": 1,
+        "heads": 2,
+        "context_experts": 5,
+        "work_units": 74792
+      },
+      "before_parameters": 35226,
+      "candidate_parameters": 35936,
+      "compute_rate": 0.002,
+      "acceptance": {
+        "minimum_accuracy_gain": 0.01,
+        "minimum_brier_gain": 0.002,
+        "maximum_class_loss": 0.0,
+        "maximum_quorum_loss": 0.0
+      },
+      "status": "accepted_measured_gain",
+      "accepted": true,
+      "measured_return": 0.2339914445751931,
+      "external_reward_mean": 0.0,
+      "external_reward_count": 0,
+      "check_first": 14700.0,
+      "check_last": 28800.0,
+      "classes": {
+        "0": 24,
+        "1": 24
+      },
+      "active": {
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "brier": 0.2500261068344116,
+        "recall": [
+          0.0,
+          1.0
+        ]
+      },
+      "candidate": {
+        "accuracy": 1.0,
+        "balanced_accuracy": 1.0,
+        "brier": 0.01595841906964779,
+        "recall": [
+          1.0,
+          1.0
+        ]
+      },
+      "penalized_gain": 0.2339914445751931,
+      "check_predictions": [
+        {
+          "stamp": 14700.0,
+          "revealed_at": 14701.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051088929176331,
+          "candidate": 0.0584871768951416,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 15000.0,
+          "revealed_at": 15001.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051087141036987,
+          "candidate": 0.0523533821105957,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 15300.0,
+          "revealed_at": 15301.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051084756851196,
+          "candidate": 0.05025649070739746,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 15600.0,
+          "revealed_at": 15601.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051082968711853,
+          "candidate": 0.8256872892379761,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 15900.0,
+          "revealed_at": 15901.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051081776618958,
+          "candidate": 0.8275915384292603,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 16200.0,
+          "revealed_at": 16201.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051080584526062,
+          "candidate": 0.8283072710037231,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 16500.0,
+          "revealed_at": 16501.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051079392433167,
+          "candidate": 0.04909217357635498,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 16800.0,
+          "revealed_at": 16801.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051078200340271,
+          "candidate": 0.048969388008117676,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 17100.0,
+          "revealed_at": 17101.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051077604293823,
+          "candidate": 0.04893463850021362,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 17400.0,
+          "revealed_at": 17401.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051077008247375,
+          "candidate": 0.8282535672187805,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 17700.0,
+          "revealed_at": 17701.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051076412200928,
+          "candidate": 0.8286396265029907,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 18000.0,
+          "revealed_at": 18001.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.505107581615448,
+          "candidate": 0.8287349939346313,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 18300.0,
+          "revealed_at": 18301.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051075220108032,
+          "candidate": 0.04906529188156128,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 18600.0,
+          "revealed_at": 18601.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051075220108032,
+          "candidate": 0.04896259307861328,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 18900.0,
+          "revealed_at": 18901.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051075220108032,
+          "candidate": 0.04893523454666138,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 19200.0,
+          "revealed_at": 19201.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051075220108032,
+          "candidate": 0.8282625675201416,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 19500.0,
+          "revealed_at": 19501.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051074624061584,
+          "candidate": 0.8286423683166504,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 19800.0,
+          "revealed_at": 19801.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051074624061584,
+          "candidate": 0.8287352323532104,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 20100.0,
+          "revealed_at": 20101.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051075220108032,
+          "candidate": 0.049067914485931396,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 20400.0,
+          "revealed_at": 20401.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051075220108032,
+          "candidate": 0.048964619636535645,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 20700.0,
+          "revealed_at": 20701.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051075220108032,
+          "candidate": 0.04893690347671509,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 21000.0,
+          "revealed_at": 21001.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051075220108032,
+          "candidate": 0.8282623291015625,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 21300.0,
+          "revealed_at": 21301.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.505107581615448,
+          "candidate": 0.8286421298980713,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 21600.0,
+          "revealed_at": 21601.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.505107581615448,
+          "candidate": 0.8287352323532104,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 21900.0,
+          "revealed_at": 21901.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051076412200928,
+          "candidate": 0.04906851053237915,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 22200.0,
+          "revealed_at": 22201.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051077008247375,
+          "candidate": 0.04896509647369385,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 22500.0,
+          "revealed_at": 22501.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051077008247375,
+          "candidate": 0.04893726110458374,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 22800.0,
+          "revealed_at": 22801.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051077008247375,
+          "candidate": 0.8282623291015625,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 23100.0,
+          "revealed_at": 23101.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051077604293823,
+          "candidate": 0.8286422491073608,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 23400.0,
+          "revealed_at": 23401.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051078200340271,
+          "candidate": 0.8287353515625,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 23700.0,
+          "revealed_at": 23701.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051078796386719,
+          "candidate": 0.04906868934631348,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 24000.0,
+          "revealed_at": 24001.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051078796386719,
+          "candidate": 0.048965275287628174,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 24300.0,
+          "revealed_at": 24301.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051079392433167,
+          "candidate": 0.04893738031387329,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 24600.0,
+          "revealed_at": 24601.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051079988479614,
+          "candidate": 0.828262448310852,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 24900.0,
+          "revealed_at": 24901.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051080584526062,
+          "candidate": 0.8286423087120056,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 25200.0,
+          "revealed_at": 25201.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.505108118057251,
+          "candidate": 0.8287353515625,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 25500.0,
+          "revealed_at": 25501.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051081776618958,
+          "candidate": 0.04906874895095825,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 25800.0,
+          "revealed_at": 25801.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051081776618958,
+          "candidate": 0.048965275287628174,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 26100.0,
+          "revealed_at": 26101.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051082372665405,
+          "candidate": 0.048937439918518066,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 26400.0,
+          "revealed_at": 26401.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051082968711853,
+          "candidate": 0.828262448310852,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 26700.0,
+          "revealed_at": 26701.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051083564758301,
+          "candidate": 0.8286423087120056,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 27000.0,
+          "revealed_at": 27001.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051084160804749,
+          "candidate": 0.8287354111671448,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 27300.0,
+          "revealed_at": 27301.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051085352897644,
+          "candidate": 0.04906874895095825,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 27600.0,
+          "revealed_at": 27601.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051085352897644,
+          "candidate": 0.048965275287628174,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 27900.0,
+          "revealed_at": 27901.0,
+          "truth": 0,
+          "reward": null,
+          "active": 0.5051085948944092,
+          "candidate": 0.048937320709228516,
+          "active_answer": 1,
+          "candidate_answer": 0,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 28200.0,
+          "revealed_at": 28201.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.505108654499054,
+          "candidate": 0.828262448310852,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 28500.0,
+          "revealed_at": 28501.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051087141036987,
+          "candidate": 0.8286423683166504,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 28800.0,
+          "revealed_at": 28801.0,
+          "truth": 1,
+          "reward": null,
+          "active": 0.5051087737083435,
+          "candidate": 0.8287354111671448,
+          "active_answer": 1,
+          "candidate_answer": 1,
+          "active_quorum": false,
+          "candidate_quorum": true
+        }
+      ],
+      "balanced_gain": 0.5,
+      "class_gain": [
+        1.0,
+        0.0
+      ],
+      "quorum_gain": 1.0,
+      "paired_lower": 0.5,
+      "brier_gain": 0.23406768776476383,
+      "parameter_saving": -0.02015556691080452,
+      "work_saving": -0.01796602787456446
+    }
+  ],
+  "monitor_audit": [
+    {
+      "rollback": false,
+      "supported": true,
+      "active": {
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "brier": 0.25002601742744446,
+        "recall": [
+          0.0,
+          1.0
+        ]
+      },
+      "candidate": {
+        "accuracy": 1.0,
+        "balanced_accuracy": 1.0,
+        "brier": 0.015898162499070168,
+        "recall": [
+          1.0,
+          1.0
+        ]
+      },
+      "class_gain": [
+        1.0,
+        0.0
+      ],
+      "quorum_gain": 1.0,
+      "predictions": [
+        {
+          "stamp": 29100.0,
+          "truth": 0,
+          "active": 0.5051088333129883,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.04906874895095825,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 29400.0,
+          "truth": 0,
+          "active": 0.5051088929176331,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.048965275287628174,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 29700.0,
+          "truth": 0,
+          "active": 0.5051089525222778,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.04893738031387329,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 30000.0,
+          "truth": 1,
+          "active": 0.5051090121269226,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8282625079154968,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 30300.0,
+          "truth": 1,
+          "active": 0.5051090717315674,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8286423683166504,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 30600.0,
+          "truth": 1,
+          "active": 0.5051091313362122,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8287354111671448,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 30900.0,
+          "truth": 0,
+          "active": 0.5051091909408569,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.04906874895095825,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 31200.0,
+          "truth": 0,
+          "active": 0.5051092505455017,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.048965275287628174,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 31500.0,
+          "truth": 0,
+          "active": 0.5051093101501465,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.04893738031387329,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 31800.0,
+          "truth": 1,
+          "active": 0.5051093101501465,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8282625079154968,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 32100.0,
+          "truth": 1,
+          "active": 0.505109429359436,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8286423087120056,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 32400.0,
+          "truth": 1,
+          "active": 0.5051094889640808,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8287354111671448,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 32700.0,
+          "truth": 0,
+          "active": 0.5051095485687256,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.04906874895095825,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 33000.0,
+          "truth": 0,
+          "active": 0.5051095485687256,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.048965275287628174,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 33300.0,
+          "truth": 0,
+          "active": 0.5051096677780151,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.04893738031387329,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 33600.0,
+          "truth": 1,
+          "active": 0.5051097273826599,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8282625079154968,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 33900.0,
+          "truth": 1,
+          "active": 0.5051097273826599,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8286423683166504,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 34200.0,
+          "truth": 1,
+          "active": 0.5051097869873047,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8287354111671448,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 34500.0,
+          "truth": 0,
+          "active": 0.5051098465919495,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.04906874895095825,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 34800.0,
+          "truth": 0,
+          "active": 0.5051099061965942,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.048965275287628174,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 35100.0,
+          "truth": 0,
+          "active": 0.505109965801239,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.04893738031387329,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 35400.0,
+          "truth": 1,
+          "active": 0.5051100254058838,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8282625079154968,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 35700.0,
+          "truth": 1,
+          "active": 0.5051100850105286,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8286423683166504,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 36000.0,
+          "truth": 1,
+          "active": 0.5051100850105286,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8287354111671448,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 36300.0,
+          "truth": 0,
+          "active": 0.5051102042198181,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.04906874895095825,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 36600.0,
+          "truth": 0,
+          "active": 0.5051102042198181,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.048965275287628174,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 36900.0,
+          "truth": 0,
+          "active": 0.5051102638244629,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.04893738031387329,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 37200.0,
+          "truth": 1,
+          "active": 0.5051103234291077,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8282625079154968,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 37500.0,
+          "truth": 1,
+          "active": 0.5051103830337524,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8286423683166504,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 37800.0,
+          "truth": 1,
+          "active": 0.5051104426383972,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8287354111671448,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 38100.0,
+          "truth": 0,
+          "active": 0.505110502243042,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.04906874895095825,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 38400.0,
+          "truth": 0,
+          "active": 0.5051105618476868,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.048965275287628174,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 38700.0,
+          "truth": 0,
+          "active": 0.5051105618476868,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.04893738031387329,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 39000.0,
+          "truth": 1,
+          "active": 0.5051106810569763,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8282625079154968,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 39300.0,
+          "truth": 1,
+          "active": 0.5051106810569763,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8286423683166504,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 39600.0,
+          "truth": 1,
+          "active": 0.5051107406616211,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8287354111671448,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 39900.0,
+          "truth": 0,
+          "active": 0.5051108002662659,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.04906874895095825,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 40200.0,
+          "truth": 0,
+          "active": 0.5051108598709106,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.048965275287628174,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 40500.0,
+          "truth": 0,
+          "active": 0.5051108598709106,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.04893738031387329,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 40800.0,
+          "truth": 1,
+          "active": 0.5051109194755554,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8282625079154968,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 41100.0,
+          "truth": 1,
+          "active": 0.5051109790802002,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8286423683166504,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 41400.0,
+          "truth": 1,
+          "active": 0.505111038684845,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8287353515625,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 41700.0,
+          "truth": 0,
+          "active": 0.5051110982894897,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.04906874895095825,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 42000.0,
+          "truth": 0,
+          "active": 0.5051110982894897,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.048965275287628174,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 42300.0,
+          "truth": 0,
+          "active": 0.5051111578941345,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.04893738031387329,
+          "candidate_answer": 0,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 42600.0,
+          "truth": 1,
+          "active": 0.5051112174987793,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8282625079154968,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 42900.0,
+          "truth": 1,
+          "active": 0.5051112771034241,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8286423683166504,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        },
+        {
+          "stamp": 43200.0,
+          "truth": 1,
+          "active": 0.5051112771034241,
+          "active_answer": 1,
+          "active_quorum": false,
+          "candidate": 0.8287353515625,
+          "candidate_answer": 1,
+          "candidate_quorum": true
+        }
+      ]
+    }
+  ]
+}

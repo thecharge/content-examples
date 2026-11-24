@@ -2,6 +2,8 @@
 
 This is a capability extension, not a demonstrated accuracy or efficiency improvement over the preceding adaptive model. The default controller declined structural changes on both house streams in all three seeds. It continued learning weights and liquid state.
 
+[Inspect before/during/after topology, lifecycle figures and the offline interactive viewer](EVOLUTION.md). The accuracy trend below is committed as both PNG and SVG.
+
 ## Same-data accuracy
 
 Balanced accuracy after the original 14-day warmup, in percent. Every value is recomputed from committed predictions. Seeds are 73, 83 and 97; these are repeats, not independent houses.

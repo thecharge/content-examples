@@ -57,3 +57,11 @@ python reporting/build.py
 The report builder independently checks house receipts and controlled-model hashes, restores controlled checkpoints, checks completed monitoring, generates PNG/SVG figures and writes `reporting/manifest.json`. The manifest covers sources, models, receipts, docs and figures; it excludes itself and the delivery log. Reporting depends on Matplotlib only; inference does not.
 
 Re-running measured commands overwrites their output, so use a separate evidence folder when retaining the published measurements. A checksum proves artifact identity, not model correctness. Hard process limits require the worker; direct imports only apply model-level controls.
+
+## Visual evolution verification
+
+`python reporting/evolution.py verify` checks all six controlled histories: model-source and observer hashes, causal phase boundaries, exact published prediction/receipt parity for the four existing seeds, final tensor digests and model layouts, monitoring decisions and independently recomputed monitoring metrics. The two additional illustrative seeds use the identical stream and settings. No house experiment is rerun for this documentation update.
+
+`python reporting/render_evolution.py` verifies the traces before drawing. It also verifies each house artifact hash before deriving the 51 completed proposal events. Figures and the self-contained HTML inspector are generated from these exports. Root model Python/configuration files and earlier evidence are unchanged. See [EVOLUTION.md](EVOLUTION.md) for the commands and the limits of intermediate topology exports.
+
+Observed browser verification: `python reporting/check_inspector.py --screenshot evolution/inspector-preview.png` passed 116 checks in local headless Chromium: all 108 run/phase/role combinations, six house event lists and both phase navigation controls. The viewer and checker hashes are recorded in `evolution/inspector-check.json`. The preview was visually inspected. Four additional corruption probes rejected changed chronology, altered predictions, a wrong model digest and invented monitoring metrics.

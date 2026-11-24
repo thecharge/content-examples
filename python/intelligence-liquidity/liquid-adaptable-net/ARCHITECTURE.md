@@ -1,5 +1,7 @@
 # Architecture and adaptation
 
+[Inspect observed before/during/after networks and the full adaptation lifecycle](EVOLUTION.md).
+
 ## One graph, several levels of adaptation
 
 Every network is a complete liquid board: private expert state, participation, independent checkers, retries, weighted quorum, contextual correction and delta memory. A board's delta memory is now a tree. Each node has its own trainable heads, forgetting and readout. An expert's child edge names the attention node that routes it. Several child networks can use the same attention node, and several context paths can share network weights.

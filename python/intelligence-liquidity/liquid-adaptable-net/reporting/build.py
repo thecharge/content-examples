@@ -36,10 +36,28 @@ for seed in (60, 62, 65, 88):
         check_trial(receipt, record["settings"]["complexity_rate"])
     controlled.append(record)
 
+from evolution import SEEDS as EVOLUTION_SEEDS, validate_trace
+
+for seed in EVOLUTION_SEEDS:
+    validate_trace(json.loads((ROOT / f"evolution/trace-{seed}.json").read_text()))
+
+viewer_check = json.loads((ROOT / "evolution/inspector-check.json").read_text())
+for field, path in (
+    ("viewer_sha256", "evolution/inspector.html"),
+    ("checker_sha256", "reporting/check_inspector.py"),
+    ("screenshot_sha256", "evolution/inspector-preview.png"),
+):
+    if sha(ROOT / path) != viewer_check[field]:
+        raise ValueError("Inspector check artifact changed: " + path)
+if viewer_check["status"] != "passed" or viewer_check["checks"] != 116:
+    raise ValueError("Inspector checks did not pass")
+
 lines = [
     "# Measured results",
     "",
     "This is a capability extension, not a demonstrated accuracy or efficiency improvement over the preceding adaptive model. The default controller declined structural changes on both house streams in all three seeds. It continued learning weights and liquid state.",
+    "",
+    "[Inspect before/during/after topology, lifecycle figures and the offline interactive viewer](EVOLUTION.md). The accuracy trend below is committed as both PNG and SVG.",
     "",
     "## Same-data accuracy",
     "",
@@ -230,7 +248,7 @@ manifest = {
     for p in sorted(ROOT.rglob("*"))
     if p.is_file()
     and (
-        p.suffix in (".py", ".json", ".md", ".png", ".svg", ".pt")
+        p.suffix in (".py", ".json", ".md", ".png", ".svg", ".pt", ".html")
         and "__pycache__" not in p.parts
         and p.name != "manifest.json"
         and p.name != "TASK.md"
